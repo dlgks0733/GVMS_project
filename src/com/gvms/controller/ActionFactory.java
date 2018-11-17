@@ -72,6 +72,22 @@ public class ActionFactory {
 			else if(command.equals("modSubSearch")) {
 				action = new ModSubjectSearchAction();
 			}
+			/*// author osj
+			else if(command.equals("mis_list_form")) {
+				action = new MisListFormAction();
+			}
+			else if(command.equals("mis_regist_form")) {
+				action = new MisRegistFormAction();
+			}
+			else if(command.equals("mis_regist")) {
+				action = new MisRegistAction();
+			}
+			else if(command.equals("mis_read_form")) {
+				action = new MisReadFormAction();
+			}
+			else if(command.equals("mis_read")) {
+				action = new MisReadAction();
+			}*/
 		return action;
 	}
 

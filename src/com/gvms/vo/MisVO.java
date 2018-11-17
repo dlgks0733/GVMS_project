@@ -1,5 +1,11 @@
 package com.gvms.vo;
 
+/**
+ * 
+ * @author OSJ
+ *
+ */
+
 public class MisVO {
 
 	private String scoreId;
