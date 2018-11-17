@@ -22,15 +22,7 @@ public class ScoreListFormAction implements Action{
 		
 //		StuListAction stuListAction = new StuListAction();
 //		stuListAction.execute(request, response);
-		System.out.println("ddss");
-		System.out.println("ddss");
-		System.out.println("ddss");
-		System.out.println("ddss");
-		System.out.println("ddss");
-		System.out.println("ddss");
-		System.out.println("ddss");
-		System.out.println("ddss");
-		
+
 		StudentDao stuDao = StudentDao.getInstance();
 		ArrayList<StudentVO> list = stuDao.StudentTotalList();
 		request.setAttribute("list", list);
