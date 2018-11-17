@@ -118,11 +118,12 @@ public class MisDAO extends CommonDao {
 		// MisView.jsp에서 학생 ScoreDate 조회하는 메소드
 		public List<MisVO> selectMisScoreDate(String stuName) {
 			
-			String sql = "SELECT TO_CHAR(SCOREDATE,'YYYY-MM-DD')"
+			String sql = "SELECT TO_CHAR(scoreDate,'YYYY-MM-DD') AS scoreDate"
 					+ "		FROM TBL_SCORE sco"
 					+ "         ,TBL_STU stu"
 					+ "    WHERE sco.STUID = stu.STUID"
-					+ "	     AND stu.STUNAME ='" + stuName + "'";
+					+ "	     AND stu.STUNAME ='" + stuName + "'"
+					+ "    ORDER BY SCO.scoreDate DESC";
 			
 			
 			List<MisVO> list = new ArrayList<MisVO>();

@@ -20,16 +20,18 @@
 				</div>
 				<div class="box-body">
 				<form name="frm" method="post" action="mis?command=mis_view">
+					
 					<table class="table table-bordered">
 						<tr>
 							<th>학번</th>
-							<th>${MisVO.stuId}</th>
+							<th>${stuId}</th>
 							<th>이름</th>
-							<th>${MisVO.stuName}</th>
+							<th>${stuName}</th>
 							<th>총점</th>
-							<th>${MisVO.scoreSum}</th>
+							<th>${scoreSum}</th>
 						</tr>
 					</table>
+	
 					<p>
 					
 					<table class="table table-bordered">
