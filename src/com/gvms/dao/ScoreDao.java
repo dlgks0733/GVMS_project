@@ -10,7 +10,7 @@ import com.gvms.vo.ScoreVO;
 
 // 2018-11-03 INSERT, UPDATE, DELETE 완료
 // 기본 조회, 상세 조회 만들기
-
+	
 public class ScoreDao extends CommonDao{
 
 	private ScoreDao(){
@@ -27,20 +27,20 @@ public class ScoreDao extends CommonDao{
 	}
 	
 //  READ 선택영역 쿼리
-public ArrayList<ScoreVO> ScoreOptList(String stu_id) {
+public ArrayList<ScoreVO> ScoreOptList(String stuId) {
 		
 		ArrayList<ScoreVO> optList = new ArrayList<ScoreVO>();
 		
 		Connection conn = getConnection();
 		PreparedStatement st;
 		ResultSet rs = null;
-		String sql = "SELECT SCO.SCORE_ID, SUB.SUB_MIDDLE, SUB.SUB_NAME, "
-				   + "SUB.SUB_SCORE, NVL(TO_CHAR(SCO.SCORE_DATE,'YYYY.MM.DD'),'-') "
+		String sql = "SELECT SCO.SCOREID, SUB.MIDDLE, SUB.SUBNAME, "
+				   + "SUB.SUBSCORE, NVL(TO_CHAR(SCO.SCOREDATE,'YYYY.MM.DD'),'-') "
 				   + "FROM TBL_SUB SUB, TBL_SCORE SCO "
-				   + "WHERE SCO.SUB_ID = SUB.SUB_ID "
-				   + "AND STU_ID = " + stu_id + " "
-				   + "AND SUB.SUB_MAJOR = '선택' "
-				   + "AND SUB.SUB_NAME NOT LIKE '%MIS%'";
+				   + "WHERE SCO.SUBID = SUB.SUBID "
+				   + "AND STUID = " + stuId + " "
+				   + "AND SUB.MAJOR = '선택' "
+				   + "AND SUB.SUBNAME NOT LIKE '%MIS%'";
 		
 		try {
 			st = conn.prepareStatement(sql);
@@ -48,11 +48,11 @@ public ArrayList<ScoreVO> ScoreOptList(String stu_id) {
 			
 			while(rs.next()) {
 				ScoreVO scoVo = new ScoreVO();
-				scoVo.setScore_id(rs.getString(1));
-				scoVo.setSub_middle(rs.getString(2));
-				scoVo.setSub_name(rs.getString(3));
-				scoVo.setSub_score(rs.getString(4));
-				scoVo.setScore_date(rs.getString(5));
+				scoVo.setScoreId(rs.getString(1));
+				scoVo.setMiddle(rs.getString(2));
+				scoVo.setSubName(rs.getString(3));
+				scoVo.setSubScore(rs.getString(4));
+				scoVo.setScoreDate(rs.getString(5));
 				
 				optList.add(scoVo);
 				
@@ -75,13 +75,13 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 	Connection conn = getConnection();
 	PreparedStatement st;
 	ResultSet rs = null;
-	String sql = "SELECT SCO.SCORE_ID ,SUB.SUB_MIDDLE, SUB.SUB_NAME, "
-			   + "SCO.SCORE_ACQ, NVL(TO_CHAR(SCO.SCORE_DATE,'YYYY.MM.DD'),'-') "
+	String sql = "SELECT SCO.SCOREID ,SUB.MIDDLE, SUB.SUBNAME, "
+			   + "SCO.ACQSCORE, NVL(TO_CHAR(SCO.SCOREDATE,'YYYY.MM.DD'),'-') "
 			   + "FROM TBL_SUB SUB, TBL_SCORE SCO "
-			   + "WHERE SCO.SUB_ID = SUB.SUB_ID "
-			   + "AND STU_ID = " + stu_id + " "
-			   + "AND SUB.SUB_MAJOR = '필수' "
-			   + "AND SUB.SUB_NAME NOT LIKE '%MIS%'";
+			   + "WHERE SCO.SUBID = SUB.SUBID "
+			   + "AND STUID = " + stu_id + " "
+			   + "AND SUB.MAJOR = '필수' "
+			   + "AND SUB.SUBNAME NOT LIKE '%MIS%'";
 	
 	try {
 		st = conn.prepareStatement(sql);
@@ -89,11 +89,11 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 		
 		while(rs.next()) {
 			ScoreVO scoVo = new ScoreVO();
-			scoVo.setScore_id(rs.getString(1));
-			scoVo.setSub_middle(rs.getString(2));
-			scoVo.setSub_name(rs.getString(3));
-			scoVo.setScore_acq(rs.getString(4));
-			scoVo.setScore_date(rs.getString(5));
+			scoVo.setScoreId(rs.getString(1));
+			scoVo.setMiddle(rs.getString(2));
+			scoVo.setSubName(rs.getString(3));
+			scoVo.setAcqScore(rs.getString(4));
+			scoVo.setScoreDate(rs.getString(5));
 			
 			essList.add(scoVo);
 			
@@ -112,7 +112,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 //	학생점수데이터 등록
 	public void insertScore(ScoreVO scoVo) {
 		String sql = "INSERT INTO TBL_SCORE("
-				+ "SCORE_ID, SUB_ID, STU_ID, SCORE_DATE, SCORE_ACQ)" 
+				+ "SCOREID, SUBID, STUID, SCOREDATE, ACQSCORE)" 
 				+ "VALUES (SCORE_SEQ.NEXTVAL, ?, ?, ?, ?)"; 
 	
 		Connection conn = getConnection();
@@ -121,10 +121,10 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 		try {
 		
 			st = conn.prepareStatement(sql);
-			st.setString(1, scoVo.getSub_id());
-			st.setString(2, scoVo.getStu_id());
-			st.setString(3, scoVo.getScore_date());
-			st.setString(4, scoVo.getScore_acq());
+			st.setString(1, scoVo.getSubId());
+			st.setString(2, scoVo.getStuId());
+			st.setString(3, scoVo.getScoreDate());
+			st.setString(4, scoVo.getAcqScore());
 			
 			st.executeUpdate();
 		}	catch(SQLException e) {
@@ -136,7 +136,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 	
 // 학생점수데이터 수정	
 	public void updateScore(ScoreVO scoVo) {
-		String sql = "UPDATE TBL_SCORE SET SUB_ID =?, SCORE_DATE =?, SCORE_ACQ =?";
+		String sql = "UPDATE TBL_SCORE SET SUBID =?, SCOREDATE =?, ACQSCORE =?";
 		
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -145,9 +145,9 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 			conn = getConnection();
 			st = conn.prepareStatement(sql);
 			
-			st.setString(1, scoVo.getSub_id());
-			st.setString(2, scoVo.getScore_date());
-			st.setString(3, scoVo.getScore_acq());
+			st.setString(1, scoVo.getSubId());
+			st.setString(2, scoVo.getScoreDate());
+			st.setString(3, scoVo.getAcqScore());
 			
 			st.executeUpdate();
 		}	catch(SQLException e) {
@@ -159,7 +159,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 	
 // 학생점수데이터 삭제
 	public void deleteScore(ScoreVO scoVo) {
-		String sql = "DELETE TBL_SCORE WHERE SCORE_ID=?";
+		String sql = "DELETE TBL_SCORE WHERE SCOREID=?";
 		
 		Connection conn =null;
 		PreparedStatement st;
@@ -168,7 +168,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 			conn = getConnection();
 			st = conn.prepareStatement(sql);
 			
-			st.setString(1, scoVo.getScore_id());
+			st.setString(1, scoVo.getScoreId());
 			
 			st.executeUpdate();
 		}	catch(SQLException e) {

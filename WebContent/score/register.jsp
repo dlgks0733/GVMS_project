@@ -19,14 +19,14 @@
 				</div>
 				<div class="box-wrap">
 					<div class="box-body">
-						<h4>학번 : ${stuID } 이름 : ${stuName }</h4>
+						<h4>학번 : ${stuId } 이름 : ${stuName }</h4>
 						<input type="button" onclick="deleteRow()" value="항목삭제" class="btn btn-default" style ="float : right ">
 						<input type="button" onclick="addRow()" value="항목추가" class="btn btn-default" style ="float : right ">
 						
 						
 						<form id="form" method ="post" action="score?command=regist" onsubmit="return validateEmptyVal()">
-							<input type="hidden" name="stuID" value="${stuID}">
-							<input type="hidden" name="subID">
+							<input type="hidden" name="stuId" value="${stuId}">
+							<input type="hidden" name="subId">
 							
 							<table class="table table-striped">
 							  <thead>	
@@ -141,11 +141,11 @@ function getChildData(subject)
 	if (subject.subID == 0 || subject.subID == null)
 		return false;
 	
-	var subID = document.getElementsByName("subID")[0];
+	var subID = document.getElementsByName("subId")[0];
 	subID.value = subject.subID;
 	var score = document.getElementsByName("score")[0];
 	
-	
+				
 	
 	score.value = subject.score;
 	

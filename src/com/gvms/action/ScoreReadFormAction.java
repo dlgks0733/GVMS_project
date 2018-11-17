@@ -15,19 +15,19 @@ public class ScoreReadFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String url = "/score/read.jsp";
 		
-		String stu_id = request.getParameter("stu_id");
-						request.setAttribute("stu_id", stu_id);
+		String stuId = request.getParameter("stuId");
+						request.setAttribute("stuId", stuId);
 		
-		System.out.println(stu_id);
+		System.out.println(stuId);
 		
 	    ScoreDao scoDao = ScoreDao.getInstance();
-		ArrayList<ScoreVO> optList = scoDao.ScoreOptList(stu_id);
+		ArrayList<ScoreVO> optList = scoDao.ScoreOptList(stuId);
 		request.setAttribute("optList", optList);
 		
-		ArrayList<ScoreVO> essList = scoDao.ScoreEssList(stu_id);
+		ArrayList<ScoreVO> essList = scoDao.ScoreEssList(stuId);
 		request.setAttribute("essList", essList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

@@ -17,7 +17,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h2 class="box-title">졸업점수 조회</h2>
-				</div>
+				</div>	
 				<div class="box-wrap">
 					<div class="box-body">
 						<div class="box-keyword">
@@ -64,12 +64,12 @@
 									<%-- <input type="hidden" name="stu_id" value="${StudentVO.stu_id}">
 									<input type="hidden" name="stu_name" value="${StudentVO.stu_name}"> --%>
 								<form id ="frm" method ="post" action="score?command=readForm">
-								<input type="hidden" name="stu_id">
+								<input type="hidden" name="stuId">
 										
 								<tr>
-									<td style="text-align: center;">${StudentVO.stu_id}</td>
-									<td style="text-align: center;"><a href="#" onclick="submitID(${StudentVO.stu_id})">${StudentVO.stu_name}</a></td>
-									<td style="text-align: center;">${StudentVO.score_total}</td>
+									<td style="text-align: center;">${StudentVO.stuId}</td>
+									<td style="text-align: center;"><a href="#" onclick="submitID(${StudentVO.stuId})">${StudentVO.stuName}</a></td>
+									<td style="text-align: center;">${StudentVO.scoreTotal}</td>
 									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
 								
@@ -149,10 +149,10 @@
 
 			});
 	
-function submitID(stu_id){
-	var stu_ID = stu_id;
+function submitID(stuId){
+	var stuID = stuId;
 	/* var stu_name = document.getElementById("stu_name")[index].innerHTML; */
-	document.getElementsByName("stu_id").value = stu_ID;
+	document.getElementsByName("stuId").value = stuID;
 	document.getElementById("frm").submit();
 }
 	

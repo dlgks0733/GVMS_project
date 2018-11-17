@@ -15,23 +15,23 @@ public class ScoreModifyFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String url = "/score/modify.jsp";
 		
 		
 		
-		String stu_id = request.getParameter("stu_id");
-		request.setAttribute("stu_id", stu_id);
-		String stu_name = request.getParameter("stu_name");
-		request.setAttribute("stu_name", stu_name);
+		String stuId = request.getParameter("stuId");
+		request.setAttribute("stuId", stuId);
+		String stuName = request.getParameter("stuName");
+		request.setAttribute("stuName", stuName);
 		
-		System.out.println(stu_id + " " + stu_name);
+		System.out.println(stuId + " " + stuName);
 		
 	    ScoreDao scoDao = ScoreDao.getInstance();
-		ArrayList<ScoreVO> optList = scoDao.ScoreOptList(stu_id);
+		ArrayList<ScoreVO> optList = scoDao.ScoreOptList(stuId);
 		request.setAttribute("optList", optList);
 		
-		ArrayList<ScoreVO> essList = scoDao.ScoreEssList(stu_id);
+		ArrayList<ScoreVO> essList = scoDao.ScoreEssList(stuId);
 		request.setAttribute("essList", essList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

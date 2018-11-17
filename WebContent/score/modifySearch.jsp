@@ -18,7 +18,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
-<link
+<link	
 	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
@@ -108,10 +108,10 @@
 							</tr>
 							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
 								<tr style="cursor : pointer;">
-									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_major}</td>
-									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_middle}</td>
-									<td class="subName" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_name}</td>
-									<td class="score" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_score}</td>
+									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.major}</td>
+									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.subScore}</td>
 								</tr>
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>

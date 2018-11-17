@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.gvms.vo.SubjectVO;
 
 public class SubjectDao extends CommonDao {
-	
+
 	private SubjectDao() {
 		
 	}
@@ -23,11 +23,11 @@ public class SubjectDao extends CommonDao {
 		return instance;
 	}
 	
-	public ArrayList<SubjectVO> SearchSubject(String sub_name) {
+	public ArrayList<SubjectVO> SearchSubject(String subName) {
 		
 		ArrayList<SubjectVO> list = new ArrayList<SubjectVO>();
 		
-		String sql = "SELECT * FROM TBL_SUB WHERE SUB_NAME LIKE  '%" + sub_name + "%'";
+		String sql = "SELECT * FROM TBL_SUB WHERE SUBNAME LIKE  '%" + subName + "%'";
 		
 		
 		Connection conn = getConnection();
@@ -40,11 +40,11 @@ public class SubjectDao extends CommonDao {
 			
 			if(rs.next()) {
 			SubjectVO subVo = new SubjectVO();
-			subVo.setSub_id(rs.getString("sub_id"));
-			subVo.setSub_major(rs.getString("sub_major"));
-			subVo.setSub_middle(rs.getString("sub_middle"));
-			subVo.setSub_name(rs.getString("sub_name"));
-			subVo.setSub_score(rs.getString("sub_score"));
+			subVo.setSubId(rs.getString("subId"));
+			subVo.setMajor(rs.getString("major"));
+			subVo.setMiddle(rs.getString("middle"));
+			subVo.setSubName(rs.getString("subName"));
+			subVo.setSubScore(rs.getString("subScore"));
 			
 			list.add(subVo);
 			}

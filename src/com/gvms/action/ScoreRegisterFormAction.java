@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class ScoreRegisterFormAction implements Action {
-
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/score/register.jsp";
 		
-		String stuID = request.getParameter("stuID");
+		String stuId = request.getParameter("stuId");
 		String stuName = request.getParameter("stuName");
-		request.setAttribute("stuID", stuID);
+		request.setAttribute("stuId", stuId);
 		request.setAttribute("stuName", stuName);
-		System.out.println("stuID : " + stuID +  " stuName : " + stuName);
+		System.out.println("stuID : " + stuId +  " stuName : " + stuName);
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

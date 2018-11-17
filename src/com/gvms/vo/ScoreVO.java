@@ -1,62 +1,52 @@
 package com.gvms.vo;
 
 public class ScoreVO extends SubjectVO{
-	private String score_id;
-	private String sub_id;
-	private String stu_id;
-	private String score_date;
-	private String score_acq;
-	
+	private String scoreId;
+	private String subId;
+	private String stuId;
+	private String scoreDate;
+	private String acqScore;
+
 	public ScoreVO() {
 
 	}
-
-	public String getScore_id() {
-		return score_id;
-	}
-
-	public void setScore_id(String score_id) {
-		this.score_id = score_id;
-	}
-
-	public String getSub_id() {
-		return sub_id;
-	}
-
-	public void setSub_id(String sub_id) {
-		this.sub_id = sub_id;
-	}
-
-	public String getStu_id() {
-		return stu_id;
-	}
-
-	public void setStu_id(String stu_id) {
-		this.stu_id = stu_id;
-	}
-
-	public String getScore_date() {
-		return score_date;
-	}
-
-	public void setScore_date(String score_date) {
-		this.score_date = score_date;
-	}
-
-	public String getScore_acq() {
-		return score_acq;
-	}
-
-	public void setScore_acq(String score_acq) {
-		this.score_acq = score_acq;
-	}
 	
-
+	public String getScoreId() {
+		return scoreId;
+	}
+	public void setScoreId(String scoreId) {
+		this.scoreId = scoreId;
+	}
+	public String getSubId() {
+		return subId;
+	}
+	public void setSubId(String subId) {
+		this.subId = subId;
+	}
+	public String getStuId() {
+		return stuId;
+	}
+	public void setStuId(String stuId) {
+		this.stuId = stuId;
+	}
+	public String getScoreDate() {
+		return scoreDate;
+	}
+	public void setScoreDate(String scoreDate) {
+		this.scoreDate = scoreDate;
+	}
+	public String getAcqScore() {
+		return acqScore;
+	}
+	public void setAcqScore(String acqScore) {
+		this.acqScore = acqScore;
+	}
 	@Override
 	public String toString() {
-		return "ScoreVO [score_id=" + score_id + ", sub_id=" + sub_id + ", stu_id=" + stu_id + ", score_date="
-				+ score_date + ", score_acq=" + score_acq + "]";
+		return "ScoreVO [scoreId=" + scoreId + ", subId=" + subId + ", stuId=" + stuId + ", scoreDate=" + scoreDate
+				+ ", acqScore=" + acqScore + "]";
 	}
+	
 	
 	
 	

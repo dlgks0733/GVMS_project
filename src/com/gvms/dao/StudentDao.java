@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.gvms.vo.StudentVO;
 
 public class StudentDao extends CommonDao {
-
+	
 	private static StudentDao instance;
 
 	public static StudentDao getInstance() {
@@ -28,7 +28,7 @@ public class StudentDao extends CommonDao {
 		Connection conn = getConnection();
 		PreparedStatement st;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM TBL_STU ORDER BY STU_ID DESC";
+		String sql = "SELECT * FROM TBL_STU ORDER BY STUID DESC";
 		
 		try {
 			st = conn.prepareStatement(sql);
@@ -36,10 +36,10 @@ public class StudentDao extends CommonDao {
 			
 			while(rs.next()) {
 				StudentVO stuVo = new StudentVO();
-				stuVo.setStu_id(rs.getString("stu_id"));
-				stuVo.setStu_name(rs.getString("stu_name"));
-				stuVo.setStu_stat(rs.getString("stu_stat"));
-				stuVo.setStu_index(rs.getString("stu_index"));
+				stuVo.setStuId(rs.getString("stuId"));
+				stuVo.setStuName(rs.getString("stuName"));
+				stuVo.setStuStat(rs.getString("stuStat"));
+				stuVo.setStuIndex(rs.getString("stuIndex"));
 				
 				list.add(stuVo);
 				
@@ -61,8 +61,8 @@ public class StudentDao extends CommonDao {
 		Connection conn = getConnection();
 		PreparedStatement st;
 		ResultSet rs = null;
-		String sql = "SELECT STU.STU_ID, STU.STU_NAME, ST.TOTAL FROM SCORETOTAL ST, TBL_STU STU" + 
-					" WHERE ST.STU_ID = STU.STU_ID";
+		String sql = "SELECT STU.STUID, STU.STUNAME, ST.TOTAL FROM SCORETOTAL ST, TBL_STU STU" + 
+					" WHERE ST.STUID = STU.STUID";
 		
 		try {
 			st = conn.prepareStatement(sql);
@@ -70,9 +70,9 @@ public class StudentDao extends CommonDao {
 			
 			while(rs.next()) {
 				StudentVO stuVo = new StudentVO();
-				stuVo.setStu_id(rs.getString("stu_id"));
-				stuVo.setStu_name(rs.getString("stu_name"));
-				stuVo.setScore_total(rs.getString("total"));
+				stuVo.setStuId(rs.getString("stuId"));
+				stuVo.setStuName(rs.getString("stuName"));
+				stuVo.setScoreTotal(rs.getString("total"));
 				
 				list.add(stuVo);
 				

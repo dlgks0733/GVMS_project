@@ -108,10 +108,10 @@
 							</tr>
 							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
 								<tr style="cursor : pointer;">
-									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_major}</td>
-									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_middle}</td>
-									<td class="subName" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_name}</td>
-									<td class="score" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.sub_id})">${SubjectVO.sub_score}</td>
+									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.major}</td>
+									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.subScore}</td>
 								</tr>
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
@@ -211,12 +211,11 @@
 			self.close();
 		}
 		
-		function sendParentData(index, sub_id)
+		function sendParentData(index, subId)
 		{			
-			var subID = sub_id;
+			var subID = subId;
 			var score = document.getElementsByClassName("score")[index].innerHTML;
 			var subName = document.getElementsByClassName("subName")[index].innerHTML;
-			
 		
 			var subject = {
 				"subID" : subID,
@@ -226,7 +225,8 @@
 			};
 						
 			window.opener.getChildData(subject);
-			
+	
+					
 			this.window.close();
 		}
 		

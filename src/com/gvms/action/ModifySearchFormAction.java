@@ -13,7 +13,7 @@ public class ModifySearchFormAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "/score/modifySearch.jsp";
-		
+			
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		

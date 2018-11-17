@@ -17,7 +17,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h2 class="box-title">졸업점수 등록</h2>
-				</div>
+				</div>	
 				<div class="box-wrap">
 					<div class="box-body">
 						<div class="box-keyword">
@@ -63,14 +63,14 @@
 							<c:forEach items="${list}" var="StudentVO">
 								<form method="post" action="score?command=scoreRegisterForm">
 								<tr>
-									<td style="text-align: center;">${StudentVO.stu_id}</td>
-									<td style="text-align: center;">${StudentVO.stu_name}</td>
+									<td style="text-align: center;">${StudentVO.stuId}</td>
+									<td style="text-align: center;">${StudentVO.stuName}</td>
 									<td style="text-align: center;"><input type="submit" value="등록"> 
 									</td>
 									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
-								<input type="hidden" name="stuID" value="${StudentVO.stu_id }">
-								<input type="hidden" name="stuName" value="${StudentVO.stu_name }">
+								<input type="hidden" name="stuId" value="${StudentVO.stuId }">
+								<input type="hidden" name="stuName" value="${StudentVO.stuName }">
 								</form>
 							</c:forEach>
 						</table>

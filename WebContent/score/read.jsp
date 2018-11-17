@@ -14,14 +14,14 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">점수내역</h3>
-					<h4>학번:${stu_id} 이름:${stu_name}</h4>
+					<h4>학번:${stuId} 이름:${stuName}</h4>
 				</div>
 				<!-- /.box-header -->
 
 <form role="form" method="post">
-
-	<input type='hidden' name="stu_id" value="${stu_id}">
-	<input type='hidden' name="stu_name" value="${stu_name}">
+	
+	<input type='hidden' name="stuId" value="${stuId}">
+	<input type='hidden' name="stuName" value="${stuName}">
 
 </form>
 
@@ -58,11 +58,11 @@
 				
 			<c:forEach items="${essList}" var="ScoreVO">	
 			<tr>
-				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.score_id}"></td>
-				<td style="text-align: center;">${ScoreVO.sub_middle}</td>
-				<td style="text-align: center;">${ScoreVO.sub_name}</td>
-				<td style="text-align: center;">${ScoreVO.score_acq}</td>
-				<td style="text-align: center;">${ScoreVO.score_date}</td>
+				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.scoreId}"></td>
+				<td style="text-align: center;">${ScoreVO.middle}</td>
+				<td style="text-align: center;">${ScoreVO.subName}</td>
+				<td style="text-align: center;">${ScoreVO.acqScore}</td>
+				<td style="text-align: center;">${ScoreVO.scoreDate}</td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -86,11 +86,11 @@
 			
 			<c:forEach items="${optList}" var="ScoreVO">
 			<tr>
-				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.score_id}"></td>
-				<td style="text-align: center;">${ScoreVO.sub_middle}</td>
-				<td style="text-align: center;">${ScoreVO.sub_name}</td>
-				<td style="text-align: center;">${ScoreVO.sub_score}</td>
-				<td style="text-align: center;">${ScoreVO.score_date}</td>
+				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.scoreId}"></td>
+				<td style="text-align: center;">${ScoreVO.middle}</td>
+				<td style="text-align: center;">${ScoreVO.subName}</td>
+				<td style="text-align: center;">${ScoreVO.subScore}</td>
+				<td style="text-align: center;">${ScoreVO.scoreDate}</td>
 			</tr>
 			</c:forEach>	
 		</table>

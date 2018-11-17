@@ -16,7 +16,7 @@
 					<h3 class="box-title">점수 수정</h3>
 				</div>
 				<!-- /.box-header -->
-
+	
 				<form role="form" method="post" class="form-horizontal">
 					<input type="hidden" name="validation">
 					<div class="box-body box-form-custom">
@@ -129,11 +129,11 @@
 							  <tbody id="subject_tbody" align="center">
 							  	<c:forEach items="${essList}" var="ScoreVO">	
 									<tr>
-										<td><input type="text" name="subName" readonly="readonly" value="${ScoreVO.sub_name}"><a href="#" onclick="openModSearchSubject()">
+										<td><input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
-										<td><input type="text" name="score" value="${ScoreVO.score_acq}"onkeydown='return onlyNumber(event)' 
+										<td><input type="text" name="score" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
 											onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
-										<td><input type="date" name="scoreDate" value="${ScoreVO.score_date}"></td>
+										<td><input type="date" name="scoreDate" value="${ScoreVO.scoreDate}"></td>
 									</tr>
 								</c:forEach>
 							  </tbody>
@@ -156,11 +156,11 @@
 							  <tbody id="subject_tbody" align="center">
 							  	<c:forEach items="${optList}" var="ScoreVO">	
 									<tr>
-										<td><input type="text" name="subName" readonly="readonly" value="${ScoreVO.sub_name}"><a href="#" onclick="openModSearchSubject()">
+										<td><input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
-										<td><input type="text" name="score" readonly="readonly" value="${ScoreVO.sub_score}"onkeydown='return onlyNumber(event)' 
+										<td><input type="text" name="score" readonly="readonly" value="${ScoreVO.subScore}"onkeydown='return onlyNumber(event)' 
 											onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
-										<td><input type="date" name="scoreDate" value="${ScoreVO.score_date}"></td>
+										<td><input type="date" name="scoreDate" value="${ScoreVO.scoreDate}"></td>
 									</tr>
 								</c:forEach>
 							  </tbody>
