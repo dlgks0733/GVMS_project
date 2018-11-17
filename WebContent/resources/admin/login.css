@@ -1,0 +1,9 @@
+h4 {
+	font-size: 25px !important; 	
+}
+
+.line-bottom:after {
+    width: 80px !important;
+    border: 1px solid #000 !important;
+}
+

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* 사용자 뷰 관련 */
+.board-title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.board-title-short {
+	width: 30%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.board-title-middle {
+	width: 50%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.board-title-long {
+	width: 70%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+th {
+	text-align: center;
+}
+
+.listcontent {
+        font-size: 1em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+        height: 3em;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+/* 사용자 뷰 관련 끝 */
