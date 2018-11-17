@@ -22,7 +22,7 @@ public class ScoreListFormAction implements Action{
 		
 //		StuListAction stuListAction = new StuListAction();
 //		stuListAction.execute(request, response);
-		System.out.println("dd");
+		System.out.println("dds");
 		
 		StudentDao stuDao = StudentDao.getInstance();
 		ArrayList<StudentVO> list = stuDao.StudentTotalList();
