@@ -19,7 +19,7 @@
 					<h3 class="box-title">MIS 출결 등록</h3>
 				</div>
 				<div class="box-body">
-				<form name="frm" method="post" action="mis?command=mis_write">
+				<form name="frm" method="post" action="mis?command=mis_regist">
 					*날짜 <input type="date" name="scoreDate" >
 					<table class="table table-bordered">
 						<tr>

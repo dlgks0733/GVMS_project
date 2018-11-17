@@ -75,7 +75,7 @@ public class MisDAO extends CommonDao {
 	}
 	
 	// MisWrite.jsp에서 학생별 MIS 총합 점수를 조회하는 메소드
-		public List<MisVO> selectMisWrite() {
+		public List<MisVO> selectMisRegist() {
 			
 			String sql = "SELECT stu.stuid   as stuId"
 					+ "		   , stu.stuname as stuName"
