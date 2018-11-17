@@ -29,7 +29,7 @@
 						</tr>
 
 
-						<c:forEach items="${misListWrite}" var="MisVO">
+						<c:forEach items="${misListRegist}" var="MisVO">
 							<tr>
 								<td>${MisVO.stuId}</td>
 								<td>${MisVO.stuName}</td>
