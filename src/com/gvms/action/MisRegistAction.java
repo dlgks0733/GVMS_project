@@ -19,7 +19,7 @@ public class MisRegistAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String url = "mis?command=mis_write_form";
+		String url = "mis?command=mis_regist_form";
 		
 		//요청 된 jsp에서 Parameter 가져오기
 		String[] stuId = request.getParameterValues("stuId");

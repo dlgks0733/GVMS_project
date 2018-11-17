@@ -20,15 +20,15 @@ public class MisRegistFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String url = "/mis/misWrite.jsp";
+		String url = "/mis/misRegist.jsp";
 		
 		MisDAO mDao = MisDAO.getInstance();
 		
-		List<MisVO> misListWrite = mDao.selectMisWrite();
+		List<MisVO> misListRegist = mDao.selectMisRegist();
 		
-		request.setAttribute("misListWrite", misListWrite);
+		request.setAttribute("misListRegist", misListRegist);
 		
-		System.out.println(misListWrite);
+		System.out.println(misListRegist);
 	
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

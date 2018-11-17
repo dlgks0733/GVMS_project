@@ -160,8 +160,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/admin/notice/list"><i class="fa fa-magic"></i> MIS 출결 조회</a></li>
-                <li><a href="/admin/imgGallery/list"><i class="fa fa-magic"></i> MIS 출결 등록</a></li>
+                <li><a href="mis?command=mis_list_form"><i class="fa fa-magic"></i> MIS 출결 조회</a></li>
+                <li><a href="mis?command=mis_regist_form"><i class="fa fa-magic"></i> MIS 출결 등록</a></li>
                 
                <%-- <li><a href="/admin/eventBoard/list"><i class="fa fa-magic"></i> 이벤트 목록</a></li>
                 <li><a href="/admin/videoBoard/list"><i class="fa fa-magic"></i> 동영상 목록</a></li>

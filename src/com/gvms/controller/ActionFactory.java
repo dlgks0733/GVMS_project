@@ -1,17 +1,6 @@
 package com.gvms.controller;
 
-import com.gvms.action.Action;
-import com.gvms.action.MainAction;
-import com.gvms.action.ModSubjectSearchAction;
-import com.gvms.action.ModifySearchFormAction;
-import com.gvms.action.ScoreRegistAction;
-import com.gvms.action.ScoreListFormAction;
-import com.gvms.action.ScoreListRegFormAction;
-import com.gvms.action.ScoreModifyFormAction;
-import com.gvms.action.ScoreReadFormAction;
-import com.gvms.action.ScoreRegisterFormAction;
-import com.gvms.action.RegistSearchFormAction;
-import com.gvms.action.RegSubjectSearchAction;
+import com.gvms.action.*;
 
 /**
  * request로 받아온 매개변수의 command의 값으로 각 기능을 수행할 액션을 분기하는 클래스 <br>
@@ -72,7 +61,7 @@ public class ActionFactory {
 			else if(command.equals("modSubSearch")) {
 				action = new ModSubjectSearchAction();
 			}
-			/*// author osj
+			// author osj
 			else if(command.equals("mis_list_form")) {
 				action = new MisListFormAction();
 			}
@@ -82,7 +71,7 @@ public class ActionFactory {
 			else if(command.equals("mis_regist")) {
 				action = new MisRegistAction();
 			}
-			else if(command.equals("mis_read_form")) {
+			/*else if(command.equals("mis_read_form")) {
 				action = new MisReadFormAction();
 			}
 			else if(command.equals("mis_read")) {

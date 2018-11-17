@@ -1,4 +1,4 @@
-<!-- mis 등록 화면 -->
+<!-- mis 상세 조회 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -16,30 +16,41 @@
 			<!-- general form elements -->
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">MIS 출결 등록</h3>
+					<h3 class="box-title">MIS 상세 조회</h3>
 				</div>
 				<div class="box-body">
-				<form name="frm" method="post" action="mis?command=mis_regist">
-					*날짜 <input type="date" name="scoreDate" >
+				<form name="frm" method="post" action="mis?command=mis_view">
 					<table class="table table-bordered">
 						<tr>
-							<th>이름</th>
 							<th>학번</th>
-							<th>출석여부</th>
+							<th></th>
+							<th>이름</th>
+							<th></th>
+							<th>총점</th>
+							<th></th>
 						</tr>
-
-
-						<c:forEach items="${misListRegist}" var="MisVO">
+					</table>
+					<p>
+					
+					<table class="table table-bordered">
+					
+					<tr>
+					<td><input type ="checkbox" name="stuId" value=""></td>
+					<td>일자</td>
+					<td>점수</td>
+					</tr>			
+						<c:forEach items="${misListView}" var="MisVO">
 							<tr>
-								<td>${MisVO.stuId}</td>
-								<td>${MisVO.stuName}</td>
-								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"></td>
-								
+								<td><input type ="checkbox" name="stuId" value="${MisVO.scorId}"></td>
+								<td>${MisVO.scoreDate}</td>
+								<td>3</td>
 							</tr>
 						</c:forEach>
 					</table>
 						 <button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
 					</form>
+							 
+				
 
 				</div>
 				<!-- /.box-body -->
