@@ -36,7 +36,7 @@
 
 							<tr>
 								<td>${MisVO.stuId}</td>
-								<td><a href="mis?command=mis_view">${MisVO.stuName}</a></td>
+								<td><a href="mis?command=mis_read&stuName=${MisVO.stuName}">${MisVO.stuName}</a></td>
 								<td>${MisVO.scoreSum}</td>
 							</tr>
 

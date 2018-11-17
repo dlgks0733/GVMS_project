@@ -71,12 +71,12 @@ public class ActionFactory {
 			else if(command.equals("mis_regist")) {
 				action = new MisRegistAction();
 			}
-			/*else if(command.equals("mis_read_form")) {
+			else if(command.equals("mis_read_form")) {
 				action = new MisReadFormAction();
 			}
 			else if(command.equals("mis_read")) {
 				action = new MisReadAction();
-			}*/
+			}
 		return action;
 	}
 

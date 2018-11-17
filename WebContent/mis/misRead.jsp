@@ -23,11 +23,11 @@
 					<table class="table table-bordered">
 						<tr>
 							<th>학번</th>
-							<th></th>
+							<th>${MisVO.stuId}</th>
 							<th>이름</th>
-							<th></th>
+							<th>${MisVO.stuName}</th>
 							<th>총점</th>
-							<th></th>
+							<th>${MisVO.scoreSum}</th>
 						</tr>
 					</table>
 					<p>
@@ -39,9 +39,9 @@
 					<td>일자</td>
 					<td>점수</td>
 					</tr>			
-						<c:forEach items="${misListView}" var="MisVO">
+						<c:forEach items="${misListRead}" var="MisVO">
 							<tr>
-								<td><input type ="checkbox" name="stuId" value="${MisVO.scorId}"></td>
+								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"></td>
 								<td>${MisVO.scoreDate}</td>
 								<td>3</td>
 							</tr>
