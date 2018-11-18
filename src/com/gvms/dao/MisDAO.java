@@ -192,4 +192,22 @@ public class MisDAO extends CommonDao {
 		}
 	}
 	
+	public void deleteMis(String stuId, String scoreDate) {
+		
+		String sql = "DELETE TBL_SCORE"
+				+ "	   WHERE STUID = '" + stuId + "'"
+				+ "      AND SCOREDATE = '" + scoreDate + "'"
+				+ "      AND SUBID ='1' ";
+		
+		Connection conn = null;
+		PreparedStatement st = null;
+		try {
+			conn = getConnection();
+			st = conn.prepareStatement(sql);
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
