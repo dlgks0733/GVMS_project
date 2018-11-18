@@ -77,6 +77,21 @@ public class ActionFactory {
 			else if(command.equals("mis_read")) {
 				action = new MisReadAction();
 			}
+			else if (command.equals("studentListForm")) {
+
+				action = new StudentListFormAction();
+			} 
+			else if (command.equals("stud_reg_form")) {
+
+				action = new StudentRegisterFormAction();
+			} 
+			else if (command.equals("stud_register")) {
+
+				action = new StudentRegisterAction();		
+			}		
+//	else if(command.equals("login")) {
+//		action = new 
+//	}
 		return action;
 	}
 
