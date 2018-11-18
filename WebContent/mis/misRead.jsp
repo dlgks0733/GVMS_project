@@ -50,6 +50,7 @@
 						</c:forEach>
 					</table>
 						 <button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
+						 <button type="button" class="btn btn-danger" onclick="remove()">삭제</button>
 					</form>
 							 
 				
