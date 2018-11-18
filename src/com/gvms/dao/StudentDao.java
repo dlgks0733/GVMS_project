@@ -18,7 +18,7 @@ public class StudentDao extends CommonDao {
 		}
 		return instance;
 	}
-
+	
 	
 	// 학생 목록 가져오기
 	public ArrayList<StudentVO> StudentList() {
@@ -53,7 +53,7 @@ public class StudentDao extends CommonDao {
 		return list;
 	}
 	
-	/*// 학생 , 총점 목록 가져오기
+	// 학생 , 총점 목록 가져오기
 	public ArrayList<StudentVO> StudentTotalList() {
 		
 		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
@@ -85,7 +85,7 @@ public class StudentDao extends CommonDao {
 		}
 		return list;
 	}
-	*/
+	
 
 	public void insertStudent(StudentVO stuVo) {
 		String sql = "insert into TBL_STU(stuID"
