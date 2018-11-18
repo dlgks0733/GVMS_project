@@ -19,10 +19,8 @@
 				<!-- /.box-header -->
 
 <form role="form" method="post">
-	
-	<input type='hidden' name="stuId" value="${stuId}">
-	<input type='hidden' name="stuName" value="${stuName}">
-
+					<input type="hidden" name="OptSubId">
+					<input type="hidden" name="EssSubId">
 </form>
 
 <div class="box-body">
@@ -41,6 +39,10 @@
 			name="writer" class="form-control" value="${boardVO.writer}"
 			readonly="readonly">
 	</div> --%>
+	<form role="form" method="post">
+	
+					<input type="hidden" name="OptSubId">
+					<input type="hidden" name="EssSubId">
 	
 			<table class="table table-striped">
 			
@@ -58,12 +60,12 @@
 				
 			<c:forEach items="${essList}" var="ScoreVO">	
 			<tr>
-				<input type="hidden" name="EssSubId" value="">
+				
 				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.scoreId}"></td>
 				<td style="text-align: center;">${ScoreVO.middle}</td>
 				<td style="text-align: center;"><input type="text" name="EssSubName" readonly="readonly" placeholder="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
-				<td style="text-align: center;"><input type="text" name="score" placeholder="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
+				<td style="text-align: center;"><input type="text" name="acqScore" placeholder="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
 											onkeyup='removeChar(event)'></td>
 				<td style="text-align: center;"><input type="date" name="scoreDate" placeholder="${ScoreVO.scoreDate}"></td>
 			</tr>
@@ -97,10 +99,10 @@
 				<td style="text-align: center;"><input type="text" name="optSubScore" onkeydown='return onlyNumber(event)' 
 											onkeyup='removeChar(event)' placeholder="${ScoreVO.subScore}" readonly="readonly"></td>
 				<td style="text-align: center;"><input type="date" name="scoreDate" placeholder="${ScoreVO.scoreDate}"></td>
-				<input type="hidden" name="OptSubId" value="">
 			</tr>
 			</c:forEach>	
 		</table>
+	</form>
 </div>
 <!-- /.box-body -->
 
@@ -144,7 +146,7 @@ function openModSearchSubject()
 	return false;
 }
 
-function getChildData(subject)
+/* function getChildData(subject)
 {
 	if (subject == null)
 		return false;
@@ -172,7 +174,7 @@ function getChildData(subject)
 		
 	}
 
-	}
+	} */
 	
 function onlyNumber(event){
     event = event || window.event;
@@ -219,12 +221,12 @@ function validateEmptyVal()
 function setChildValue(subId, major, name, score){
 	
 	if(major == "선택"){
-		document.getElementsByName("optSubId")[0].value = subId;
+		document.getElementsByName("optSubId").value = subId;
 		document.getElementsByName("optSubName")[0].value = name;
 		document.getElementsByName("optSubScore")[0].value = score;
 		
 	} else {
-		document.getElementsByName("EssSubId")[0].value = subId;
+		document.getElementsByName("EssSubId").value = subId;
 		document.getElementsByName("EssSubName")[0].value = name;
 	}
 	
