@@ -86,6 +86,7 @@ public class StudentDao extends CommonDao {
 		return list;
 	}
 	
+
 	public void insertStudent(StudentVO stuVo) {
 		String sql = "insert into student(stuID"
 				+ "						, stuName"
