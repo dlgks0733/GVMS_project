@@ -53,7 +53,7 @@ public class StudentDao extends CommonDao {
 		return list;
 	}
 	
-	// 학생 , 총점 목록 가져오기
+	/*// 학생 , 총점 목록 가져오기
 	public ArrayList<StudentVO> StudentTotalList() {
 		
 		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
@@ -85,14 +85,14 @@ public class StudentDao extends CommonDao {
 		}
 		return list;
 	}
-	
+	*/
 
 	public void insertStudent(StudentVO stuVo) {
-		String sql = "insert into student(stuID"
+		String sql = "insert into TBL_STU(stuID"
 				+ "						, stuName"
 				+ "						, stuStat"
 				+ "						, stuIndex)"
-				+ "	  values(?, ?, ?, STUINDEX.nextval)";
+				+ "	  values(?, ?, ?, STU_SEQ.nextval)";
 		
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -119,7 +119,7 @@ public class StudentDao extends CommonDao {
 	public ArrayList<StudentVO> getStudentList()
 	{
 		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
-		String sql = "select * from student";
+		String sql = "select * from TBL_STU";
 		
 		Connection conn = null;
 		PreparedStatement st = null;

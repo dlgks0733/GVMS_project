@@ -57,7 +57,7 @@
 							</tr>
 							<c:forEach items="${list}" var="studentVO" varStatus="status">
 								<tr>
-									<td style="text-align: center;">${studentVO.stuID}</td>
+									<td style="text-align: center;">${studentVO.stuId}</td>
 									<td style="text-align: center;">${studentVO.stuName}</td>
 									<td style="text-align: center;">${studentVO.stuStat}</td>
 									<%-- <td style="text-align: center;"><a

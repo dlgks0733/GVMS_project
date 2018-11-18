@@ -25,11 +25,12 @@ public class StudentRegisterAction implements Action{
 		
 		// Parameter 출력
 		System.out.println("stuID : " + stuID);
-		System.out.println("stuID : " + stuName);
-		System.out.println("stuID : " + stuStat);
+		System.out.println("stuName : " + stuName);
+		System.out.println("stuStat : " + stuStat);
 		
 		// StudentVO 객체 생성
 		StudentVO sVo = new StudentVO();
+		
 		
 		// 객체 세팅
 		sVo.setStuId(stuID);
