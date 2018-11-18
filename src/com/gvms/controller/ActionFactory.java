@@ -89,9 +89,7 @@ public class ActionFactory {
 
 				action = new StudentRegisterAction();		
 			}		
-//	else if(command.equals("login")) {
-//		action = new 
-//	}
+
 		return action;
 	}
 
