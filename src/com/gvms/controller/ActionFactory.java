@@ -41,10 +41,10 @@ public class ActionFactory {
 			action = new ScoreRegisterFormAction();
 		} 
 			else if(command.equals("registSearchForm")) {
-				action = new RegistSearchFormAction();
+				action = new ScoreRegistSearchFormAction();
 			}
 			else if(command.equals("regSubSearch")) {
-				action = new RegSubjectSearchAction();
+				action = new ScoreRegSubjectSearchAction();
 			}
 			else if(command.equals("regist")) {
 				action = new ScoreRegistAction();
@@ -56,10 +56,10 @@ public class ActionFactory {
 				action = new ScoreModifyFormAction();
 			}
 			else if(command.equals("modifySearchForm")) {
-				action = new ModifySearchFormAction();
+				action = new ScoreModifySearchFormAction();
 			}
 			else if(command.equals("modSubSearch")) {
-				action = new ModSubjectSearchAction();
+				action = new ScoreModSubjectSearchAction();
 			}
 			// author osj
 			else if(command.equals("mis_list_form")) {
