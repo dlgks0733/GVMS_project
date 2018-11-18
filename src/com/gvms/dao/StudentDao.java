@@ -85,5 +85,73 @@ public class StudentDao extends CommonDao {
 		}
 		return list;
 	}
+	
+
+	public void insertStudent(StudentVO stuVo) {
+		String sql = "insert into student(stuID"
+				+ "						, stuName"
+				+ "						, stuStat"
+				+ "						, stuIndex)"
+				+ "	  values(?, ?, ?, STUINDEX.nextval)";
+		
+		Connection conn = null;
+		PreparedStatement st = null;
+		
+		try {
+			conn= getConnection();
+			st = conn.prepareStatement(sql);
+			
+			st.setString(1, stuVo.getStuId());
+			st.setString(2, stuVo.getStuName());
+			st.setString(3, stuVo.getStuStat());
+			
+			st.executeUpdate();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			dbClose();
+		}
+	}
+	
+
+	public ArrayList<StudentVO> getStudentList()
+	{
+		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
+		String sql = "select * from student";
+		
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		try {
+			conn= getConnection();
+			st = conn.prepareStatement(sql);
+			rs = st.executeQuery();
+			
+		
+		        
+	while(rs.next())
+	{
+		StudentVO stuVo = new StudentVO();
+		stuVo.setStuId(rs.getString("stuID"));
+		stuVo.setStuName(rs.getString("stuName"));
+		stuVo.setStuStat(rs.getString("stuStat"));
+		stuVo.setStuIndex(rs.getString("stuIndex"));
+		studentList.add(stuVo);
+		
+	}
+	
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		dbClose();
+	}
+		return studentList;
+	
+	
+	
+}
 
 }

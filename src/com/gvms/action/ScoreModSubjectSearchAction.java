@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gvms.dao.SubjectDao;
 import com.gvms.vo.SubjectVO;
 
-public class ModSubjectSearchAction implements Action{
+public class ScoreModSubjectSearchAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

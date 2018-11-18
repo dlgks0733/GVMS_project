@@ -6,7 +6,7 @@ public class ScoreVO extends SubjectVO{
 	private String stuId;
 	private String scoreDate;
 	private String acqScore;
-
+	
 	public ScoreVO() {
 
 	}

@@ -20,8 +20,13 @@ public class ScoreReadFormAction implements Action{
 		
 		String stuId = request.getParameter("stuId");
 						request.setAttribute("stuId", stuId);
+		String stuName = request.getParameter("stuName");
+						request.setAttribute("stuName", stuName);
 		
-		System.out.println(stuId);
+		/*String stuName = request.getParameter("stuName");
+						 request.setAttribute("stuName", stuName);*/
+						
+		System.out.println(stuId + " " + stuName);
 		
 	    ScoreDao scoDao = ScoreDao.getInstance();
 		ArrayList<ScoreVO> optList = scoDao.ScoreOptList(stuId);

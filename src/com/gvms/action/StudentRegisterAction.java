@@ -32,7 +32,7 @@ public class StudentRegisterAction implements Action{
 		StudentVO sVo = new StudentVO();
 		
 		// 객체 세팅
-		sVo.setStuID(stuID);
+		sVo.setStuId(stuID);
 		sVo.setStuName(stuName);
 		sVo.setStuStat(stuStat);
 		

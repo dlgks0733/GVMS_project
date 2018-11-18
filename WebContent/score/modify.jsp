@@ -14,6 +14,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">점수 수정</h3>
+					<h4>학번: ${stuId} 이름: ${stuName}</h4>
 				</div>
 				<!-- /.box-header -->
 	
@@ -140,7 +141,7 @@
 							</table>
 						<br/>
 						<br/>
-						
+						<form name=frm method=post>
 						<table class="table table-striped">
 							  <thead>	
 							  		<tr>
@@ -156,6 +157,7 @@
 							  <tbody id="subject_tbody" align="center">
 							  	<c:forEach items="${optList}" var="ScoreVO">	
 									<tr>
+									<input type="hidden" name="subId" value="${ScoreVO.subId}">
 										<td><input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
 										<td><input type="text" name="score" readonly="readonly" value="${ScoreVO.subScore}"onkeydown='return onlyNumber(event)' 
@@ -165,6 +167,7 @@
 								</c:forEach>
 							  </tbody>
 							</table>
+							</form>
 					</div>
 					<!-- /.box-body -->
 

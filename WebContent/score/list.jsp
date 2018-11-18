@@ -63,12 +63,13 @@
 							<c:forEach items="${list}" var="StudentVO" varStatus="listStat">
 									<%-- <input type="hidden" name="stu_id" value="${StudentVO.stu_id}">
 									<input type="hidden" name="stu_name" value="${StudentVO.stu_name}"> --%>
-								<form id ="frm" method ="post" action="score?command=readForm">
+								<!-- <form name ="frm" method ="post" action="score?command=readForm">
 								<input type="hidden" name="stuId">
+								<input type="hidden" name="stuName"> -->
 										
 								<tr>
 									<td style="text-align: center;">${StudentVO.stuId}</td>
-									<td style="text-align: center;"><a href="#" onclick="submitID(${StudentVO.stuId})">${StudentVO.stuName}</a></td>
+									<td style="text-align: center;"><a href="score?command=readForm&stuId=${StudentVO.stuId}&stuName=${StudentVO.stuName}">${StudentVO.stuName}</a></td>
 									<td style="text-align: center;">${StudentVO.scoreTotal}</td>
 									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
@@ -149,12 +150,16 @@
 
 			});
 	
-function submitID(stuId){
+/* function submitID(stuId, stuName)
+{
+	alert("ssss");
 	var stuID = stuId;
+	var stuName = stuName;
 	/* var stu_name = document.getElementById("stu_name")[index].innerHTML; */
-	document.getElementsByName("stuId").value = stuID;
+	document.getElementsByName("stuId")[0].value = stuID;
+	document.getElementsByName("stuName")[0].value = stuName;
 	document.getElementById("frm").submit();
-}
+} */
 	
 
 	
