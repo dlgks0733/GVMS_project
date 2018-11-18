@@ -250,8 +250,8 @@
 			self.close();
 		}
 	
-	function sendChildValue(/* subId,  */major, name, score){
-		opener.setChildValue(/* subId , */major, name, score);
+	function sendChildValue(subId, major, name, score){
+		opener.setChildValue(subId , major, name, score);
 		this.window.close();
 	}
 
