@@ -20,6 +20,9 @@ import com.gvms.action.ScoreRegisterFormAction;
 import com.gvms.action.StudentListFormAction;
 import com.gvms.action.StudentRegisterAction;
 import com.gvms.action.StudentRegisterFormAction;
+import com.gvms.action.SubListformAction;
+import com.gvms.action.SubModifyAction;
+import com.gvms.action.SubRegister;
 
 /**
  * request로 받아온 매개변수의 command의 값으로 각 기능을 수행할 액션을 분기하는 클래스 <br>
@@ -107,7 +110,16 @@ public class ActionFactory {
 			else if (command.equals("stud_register")) {
 
 				action = new StudentRegisterAction();		
-			}		
+			}	
+			else if (command.equals("sub_list")) {
+				action = new SubListformAction();
+			}
+			else if (command.equals("sub_register")) {
+				action = new SubRegister();
+			}
+			else if (command.equals("sub_modify")) {
+				action = new SubModifyAction();
+			}
 
 		return action;
 	}
