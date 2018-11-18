@@ -34,7 +34,7 @@ public ArrayList<ScoreVO> ScoreOptList(String stuId) {
 		Connection conn = getConnection();
 		PreparedStatement st;
 		ResultSet rs = null;
-		String sql = "SELECT SCO.SCOREID, SUB.MIDDLE, SUB.SUBNAME, "
+		String sql = "SELECT SCO.SCOREID, SUB.SUBID, SUB.MIDDLE, SUB.SUBNAME, "
 				   + "SUB.SUBSCORE, NVL(TO_CHAR(SCO.SCOREDATE,'YYYY.MM.DD'),'-') "
 				   + "FROM TBL_SUB SUB, TBL_SCORE SCO "
 				   + "WHERE SCO.SUBID = SUB.SUBID "
@@ -49,10 +49,11 @@ public ArrayList<ScoreVO> ScoreOptList(String stuId) {
 			while(rs.next()) {
 				ScoreVO scoVo = new ScoreVO();
 				scoVo.setScoreId(rs.getString(1));
-				scoVo.setMiddle(rs.getString(2));
-				scoVo.setSubName(rs.getString(3));
-				scoVo.setSubScore(rs.getString(4));
-				scoVo.setScoreDate(rs.getString(5));
+				scoVo.setSubId(rs.getString(2));
+				scoVo.setMiddle(rs.getString(3));
+				scoVo.setSubName(rs.getString(4));
+				scoVo.setSubScore(rs.getString(5));
+				scoVo.setScoreDate(rs.getString(6));
 				
 				optList.add(scoVo);
 				
@@ -75,7 +76,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 	Connection conn = getConnection();
 	PreparedStatement st;
 	ResultSet rs = null;
-	String sql = "SELECT SCO.SCOREID ,SUB.MIDDLE, SUB.SUBNAME, "
+	String sql = "SELECT SCO.SCOREID , SUB.SUBID, SUB.MIDDLE, SUB.SUBNAME, "
 			   + "SCO.ACQSCORE, NVL(TO_CHAR(SCO.SCOREDATE,'YYYY.MM.DD'),'-') "
 			   + "FROM TBL_SUB SUB, TBL_SCORE SCO "
 			   + "WHERE SCO.SUBID = SUB.SUBID "
@@ -90,10 +91,11 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 		while(rs.next()) {
 			ScoreVO scoVo = new ScoreVO();
 			scoVo.setScoreId(rs.getString(1));
-			scoVo.setMiddle(rs.getString(2));
-			scoVo.setSubName(rs.getString(3));
-			scoVo.setAcqScore(rs.getString(4));
-			scoVo.setScoreDate(rs.getString(5));
+			scoVo.setSubId(rs.getString(2));
+			scoVo.setMiddle(rs.getString(3));
+			scoVo.setSubName(rs.getString(4));
+			scoVo.setAcqScore(rs.getString(5));
+			scoVo.setScoreDate(rs.getString(6));
 			
 			essList.add(scoVo);
 			

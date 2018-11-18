@@ -107,17 +107,17 @@
 								<th>항목 명</th>
 								<th>항목 점수</th>
 							</tr>
-							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
+							<c:forEach items="${list}" var="ScoreVO" varStatus="listStat">
 								<tr style="cursor : pointer;">
-									<td style="text-align: center;">${SubjectVO.major}</td>
-									<td style="text-align: center;">${SubjectVO.middle}</td>
-									<td class="subName" style="text-align: center;" onclick="useSubInfo()">${SubjectVO.subName}</td>
-									<td class="score" style="text-align: center;">${SubjectVO.subScore}</td>
+									<td style="text-align: center;">${ScoreVO.major}</td>
+									<td style="text-align: center;">${ScoreVO.middle}</td>
+									<td class="subName" style="text-align: center;" onclick="sendChildValue('${SubjectVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
+									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
 								</tr>		
 								
-										<input type = "hidden" name = "${SubjectVO.subId}subId"  value = "${SubjectVO.subId}">
-										<input type = "hidden" name = "${SubjectVO.subId}subName" value = "${SubjectVO.subName}">
-										<input type = "hidden" name = "${SubjectVO.subId}subScore" value = "${SubjectVO.subScore}">
+										<input type = "hidden" name = "${ScoreVO.subId}subId"  value = "${ScoreVO.subId}">
+										<input type = "hidden" name = "${ScoreVO.subId}subName" value = "${ScoreVO.subName}">
+										<input type = "hidden" name = "${ScoreVO.subId}subScore" value = "${ScoreVO.subScore}">
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
 							</c:forEach>
@@ -236,9 +236,12 @@
 		}
 		function useSubInfo() {
 		
+
 			opener.frm.subId.value = document.frm.subId.value;
 			opener.frm.subName.value = document.frm.subName.value;
 			opener.frm.subScore.value = document.frm.subScore.value;
+			
+			
 	/* 		if (opener.frm.cent_no.value == '') {
 				opener.document.getElementById("ins_btn").removeAttribute('disabled');
 				opener.document.getElementById("mod_btn").disabled = "true";
@@ -246,6 +249,13 @@
 			} */
 			self.close();
 		}
+	
+	function sendChildValue(/* subId,  */major, name, score){
+		opener.setChildValue(/* subId , */major, name, score);
+		this.window.close();
+	}
+
+		
 	</script>
 
 
