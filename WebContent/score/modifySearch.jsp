@@ -99,6 +99,7 @@
 								</div> --%>
 							<!-- </form> -->
 						</div>
+						<form name=frm method=post>
 						<table class="table table-striped">
 							<tr>
 								<th>대분류</th>
@@ -108,16 +109,21 @@
 							</tr>
 							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
 								<tr style="cursor : pointer;">
-									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.major}</td>
-									<td style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.middle}</td>
-									<td class="subName" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.subName}</td>
-									<td class="score" style="text-align: center;"onclick="sendParentData(${listStat.index}, ${SubjectVO.subId})">${SubjectVO.subScore}</td>
-								</tr>
+									<td style="text-align: center;">${SubjectVO.major}</td>
+									<td style="text-align: center;">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;" onclick="useSubInfo()">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;">${SubjectVO.subScore}</td>
+								</tr>		
+								
+										<input type = "hidden" name = "${SubjectVO.subId}subId"  value = "${SubjectVO.subId}">
+										<input type = "hidden" name = "${SubjectVO.subId}subName" value = "${SubjectVO.subName}">
+										<input type = "hidden" name = "${SubjectVO.subId}subScore" value = "${SubjectVO.subScore}">
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
 							</c:forEach>
 
 						</table>
+						</form>
 					</div>
 					<!-- /.box-body -->
 
@@ -212,24 +218,34 @@
 		}
 		
 		function sendParentData(index, sub_id)
-		{			
+		{	
 			var subID = sub_id;
 			var score = document.getElementsByClassName("score")[index].innerHTML;
 			var subName = document.getElementsByClassName("subName")[index].innerHTML;
 			
-		
 			var subject = {
 				"subID" : subID,
 				"score" : score,
 				"subName" : subName
-				
 			};
 			
 			window.opener.getChildDate(subject);
+
 			
 			this.window.close();
 		}
+		function useSubInfo() {
 		
+			opener.frm.subId.value = document.frm.subId.value;
+			opener.frm.subName.value = document.frm.subName.value;
+			opener.frm.subScore.value = document.frm.subScore.value;
+	/* 		if (opener.frm.cent_no.value == '') {
+				opener.document.getElementById("ins_btn").removeAttribute('disabled');
+				opener.document.getElementById("mod_btn").disabled = "true";
+				opener.document.getElementById("del_btn").disabled = "true";
+			} */
+			self.close();
+		}
 	</script>
 
 
