@@ -6,7 +6,7 @@ public class StudentVO {
 	private String stuStat;
 	private String stuIndex;
 	private String scoreTotal;
-
+	
 	public StudentVO() {
 		// TODO Auto-generated constructor stub
 	}

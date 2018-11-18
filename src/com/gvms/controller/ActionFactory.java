@@ -1,6 +1,25 @@
 package com.gvms.controller;
 
-import com.gvms.action.*;
+import com.gvms.action.Action;
+import com.gvms.action.MainAction;
+import com.gvms.action.MisListFormAction;
+import com.gvms.action.MisReadAction;
+import com.gvms.action.MisReadFormAction;
+import com.gvms.action.MisRegistAction;
+import com.gvms.action.MisRegistFormAction;
+import com.gvms.action.ScoreListFormAction;
+import com.gvms.action.ScoreListRegFormAction;
+import com.gvms.action.ScoreModSubjectSearchAction;
+import com.gvms.action.ScoreModifyFormAction;
+import com.gvms.action.ScoreModifySearchFormAction;
+import com.gvms.action.ScoreReadFormAction;
+import com.gvms.action.ScoreRegSubjectSearchAction;
+import com.gvms.action.ScoreRegistAction;
+import com.gvms.action.ScoreRegistSearchFormAction;
+import com.gvms.action.ScoreRegisterFormAction;
+import com.gvms.action.StudentListFormAction;
+import com.gvms.action.StudentRegisterAction;
+import com.gvms.action.StudentRegisterFormAction;
 
 /**
  * request로 받아온 매개변수의 command의 값으로 각 기능을 수행할 액션을 분기하는 클래스 <br>
@@ -77,6 +96,19 @@ public class ActionFactory {
 			else if(command.equals("mis_read")) {
 				action = new MisReadAction();
 			}
+			else if (command.equals("studentListForm")) {
+
+				action = new StudentListFormAction();
+			} 
+			else if (command.equals("stud_reg_form")) {
+
+				action = new StudentRegisterFormAction();
+			} 
+			else if (command.equals("stud_register")) {
+
+				action = new StudentRegisterAction();		
+			}		
+
 		return action;
 	}
 
