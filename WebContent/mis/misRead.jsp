@@ -20,16 +20,18 @@
 				</div>
 				<div class="box-body">
 				<form name="frm" method="post" action="mis?command=mis_view">
+					
 					<table class="table table-bordered">
 						<tr>
 							<th>학번</th>
-							<th></th>
+							<th>${stuId}</th>
 							<th>이름</th>
-							<th></th>
+							<th>${stuName}</th>
 							<th>총점</th>
-							<th></th>
+							<th>${scoreSum}</th>
 						</tr>
 					</table>
+	
 					<p>
 					
 					<table class="table table-bordered">
@@ -39,9 +41,9 @@
 					<td>일자</td>
 					<td>점수</td>
 					</tr>			
-						<c:forEach items="${misListView}" var="MisVO">
+						<c:forEach items="${misListRead}" var="MisVO">
 							<tr>
-								<td><input type ="checkbox" name="stuId" value="${MisVO.scorId}"></td>
+								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"></td>
 								<td>${MisVO.scoreDate}</td>
 								<td>3</td>
 							</tr>

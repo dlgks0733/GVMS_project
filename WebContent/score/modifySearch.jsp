@@ -113,7 +113,7 @@
 									<td style="text-align: center;">${SubjectVO.middle}</td>
 									<td class="subName" style="text-align: center;" onclick="useSubInfo()">${SubjectVO.subName}</td>
 									<td class="score" style="text-align: center;">${SubjectVO.subScore}</td>
-								</tr>
+								</tr>		
 								
 										<input type = "hidden" name = "${SubjectVO.subId}subId"  value = "${SubjectVO.subId}">
 										<input type = "hidden" name = "${SubjectVO.subId}subName" value = "${SubjectVO.subName}">

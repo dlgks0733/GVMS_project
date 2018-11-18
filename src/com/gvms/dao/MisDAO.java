@@ -29,7 +29,8 @@ public class MisDAO extends CommonDao {
 
 	// MisList.jsp에서 학생별 MIS 총합 점수를 조회하는 메소드
 	public List<MisVO> selectMis() {
-		
+		//MIS 점수 조회화면에는 학번과 이름, MIS총점을 출력해야 한다.
+		//학생은 재학상태인 학생만 출력한다.
 		String sql = "SELECT stu.stuId   as stuId"
 				+ "		   , stu.stuName as stuName"
 				+ "        , count(sub.subId) * sub.subScore as scoreSum "
@@ -76,7 +77,8 @@ public class MisDAO extends CommonDao {
 	
 	// MisWrite.jsp에서 학생별 MIS 총합 점수를 조회하는 메소드
 		public List<MisVO> selectMisRegist() {
-			
+			//MIS 등록화면은 학번과 이름을 보고 체크박스와 날짜 입력폼으로 MIS-DAY의 출결을 등록을 한다.
+			//따라서 등록 첫 화면으로 학번과 이름이 출력돼야 한다.
 			String sql = "SELECT stu.stuid   as stuId"
 					+ "		   , stu.stuname as stuName"
 					+ "     FROM TBL_STU stu "
@@ -115,12 +117,19 @@ public class MisDAO extends CommonDao {
 			return list;
 		}
 
-		// MisView.jsp에서 학생 ScoreDate 조회하는 메소드
+		// MisRead.jsp에서 학생 ScoreDate 조회하는 메소드
 		public List<MisVO> selectMisScoreDate(String stuName) {
-			
-			String sql = "SELECT SCOREDATE"
-					+ "		FROM TBL_SCORE"
-					+ "	   WHERE STUID ='" + stuName + "'";
+			// 상세조회 페이지로 선택한 학생의 학번과 이름 MIS-DAY 총점을 출력하고
+			// MIS-DAY 출석한 날짜를 최근순으로 출력한다
+			String sql = "SELECT TO_CHAR(scoreDate,'YYYY-MM-DD') AS scoreDate"
+					+ "		FROM TBL_SCORE sco"
+					+ "         ,TBL_STU stu"
+					+ "			,TBL_SUB sub"
+					+ "    WHERE sco.STUID = stu.STUID"
+					+ "		 AND sco.SUBID = sub.SUBID"
+					+ " 	 AND sub.SUBNAME = 'MIS-DAY'"
+					+ "	     AND stu.STUNAME ='" + stuName + "'"
+					+ "    ORDER BY sco.scoreDate DESC";
 			
 			
 			List<MisVO> list = new ArrayList<MisVO>();
@@ -156,7 +165,8 @@ public class MisDAO extends CommonDao {
 	
 	// MIS 등록하는 메소드
 	public void insertMis(MisVO misVo) {
-		
+		//MIS-DAY 출결을 등록하는 쿼리문
+		//MIS-DAY 점수는 TBL_SCORE 테이블에 존재하며 SUBID로 반드시 1을 갖는다.
 		String sql = "INSERT INTO TBL_SCORE(scoreid"
 				+ "                   , subid"
 				+ "                   , stuid"
