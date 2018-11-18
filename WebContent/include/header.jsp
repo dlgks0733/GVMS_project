@@ -175,7 +175,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/admin/news/list"><i class="fa fa-magic"></i> 학생 목록</a></li>
+                <li><a href="student?command=studentListForm"><i class="fa fa-magic"></i> 학생 목록</a></li>
                 <li><a href="/admin/review/list"><i class="fa fa-magic"></i> 인증평가 목록</a></li>
               </ul>
              </li>
