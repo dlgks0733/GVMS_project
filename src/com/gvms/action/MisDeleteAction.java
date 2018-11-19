@@ -16,7 +16,7 @@ public class MisDeleteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String url = "mis?command=mis_delete_form";
+		String url = "mis?command=mis_read_form";
 		
 		String stuId = request.getParameter("stuId");
 		String stuName = request.getParameter("stuName");

@@ -107,9 +107,7 @@ public class ActionFactory {
 			else if(command.equals("mis_delete")) {
 				action = new MisDeleteAction();
 			}
-			else if(command.equals("mis_delete_form")) {
-				action = new MisDeleteFormAction();
-			}
+			
 		
 			// author pjh
 			else if (command.equals("studentListForm")) {
