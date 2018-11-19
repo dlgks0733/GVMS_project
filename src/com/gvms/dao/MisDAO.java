@@ -145,6 +145,8 @@ public class MisDAO extends CommonDao {
 				while (rs.next()) {
 					MisVO mVo = new MisVO();
 					
+					/*mVo.setScoreDate(rs.getString("stuId"));
+					mVo.setScoreDate(rs.getString("stuName"));*/
 					mVo.setScoreDate(rs.getString("scoreDate"));
 					
 					list.add(mVo);
@@ -195,18 +197,26 @@ public class MisDAO extends CommonDao {
 	public void deleteMis(String stuId, String scoreDate) {
 		
 		String sql = "DELETE TBL_SCORE"
-				+ "	   WHERE STUID = '" + stuId + "'"
-				+ "      AND SCOREDATE = '" + scoreDate + "'"
+				+ "	   WHERE STUID = ?"
+				+ "      AND SCOREDATE = ?"
 				+ "      AND SUBID ='1' ";
 		
 		Connection conn = null;
 		PreparedStatement st = null;
+		
 		try {
 			conn = getConnection();
 			st = conn.prepareStatement(sql);
 
+			st.setString(1, stuId);
+			st.setString(2, scoreDate);
+
+			st.executeUpdate();
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
+		} finally {
+			dbClose();
 		}
 	}
 	

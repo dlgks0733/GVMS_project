@@ -22,9 +22,11 @@ public class MisRegistAction implements Action {
 		String url = "mis?command=mis_regist_form";
 		
 		//요청 된 jsp에서 Parameter 가져오기
+		//체크박스를 위한 stuId 배열로 생성
 		String[] stuId = request.getParameterValues("stuId");
 		String scoreDate = request.getParameter("scoreDate");
 		
+		//학번 배열 체크하는 stuIdIndivi 생성
 		String stuIdIndivi ="";
 		//MisVo 객체 생성
 	

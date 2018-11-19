@@ -37,20 +37,22 @@
 					<table class="table table-bordered">
 					
 					<tr>
-					<td><input type ="checkbox" name="stuId" value=""></td>
+					<td><input type ="checkbox" name="stuId" value="scoreDate"></td>
 					<td>일자</td>
 					<td>점수</td>
 					</tr>			
 						<c:forEach items="${misListRead}" var="MisVO">
 							<tr>
-								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"></td>
+								<td><input type ="checkbox" name="scoreDate" value="${MisVO.scoreDate}"></td>
 								<td>${MisVO.scoreDate}</td>
 								<td>3</td>
 							</tr>
 						</c:forEach>
 					</table>
 						 <button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
-						 <button type="button" class="btn btn-danger" onclick="remove()">삭제</button>
+						 <a type="button" class="btn btn-danger" 
+						 href="mis?command=mis_delete&stuId=${stuId}&stuName=${stuName}
+						 &scoreSum=${scoreSum}&scoreDate=${MisVO.scoreDate}">삭제</a>
 					</form>
 							 
 				
