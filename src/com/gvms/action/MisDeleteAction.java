@@ -2,7 +2,7 @@ package com.gvms.action;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +16,11 @@ public class MisDeleteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String url = "mis?command=mis_read_form";
+		/*String url = "mis?command=mis_read_form";*/
 		
+//		String stuName = request.getParameter("stuName");
+//		String scoreSum = request.getParameter("scoreSum");
 		String stuId = request.getParameter("stuId");
-		String stuName = request.getParameter("stuName");
-		String scoreSum = request.getParameter("scoreSum");
 		String[] scoreDate = request.getParameterValues("scoreDate");
 		
 		//날짜 배열 체크하는 scoreDateIndivi 생성
@@ -37,9 +37,9 @@ public class MisDeleteAction implements Action {
 			MisVO mVo = new MisVO();
 			mVo.setScoreDate(scoreDateIndivi);
 			mVo.setStuId(stuId);
-			mVo.setStuName(stuName);
+			/*mVo.setStuName(stuName);
 			mVo.setStuName(scoreSum);
-			
+			*/
 			
 			mDao.deleteMis(stuId, scoreDate[i]);
 		}

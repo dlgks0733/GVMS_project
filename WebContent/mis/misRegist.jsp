@@ -23,8 +23,8 @@
 					*날짜 <input type="date" name="scoreDate" >
 					<table class="table table-bordered">
 						<tr>
-							<th>이름</th>
 							<th>학번</th>
+							<th>이름</th>
 							<th>출석여부</th>
 						</tr>
 
@@ -34,7 +34,6 @@
 								<td>${MisVO.stuId}</td>
 								<td>${MisVO.stuName}</td>
 								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"></td>
-								
 							</tr>
 						</c:forEach>
 					</table>
