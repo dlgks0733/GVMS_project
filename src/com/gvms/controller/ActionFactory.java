@@ -99,6 +99,11 @@ public class ActionFactory {
 
 				action = new StudentRegisterAction();		
 			}	
+			else if (command.equals("stud_modi_form")) {
+
+				action = new StudentModifyAction();
+			} 
+		    
 			else if (command.equals("sub_list")) {
 				action = new SubListformAction();
 			}

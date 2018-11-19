@@ -19,9 +19,14 @@ public class StudentListFormAction implements Action {
 				
 				
 				StudentDao dao = StudentDao.getInstance();
+				
 				ArrayList<StudentVO> studentList = dao.getStudentList();
 				
 				request.setAttribute("list", studentList);
+				
+				System.out.println(studentList);
+				
+				
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 				dispatcher.forward(request, response);

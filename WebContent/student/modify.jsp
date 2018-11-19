@@ -144,7 +144,7 @@
 					<!-- /.box-body -->
 
 					<div class="box-footer btn-group-center">
-						<button type="button" class="btn btn-danger" onclick="remove()">삭제</button>
+						<!-- <button type="button" class="btn btn-danger" onclick="remove()">삭제</button> -->
 						<button type="submit" class="btn btn-primary" id="submitbutton" onclick="return validateEmptyVal()">수정</button>
 						<button type="button" class="btn btn-cancel">취소</button>
 					</div>
