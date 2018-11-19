@@ -111,7 +111,7 @@
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;">${ScoreVO.major}</td>
 									<td style="text-align: center;">${ScoreVO.middle}</td>
-									<td class="subName" style="text-align: center;" onclick="sendChildValue('${SubjectVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
+									<td class="subName" style="text-align: center;" onclick="sendChildValue('${ScoreVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
 									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
 								</tr>		
 								

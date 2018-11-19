@@ -138,7 +138,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 	
 // 학생점수데이터 수정	
 	public void updateScore(ScoreVO scoVo) {
-		String sql = "UPDATE TBL_SCORE SET SUBID =?, SCOREDATE =?, ACQSCORE =?";
+		String sql = "UPDATE TBL_SCORE SET SUBID =?, SCOREDATE =?, ACQSCORE =? WHERE SCOREID =?";
 		
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -150,6 +150,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 			st.setString(1, scoVo.getSubId());
 			st.setString(2, scoVo.getScoreDate());
 			st.setString(3, scoVo.getAcqScore());
+			st.setString(4, scoVo.getScoreId());
 			
 			st.executeUpdate();
 		}	catch(SQLException e) {

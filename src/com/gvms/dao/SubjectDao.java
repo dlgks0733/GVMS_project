@@ -58,35 +58,104 @@ public class SubjectDao extends CommonDao {
 		return list;
 		
 	}
-	
-	
-	
-	
-	
-	
-	/*public void insertSubject(SubjectVO subVo) {
-		String sql = "INSERT INTO SUBJECT(" +
-					 	"subID, major, middle, subName, subScore)" +
-					 	"VALUES (subID.nextval, ?, ?, ?, ?)";
-		
-		Connection conn = getConnection();
-		PreparedStatement st;
-		
-		try {
-			st = conn.prepareStatement(sql);
-			st.setString(1, subVo.getMajor());
-			st.setString(2, subVo.getMiddle());
-			st.setString(3, subVo.getSubName());
-			st.setInt(4, subVo.getSubScore());
-			
-			st.executeUpdate();
-		}	catch(SQLException e) {
-			e.printStackTrace();
-		}	finally {
-			dbClose();
-		}
-				
+	 public ArrayList<SubjectVO> selectAllList() {
+		   String sql = "select * from TBL_SUB order by subID";
+		   ArrayList<SubjectVO> list = new ArrayList <SubjectVO>();
+		   Connection conn = getConnection();
+		   PreparedStatement st;
+		   ResultSet rs = null;
+		   
+		   try {
+			   st = conn.prepareStatement(sql);
+			   rs = st.executeQuery();
+			   
+			   while (rs.next()) {
+	 			   SubjectVO subVO = new SubjectVO();   // subjectVO subVO = null;
+				   
+	 			   subVO.setSubId(rs.getString("subID"));
+	 			   subVO.setMajor(rs.getString("major"));
+	 			   subVO.setMiddle(rs.getString("middle"));
+	 			   subVO.setSubName(rs.getString("subName"));
+	 			   subVO.setSubScore(rs.getString("subScore"));
+	 			   
+	 			   list.add(subVO);
+			   }
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   } finally {
+			   dbClose();
+		   }
+		   return list ;
+
+	   }
+	   
+	   public void insertsubject(SubjectVO subVO) {
+		     
+	      String sql = "insert into TBL_SUB(" + "subID, major, middle, subName, subScore)" 
+	    		  	+ "values(SUB_SEQ.nextval, ?, ?, ?, ?)";
+	      Connection conn = getConnection();
+	      PreparedStatement st;
+	      
+
+	      try {
+
+	    	 st = conn.prepareStatement(sql);
+	    	 
+	         st.setString(1, subVO.getMajor());
+	         st.setString(2, subVO.getMiddle());
+	         st.setString(3, subVO.getSubName());
+	         st.setString(4, subVO.getSubScore());
+	         st.executeUpdate(); 
+	   }catch (SQLException e){
+		   e.printStackTrace();
+	   }finally {
+		   dbClose();
+	   }
+
+	  
 	}
-*/	
+	   public void updatesubject (SubjectVO subVO) {
+		   
+		   String sql = "update TBL_SUB set major = ?, middle = ?, subName = ?, subScore = ?  where subID = ?";
+		   Connection conn = getConnection();
+		   PreparedStatement st;
+		   
+		   
+		   try {
+
+			   st = conn.prepareStatement(sql);
+			   
+			   st.setString(1, subVO.getMajor());
+			   st.setString(2, subVO.getMiddle());
+		       st.setString(3, subVO.getSubName());
+		       st.setString(4, subVO.getSubScore());
+		       st.setString(5, subVO.getSubId());
+		       st.executeUpdate();
+		       
+		   }catch (SQLException e){
+			   e.printStackTrace();
+		   }finally {
+			   dbClose();
+		   }
+	   }
+	   public void deletesubject(SubjectVO subVO) {
+		   
+		   String sql = "delete TBL_SUB where subID = ?";
+		   Connection conn = getConnection();
+		   PreparedStatement st;
+
+		   try {
+
+			   st = conn.prepareStatement(sql);
+			   
+			   st.setString(1, subVO.getSubId());
+			   st.executeUpdate(); 
+		   }catch(SQLException e){
+			   e.printStackTrace();
+		   }finally {
+			   dbClose();
+		   }
+		
+	   }
 	
 }

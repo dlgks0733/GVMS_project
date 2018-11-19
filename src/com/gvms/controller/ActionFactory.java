@@ -1,7 +1,33 @@
 package com.gvms.controller;
 
+<<<<<<< HEAD
 //package 모든 액션 받음
 import com.gvms.action.*;
+=======
+import com.gvms.action.Action;
+import com.gvms.action.MainAction;
+import com.gvms.action.MisListFormAction;
+import com.gvms.action.MisReadAction;
+import com.gvms.action.MisReadFormAction;
+import com.gvms.action.MisRegistAction;
+import com.gvms.action.MisRegistFormAction;
+import com.gvms.action.ScoreListFormAction;
+import com.gvms.action.ScoreListRegFormAction;
+import com.gvms.action.ScoreModSubjectSearchAction;
+import com.gvms.action.ScoreModifyFormAction;
+import com.gvms.action.ScoreModifySearchFormAction;
+import com.gvms.action.ScoreReadFormAction;
+import com.gvms.action.ScoreRegSubjectSearchAction;
+import com.gvms.action.ScoreRegistAction;
+import com.gvms.action.ScoreRegistSearchFormAction;
+import com.gvms.action.ScoreRegisterFormAction;
+import com.gvms.action.StudentListFormAction;
+import com.gvms.action.StudentRegisterAction;
+import com.gvms.action.StudentRegisterFormAction;
+import com.gvms.action.SubListformAction;
+import com.gvms.action.SubModifyAction;
+import com.gvms.action.SubRegister;
+>>>>>>> branch 'master' of https://github.com/dlgks0733/GVMS_project.git
 
 /**
  * request로 받아온 매개변수의 command의 값으로 각 기능을 수행할 액션을 분기하는 클래스 <br>
@@ -97,7 +123,16 @@ public class ActionFactory {
 			else if (command.equals("stud_register")) {
 
 				action = new StudentRegisterAction();		
-			}		
+			}	
+			else if (command.equals("sub_list")) {
+				action = new SubListformAction();
+			}
+			else if (command.equals("sub_register")) {
+				action = new SubRegister();
+			}
+			else if (command.equals("sub_modify")) {
+				action = new SubModifyAction();
+			}
 
 		return action;
 	}
