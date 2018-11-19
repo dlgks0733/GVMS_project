@@ -21,21 +21,21 @@
 	
 	<div class="box-body">
 		<div class="form-group">
-			<label >필수</label> 
+			<label>필수</label>
 			<input type= "radio" name = 'major' value = "필수">
-			<label >선택</label> 
+			<label>선택</label>
 			<input type= "radio" name = 'major' value = "선택">
 		</div>
 		<div class="form-group">
 			<label >중분류</label>
-			<select name = "middle">
-	       <option value = "영역선택">영역선택</option>
-	       <option value = "외국어영역">외국어영역</option>
-	       <option value = "학생활동영역">학생활동영역</option>
-	       <option value = "정보화영역">정보화영역</option>
-	       <option value = "금융/회계영역">금융/회계영역</option>
-	       <option value = "공모전영역">공모전영역</option>
-	       <option value = "기타">기타</option>
+			<select name = "middle" value = "${SubjectVO.middle}" >
+	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
 	       </select>
 		</div>
 <%-- 		<div class="form-group">
@@ -46,12 +46,12 @@
  		<div class="form-group">
 			<label >항목명</label> 
 			<input type="text"
-				name="subName" class="form-control" placeholder="ex) 정보화영역">
+				name="subName" value = "${SubjectVO.subName}"class="form-control" placeholder="ex) 정보화영역">
 		</div> 
 		 		<div class="form-group">
 			<label >점수</label> 
 			<input type="text"
-				name="subScore" class="form-control" placeholder="ex) 600">
+				name="subScore" value = "${SubjectVO.subScore}" class="form-control" placeholder="ex) 600">
 		</div> 
 	</div>
 	<!-- /.box-body -->

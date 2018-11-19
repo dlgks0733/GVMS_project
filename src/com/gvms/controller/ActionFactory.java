@@ -99,6 +99,8 @@ public class ActionFactory {
 
 				action = new StudentRegisterAction();		
 			}	
+			
+		// author kju
 			else if (command.equals("sub_list")) {
 				action = new SubListformAction();
 			}
@@ -107,6 +109,9 @@ public class ActionFactory {
 			}
 			else if (command.equals("sub_modify")) {
 				action = new SubModifyAction();
+			}
+			else if (command.equals("sub_modifyform")) {
+				action = new SubModifyFormAction();
 			}
 
 		return action;

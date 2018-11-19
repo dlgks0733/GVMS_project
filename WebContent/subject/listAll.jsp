@@ -35,11 +35,11 @@
 
 	<tr>
 		<td><input type = "checkbox" name = "subId" value = "subId"  ></td>
-		<td>${SubjectVO.subId}</td>
+		<td><a href ="subject?command=sub_modifyform&stuId=${StudentVO.subId}&major=${SubjectVO.major}">${SubjectVO.subId}</a></td>
 		<td>${SubjectVO.major}</td>
-		<td><a href ="http://localhost:8181/subject/modify.jsp">${SubjectVO.middle}</a></td>
+		<td>${SubjectVO.middle}</td>
 		<td>${SubjectVO.subName}</td>
-		<td>${SubjectVO.subScore }</td>
+		<td>${SubjectVO.subScore}</td>
 	</tr>
 
 </c:forEach>
@@ -53,7 +53,7 @@
 				<!-- /.box-footer-->
 			</div>
 			    <a type = 'button' value = "신규등록"  href = "http://localhost:8181/subject/register.jsp">	
-				<button type = "submit">신규등록</button>
+				<button type = "submit">신규등록</button></a>		
 				<button type = "submit">삭제</button>
 				
 		</div>
