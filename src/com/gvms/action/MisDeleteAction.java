@@ -43,9 +43,11 @@ public class MisDeleteAction implements Action {
 			
 			mDao.deleteMis(stuId, scoreDate[i]);
 		}
+			
+			new MisListFormAction().execute(request, response);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+/*		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);*/
 	}
 
 }

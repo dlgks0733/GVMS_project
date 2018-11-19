@@ -19,8 +19,10 @@
 					<h3 class="box-title">MIS 상세 조회</h3>
 				</div>
 				<div class="box-body">
-				<form name="frm" method="post" action="mis?command=mis_view">
-					
+				<form name="frm" method="post" action="mis?command=mis_delete">
+					<input type="hidden" name ="stuId" value="${stuId}">
+					<input type="hidden" name ="stuName" value="${stuName}">
+					<input type="hidden" name ="scoreSum" value="${scoreSum}">
 					<table class="table table-bordered">
 						<tr>
 							<th>학번</th>
@@ -37,7 +39,7 @@
 					<table class="table table-bordered">
 					
 					<tr>
-					<td><input type ="checkbox" name="stuId" value="scoreDate"></td>
+					<td><%-- <input type ="checkbox" name="stuId" value="${stuId}"></td> --%>
 					<td>일자</td>
 					<td>점수</td>
 					</tr>			
@@ -49,10 +51,9 @@
 							</tr>
 						</c:forEach>
 					</table>
-						 <button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
-						 <a type="button" class="btn btn-danger" 
-						 href="mis?command=mis_delete&stuId=${stuId}&stuName=${stuName}
-						 &scoreSum=${scoreSum}&scoreDate=${MisVO.scoreDate}">삭제</a>
+						 <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
+						 
+						 <%-- <a type="button" class="btn btn-danger" href="mis?command=mis_delete&stuId=${stuId}&stuName=${stuName}">삭제</a> --%>
 					</form>
 							 
 				
