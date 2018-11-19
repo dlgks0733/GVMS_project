@@ -18,10 +18,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post">
-					<input type="hidden" name="OptSubId">
-					<input type="hidden" name="EssSubId">
-</form>
+
 
 <div class="box-body">
 	<%-- <div class="form-group">
@@ -39,11 +36,8 @@
 			name="writer" class="form-control" value="${boardVO.writer}"
 			readonly="readonly">
 	</div> --%>
-	<form role="form" method="post">
 	
-					<input type="hidden" name="OptSubId">
-					<input type="hidden" name="EssSubId">
-	
+			<form role="essform" method="post">		
 			<table class="table table-striped">
 			
 			<tr>
@@ -59,70 +53,106 @@
 			</tr>
 				
 			<c:forEach items="${essList}" var="ScoreVO">	
-			<tr>
+				<input type="hidden" name="essSubId">
 				
-				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.scoreId}"></td>
-				<td style="text-align: center;">${ScoreVO.middle}</td>
-				<td style="text-align: center;"><input type="text" name="EssSubName" readonly="readonly" placeholder="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
-										<input type="button" value="검색" class="btn btn-default"></a></td>
-				<td style="text-align: center;"><input type="text" name="acqScore" placeholder="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
-											onkeyup='removeChar(event)'></td>
-				<td style="text-align: center;"><input type="date" name="scoreDate" placeholder="${ScoreVO.scoreDate}"></td>
-			</tr>
+				<tr>
+				
+					<td style="width : 10px"><input type="checkbox" name="scoreId" value="${ScoreVO.scoreId}"></td>
+					<td style="text-align: center;">${ScoreVO.middle}</td>
+					<td style="text-align: center;"><input type="text" name="essSubName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+											<input type="button" value="검색" class="btn btn-default"></a></td>
+					<td style="text-align: center;"><input type="text" name="acqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
+												onkeyup='removeChar(event)'></td>
+					<td style="text-align: center;"><input type="date" name="EssScoreDate" value="${ScoreVO.scoreDate}"></td>
+				</tr>
+				
 			</c:forEach>
+			
 		</table>
-	
+						<button type="submit" class="btn btn-danger" style = "float : right">삭제</button>
+						<button type="submit" class="btn btn-warning" style = "float : right">수정</button>
+						<button type="submit" class="btn btn-primary" style = "float : right">목록</button>
+	 </form>
 	 <br/>
 	 <br/>
 	 
+		<form role="optform" action="post">
+			<input type="hidden" name="optSubId">
+			<table class="table table-striped">
+				<tr>
+					<th style="text-align: center;" colspan="5">선택영역</th>
+				</tr>
+				
+				<tr>
+					<th style="width : 10px"> </th>
+					<th style="text-align: center;">영역</th>
+					<th style="text-align: center;">항목 명</th>
+					<th style="text-align: center;">점수</th>
+					<th style="text-align: center;">취득 일자</th>
+				</tr>
+				
+				<c:forEach items="${optList}" var="ScoreVO">
+					
+				<tr>
+					<td style="width : 10px"><input type="checkbox" name = "scoreId" value="${ScoreVO.scoreId}"></td>
+					<td style="text-align: center;">${ScoreVO.middle}</td>
+					<td style="text-align: center;">
+					<input type="text" name="optSubName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+											<input type="button" value="검색" class="btn btn-default"></a></td>
+					<td style="text-align: center;"><input type="text" name="optSubScore" onkeydown='return onlyNumber(event)' 
+												onkeyup='removeChar(event)' value="${ScoreVO.subScore}" readonly="readonly"></td>
+					<td style="text-align: center;"><input type="date" name="optScoreDate" value="${ScoreVO.scoreDate}"></td>
+				</tr>
+				</c:forEach>	
+			</table>
+						<button type="submit" class="btn btn-danger" style = "float : right">삭제</button>
+						<button type="submit" class="btn btn-warning" style = "float : right">수정</button>
+						<button type="submit" class="btn btn-primary" style = "float : right">목록</button>
+		</form>
 	
-		<table class="table table-striped">
-			<tr>
-				<th style="text-align: center;" colspan="5">선택영역</th>
-			</tr>
-			
-			<tr>
-				<th style="width : 10px"> </th>
-				<th style="text-align: center;">영역</th>
-				<th style="text-align: center;">항목 명</th>
-				<th style="text-align: center;">점수</th>
-				<th style="text-align: center;">취득 일자</th>
-			</tr>
-			
-			<c:forEach items="${optList}" var="ScoreVO">
-			<tr>
-				<td style="width : 10px"><input type="checkbox" value="${ScoreVO.scoreId}"></td>
-				<td style="text-align: center;">${ScoreVO.middle}</td>
-				<td style="text-align: center;">
-				<input type="text" name="optSubName" readonly="readonly" placeholder="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
-										<input type="button" value="검색" class="btn btn-default"></a></td>
-				<td style="text-align: center;"><input type="text" name="optSubScore" onkeydown='return onlyNumber(event)' 
-											onkeyup='removeChar(event)' placeholder="${ScoreVO.subScore}" readonly="readonly"></td>
-				<td style="text-align: center;"><input type="date" name="scoreDate" placeholder="${ScoreVO.scoreDate}"></td>
-			</tr>
-			</c:forEach>	
-		</table>
-	</form>
 </div>
 <!-- /.box-body -->
 
 <div class="box-footer">
+	<!-- 
 	<button type="submit" class="btn btn-primary" style = "float : right">목록</button>
 	<button type="submit" class="btn btn-danger" style = "float : right">삭제</button>
-	<button type="submit" class="btn btn-warning" style = "float : right">수정</button>
-</div>
-
+	-->
+</div> 
 
 <script>
 				
 $(document).ready(function(){
 	
-	var formObj = $("form[role='form']");
+	var formObj = $("form[role='essform']");
 	
 	console.log(formObj);
 	
 	$(".btn-warning").on("click", function(){
-		formObj.attr("action", "score?command=scoreModifyForm");
+		formObj.attr("action", "score?command=scoreModify");
+		formObj.attr("method", "post");		
+		formObj.submit();
+	});
+	
+	$(".btn-danger").on("click", function(){
+		formObj.attr("action", "");
+		formObj.submit();
+	});
+	
+	$(".btn-primary").on("click", function(){
+		self.location = "score?command=scoreListForm";
+	});
+	
+});
+
+$(document).ready(function(){
+	
+	var formObj = $("form[role='optform']");
+	
+	console.log(formObj);
+	
+	$(".btn-warning").on("click", function(){
+		formObj.attr("action", "score?command=scoreModify");
 		formObj.attr("method", "post");		
 		formObj.submit();
 	});
@@ -221,13 +251,13 @@ function validateEmptyVal()
 function setChildValue(subId, major, name, score){
 	
 	if(major == "선택"){
-		document.getElementsByName("optSubId").value = subId;
+		document.getElementsByName("optSubId")[0].value = subId;
 		document.getElementsByName("optSubName")[0].value = name;
 		document.getElementsByName("optSubScore")[0].value = score;
 		
 	} else {
-		document.getElementsByName("EssSubId").value = subId;
-		document.getElementsByName("EssSubName")[0].value = name;
+		document.getElementsByName("essSubId")[0].value = subId;
+		document.getElementsByName("essSubName")[0].value = name;
 	}
 	
 }
