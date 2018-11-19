@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.gvms.vo.StudentVO;
+import com.gvms.vo.SubjectVO;
 
 public class StudentDao extends CommonDao {
 	
@@ -53,7 +54,7 @@ public class StudentDao extends CommonDao {
 		return list;
 	}
 	
-	// 학생 , 총점 목록 가져오기
+	// 학생 , 총점 목록 가져오기, 학생 수정
 	public ArrayList<StudentVO> StudentTotalList() {
 		
 		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
@@ -62,7 +63,7 @@ public class StudentDao extends CommonDao {
 		PreparedStatement st;
 		ResultSet rs = null;
 		String sql = "SELECT STU.STUID, STU.STUNAME, ST.TOTAL FROM SCORETOTAL ST, TBL_STU STU" + 
-					" WHERE ST.STUID = STU.STUID";
+					 "WHERE ST.STUID = STU.STUID";
 		
 		try {
 			st = conn.prepareStatement(sql);
@@ -149,9 +150,63 @@ public class StudentDao extends CommonDao {
 		dbClose();
 	}
 		return studentList;
+	}
+	
+		  public void updateStudent (StudentVO stuVo) {
+			   
+			   String sql = "update TBL_STU set StuName = ?"
+			   		+ "                       , StuStat = ? "
+			   		+ "       where StuID = ?";
+			   Connection conn = getConnection();
+			   PreparedStatement st;
+			   
+			   
+			   try {
+
+				   st = conn.prepareStatement(sql);
+				   
+				   st.setString(1, stuVo.getStuId());
+				   st.setString(2, stuVo.getStuName());
+			       st.setString(3, stuVo.getStuStat());
+
+			       st.executeUpdate();
+			       
+			   }catch (SQLException e){
+				   e.printStackTrace();
+			   }finally {
+				   dbClose();
+			   }
+		   }
+		  
+		  
+		   public void deleteStudent(StudentVO stuVo) {
+			   
+			   String sql = "delete FROM TBL_STU where stuID = ?";
+			   Connection conn = getConnection();
+			   PreparedStatement st;
+
+			   try {
+
+				   st = conn.prepareStatement(sql);
+				   
+				   st.setString(1, stuVo.getStuId());
+				   st.executeUpdate(); 
+			   }catch(SQLException e){
+				   e.printStackTrace();
+			   }finally {
+				   dbClose();
+			   }
+			
+		   }
+		
+	
+
+		
 	
 	
 	
 }
 
-}
+		
+	
+

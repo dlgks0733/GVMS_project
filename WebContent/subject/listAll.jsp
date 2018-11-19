@@ -39,7 +39,7 @@
 		<td>${SubjectVO.major}</td>
 		<td>${SubjectVO.middle}</td>
 		<td>${SubjectVO.subName}</td>
-		<td>${SubjectVO.subScore}</td>
+		<td>${SubjectVO.subScore}</td>	
 	</tr>
 
 </c:forEach>

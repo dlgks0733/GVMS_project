@@ -55,11 +55,12 @@
 								<th>이름</th>
 								<th>재적상태</th>
 							</tr>
-							<c:forEach items="${list}" var="studentVO" varStatus="status">
+							<c:forEach items="${list}" var="StudentVO" varStatus="status">
 								<tr>
-									<td style="text-align: center;">${studentVO.stuId}</td>
-									<td style="text-align: center;">${studentVO.stuName}</td>
-									<td style="text-align: center;">${studentVO.stuStat}</td>
+									<td style="text-align: center;"><a href="/student?command=stud_modi_form&stuid=${StudentVO.stuId}
+									&stuName=${StudentVO.stuName}&stuStat=${StudentVO.stuStat}">${StudentVO.stuId}</a></td>
+									<td style="text-align: center;">${StudentVO.stuName}</td>
+									<td style="text-align: center;">${StudentVO.stuStat}</td>
 									<%-- <td style="text-align: center;"><a
 										href='/admin/student/modify${pageMaker.makeAppSearch(pageMaker.cri.page) }
 											&stuid=${studentVO.stuid}'>
@@ -101,8 +102,10 @@
 							<!-- jsp 주소로 바꿈  -->
 							<a type="button" href="/student?command=stud_reg_form"
 								class="btn btn-default">신규 등록</a> 
-							<a type="button" href="/student/modify.jsp"
+							<a type="button" href="/student?command=stud_modi_form"
 							    class="btn btn-default">수정</a>
+							    <a type="button" href="/student/delete.jsp"
+							    class="btn btn-default">삭제</a>
 						</div>
 					</div>
 					<!-- .box-footer END -->
