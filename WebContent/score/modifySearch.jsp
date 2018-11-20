@@ -64,7 +64,7 @@
 				<div class="box-header with-border">
 					<h2 class="box-title">인증항목 검색</h2>
 					<p>
-					<form method="post" action="score?command=modSubSearch">
+					<form method="post" action="score?command=scoreModSubSearch">
 								<input type="text" name="subName">
 								<input type="submit" class="btn btn-default" value="검색">
 								</form>

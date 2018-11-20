@@ -62,7 +62,7 @@ public class StudentDao extends CommonDao {
 		Connection conn = getConnection();
 		PreparedStatement st;
 		ResultSet rs = null;
-		String sql = "SELECT STU.STUID, STU.STUNAME, ST.TOTAL FROM SCORETOTAL ST, TBL_STU STU" + 
+		String sql = "SELECT STU.STUID, STU.STUNAME, ST.TOTAL FROM SCORETOTAL ST, TBL_STU STU " + 
 					 "WHERE ST.STUID = STU.STUID";
 		
 		try {

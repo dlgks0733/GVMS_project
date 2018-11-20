@@ -24,7 +24,7 @@
 						<input type="button" onclick="addRow()" value="항목추가" class="btn btn-default" style ="float : right ">
 						
 						
-						<form id="form" method ="post" action="score?command=regist" onsubmit="return validateEmptyVal()">
+						<form id="form" method ="post" action="score?command=scoreRegist" onsubmit="return validateEmptyVal()">
 							<input type="hidden" name="stuId" value="${stuId}">
 							<input type="hidden" name="subId">
 							
@@ -129,7 +129,7 @@
 
 function openRegSearchSubject()
 {
-	window.open("score?command=registSearchForm",'_blank','width=500, height=400');
+	window.open("score?command=scoreRegistSearchForm",'_blank','width=500, height=400');
 	
 	return false;
 }

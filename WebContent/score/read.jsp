@@ -171,7 +171,7 @@ $(document).ready(function(){
 
 function openModSearchSubject()
 {
-	window.open("score?command=modifySearchForm",'_blank','width=500, height=400');
+	window.open("score?command=scoreModifySearchForm",'_blank','width=500, height=400');
 	
 	return false;
 }

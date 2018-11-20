@@ -44,26 +44,29 @@ public class ActionFactory {
 			else if(command.equals("scoreRegisterForm")) {
 			action = new ScoreRegisterFormAction();
 		} 
-			else if(command.equals("registSearchForm")) {
+			else if(command.equals("scoreRegistSearchForm")) {
 				action = new ScoreRegistSearchFormAction();
 			}
-			else if(command.equals("regSubSearch")) {
+			else if(command.equals("scoreRegSubSearch")) {
 				action = new ScoreRegSubjectSearchAction();
 			}
-			else if(command.equals("regist")) {
+			else if(command.equals("scoreRegist")) {
 				action = new ScoreRegistAction();
 			}
-			else if(command.equals("readForm")) {
+			else if(command.equals("scoreReadForm")) {
 				action = new ScoreReadFormAction();
 			}
 			else if(command.equals("scoreModifyForm")) {
 				action = new ScoreModifyFormAction();
 			}
-			else if(command.equals("modifySearchForm")) {
+			else if(command.equals("scoreModifySearchForm")) {
 				action = new ScoreModifySearchFormAction();
 			}
-			else if(command.equals("modSubSearch")) {
+			else if(command.equals("scoreModSubSearch")) {
 				action = new ScoreModSubjectSearchAction();
+			}
+			else if(command.equals("scoreModify")) {
+				action = new ScoreModifyAction();
 			}
 			// author osj
 			else if(command.equals("mis_list_form")) {
@@ -105,14 +108,17 @@ public class ActionFactory {
 				action = new StudentModifyAction();
 			} 
 		    
-			else if (command.equals("sub_list")) {
+			else if (command.equals("subList")) {
 				action = new SubListformAction();
 			}
-			else if (command.equals("sub_register")) {
+			else if (command.equals("subRegister")) {
 				action = new SubRegister();
 			}
-			else if (command.equals("sub_modify")) {
+			else if (command.equals("subModify")) {
 				action = new SubModifyAction();
+			}
+			else if(command.equals("subModifyForm")) {
+				
 			}
 
 

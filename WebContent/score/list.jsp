@@ -69,7 +69,7 @@
 										
 								<tr>
 									<td style="text-align: center;">${StudentVO.stuId}</td>
-									<td style="text-align: center;"><a href="score?command=readForm&stuId=${StudentVO.stuId}&stuName=${StudentVO.stuName}">${StudentVO.stuName}</a></td>
+									<td style="text-align: center;"><a href="score?command=scoreReadForm&stuId=${StudentVO.stuId}&stuName=${StudentVO.stuName}">${StudentVO.stuName}</a></td>
 									<td style="text-align: center;">${StudentVO.scoreTotal}</td>
 									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
