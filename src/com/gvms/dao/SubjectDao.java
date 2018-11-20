@@ -58,8 +58,8 @@ public class SubjectDao extends CommonDao {
 		return list;
 		
 	}
-	 public ArrayList<SubjectVO> selectAllList() {
-		   String sql = "select * from TBL_SUB order by subID";
+	 public ArrayList<SubjectVO> selectAllList(String stuId) {
+		   String sql = "select * from TBL_SUB," + " where subId = " + stuId + "";
 		   ArrayList<SubjectVO> list = new ArrayList <SubjectVO>();
 		   Connection conn = getConnection();
 		   PreparedStatement st;
@@ -72,7 +72,8 @@ public class SubjectDao extends CommonDao {
 			   while (rs.next()) {
 	 			   SubjectVO subVO = new SubjectVO();   // subjectVO subVO = null;
 				   
-	 			   subVO.setSubId(rs.getString("subID"));
+	 			   
+	 			   subVO.setSubId(rs.getString("subId"));
 	 			   subVO.setMajor(rs.getString("major"));
 	 			   subVO.setMiddle(rs.getString("middle"));
 	 			   subVO.setSubName(rs.getString("subName"));
@@ -91,7 +92,7 @@ public class SubjectDao extends CommonDao {
 	   
 	   public void insertsubject(SubjectVO subVO) {
 		     
-	      String sql = "insert into TBL_SUB(" + "subID, major, middle, subName, subScore)" 
+	      String sql = "insert into TBL_SUB(" + "subId, major, middle, subName, subScore)" 
 	    		  	+ "values(SUB_SEQ.nextval, ?, ?, ?, ?)";
 	      Connection conn = getConnection();
 	      PreparedStatement st;
@@ -116,7 +117,7 @@ public class SubjectDao extends CommonDao {
 	}
 	   public void updatesubject (SubjectVO subVO) {
 		   
-		   String sql = "update TBL_SUB set major = ?, middle = ?, subName = ?, subScore = ?  where subID = ?";
+		   String sql = "update TBL_SUB set major = ?, middle = ?, subName = ?, subScore = ?  where subId = ?";
 		   Connection conn = getConnection();
 		   PreparedStatement st;
 		   
@@ -140,7 +141,7 @@ public class SubjectDao extends CommonDao {
 	   }
 	   public void deletesubject(SubjectVO subVO) {
 		   
-		   String sql = "delete TBL_SUB where subID = ?";
+		   String sql = "delete TBL_SUB where subId = ?";
 		   Connection conn = getConnection();
 		   PreparedStatement st;
 

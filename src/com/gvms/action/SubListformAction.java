@@ -14,10 +14,13 @@ import com.gvms.vo.SubjectVO;
 public class SubListformAction implements Action{
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "subject/listAll.jsp";
+		String url = "/subject/list.jsp";
 		
 		SubjectDao sdao = SubjectDao.getInstance();
-		ArrayList<SubjectVO> list = sdao.selectAllList();
+		
+		
+		
+		ArrayList<SubjectVO> list = sdao.selectAllList(stuId);
 		request.setAttribute("list", list);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

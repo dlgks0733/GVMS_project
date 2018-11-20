@@ -34,8 +34,8 @@
 <c:forEach items="${list}" var="SubjectVO">
 
 	<tr>
-		<td><input type = "checkbox" name = "subId" value = "subId"></td>
-		<td><a href ="subject?command=sub_modifyform&stuId=${StudentVO.subId}&major=${SubjectVO.major}">${SubjectVO.subId}</a></td>
+		<td><input type = "checkbox" name = "subId" value = "${SubjectVO.subId}"></td>
+		<td><a href ="/subject?command=subModifyForm">${SubjectVO.subId}</a></td>
 		<td>${SubjectVO.major}</td>
 		<td>${SubjectVO.middle}</td>
 		<td>${SubjectVO.subName}</td>

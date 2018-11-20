@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="../include/header.jsp"%>
 
 <!-- Main content -->
@@ -15,9 +16,10 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" action = "/subject?command=sub_modify"  >
-	
+<form role="form" method="post" action = "/subject?command=subModify">
+
 	<div class="box-body">
+	<c:forEach items="${list}" var="SubjectVO">
 		<div class="form-group">
 			<label >필수</label> 
 		    <input type= "radio" name = "major" value="필수">
@@ -26,14 +28,14 @@
 		</div>
 		<div class="form-group" >
 			<label >중분류</label>
-			<select name = "middle" value = "${SubjectVO.getmiddle}" >
-	       <option>영역선택</option>
-	       <option>외국어영역</option>
-	       <option>학생활동영역</option>
-	       <option>정보화영역</option>
-	       <option>금융/회계영역</option>
-	       <option>공모전영역</option>
-	       <option>기타</option>
+			<select name = "middle">
+	       <option value ="${subjectVO.middle}">영역선택</option>
+	       <option value ="${subjectVO.middle}">외국어영역</option>
+	       <option value ="${subjectVO.middle}">학생활동영역</option>
+	       <option value ="${subjectVO.middle}">정보화영역</option>
+	       <option value ="${subjectVO.middle}">금융/회계영역</option>
+	       <option value ="${subjectVO.middle}">공모전영역</option>
+	       <option value ="${subjectVO.middle}">기타</option>
 	       </select>
 		</div>
 <%-- 		<div class="form-group">
@@ -50,7 +52,8 @@
 			<label >점수</label> 
 			<input type="text"
 				name="subScore" value="${SubjectVO.subScore}" class="form-control" placeholder="ex) 600">
-		</div> 
+		</div>
+		</c:forEach> 
 	</div>
 	<!-- /.box-body -->
 
@@ -66,7 +69,7 @@
 </div>
 
 <script>
-	$(document).ready(function() {
+	/*$(document).ready(function() {
 
 		var formObj = $("form[role='form']");
 
@@ -80,7 +83,7 @@
 			formObj.submit();
 		});
 
-	});
+	}); */
 </script>
 
 
@@ -95,7 +98,7 @@
 	<!-- /.row -->
 </section>
 <!-- /.content -->
-</div>
+
 <!-- /.content-wrapper -->
 
 <%@include file="../include/footer.jsp"%>

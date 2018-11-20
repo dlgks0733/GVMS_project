@@ -176,7 +176,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="student?command=studentListForm"><i class="fa fa-magic"></i> 학생 목록</a></li>
-                <li><a href="subject?command=sub_list"><i class="fa fa-magic"></i> 인증평가 목록</a></li>
+                <li><a href="subject?command=subList"><i class="fa fa-magic"></i> 인증평가 목록</a></li>
               </ul>
              </li>
              <%-- 

@@ -17,7 +17,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" action = "/subject?command=sub_register"  >
+<form role="form" method="post" action = "/subject?command=subRegister"  >
 	
 	<div class="box-body">
 		<div class="form-group">
@@ -28,7 +28,7 @@
 		</div>
 		<div class="form-group">
 			<label >중분류</label>
-			<select name = "middle" value = "${SubjectVO.middle}" >
+			<select name = "middle" >
 	       <option >영역선택</option>
 	       <option >외국어영역</option>
 	       <option >학생활동영역</option>
@@ -46,12 +46,12 @@
  		<div class="form-group">
 			<label >항목명</label> 
 			<input type="text"
-				name="subName" value = "${SubjectVO.subName}"class="form-control" placeholder="ex) 정보화영역">
+				name="subName" class="form-control" placeholder="ex) 정보화영역">
 		</div> 
 		 		<div class="form-group">
 			<label >점수</label> 
 			<input type="text"
-				name="subScore" value = "${SubjectVO.subScore}" class="form-control" placeholder="ex) 600">
+				name="subScore" class="form-control" placeholder="ex) 600">
 		</div> 
 	</div>
 	<!-- /.box-body -->

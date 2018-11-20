@@ -16,7 +16,7 @@ public class SubRegister implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "/subject?command=sub_list"; // 등록후 목록 최신화 시켜주기위해 다시 메인으로 보냄
+		String url = "/subject?command=subList"; // 등록후 목록 최신화 시켜주기위해 다시 메인으로 보냄
 		
 		String subId = request.getParameter("subId");
 		String major = request.getParameter("major");
