@@ -117,8 +117,8 @@ public class ActionFactory {
 			else if (command.equals("subModify")) {
 				action = new SubModifyAction();
 			}
-			else if(command.equals("subModifyForm")) {
-				
+			else if (command.equals("subModifyForm")) {
+				action = new SubModifyFormAction();
 			}
 
 

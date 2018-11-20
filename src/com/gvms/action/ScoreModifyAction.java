@@ -17,7 +17,37 @@ public class ScoreModifyAction implements Action {
 
 		String url = "score?command=scoreListForm";
 
+		String[] scoreId = request.getParameterValues("scoreId");
+		String scoreIndivi = "";
+		request.setAttribute("scoreId", scoreId);
 		
+		for(int i = 0; i< scoreId.length; i++) {
+			scoreIndivi = scoreId[i];
+			
+			String subId = request.getParameter(scoreIndivi+"subId");
+			request.setAttribute("subId", subId);
+			
+			String scoreDate = request.getParameter(scoreIndivi+"scoreDate");
+			request.setAttribute("scoreDate", scoreDate);
+			
+			String acqScore = request.getParameter(scoreIndivi+"acqScore");
+			request.setAttribute("acqScore", acqScore);
+			
+			System.out.println( "scoreId:" + scoreIndivi + " subId:"+subId + " scoreDate:" 
+								+ scoreDate  + " acqScore:" + acqScore);
+			
+			ScoreVO scoVo = new ScoreVO();
+			scoVo.setSubId(subId);
+			scoVo.setScoreDate(scoreDate);
+			scoVo.setAcqScore(acqScore);
+			scoVo.setScoreId(scoreIndivi);
+			
+			ScoreDao scoDao = ScoreDao.getInstance();
+//			scoDao.updateScore(scoVo);
+			
+			
+			
+		}
 		
 		
 		
