@@ -15,10 +15,10 @@ public class StudentModifyFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String url = "/studnet/modify.jsp";
+		String url = "/student/modify.jsp";
 		
 		String stuId = request.getParameter("stuId");
-		request.setAttribute("stuID", stuId);
+		request.setAttribute("stuId", stuId);
 		
 		String stuName = request.getParameter("stuName");
 		request.setAttribute("stuName", stuName);

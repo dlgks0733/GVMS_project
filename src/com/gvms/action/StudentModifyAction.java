@@ -32,6 +32,8 @@ public class StudentModifyAction implements Action {
 		
 		StudentDao stuDao = StudentDao.getInstance();
 		
+//		request.setAttribute("studentVO", stuVo);
+		
 		stuDao.updateStudent(stuVo);
 		
 		

@@ -105,7 +105,7 @@ public class ActionFactory {
 			
 			else if (command.equals("stud_modi_form")) {
 
-				action = new StudentModifyAction();
+				action = new StudentModifyFormAction();
 			} 
 		    
 			else if (command.equals("subList")) {

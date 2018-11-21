@@ -36,8 +36,8 @@
 								<span class="must-mark">*</span>
 							</label> 
 							<div class="col-sm-10">
-								<input type="text" name='stuname' class="form-control"
-									placeholder="학번을 입력해주세요" value="${studentVO.stuName}">
+								<input type="text" name='stuId' class="form-control"
+									placeholder="학번을 입력해주세요" value="${stuId}">
 								<span id="validatePwEmailMessage"></span>
 							</div>
 						</div>
@@ -53,7 +53,7 @@
 							</label> 
 							<div class="col-sm-10">
 								<input type="text" name='stuname' class="form-control"
-									placeholder="이름을 입력해주세요" value="${studentVO.stuName}">
+									placeholder="이름을 입력해주세요" value="${stuName}">
 								<span id="validatePwEmailMessage"></span>
 							</div>
 						</div>
