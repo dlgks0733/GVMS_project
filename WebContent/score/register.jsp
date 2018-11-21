@@ -174,7 +174,7 @@ function addRow()
 	var cell3 = row.insertCell(2);
 	
 	cell1.innerHTML = "<td>" + "<input type=\"text\" name=\"subName\" readonly=\"readonly\">"
-						+ "<a href=\"#\" onclick=\"openSearchSubject()\">" + "<input type=\"button\" value=\"검색\" class=\"btn btn-default\"></a></td>";
+						+ "<a href=\"#\" onclick=\"openRegSearchSubject()\">" + "<input type=\"button\" value=\"검색\" class=\"btn btn-default\"></a></td>";
 						
 	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score\" readonly=\"readonly\"></td>";
 	

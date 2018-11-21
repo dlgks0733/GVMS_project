@@ -3,6 +3,34 @@ package com.gvms.controller;
 
 //package 모든 액션 받음
 import com.gvms.action.*;
+import com.gvms.action.Mis.MisDeleteAction;
+import com.gvms.action.Mis.MisListFormAction;
+import com.gvms.action.Mis.MisModifyFormAction;
+import com.gvms.action.Mis.MisReadAction;
+import com.gvms.action.Mis.MisReadFormAction;
+import com.gvms.action.Mis.MisRegistAction;
+import com.gvms.action.Mis.MisRegistFormAction;
+import com.gvms.action.Score.ScoreDeleteAction;
+import com.gvms.action.Score.ScoreListFormAction;
+import com.gvms.action.Score.ScoreListRegFormAction;
+import com.gvms.action.Score.ScoreModSubjectSearchAction;
+import com.gvms.action.Score.ScoreModifyAction;
+import com.gvms.action.Score.ScoreModifyFormAction;
+import com.gvms.action.Score.ScoreModifySearchFormAction;
+import com.gvms.action.Score.ScoreReadFormAction;
+import com.gvms.action.Score.ScoreRegSubjectSearchAction;
+import com.gvms.action.Score.ScoreRegistAction;
+import com.gvms.action.Score.ScoreRegistSearchFormAction;
+import com.gvms.action.Score.ScoreRegisterFormAction;
+import com.gvms.action.Student.StudentListFormAction;
+import com.gvms.action.Student.StudentModifyFormAction;
+import com.gvms.action.Student.StudentRegisterAction;
+import com.gvms.action.Student.StudentRegisterFormAction;
+import com.gvms.action.Subject.SubjectDeleteAction;
+import com.gvms.action.Subject.SubjectListformAction;
+import com.gvms.action.Subject.SubjectModifyAction;
+import com.gvms.action.Subject.SubjectModifyFormAction;
+import com.gvms.action.Subject.SubjectRegisterAction;
 
 
 	
