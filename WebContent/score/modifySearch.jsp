@@ -59,7 +59,7 @@
 
 		<div class="col-md-12">
 			<!-- general form elements -->
-
+		
 			<div class="box">
 				<div class="box-header with-border">
 					<h2 class="box-title">인증항목 검색</h2>
