@@ -68,6 +68,9 @@ public class ActionFactory {
 			else if(command.equals("scoreModify")) {
 				action = new ScoreModifyAction();
 			}
+			else if(command.equals("scoreDelete")) {
+				action = new ScoreDeleteAction();
+			}
 			// author osj
 			else if(command.equals("mis_list_form")) {
 				action = new MisListFormAction();

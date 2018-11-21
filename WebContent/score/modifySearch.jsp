@@ -111,13 +111,14 @@
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;">${ScoreVO.major}</td>
 									<td style="text-align: center;">${ScoreVO.middle}</td>
-									<td class="subName" style="text-align: center;" onclick="sendChildValue('${ScoreVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
+									<%-- <td class="subName" style="text-align: center;" onclick="sendChildValue('${ScoreVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td> --%>
+									<td class="subName" style="text-align: center;" onclick="useSubInfo();">${ScoreVO.subName}</td>
 									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
 								</tr>		
 								
-										<input type = "hidden" name = "${ScoreVO.subId}subId"  value = "${ScoreVO.subId}">
-										<input type = "hidden" name = "${ScoreVO.subId}subName" value = "${ScoreVO.subName}">
-										<input type = "hidden" name = "${ScoreVO.subId}subScore" value = "${ScoreVO.subScore}">
+										<input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
+										<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
+										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}">
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
 							</c:forEach>

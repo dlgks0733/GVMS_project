@@ -57,15 +57,15 @@
 				
 				<tr>
 				
-					<td style="width : 10px"><input type="checkbox" name="essListIndex" value="${essListStat.index}"></td>
+					<td style="width : 10px"><input type="checkbox" name="scoreId" value="${ScoreVO.scoreId}"></td>
 					<td style="text-align: center;">${ScoreVO.middle}</td>
-					<td style="text-align: center;"><input type="text" name="${essListStat.index}subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+					<td style="text-align: center;"><input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
 											<input type="button" value="검색" class="btn btn-default"></a></td>
-					<td style="text-align: center;"><input type="text" name="${essListStat.index}acqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
+					<td style="text-align: center;"><input type="text" name="acqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)'></td>
-					<td style="text-align: center;"><input type="text" name="${essListStat.index}scoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="${essListStat.index}subId">
-					<input type="hidden" name="${essListStat.index}scoreId" value="${ScoreVO.scoreId}">
+					<td style="text-align: center;"><input type="text" name="scoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
+					<input type="hidden" name="optSubId">
+					<input type="hidden" name="scoreId" value="${ScoreVO.scoreId}">
 					</td>
 					
 				</tr>
@@ -96,16 +96,16 @@
 				<c:forEach items="${optList}" var="ScoreVO" varStatus="optListStat">
 					
 				<tr>
-					<td style="width : 10px"><input type="checkbox" name = "optListIndex" value="${optListStat.index}"></td>
+					<td style="width : 10px"><input type="checkbox" name = "scoreId" value="${ScoreVO.scoreId}"></td>
 					<td style="text-align: center;">${ScoreVO.middle}</td>
 					<td style="text-align: center;">
-					<input type="text" name="${optListStat.index}subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+					<input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
 											<input type="button" value="검색" class="btn btn-default"></a></td>
-					<td style="text-align: center;"><input type="text" name="${optListStat.index}subScore" onkeydown='return onlyNumber(event)' 
+					<td style="text-align: center;"><input type="text" name="subScore" onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)' value="${ScoreVO.subScore}" readonly="readonly"></td>
-					<td style="text-align: center;"><input type="text" name="${optListStat.index}scoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="${optListStat.index}subId">
-					<input type="hidden" name="${optListStat.index}scoreId" value="${ScoreVO.scoreId}">
+					<td style="text-align: center;"><input type="text" name="scoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
+					<input type="hidden" name="subId">
+					<input type="hidden" name="scoreId" value="${ScoreVO.scoreId}">
 				</tr>
 				</c:forEach>	
 			</table>
