@@ -112,18 +112,20 @@ public class ActionFactory {
 			} 
 		    
 			else if (command.equals("subList")) {
-				action = new SubListformAction();
+				action = new SubjectListformAction();
 			}
 			else if (command.equals("subRegister")) {
-				action = new SubRegister();
+				action = new SubjectRegisterAction();
 			}
 			else if (command.equals("subModify")) {
-				action = new SubModifyAction();
+				action = new SubjectModifyAction();
 			}
 			else if (command.equals("subModifyForm")) {
-				action = new SubModifyFormAction();
+				action = new SubjectModifyFormAction();
 			}
-
+			else if (command.equals("subDelete")) {
+				action = new SubjectDeleteAction();
+			}
 
 		return action;
 	}

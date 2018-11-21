@@ -1,7 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>		
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="../include/header.jsp"%>
 
 <!-- Main content -->
@@ -68,7 +68,7 @@
 	</div>
 <div class="box-footer">
 	<button type="submit" class="btn btn-primary">수정</button>
-	<button type="submit" class="btn btn-warning">취소</button>
+	<button type="submit" class="btn btn-warning"><a href = "/subject?command=subList">취소</a></button>
 </div>
 </form>
 
