@@ -18,12 +18,15 @@ public class SubModifyFormAction implements Action{
 		
 		String subId = request.getParameter("subId");
 		request.setAttribute("subId", subId);
+		
+		System.out.println("subId : " + subId);
 
 		
 		SubjectDao sdao = SubjectDao.getInstance();
 		ArrayList<SubjectVO> sublist = sdao.selectsubList(subId);
 		request.setAttribute("sublist", sublist);
-
+		
+		System.out.println(sublist);
 
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

@@ -36,7 +36,7 @@ public class SubModifyAction implements Action{
         
 		SubjectVO subVO = new SubjectVO();
 		
-		subVO.setMajor(subId);
+		subVO.setSubId(subId);
 		subVO.setMajor(major);
 		subVO.setMiddle(middle);
 		subVO.setSubName(subName);
