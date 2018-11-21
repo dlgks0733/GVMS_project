@@ -234,6 +234,7 @@
 			
 			this.window.close();
 		}
+		
 		function useSubInfo() {
 		
 
