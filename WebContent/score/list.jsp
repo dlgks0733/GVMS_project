@@ -155,7 +155,7 @@
 	alert("ssss");
 	var stuID = stuId;
 	var stuName = stuName;
-	/* var stu_name = document.getElementById("stu_name")[index].innerHTML; */
+	var stu_name = document.getElementById("stu_name")[index].innerHTML;
 	document.getElementsByName("stuId")[0].value = stuID;
 	document.getElementsByName("stuName")[0].value = stuName;
 	document.getElementById("frm").submit();

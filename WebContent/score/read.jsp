@@ -37,7 +37,7 @@
 			readonly="readonly">
 	</div> --%>
 	
-			<form role="frm" method="post">		
+			<form name="frm" method="post">		
 			<table class="table table-striped">
 			
 			<tr>
@@ -45,7 +45,7 @@
 			</tr>
 			
 			<tr>
-				<th style="width : 10px"> </th>
+				<th style="width : 10px"><input type="checkbox" name="essCheck" onclick="essCheckAll()"></th>
 				<th style="text-align: center;">영역</th>
 				<th style="text-align: center;">항목 명</th>
 				<th style="text-align: center;">점수</th>
@@ -86,7 +86,7 @@
 				</tr>
 				
 				<tr>
-					<th style="width : 10px"> </th>
+					<th style="width : 10px"><input type="checkbox" name="optCheck"></th>
 					<th style="text-align: center;">영역</th>
 					<th style="text-align: center;">항목 명</th>
 					<th style="text-align: center;">점수</th>
@@ -96,10 +96,11 @@
 				<c:forEach items="${optList}" var="ScoreVO" varStatus="optListStat">
 					
 				<tr>
+					<input type=hidden name="index" value='${optListStat.index }'>
 					<td style="width : 10px"><input type="checkbox" name = "scoreId" value="${ScoreVO.scoreId}"></td>
 					<td style="text-align: center;">${ScoreVO.middle}</td>
 					<td style="text-align: center;">
-					<input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+					<input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject(${optListStat.index })">
 											<input type="button" value="검색" class="btn btn-default"></a></td>
 					<td style="text-align: center;"><input type="text" name="subScore" onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)' value="${ScoreVO.subScore}" readonly="readonly"></td>
@@ -149,9 +150,12 @@ $(document).ready(function(){
 
 
 
-function openModSearchSubject()
-{
-	window.open("score?command=scoreModifySearchForm",'_blank','width=500, height=400');
+function openModSearchSubject(index)
+{				
+		alert(index)	;	
+	var url = "score?command=scoreModifySearchForm&index=" + encodeURIComponent(index);		
+	
+	window.open(url,'_blank','width=500, height=400');
 	
 	return false;
 }
@@ -246,7 +250,7 @@ function setChildValue(subId, major, name, score){
 		}
 			document.getElementsByName(essId[i].value+"subId")[0].value = subId;
 			document.getElementsByName(essId[i].value+"subName")[0].value = name;
-	}
+		}
 		
 		if(essChecked == 0){
 		alert("선택된 정보가 없습니다");
@@ -292,6 +296,17 @@ function setChildValue(subId, major, name, score){
 }
 
 
+function essCheckAll(){
+	for(i=0; i<frm.essCheck.length; i++){
+		frm.essCheck[i].checked = true;
+	}
+}
+
+function essUnCheckAll(){
+	for(i=0; i<frm.essCheck.length; i++){
+		frm.essCheck[i].checked = false;
+	}
+}
 
 
 </script>
