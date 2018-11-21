@@ -18,8 +18,9 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">MIS 전체 수정 화면</h3>
 				</div>
+				<from name="frm" method="post" action="/mis?command=mis_modify">
 				<div class="box-body">
-					
+				
 					<table class="table table-bordered">
 						<tr>
 							<th>학번</th>
@@ -33,13 +34,15 @@
 							<tr>
 								<td>${MisVO.stuId}</td>
 								<td>${MisVO.stuName}</td>
-								<td>${MisVO.scoreDate}</td>
+								<td> <input type="date" name="scoreDate" value="${MisVO.scoreDate}" ></td>
 							</tr>
 
 						</c:forEach>
 					</table>
 
 				</div>
+				<button type="submit" class="btn btn-primary" id="submitbutton">수정</button>
+				</from>
 				<!-- /.box-body -->
 				<div class="box-footer">Footer</div>
 				<!-- /.box-footer-->

@@ -28,7 +28,7 @@ public class MisDeleteAction implements Action {
 
 		MisDAO mDao = MisDAO.getInstance();
 		
-			for(int i=0; i<scoreDate.length; i++) {	
+			for(int i = 0; i< scoreDate.length; i++) {	
 			
 			System.out.println("scoreDate : " + scoreDate[i]);
 			scoreDateIndivi = scoreDate[i];

@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.gvms.vo.MisVO;
+import com.gvms.vo.SubjectVO;
 
 public class MisDAO extends CommonDao {
 
@@ -237,6 +238,31 @@ public class MisDAO extends CommonDao {
 		}
 	}
 	
+	/*public void modifyMis (SubjectVO subVO) {
+		   
+		   String sql = "update TBL_SUB set major = ?, middle = ?, subName = ?, subScore = ?  where subId = ?";
+		   Connection conn = getConnection();
+		   PreparedStatement st;
+		   
+		   
+		   try {
+
+			   st = conn.prepareStatement(sql);
+			   
+			   st.setString(1, subVO.getMajor());
+			   st.setString(2, subVO.getMiddle());
+		       st.setString(3, subVO.getSubName());
+		       st.setString(4, subVO.getSubScore());
+		       st.setString(5, subVO.getSubId());
+		       st.executeUpdate();
+		       
+		   }catch (SQLException e){
+			   e.printStackTrace();
+		   }finally {
+			   dbClose();
+		   }
+	   }
+*/
 	public void deleteMis(String stuId, String scoreDate) {
 		
 		String sql = "DELETE TBL_SCORE"
