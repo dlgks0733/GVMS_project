@@ -75,6 +75,49 @@ public class MisDAO extends CommonDao {
 		return list;
 	}
 	
+	public List<MisVO> selectMisModify() {
+		//MIS 점수 조회화면에는 학번과 이름, MIS총점을 출력해야 한다.
+		//학생은 재학상태인 학생만 출력한다.
+		String sql = "SELECT stu.stuId   as stuId"
+				+ "		   , stu.stuName as stuName"
+				+ "        , TO_CHAR(s.scoreDate, 'YYYY-MM-DD') as scoreDate "
+				+ "     FROM TBL_SCORE s, TBL_STU stu "
+				+ "    WHERE s.STUID = stu.STUID "
+				+ " ORDER BY s.scoreDate DESC";
+
+		List<MisVO> list = new ArrayList<MisVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = getConnection();
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				MisVO mVo = new MisVO();
+
+				mVo.setStuId(rs.getString("stuId"));
+				mVo.setStuName(rs.getString("stuName"));
+				mVo.setScoreDate(rs.getString("scoreDate"));
+
+				list.add(mVo);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			dbClose();
+			
+		}
+		
+		return list;
+	}
+	
 	// MisWrite.jsp에서 학생별 MIS 총합 점수를 조회하는 메소드
 		public List<MisVO> selectMisRegist() {
 			//MIS 등록화면은 학번과 이름을 보고 체크박스와 날짜 입력폼으로 MIS-DAY의 출결을 등록을 한다.

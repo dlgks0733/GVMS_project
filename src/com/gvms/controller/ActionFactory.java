@@ -88,7 +88,7 @@ public class ActionFactory {
 				action = new MisDeleteAction();
 			}
 			else if(command.equals("mis_modify_form")) {
-			
+				action = new MisModifyFormAction();
 			}
 			
 		
