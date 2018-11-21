@@ -18,9 +18,7 @@ public class SubListformAction implements Action{
 		
 		SubjectDao sdao = SubjectDao.getInstance();
 		
-		
-		
-		ArrayList<SubjectVO> list = sdao.selectAllList(stuId);
+		ArrayList<SubjectVO> list = sdao.selectAllList();
 		request.setAttribute("list", list);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

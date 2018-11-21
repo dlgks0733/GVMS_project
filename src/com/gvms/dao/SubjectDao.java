@@ -58,8 +58,8 @@ public class SubjectDao extends CommonDao {
 		return list;
 		
 	}
-	 public ArrayList<SubjectVO> selectAllList(String stuId) {
-		   String sql = "select * from TBL_SUB," + " where subId = " + stuId + "";
+	 public ArrayList<SubjectVO> selectsubList(String subId) {
+		   String sql = "select * from TBL_SUB where subId ="+ subId +"";
 		   ArrayList<SubjectVO> list = new ArrayList <SubjectVO>();
 		   Connection conn = getConnection();
 		   PreparedStatement st;
@@ -78,7 +78,7 @@ public class SubjectDao extends CommonDao {
 	 			   subVO.setMiddle(rs.getString("middle"));
 	 			   subVO.setSubName(rs.getString("subName"));
 	 			   subVO.setSubScore(rs.getString("subScore"));
-	 			   
+
 	 			   list.add(subVO);
 			   }
 		   } catch (SQLException e) {
@@ -89,7 +89,38 @@ public class SubjectDao extends CommonDao {
 		   return list ;
 
 	   }
-	   
+	
+	 public ArrayList<SubjectVO> selectAllList() {
+		   String sql = "select * from TBL_SUB order by subId";
+		   ArrayList<SubjectVO> list = new ArrayList <SubjectVO>();
+		   Connection conn = getConnection();
+		   PreparedStatement st;
+		   ResultSet rs = null;
+		   
+		   try {
+			   st = conn.prepareStatement(sql);
+			   rs = st.executeQuery();
+			   
+			   while (rs.next()) {
+	 			   SubjectVO subVO = new SubjectVO();   // subjectVO subVO = null;
+				   
+	 			   
+	 			   subVO.setSubId(rs.getString("subId"));
+	 			   subVO.setMajor(rs.getString("major"));
+	 			   subVO.setMiddle(rs.getString("middle"));
+	 			   subVO.setSubName(rs.getString("subName"));
+	 			   subVO.setSubScore(rs.getString("subScore"));
+
+	 			   list.add(subVO);
+			   }
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   } finally {
+			   dbClose();
+		   }
+		   return list ;
+
+	   }
 	   public void insertsubject(SubjectVO subVO) {
 		     
 	      String sql = "insert into TBL_SUB(" + "subId, major, middle, subName, subScore)" 

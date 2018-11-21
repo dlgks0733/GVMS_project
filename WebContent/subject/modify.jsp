@@ -13,29 +13,31 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">수정</h3>
+							
+					
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" action = "/subject?command=subModify">
-
+<form role="form" method="post" action ="/subject?commnad=subModify">
+<c:forEach items="${sublist}" var="SubjectVO">
 	<div class="box-body">
-	<c:forEach items="${list}" var="SubjectVO">
 		<div class="form-group">
-			<label >필수</label> 
-		    <input type= "radio" name = "major" value="필수">
-			<label >선택</label> 
-			<input type= "radio" name = "major" value="선택">
+			<label >${subject}</label> 
+			<input type= "radio" name = "major" value = "${SubjectVO.major}">
+			<label >${major}</label> 
+			<input type= "radio" name = "major" value = "${SubjectVO.major}">
 		</div>
-		<div class="form-group" >
+		
+		<div class="form-group">
 			<label >중분류</label>
 			<select name = "middle">
-	       <option value ="${subjectVO.middle}">영역선택</option>
-	       <option value ="${subjectVO.middle}">외국어영역</option>
-	       <option value ="${subjectVO.middle}">학생활동영역</option>
-	       <option value ="${subjectVO.middle}">정보화영역</option>
-	       <option value ="${subjectVO.middle}">금융/회계영역</option>
-	       <option value ="${subjectVO.middle}">공모전영역</option>
-	       <option value ="${subjectVO.middle}">기타</option>
+	       <option value = "영역선택">영역선택</option>
+	       <option value = "외국어영역">외국어영역</option>
+	       <option value = "학생활동영역">학생활동영역</option>
+	       <option value = "정보화영역">정보화영역</option>
+	       <option value = "금융/회계영역">금융/회계영역</option>
+	       <option value = "공모전영역">공모전영역</option>
+	       <option value = "기타">기타</option>
 	       </select>
 		</div>
 <%-- 		<div class="form-group">
@@ -44,17 +46,18 @@
 			  class="form-control" value='${login.usid }' readonly>
 		</div>	 --%>	
  		<div class="form-group">
+ 		
 			<label >항목명</label> 
 			<input type="text"
-				name="subName" value="${SubjectVO.subName}" class="form-control" placeholder="ex) 정보화영역">
+				name="subName" class="form-control" value = "${SubjectVO.subName}" placeholder="ex) 정보화영역">
 		</div> 
 		 		<div class="form-group">
 			<label >점수</label> 
 			<input type="text"
-				name="subScore" value="${SubjectVO.subScore}" class="form-control" placeholder="ex) 600">
-		</div>
-		</c:forEach> 
+				name="subScore" class="form-control" value = "${SubjectVO.subScore}" placeholder="ex) 600">
+		</div> 
 	</div>
+	</c:forEach>
 	<!-- /.box-body -->
 
 	<div class="box-footer">
