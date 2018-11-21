@@ -17,7 +17,7 @@ public class SubjectDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/subject?command=subList";
-		
+		    
 		String subId = request.getParameter("subId");
 		request.setAttribute("subId", subId);
 		
