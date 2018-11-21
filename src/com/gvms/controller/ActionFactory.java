@@ -113,6 +113,10 @@ public class ActionFactory {
 
 				action = new StudentModifyFormAction();
 			} 
+			else if (command.equals("stud_delete")) {
+				
+				action = new StudentDeleteAction();
+			}
 		    
 			else if (command.equals("subList")) {
 				action = new SubjectListformAction();

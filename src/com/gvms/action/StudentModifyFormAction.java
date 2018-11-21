@@ -20,12 +20,9 @@ public class StudentModifyFormAction implements Action {
 		String stuId = request.getParameter("stuId");
 		request.setAttribute("stuId", stuId);
 		
-		String stuName = request.getParameter("stuName");
-		request.setAttribute("stuName", stuName);
+
 		
-		String stuStat = request.getParameter("stuStat");
-		request.setAttribute("stuStat", stuStat);
-		
+		System.out.println("stuId" + stuId );
 		
 		
 		

@@ -227,7 +227,8 @@ function remove()
  * 빈 값이 있는지 검사를 해서 유효성에 따라
  * submit 버튼을 활성화, 비활성화시키는 함수
  */
-window.setInterval(function(){
+
+/*  window.setInterval(function(){
 
  	// 인풋에 있는 모든 값들을 합쳐서
  	// 어드민 객체를 생성함
@@ -246,7 +247,7 @@ window.setInterval(function(){
  			stunphone : stunphone,
  			stuemail : stuemail,
  			compnum : compnum
- 	};
+ 	}; */
 
  	// 백엔드에서 유효성 검사를 거친 뒤
  	// 메시지를 받음

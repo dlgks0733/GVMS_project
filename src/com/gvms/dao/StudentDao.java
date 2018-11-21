@@ -179,18 +179,20 @@ public class StudentDao extends CommonDao {
 		   }
 		  
 		  
-		   public void deleteStudent(StudentVO stuVo) {
+		   public void deleteStudent(String stuId) {
 			   
-			   String sql = "delete FROM TBL_STU where stuID = ?";
-			   Connection conn = getConnection();
+			   String sql = "delete FROM TBL_STU where stuId = ? ";
+			   Connection conn = null;
 			   PreparedStatement st;
 
 			   try {
-
+				   
+				   conn = getConnection();
 				   st = conn.prepareStatement(sql);
 				   
-				   st.setString(1, stuVo.getStuId());
+				   st.setString(1, stuId);
 				   st.executeUpdate(); 
+				   
 			   }catch(SQLException e){
 				   e.printStackTrace();
 			   }finally {

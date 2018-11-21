@@ -18,22 +18,7 @@ public class StudentListFormAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				String url = "/student/list.jsp";
 				
-//				//요청 된 jsp에서 Parameter 가져오기
-//				//체크박스를 위한 stuId 배열로 생성
-//				String[] stuId = request.getParameterValues("stuId");
-//				String scoreDate = request.getParameter("scoreDate");
-//				
-//				//학번 배열 체크하는 stuIdIndivi 생성
-//				String stuIdIndivi ="";
-//				//MisVo 객체 생성
-//			
-//				StudentDAO stuDao = StudentDAO.getInstance();
-//				
-//				for(int i=0; i<stuId.length; i++) {
-//					
-//					System.out.println("stuId : " + stuId[i]);
-//					stuIdIndivi = stuId[i];
-				////////////////////////////////
+
 				
 				StudentDao dao = StudentDao.getInstance();
 				

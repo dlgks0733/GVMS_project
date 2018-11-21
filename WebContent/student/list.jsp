@@ -46,19 +46,19 @@
 								</div>
 							</form>
 						</div>
-
 						<table class="table table-striped">
 							<tr>
 							<!-- input type checkbox? -->
-								
+								<th></th>
 								<th>학번</th>
 								<th>이름</th>
 								<th>재적상태</th>
 							</tr>
-							<c:forEach items="${list}" var="StudentVO" varStatus="status">
+							<c:forEach items="${list}" var="StudentVO" >
+						<form name = "frm" method="post" action ="/student?command=stud_delete&stuId=${StudentVO.stuId}">
 								<tr>
-									<td style="text-align: center;"><a href="/student?command=stud_modi_form&stuid=${StudentVO.stuId}
-									&stuName=${StudentVO.stuName}&stuStat=${StudentVO.stuStat}">${StudentVO.stuId}</a></td>
+								    <td style="text-align: center;"> <input type="checkbox" value="${StudentVO.stuId}"></td>
+									<td style="text-align: center;"><a href="/student?command=stud_modi_form&stuId='${StudentVO.stuId}'">${StudentVO.stuId}</a></td>
 									<td style="text-align: center;">${StudentVO.stuName}</td>
 									<td style="text-align: center;">${StudentVO.stuStat}</td>
 									<%-- <td style="text-align: center;"><a
@@ -69,6 +69,8 @@
 								</tr>
 							</c:forEach>
 						</table>
+						  <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
+						</form>
 					</div>
 					<!-- /.box-body -->
 
@@ -100,12 +102,13 @@
 						<!-- .text-center END -->
 						<div class="btn-group-custom">
 							<!-- jsp 주소로 바꿈  -->
+							  <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
 							<a type="button" href="/student?command=stud_reg_form"
 								class="btn btn-default">신규 등록</a> 
-							<a type="button" href="/student?command=stud_modi_form"
-							    class="btn btn-default">수정</a>
-							    <a type="button" href="/student/delete.jsp"
-							    class="btn btn-default">삭제</a>
+							<!-- <a type="button" href="/student?command=stud_modi_form"
+							    class="btn btn-default">수정</a> -->
+							  <!--   <a type="button" href="/student/delete.jsp"
+							    class="btn btn-default">삭제</a> -->
 						</div>
 					</div>
 					<!-- .box-footer END -->
