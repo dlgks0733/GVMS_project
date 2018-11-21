@@ -15,6 +15,9 @@ public class SubjectModifyFormAction implements Action{
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/subject/modify.jsp";
+		// 값 설정
+		int major_num = 0;
+		int middle_num = 0;
 		
 		String subId = request.getParameter("subId");
 		request.setAttribute("subId", subId);
@@ -25,6 +28,40 @@ public class SubjectModifyFormAction implements Action{
 		SubjectDao sdao = SubjectDao.getInstance();
 		ArrayList<SubjectVO> sublist = sdao.selectsubList(subId);
 		request.setAttribute("sublist", sublist);
+		//Radio button 값 불러오기 
+		for (SubjectVO subject : sublist) {
+			if ("필수".equals(subject.getMajor())){
+				System.out.println(subject.getMajor() + major_num);
+				major_num = 1;
+			} 
+		}
+		
+		request.setAttribute("major_num", major_num);
+		//Select Box 값 불러오기
+		for(SubjectVO subject : sublist) {
+			if("외국어영역".equals(subject.getMiddle())) {
+				System.out.println(subject.getMiddle() + middle_num);
+				middle_num = 1;
+			}else if("학생활동영역".equals(subject.getMiddle())){
+				System.out.println(subject.getMiddle() + middle_num);
+				middle_num = 2;
+			}else if("정보화영역".equals(subject.getMiddle())) {
+				System.out.println(subject.getMiddle() + middle_num);
+				middle_num = 3;
+			}else if("금융/회계영역".equals(subject.getMiddle())) {
+				System.out.println(subject.getMiddle() + middle_num);
+				middle_num = 4;
+			}else if("공모전영역".equals(subject.getMiddle())) {
+				System.out.println(subject.getMiddle() + middle_num);
+				middle_num = 5;
+			}else if("기타".equals(subject.getMiddle())) {
+				System.out.println(subject.getMiddle() + middle_num);
+				middle_num = 6;
+			}
+		}
+		
+		request.setAttribute("middle_num", middle_num);
+
 		
 		System.out.println(sublist);
 
