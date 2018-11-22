@@ -13,10 +13,12 @@ import com.gvms.action.Mis.MisRegistFormAction;
 import com.gvms.action.Score.ScoreDeleteAction;
 import com.gvms.action.Score.ScoreListFormAction;
 import com.gvms.action.Score.ScoreListRegFormAction;
-import com.gvms.action.Score.ScoreModSubjectSearchAction;
+import com.gvms.action.Score.ScoreModEssSubSearchAction;
+import com.gvms.action.Score.ScoreModOptSearchFormAction;
+import com.gvms.action.Score.ScoreModOptSubSearchAction;
 import com.gvms.action.Score.ScoreModifyAction;
 import com.gvms.action.Score.ScoreModifyFormAction;
-import com.gvms.action.Score.ScoreModifySearchFormAction;
+import com.gvms.action.Score.ScoreModEssSearchFormAction;
 import com.gvms.action.Score.ScoreReadFormAction;
 import com.gvms.action.Score.ScoreRegSubjectSearchAction;
 import com.gvms.action.Score.ScoreRegistAction;
@@ -62,42 +64,75 @@ public class ActionFactory {
 			
 			action = new MainAction();
 		
-		}	else if(command.equals("scoreListForm")) {
+			}	
+			else if(command.equals("scoreListForm")) {
+			
 			action = new ScoreListFormAction();
-		} 
-		
+			
+			} 
 			else if(command.equals("scoreListRegForm")) {
+				
 			action = new ScoreListRegFormAction();
-		}
+			
+			}
 			else if(command.equals("scoreRegisterForm")) {
+				
 			action = new ScoreRegisterFormAction();
-		} 
+			
+			} 
 			else if(command.equals("scoreRegistSearchForm")) {
-				action = new ScoreRegistSearchFormAction();
+				
+			action = new ScoreRegistSearchFormAction();
+				
 			}
 			else if(command.equals("scoreRegSubSearch")) {
-				action = new ScoreRegSubjectSearchAction();
+				
+			action = new ScoreRegSubjectSearchAction();
+				
 			}
 			else if(command.equals("scoreRegist")) {
-				action = new ScoreRegistAction();
+				
+			action = new ScoreRegistAction();
+				
 			}
 			else if(command.equals("scoreReadForm")) {
-				action = new ScoreReadFormAction();
+				
+			action = new ScoreReadFormAction();
+				
 			}
 			else if(command.equals("scoreModifyForm")) {
-				action = new ScoreModifyFormAction();
+				
+			action = new ScoreModifyFormAction();
+				
 			}
-			else if(command.equals("scoreModifySearchForm")) {
-				action = new ScoreModifySearchFormAction();
+			else if(command.equals("scoreModEssSearchForm")) {
+				
+			action = new ScoreModEssSearchFormAction();
+				
 			}
-			else if(command.equals("scoreModSubSearch")) {
-				action = new ScoreModSubjectSearchAction();
+			else if(command.equals("scoreModOptSearchForm")) {
+				
+			action = new ScoreModOptSearchFormAction();
+				
+			}
+			else if(command.equals("scoreModEssSubSearch")) {
+				
+			action = new ScoreModEssSubSearchAction();
+				
+			}
+			else if(command.equals("scoreModOptSubSearch")) {
+				
+			action = new ScoreModOptSubSearchAction();
+				
 			}
 			else if(command.equals("scoreModify")) {
-				action = new ScoreModifyAction();
+				
+			action = new ScoreModifyAction();
 			}
 			else if(command.equals("scoreDelete")) {
-				action = new ScoreDeleteAction();
+				
+			action = new ScoreDeleteAction();
+				
 			}
 			// author osj
 			else if(command.equals("mis_list_form")) {

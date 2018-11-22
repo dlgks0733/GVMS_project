@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gvms.action.Action;
 
-public class ScoreModifySearchFormAction implements Action{
+public class ScoreModEssSearchFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "/score/modifySearch.jsp";
+		String url = "/score/modifyEssSubSearch.jsp";
 		String index = request.getParameter("index");
 		request.setAttribute("index", index);
 		System.out.println("index : " +  index);

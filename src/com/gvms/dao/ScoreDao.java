@@ -40,7 +40,7 @@ public ArrayList<ScoreVO> ScoreOptList(String stuId) {
 				   + "WHERE SCO.SUBID = SUB.SUBID "
 				   + "AND STUID = " + stuId + " "
 				   + "AND SUB.MAJOR = '선택' "
-				   + "AND SUB.SUBNAME NOT LIKE '%MIS%'";
+				   + "AND SUB.SUBNAME NOT LIKE '%MIS%' ORDER BY SCO.SCOREID DESC";
 		
 		try {
 			st = conn.prepareStatement(sql);
@@ -82,7 +82,7 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 			   + "WHERE SCO.SUBID = SUB.SUBID "
 			   + "AND STUID = " + stu_id + " "
 			   + "AND SUB.MAJOR = '필수' "
-			   + "AND SUB.SUBNAME NOT LIKE '%MIS%'";
+			   + "AND SUB.SUBNAME NOT LIKE '%MIS%' ORDER BY SCO.SCOREID DESC";
 	
 	try {
 		st = conn.prepareStatement(sql);
@@ -179,5 +179,78 @@ public ArrayList<ScoreVO> ScoreEssList(String stu_id) {
 		}
 		
 	}
+	
+public ArrayList<ScoreVO> SearchEssSubject(String subName) {
+		
+		ArrayList<ScoreVO> list = new ArrayList<ScoreVO>();
+		
+		String sql = "SELECT * FROM TBL_SUB WHERE SUBNAME LIKE  '%" + subName + "%' AND MAJOR = '필수'";
+		
+		
+		Connection conn = getConnection();
+		PreparedStatement st;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.prepareStatement(sql);
+			rs = st.executeQuery();
+			
+			if(rs.next()) {
+			ScoreVO scoVo = new ScoreVO();
+			scoVo.setSubId(rs.getString("subId"));
+			scoVo.setMajor(rs.getString("major"));
+			scoVo.setMiddle(rs.getString("middle"));
+			scoVo.setSubName(rs.getString("subName"));
+			scoVo.setSubScore(rs.getString("subScore"));
+			
+			list.add(scoVo);
+			}
+			
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return list;
+		
+	}
+
+public ArrayList<ScoreVO> SearchOptSubject(String subName) {
+	
+	ArrayList<ScoreVO> list = new ArrayList<ScoreVO>();
+	
+	String sql = "SELECT * FROM TBL_SUB WHERE SUBNAME LIKE  '%" + subName + "%' AND MAJOR = '선택'";
+	
+	
+	Connection conn = getConnection();
+	PreparedStatement st;
+	ResultSet rs = null;
+	
+	try {
+		st = conn.prepareStatement(sql);
+		rs = st.executeQuery();
+		
+		if(rs.next()) {
+		ScoreVO scoVo = new ScoreVO();
+		scoVo.setSubId(rs.getString("subId"));
+		scoVo.setMajor(rs.getString("major"));
+		scoVo.setMiddle(rs.getString("middle"));
+		scoVo.setSubName(rs.getString("subName"));
+		scoVo.setSubScore(rs.getString("subScore"));
+		
+		list.add(scoVo);
+		}
+		
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	} finally {
+		dbClose();
+	}
+	return list;
+	
+}
+	
 	
 }
