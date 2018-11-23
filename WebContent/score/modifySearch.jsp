@@ -59,13 +59,14 @@
 
 		<div class="col-md-12">
 			<!-- general form elements -->
-
+		
 			<div class="box">
 				<div class="box-header with-border">
 					<h2 class="box-title">인증항목 검색</h2>
 					<p>
 					<form method="post" action="score?command=scoreModSubSearch">
 								<input type="text" name="subName">
+								<input type = "hidden" name = "index"  value = "${index}">
 								<input type="submit" class="btn btn-default" value="검색">
 								</form>
 								</p>
@@ -111,11 +112,10 @@
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;">${ScoreVO.major}</td>
 									<td style="text-align: center;">${ScoreVO.middle}</td>
-									<%-- <td class="subName" style="text-align: center;" onclick="sendChildValue('${ScoreVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td> --%>
-									<td class="subName" style="text-align: center;" onclick="useSubInfo();">${ScoreVO.subName}</td>
+									<td class="subName" style="text-align: center;" onclick="sendChildValue(${index}, '${ScoreVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
+									<%-- <td class="subName" style="text-align: center;" onclick="useSubInfo()">${ScoreVO.subName}</td> --%>
 									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
 								</tr>		
-								
 										<input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
 										<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
 										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}">
@@ -238,7 +238,7 @@
 		
 		function useSubInfo() {
 		
-
+			
 			opener.frm.subId.value = document.frm.subId.value;
 			opener.frm.subName.value = document.frm.subName.value;
 			opener.frm.subScore.value = document.frm.subScore.value;
@@ -252,8 +252,8 @@
 			self.close();
 		}
 	
-	function sendChildValue(subId, major, name, score){
-		opener.setChildValue(subId , major, name, score);
+	function sendChildValue(index, subId, major, name, score){
+		opener.setChildValue(index, subId , major, name, score);
 		this.window.close();
 	}
 

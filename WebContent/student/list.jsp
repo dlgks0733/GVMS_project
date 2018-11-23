@@ -70,6 +70,8 @@
 							</c:forEach>
 						</table>
 						  <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
+						  <a type="button" href="/student?command=stud_reg_form"
+								class="btn btn-default">신규 등록</a> 
 						</form>
 					</div>
 					<!-- /.box-body -->
@@ -102,9 +104,9 @@
 						<!-- .text-center END -->
 						<div class="btn-group-custom">
 							<!-- jsp 주소로 바꿈  -->
-							  <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
-							<a type="button" href="/student?command=stud_reg_form"
-								class="btn btn-default">신규 등록</a> 
+							<!--   <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button> -->
+							<!-- <a type="button" href="/student?command=stud_reg_form"
+								class="btn btn-default">신규 등록</a>  -->
 							<!-- <a type="button" href="/student?command=stud_modi_form"
 							    class="btn btn-default">수정</a> -->
 							  <!--   <a type="button" href="/student/delete.jsp"
