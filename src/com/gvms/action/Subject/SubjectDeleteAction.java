@@ -17,24 +17,27 @@ public class SubjectDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/subject?command=subList";
-		         
-		String subId = request.getParameter("subId");
-		request.setAttribute("subId", subId);
+
+		String[] subIds = request.getParameterValues("subId");
 		
-		System.out.println("subId : " + subId);
-		SubjectDao sdao = SubjectDao.getInstance();
-		
-		SubjectVO subVO = new SubjectVO();
-		subVO.setSubId(subId);
-		
-		ArrayList<SubjectVO> list = sdao.selectsubList(subId);
-		request.setAttribute("list", list);
-		
-		sdao.deletesubject(subId);
+		for (int idx = 0; subIds.length > idx; idx++) {
+			request.setAttribute("subId", subIds[idx]);
+
+			System.out.println("subId : " + subIds[idx]);
+
+			SubjectVO subVO = new SubjectVO();
+
+			subVO.setSubId(subIds[idx]);
+
+			SubjectDao sdao = SubjectDao.getInstance();
+			ArrayList<SubjectVO> list = sdao.selectAllList();
+			request.setAttribute("list", list);
+			sdao.deletesubject(subVO);
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);	
-		
+		dispatcher.forward(request, response);
+
 	}
 
 }
