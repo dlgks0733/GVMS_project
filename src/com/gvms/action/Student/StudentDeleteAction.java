@@ -30,8 +30,10 @@ public class StudentDeleteAction implements Action {
 		
 			for(int i=0; i<stuId.length; i++) {	
 			
+				
 			System.out.println("stuId : " + stuId[i]);
 			stuIdIndivi = stuId[i];
+			
 			
 			//객체 셋팅
 			StudentVO stuVo = new StudentVO();
