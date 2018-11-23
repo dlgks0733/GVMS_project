@@ -17,7 +17,7 @@
 					<h4>학번:${stuId} 이름:${stuName}</h4>
 				</div>
 				<!-- /.box-header -->
-
+	
 
 
 <div class="box-body">
