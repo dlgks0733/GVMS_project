@@ -64,7 +64,7 @@
 					<td style="text-align: center;"><input type="text" name="${essListStat.index}essAcqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)'></td>
 					<td style="text-align: center;"><input type="text" name="${essListStat.index}essScoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="${essListStat.index}essSubId">
+					<input type="hidden" name="${essListStat.index}essSubId" id="ess" value="n">
 					<input type="hidden" name="${essListStat.index}essScoreId" value="${ScoreVO.scoreId}">
 					<input type="hidden" name="essIndex" value="${essListStat.index}">
 					</td>
@@ -106,7 +106,7 @@
 					<td style="text-align: center;"><input type="text" name="${optListStat.index}optSubScore" onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)' value="${ScoreVO.subScore}" readonly="readonly"></td>
 					<td style="text-align: center;"><input type="text" name="${optListStat.index}optScoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="${optListStat.index}optSubId">
+					<input type="hidden" name="${optListStat.index}optSubId" id="option" value="n">
 					<input type="hidden" name="${optListStat.index}optScoreId" value="${ScoreVO.scoreId}">
 					<input type="hidden" name="optIndex" value="${optListStat.index}">
 				</tr>
@@ -119,9 +119,9 @@
 <!-- /.box-body -->
 
 <div class="box-footer">
-						<button type="submit" class="btn btn-danger" style = "float : right">삭제</button>
-						<button type="submit" class="btn btn-warning" style = "float : right">수정</button>
-						<button type="submit" class="btn btn-primary" style = "float : right">목록</button>
+						<button type="button" class="btn btn-danger" style = "float : right">삭제</button>
+						<button type="button" class="btn btn-warning" style = "float : right">수정</button>
+						<button type="button" class="btn btn-primary" style = "float : right">목록</button>
 </div> 
 
 <script>
@@ -135,13 +135,42 @@ $(document).ready(function(){
 	$(".btn-warning").on("click", function(){
 		formObj.attr("action", "score?command=scoreModify");
 		formObj.attr("method", "post");		
-		formObj.submit();
+		
+		if (document.getElementById("ess").value == "n" && document.getElementById("option").value == "n") {
+			alert("경고");
+		} else {
+			formObj.submit();
+		}
 	});
 	
 	$(".btn-danger").on("click", function(){
 		formObj.attr("action", "score?command=scoreDelete");
 		formObj.attr("method", "post");	
-		formObj.submit();
+		
+		var isChk = false;
+		
+        var arrEss = document.getElementsByName("essCheck");
+        var arrOpt = document.getElementsByName("optCheck");
+        
+        for(var i=0;i<arrEss.length;i++){
+            if(arrEss[i].checked == true) {
+                isChk = true;
+                break;
+            }
+        }
+        
+        for(var i=0; i<arrOpt.length; i++){
+        	if(arrOpt[i].checked == true) {
+                isChk = true;
+                break;
+            }
+        }
+    
+        if(!isChk){
+            alert("경고");
+        } else{
+			formObj.submit();
+		}
 	});
 	
 	$(".btn-primary").on("click", function(){
@@ -157,7 +186,6 @@ $(document).ready(function(){
 
 function openModEssSearchSubject(index)
 {				
-		alert(index)	;	
 	var url = "score?command=scoreModEssSearchForm&index=" + encodeURIComponent(index);		
 	
 	window.open(url,'_blank','width=500, height=400');
@@ -167,7 +195,6 @@ function openModEssSearchSubject(index)
 
 function openModOptSearchSubject(index)
 {				
-		alert(index)	;	
 	var url = "score?command=scoreModOptSearchForm&index=" + encodeURIComponent(index);		
 	
 	window.open(url,'_blank','width=500, height=400');
@@ -195,7 +222,7 @@ function removeChar(event) {
         event.target.value = event.target.value.replace(/[^0-9]/g, "");
 }
 
-function validateEmptyVal()
+/* function validateEmptyVal()
 {
 	if (document.getElementsByName("subName")[0].value == "")
 	{
@@ -217,7 +244,7 @@ function validateEmptyVal()
 	}
 	
 	return true;
-}
+} */
 
 function setOptSubInfo(index , subId, name, score){
 	document.getElementsByName(index+"optSubId")[0].value = subId;
@@ -242,6 +269,8 @@ function essUnCheckAll(){
 		frm.essCheck[i].checked = false;
 	}
 }
+
+
 
 
 </script>
