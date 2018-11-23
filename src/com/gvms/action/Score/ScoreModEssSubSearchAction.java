@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gvms.action.Action;
-import com.gvms.dao.SubjectDao;
-import com.gvms.vo.SubjectVO;
+import com.gvms.dao.ScoreDao;
+import com.gvms.vo.ScoreVO;
 
-public class ScoreModSubjectSearchAction implements Action{
+public class ScoreModEssSubSearchAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    String url = "/score/modifySearch.jsp";
+		    String url = "/score/modifyEssSubSearch.jsp";
 			String subName = request.getParameter("subName");
 							 request.setAttribute("subName", subName);
 							 System.out.println(subName);
@@ -26,8 +26,8 @@ public class ScoreModSubjectSearchAction implements Action{
 			
 			System.out.println("index : " + index);
 							
-			SubjectDao subDao = SubjectDao.getInstance();
-			ArrayList<SubjectVO> list = subDao.SearchSubject(subName);
+			ScoreDao scoDao = ScoreDao.getInstance();
+			ArrayList<ScoreVO> list = scoDao.SearchEssSubject(subName);
 			request.setAttribute("list", list);
 			System.out.println(list);
 			

@@ -64,7 +64,7 @@
 				<div class="box-header with-border">
 					<h2 class="box-title">인증항목 검색</h2>
 					<p>
-					<form method="post" action="score?command=scoreModSubSearch">
+					<form method="post" action="score?command=scoreModEssSubSearch">
 								<input type="text" name="subName">
 								<input type = "hidden" name = "index"  value = "${index}">
 								<input type="submit" class="btn btn-default" value="검색">
@@ -112,8 +112,7 @@
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;">${ScoreVO.major}</td>
 									<td style="text-align: center;">${ScoreVO.middle}</td>
-									<td class="subName" style="text-align: center;" onclick="sendChildValue(${index}, '${ScoreVO.subId}', '${ScoreVO.major}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
-									<%-- <td class="subName" style="text-align: center;" onclick="useSubInfo()">${ScoreVO.subName}</td> --%>
+									<td class="subName" style="text-align: center;" onclick="sendEssSubInfo(${index}, '${ScoreVO.subId}', '${ScoreVO.subName}')">${ScoreVO.subName}</td>
 									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
 								</tr>		
 										<input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
@@ -199,26 +198,26 @@
 
 				});
 		
-		function stuSelect(name) {
+/* 		function stuSelect(name) {
 		
-			/* opener.frm.cent_name_ok.value = 1; */
+			opener.frm.cent_name_ok.value = 1; 
 
 			
 			opener.frm.stuid.value = document.getElementsByName(name + "stuid")[0].value;
 			opener.frm.stuname.value = document.getElementsByName(name + "stuname")[0].value;
 			
 			
-			/* opener.frm.cent_p_no.value = document.getElementsByName(name + "cent_p_no")[0].value;
+			opener.frm.cent_p_no.value = document.getElementsByName(name + "cent_p_no")[0].value;
 			opener.frm.cent_addr.value = document.getElementsByName(name + "cent_addr")[0].value;
 			opener.frm.cent_addr_dtl.value = document.getElementsByName(name + "cent_addr_dtl")[0].value;
 			opener.document.getElementById("mod_btn").removeAttribute('disabled');
 			opener.document.getElementById("del_btn").removeAttribute('disabled');
 			opener.document.getElementById("ins_btn").disabled = "true";
-			opener.frm.action = "cent.do?command=cent_modify"; */
+			opener.frm.action = "cent.do?command=cent_modify"; 
 			self.close();
-		}
+		} */
 		
-		function sendParentData(index, sub_id)
+/* 		function sendParentData(index, sub_id)
 		{	
 			var subID = sub_id;
 			var score = document.getElementsByClassName("score")[index].innerHTML;
@@ -234,9 +233,9 @@
 
 			
 			this.window.close();
-		}
+		} */
 		
-		function useSubInfo() {
+/* 		function useSubInfo() {
 		
 			
 			opener.frm.subId.value = document.frm.subId.value;
@@ -244,16 +243,16 @@
 			opener.frm.subScore.value = document.frm.subScore.value;
 			
 			
-	/* 		if (opener.frm.cent_no.value == '') {
+		if (opener.frm.cent_no.value == '') {
 				opener.document.getElementById("ins_btn").removeAttribute('disabled');
 				opener.document.getElementById("mod_btn").disabled = "true";
 				opener.document.getElementById("del_btn").disabled = "true";
-			} */
+			} 
 			self.close();
-		}
+		} */
 	
-	function sendChildValue(index, subId, major, name, score){
-		opener.setChildValue(index, subId , major, name, score);
+	function sendEssSubInfo(index, subId, name){
+		opener.setEssSubInfo(index, subId, name);
 		this.window.close();
 	}
 
