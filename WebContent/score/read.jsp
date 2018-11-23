@@ -37,7 +37,7 @@
 			readonly="readonly">
 	</div> --%>
 	
-			<form role="frm" method="post">		
+			<form name="frm" method="post" role="form">		
 			<table class="table table-striped">
 			
 			<tr>
@@ -45,7 +45,7 @@
 			</tr>
 			
 			<tr>
-				<th style="width : 10px"> </th>
+				<th style="width : 10px"><input type="checkbox" name="essAllCheck" onclick="essCheckAll()"></th>
 				<th style="text-align: center;">영역</th>
 				<th style="text-align: center;">항목 명</th>
 				<th style="text-align: center;">점수</th>
@@ -56,16 +56,17 @@
 				
 				
 				<tr>
-				
-					<td style="width : 10px"><input type="checkbox" name="scoreId" value="${ScoreVO.scoreId}"></td>
+					
+					<td style="width : 10px"><input type="checkbox" name="essCheck" value="${essListStat.index}"></td>
 					<td style="text-align: center;">${ScoreVO.middle}</td>
-					<td style="text-align: center;"><input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+					<td style="text-align: center;"><input type="text" name="${essListStat.index}essSubName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModEssSearchSubject(${essListStat.index})">
 											<input type="button" value="검색" class="btn btn-default"></a></td>
-					<td style="text-align: center;"><input type="text" name="acqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
+					<td style="text-align: center;"><input type="text" name="${essListStat.index}essAcqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)'></td>
-					<td style="text-align: center;"><input type="text" name="scoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="optSubId">
-					<input type="hidden" name="scoreId" value="${ScoreVO.scoreId}">
+					<td style="text-align: center;"><input type="text" name="${essListStat.index}essScoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
+					<input type="hidden" name="${essListStat.index}essSubId">
+					<input type="hidden" name="${essListStat.index}essScoreId" value="${ScoreVO.scoreId}">
+					<input type="hidden" name="essIndex" value="${essListStat.index}">
 					</td>
 					
 				</tr>
@@ -86,7 +87,7 @@
 				</tr>
 				
 				<tr>
-					<th style="width : 10px"> </th>
+					<th style="width : 10px"><input type="checkbox" name="optAllCheck"></th>
 					<th style="text-align: center;">영역</th>
 					<th style="text-align: center;">항목 명</th>
 					<th style="text-align: center;">점수</th>
@@ -96,16 +97,18 @@
 				<c:forEach items="${optList}" var="ScoreVO" varStatus="optListStat">
 					
 				<tr>
-					<td style="width : 10px"><input type="checkbox" name = "scoreId" value="${ScoreVO.scoreId}"></td>
+					
+					<td style="width : 10px"><input type="checkbox" name = "optCheck" value="${optListStat.index}"></td>
 					<td style="text-align: center;">${ScoreVO.middle}</td>
 					<td style="text-align: center;">
-					<input type="text" name="subName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModSearchSubject()">
+					<input type="text" name="${optListStat.index}optSubName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModOptSearchSubject(${optListStat.index})">
 											<input type="button" value="검색" class="btn btn-default"></a></td>
-					<td style="text-align: center;"><input type="text" name="subScore" onkeydown='return onlyNumber(event)' 
+					<td style="text-align: center;"><input type="text" name="${optListStat.index}optSubScore" onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)' value="${ScoreVO.subScore}" readonly="readonly"></td>
-					<td style="text-align: center;"><input type="text" name="scoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="subId">
-					<input type="hidden" name="scoreId" value="${ScoreVO.scoreId}">
+					<td style="text-align: center;"><input type="text" name="${optListStat.index}optScoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
+					<input type="hidden" name="${optListStat.index}optSubId">
+					<input type="hidden" name="${optListStat.index}optScoreId" value="${ScoreVO.scoreId}">
+					<input type="hidden" name="optIndex" value="${optListStat.index}">
 				</tr>
 				</c:forEach>	
 			</table>
@@ -136,12 +139,15 @@ $(document).ready(function(){
 	});
 	
 	$(".btn-danger").on("click", function(){
-		formObj.attr("action", "");
+		formObj.attr("action", "score?command=scoreDelete");
+		formObj.attr("method", "post");	
 		formObj.submit();
 	});
 	
 	$(".btn-primary").on("click", function(){
-		self.location = "score?command=scoreListForm";
+		formObj.attr("action","score?command=scoreListForm");
+		formObj.attr("method","post");
+		formObj.submit();
 	});
 	
 });
@@ -149,42 +155,27 @@ $(document).ready(function(){
 
 
 
-function openModSearchSubject()
-{
-	window.open("score?command=scoreModifySearchForm",'_blank','width=500, height=400');
+function openModEssSearchSubject(index)
+{				
+		alert(index)	;	
+	var url = "score?command=scoreModEssSearchForm&index=" + encodeURIComponent(index);		
+	
+	window.open(url,'_blank','width=500, height=400');
 	
 	return false;
 }
 
-/* function getChildData(subject)
-{
-	if (subject == null)
-		return false;
-	if (subject.subID == 0 || subject.subID == null)
-		return false;
+function openModOptSearchSubject(index)
+{				
+		alert(index)	;	
+	var url = "score?command=scoreModOptSearchForm&index=" + encodeURIComponent(index);		
 	
-	var subID = document.getElementsByName("subID")[0];
-	subID.value = subject.subID;
-	var score = document.getElementsByName("score")[0];
+	window.open(url,'_blank','width=500, height=400');
 	
-	
-	
-	score.value = subject.score;
-	
-	document.getElementsByName("subName")[0].value = subject.subName;
-	
-	
-	if (score.value <= 0)
-	{
-		score.readOnly = false;
-		score.setAttribute("name", "acqScore");
-		var parentElem = score.parentElement;
-		parentElem.innerHTML = parentElem.innerHTML
-			+ "<input type=\"hidden\" name=\"score\" value=\"0\">";
-		
-	}
+	return false;
+}
 
-	} */
+
 	
 function onlyNumber(event){
     event = event || window.event;
@@ -228,70 +219,29 @@ function validateEmptyVal()
 	return true;
 }
 
-function setChildValue(subId, major, name, score){
-	
-    var essId = document.getElementsByName("essListIndex");
-	var essIdLeng = essId.length;
-	var essChecked = 0;
-	var optId = document.getElementsByName("optListIndex");
-	var optIdLeng = optId.length;
-	var optChecked = 0;
-	
-	if(major == "필수"){
-	
-	for(i=0; i<essIdLeng; i++){
-		if(essId[i].checked == true){
-			essChecked += 1;
-			alert(essId[i].value);
-		}
-			document.getElementsByName(essId[i].value+"subId")[0].value = subId;
-			document.getElementsByName(essId[i].value+"subName")[0].value = name;
-	}
-		
-		if(essChecked == 0){
-		alert("선택된 정보가 없습니다");
-		return;
-		}
+function setOptSubInfo(index , subId, name, score){
+	document.getElementsByName(index+"optSubId")[0].value = subId;
+	document.getElementsByName(index+"optSubName")[0].value = name;
+	document.getElementsByName(index+"optSubScore")[0].value = score;
+}
 
-	}
-	
-	else if(major == "선택"){
-	
-	for(i=0; i<optIdLeng; i++){
-		if(optId[i].checked == true){
-			optChecked += 1;
-			alert(optId[i].value);
-		}
-			document.getElementsByName(optId[i].value+"subId")[0].value = subId;
-			document.getElementsByName(optId[i].value+"subName")[0].value = name;
-			document.getElementsByName(optId[i].value+"subScore")[0].value = score;
-	}
-	
-	if(optChecked == 0){
-		alert("선택된 정보가 없습니다");
-		return;
-		}
-		
-
-	}
-	
-	
-	
-	
-	
-	 /* if(major == "선택"){
-		document.getElementsByName("optSubId").value = subId;
-		document.getElementsByName("optSubName").value = name;
-		document.getElementsByName("optSubScore").value = score;
-		
-	} else {
-		document.getElementsByName("essSubId").value = subId;
-		document.getElementsByName("essSubName").value = name;
-	} */ 
-	
+function setEssSubInfo(index , subId, name){
+	document.getElementsByName(index+"essSubId")[0].value = subId;
+	document.getElementsByName(index+"essSubName")[0].value = name;
 }
 
 
+function essCheckAll(){
+	for(i=0; i<frm.essCheck.length; i++){
+		frm.essCheck[i].checked = true;
+	}
+}
+
+function essUnCheckAll(){
+	for(i=0; i<frm.essCheck.length; i++){
+		frm.essCheck[i].checked = false;
+	}
+}
 
 
 </script>

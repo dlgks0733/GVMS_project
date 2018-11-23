@@ -29,7 +29,7 @@ public class StudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
-		System.out.println("CentServlet에서 요청을 받음을 확인 : " + command);
+		System.out.println("StudentServlet에서 요청을 받음을 확인 : " + command);
 
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);

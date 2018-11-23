@@ -23,23 +23,94 @@
 	<div class="box-body">
 <c:forEach items="${sublist}" var="SubjectVO">
 		<div class="form-group">
-			<label >필수</label> 
-			<input type= "radio" name = "major" value = "필수" >
+			<c:if test = "${major_num == 1}">
+			<label >필수</label>
+			<input type= "radio" name = "major" value = "필수" checked >
 			<label >선택</label> 
 			<input type= "radio" name = "major" value = "선택" >
+			</c:if>
+			<c:if test = "${major_num == 0}">
+			<label >필수</label>
+			<input type= "radio" name = "major" value = "필수" >
+			<label >선택</label> 
+			<input type= "radio" name = "major" value = "선택" checked>
+			</c:if>
 			
 		</div>
 		
 		<div class="form-group">
-			<label >중분류</label>
-			<select name = "middle">
-	       <option >영역선택</option>
+		   <label >중분류</label>
+		   <select name = "middle">
+		   <c:if test = "${middle_num == 0}">
+	       <option selected>영역선택</option>
 	       <option >외국어영역</option>
 	       <option >학생활동영역</option>
 	       <option >정보화영역</option>
 	       <option >금융/회계영역</option>
 	       <option >공모전영역</option>
 	       <option >기타</option>
+	       </c:if>
+		   
+		   <c:if test = "${middle_num == 1}">
+	       <option >영역선택</option>
+	       <option selected>외국어영역</option>
+	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
+	       </c:if>
+	              
+		   <c:if test = "${middle_num == 2}">
+	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option selected>학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
+	       </c:if>
+	       
+		   <c:if test = "${middle_num == 3}">
+	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
+	       <option selected>정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
+	       </c:if>
+	       
+		   <c:if test = "${middle_num == 4}">
+	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option selected>금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
+	       </c:if>
+	       
+		   <c:if test = "${middle_num == 5}">
+	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option selected>공모전영역</option>
+	       <option >기타</option>
+	       </c:if>
+	       
+		   <c:if test = "${middle_num == 6}">
+	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option selected>기타</option>
+	       </c:if>
+	       
 	       </select>
 	       
 		</div>

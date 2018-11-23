@@ -34,11 +34,11 @@
 <c:forEach items="${list}" var="SubjectVO">
 
 	<tr>
-		<td><input type = "checkbox" name = "check" value = "check"></td>
-		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subId}</a></td>
+		<td><input type = "checkbox" name = "check" value = "${SubjectVO.subId}"></td>
+		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
 		<td>${SubjectVO.middle}</td>
-		<td>${SubjectVO.subName}</td>
+		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
 		<td>${SubjectVO.subScore}</td>		     
 	</tr>
 
@@ -53,8 +53,9 @@
 				<!-- /.box-footer-->
 			</div>
 			    <a type = 'button' value = "신규등록"  href = "http://localhost:8181/subject/register.jsp">	
-				<button type = "submit">신규등록</button></a>		
-				<button type = "submit">삭제</button>
+				<button type = "submit">신규등록</button></a>	
+				<a type = 'button' value = "삭제"  href = "/subject?command=subDelete">		
+				<button type = "submit">삭제</button></a>
 				
 		</div>
 		<!--/.col (left) -->
