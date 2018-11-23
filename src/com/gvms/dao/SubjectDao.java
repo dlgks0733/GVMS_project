@@ -170,7 +170,7 @@ public class SubjectDao extends CommonDao {
 			   dbClose();
 		   }
 	   }
-	   public void deletesubject(String subId) {
+	   public void deletesubject(SubjectVO subVO) {
 		   
 		   String sql = "delete TBL_SUB where subId = ?";
 		   Connection conn = getConnection();
@@ -179,7 +179,7 @@ public class SubjectDao extends CommonDao {
 		   try {
 
 			   st = conn.prepareStatement(sql);
-			   st.setString(1,subId);
+			   st.setString(1,subVO.getSubId());
 			   st.executeUpdate(); 
 		   }catch(SQLException e){
 			   e.printStackTrace();
