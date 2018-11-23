@@ -65,9 +65,8 @@
 								<tr>
 									<td style="text-align: center;">${StudentVO.stuId}</td>
 									<td style="text-align: center;">${StudentVO.stuName}</td>
-									<td style="text-align: center;"><input type="submit" value="등록"> 
+									<td style="text-align: center;"><input type="submit" value="등록" class="btn btn-default"> 
 									</td>
-									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
 								<input type="hidden" name="stuId" value="${StudentVO.stuId }">
 								<input type="hidden" name="stuName" value="${StudentVO.stuName }">
