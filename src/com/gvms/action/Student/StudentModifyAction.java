@@ -2,6 +2,7 @@ package com.gvms.action.Student;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,8 @@ public class StudentModifyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/student?command=stud_modi_form";
+	
+		String url = "/student?command=studentListForm";
 		
 		String stuId = request.getParameter("stuId");
 		request.setAttribute("stuId", stuId);
@@ -36,6 +38,8 @@ public class StudentModifyAction implements Action {
 //		request.setAttribute("studentVO", stuVo);
 		
 		stuDao.updateStudent(stuVo);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 		
 		
 	

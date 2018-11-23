@@ -26,6 +26,7 @@ import com.gvms.action.Score.ScoreRegistSearchFormAction;
 import com.gvms.action.Score.ScoreRegisterFormAction;
 import com.gvms.action.Student.StudentDeleteAction;
 import com.gvms.action.Student.StudentListFormAction;
+import com.gvms.action.Student.StudentModifyAction;
 import com.gvms.action.Student.StudentModifyFormAction;
 import com.gvms.action.Student.StudentRegisterAction;
 import com.gvms.action.Student.StudentRegisterFormAction;
@@ -180,6 +181,9 @@ public class ActionFactory {
 			else if (command.equals("stud_delete")) {
 				
 				action = new StudentDeleteAction();
+			}
+			else if (command.equals("stud_modify")) {
+				action = new StudentModifyAction();
 			}
 		    
 			else if (command.equals("subList")) {

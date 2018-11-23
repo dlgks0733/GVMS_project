@@ -17,7 +17,7 @@
 				</div>
 				<!-- /.box-header -->
 
-				<form role="form" method="post" class="form-horizontal">
+				<form role="form" method="post" class="form-horizontal" action = "/student?command=stud_modify">
 					<input type="hidden" name="validation">
 					<div class="box-body box-form-custom">
 						<div class="form-group input-short">
