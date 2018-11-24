@@ -14,7 +14,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.gvms.vo.MisVO;
-import com.gvms.vo.SubjectVO;
 
 public class MisDAO extends CommonDao {
 
@@ -79,7 +78,8 @@ public class MisDAO extends CommonDao {
 	public List<MisVO> selectMisModify() {
 		//MIS 점수 조회화면에는 학번과 이름, MIS총점을 출력해야 한다.
 		//학생은 재학상태인 학생만 출력한다.
-		String sql = "SELECT stu.stuId   as stuId"
+		String sql = "SELECT s.scoreId 	 as scoreId"
+				+ "		   , stu.stuId   as stuId"
 				+ "		   , stu.stuName as stuName"
 				+ "        , TO_CHAR(s.scoreDate, 'YYYY-MM-DD') as scoreDate "
 				+ "     FROM TBL_SCORE s, TBL_STU stu "
@@ -98,7 +98,8 @@ public class MisDAO extends CommonDao {
 
 			while (rs.next()) {
 				MisVO mVo = new MisVO();
-
+				
+				mVo.setScoreId(rs.getString("scoreId"));
 				mVo.setStuId(rs.getString("stuId"));
 				mVo.setStuName(rs.getString("stuName"));
 				mVo.setScoreDate(rs.getString("scoreDate"));
@@ -238,9 +239,10 @@ public class MisDAO extends CommonDao {
 		}
 	}
 	
-	/*public void modifyMis (SubjectVO subVO) {
+	 public void modifyMis (MisVO misVo) {
 		   
-		   String sql = "update TBL_SUB set major = ?, middle = ?, subName = ?, subScore = ?  where subId = ?";
+		   String sql = "UPDATE TBL_SCORE SET scoreDate =? WHERE scoreId = ?";
+		   
 		   Connection conn = getConnection();
 		   PreparedStatement st;
 		   
@@ -249,11 +251,8 @@ public class MisDAO extends CommonDao {
 
 			   st = conn.prepareStatement(sql);
 			   
-			   st.setString(1, subVO.getMajor());
-			   st.setString(2, subVO.getMiddle());
-		       st.setString(3, subVO.getSubName());
-		       st.setString(4, subVO.getSubScore());
-		       st.setString(5, subVO.getSubId());
+			   st.setString(1, misVo.getScoreDate());
+			   st.setString(2, misVo.getScoreId());
 		       st.executeUpdate();
 		       
 		   }catch (SQLException e){
@@ -262,7 +261,7 @@ public class MisDAO extends CommonDao {
 			   dbClose();
 		   }
 	   }
-*/
+
 	public void deleteMis(String stuId, String scoreDate) {
 		
 		String sql = "DELETE TBL_SCORE"

@@ -5,6 +5,7 @@ package com.gvms.controller;
 import com.gvms.action.*;
 import com.gvms.action.Mis.MisDeleteAction;
 import com.gvms.action.Mis.MisListFormAction;
+import com.gvms.action.Mis.MisModifyAction;
 import com.gvms.action.Mis.MisModifyFormAction;
 import com.gvms.action.Mis.MisReadAction;
 import com.gvms.action.Mis.MisReadFormAction;
@@ -157,6 +158,9 @@ public class ActionFactory {
 			}
 			else if(command.equals("mis_modify_form")) {
 				action = new MisModifyFormAction();
+			}
+			else if(command.equals("mis_modify")) {
+				action = new MisModifyAction();
 			}
 			
 		
