@@ -167,6 +167,8 @@ public class MisDAO extends CommonDao {
 			// 상세조회 페이지로 선택한 학생의 학번과 이름 MIS-DAY 총점을 출력하고
 			// MIS-DAY 출석한 날짜를 최근순으로 출력한다
 			String sql = "SELECT TO_CHAR(scoreDate,'YYYY-MM-DD') AS scoreDate"
+					+ "			,sco.SCOREID  as scoreId"
+					+ "			,sub.SUBSCORE as subScore"
 					+ "		FROM TBL_SCORE sco"
 					+ "         ,TBL_STU stu"
 					+ "			,TBL_SUB sub"
@@ -192,8 +194,9 @@ public class MisDAO extends CommonDao {
 					
 					/*mVo.setScoreDate(rs.getString("stuId"));
 					mVo.setScoreDate(rs.getString("stuName"));*/
+					mVo.setScoreId(rs.getString("scoreId"));
 					mVo.setScoreDate(rs.getString("scoreDate"));
-					
+					mVo.setSubScore(rs.getString("subScore"));
 					list.add(mVo);
 				}
 				
@@ -262,12 +265,10 @@ public class MisDAO extends CommonDao {
 		   }
 	   }
 
-	public void deleteMis(String stuId, String scoreDate) {
+	public void deleteMis(MisVO misVo) {
 		
 		String sql = "DELETE TBL_SCORE"
-				+ "	   WHERE STUID = ?"
-				+ "      AND SCOREDATE = ?"
-				+ "      AND SUBID ='1' ";
+				+ "	   WHERE SCOREID = ?";
 		
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -276,8 +277,7 @@ public class MisDAO extends CommonDao {
 			conn = getConnection();
 			st = conn.prepareStatement(sql);
 
-			st.setString(1, stuId);
-			st.setString(2, scoreDate);
+			st.setString(1, misVo.getScoreId());
 
 			st.executeUpdate();
 			

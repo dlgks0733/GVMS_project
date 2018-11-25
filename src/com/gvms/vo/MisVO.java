@@ -13,6 +13,7 @@ public class MisVO {
 	private String stuName;
 	private String scoreDate;
 	private String scoreSum;
+	private String subScore;
 
 	public String getScoreId() {
 		return scoreId;
@@ -48,6 +49,13 @@ public class MisVO {
 
 	public String getScoreSum() {
 		return scoreSum;
+	}
+
+	public void setSubScore(String subScore) {
+		this.subScore = subScore;
+	}
+	public String getSubScore() {
+		return subScore;
 	}
 
 	public void setScoreSum(String scoreSum) {

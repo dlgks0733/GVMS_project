@@ -33,7 +33,8 @@
 							<td> <input type="checkbox" name="scoreId" value="${MisVO.scoreId}" ></td>
 							<td>${MisVO.stuId}</td>
 							<td>${MisVO.stuName}</td>
-							<td> <input type="date" name="scoreDate" value="${MisVO.scoreDate}" ></td>
+							<td>${MisVO.scoreDate}</td>
+							<td> <input type="date" name="scoreDate"></td>
 						</tr>
 					</c:forEach>
 					</table>

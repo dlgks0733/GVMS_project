@@ -19,24 +19,30 @@ public class MisReadAction implements Action {
 		// TODO Auto-generated method stub
 		String url = "mis?command=mis_read_form";
 		
+		
 		String stuId = request.getParameter("stuId");
 		String stuName = request.getParameter("stuName");
 		String scoreSum = request.getParameter("scoreSum");
 		
-		System.out.println("stuId : " + stuId);
-		System.out.println("stuName : " + stuName);
-		System.out.println("scoreSum : " + scoreSum);
 		
 		MisVO mVo = new MisVO();
+		
+		
 		mVo.setStuId(stuId);
 		mVo.setStuId(stuName);
 		mVo.setStuId(scoreSum);
 		
 		MisDAO mDao = MisDAO.getInstance();
 		
+
 		mDao.selectMisScoreDate(stuId);
 		mDao.selectMisScoreDate(stuName);
 		mDao.selectMisScoreDate(scoreSum);
+		
+		
+		System.out.println("stuId : " + stuId);
+		System.out.println("stuName : " + stuName);
+		System.out.println("scoreSum : " + scoreSum);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

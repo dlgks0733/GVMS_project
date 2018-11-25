@@ -21,19 +21,23 @@ public class MisReadFormAction implements Action {
 		
 		MisDAO mDao = MisDAO.getInstance();
 		
+		
 		String stuId = request.getParameter("stuId");
 		String stuName = request.getParameter("stuName");
 		String scoreSum = request.getParameter("scoreSum");
 		
+		
 		request.setAttribute("stuId", stuId);
 		request.setAttribute("stuName", stuName);
 		request.setAttribute("scoreSum", scoreSum);
+		
 		
 		System.out.println("stuId : " + stuId);
 		System.out.println("stuName : " + stuName);
 		System.out.println("scoreSum : " + scoreSum);
 		
 		MisVO mVo = new MisVO();
+		
 		
 		mVo.setStuId(stuId);
 		mVo.setStuId(stuName);

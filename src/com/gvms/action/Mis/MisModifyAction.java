@@ -43,7 +43,7 @@ public class MisModifyAction implements Action {
 			
 		}
 		
-		System.out.println("scoreId : " + scoreIdIndivi + "scoreDate : " + scoreDateIndivi);
+		System.out.println("scoreId : " + scoreIdIndivi + "       scoreDate : " + scoreDateIndivi);
 		
 		mDao.modifyMis(mVo);
 		
