@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -167,5 +167,117 @@ function validateEmptyVal()
 </body>
 
 
-</html>
+</html> --%>
 
+/////////////////////////////////////////////////////////////
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%@include file="../include/header.jsp"%>
+
+<%-- <c:if test="${sessionScope.stuLogin.stuid ne null}">
+	<% 
+	/*
+		이미 로그인 세션이 존재하면
+		관리자 메인 화면으로 이동
+	*/
+	response.sendRedirect("admin/login.jsp"); 	
+	%>
+</c:if>
+
+
+ --%>
+<!-- Start main-content -->
+<div class="main-content">
+	<!-- Section: inner-header -->
+	<section
+		class="inner-header divider parallax layer-overlay overlay-dark-5"
+		data-bg-img="/resources/images/courseapply.jsp.jpg">
+		<div class="container pt-70 pb-20">
+			<!-- Section Content -->
+			
+		</div>
+	</section>
+
+</div>
+
+<!-- Section: Course list -->
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 blog-pull-right">
+		        <div class="display-table-cell">
+		          <div class="container">
+		            <div class="row">
+		              <div class="col-md-6 col-md-push-1">
+		                <h4 class="text-theme-colored mt-0 pt-10 line-bottom"> 관리자 로그인</h4>
+		                <hr>
+			 <form class="form" name="fm" method=post action = "/adminLogin.do">
+			 <input type="hidden" name="command" value="login">
+                   <div class="form-group">
+                    <input type="text" class="form-control" id="inputId" name="adminid" placeholder="아이디">
+                    </div>
+                    <div class = "form-group">
+                    <input type="password" class="form-control" id="inputPw" name="adminpw" placeholder="비밀번호">
+                    </div>
+                    
+                    <div class = "row">
+                   <div class="col-lg-12">
+                   <button type="submit"class="btn btn-primary btn-block btn-lg" value="login">
+                   	로그인</button>
+
+                   </div>
+                   </div>
+                   <br>
+                   <p>
+                      <a href = "#" data-toggle = "tooltip" 
+                         data-placement = "bottom"
+                         title = "초기 비밀번호 - 0000">
+                         비밀번호를 잊어버리셨나요?
+                      </a>
+                      <br>
+                      <span>문의 : 042)000-0000 (관리자)</span>
+                      <script>
+                         $(document).ready(function(){
+                             $('[data-toggle="tooltip"]').tooltip(); 
+                         });
+                      </script>
+                      <br><br>
+                   </p>  
+         </form>
+		                
+
+
+
+
+		</div>
+	</div>
+</section>
+</div>
+<!-- end main-content -->
+
+	<script>
+		$(document).ready(
+				function() {
+
+					$('#btn-default').on(
+							"click",
+							function(event) {
+
+								self.location = "center"
+										+ '${pageMaker.makeQuery(1)}'
+										+ "&searchType="
+										+ $("select option:selected").val()
+										+ "&keyword="
+										+ $('#keywordInput').val();
+
+							});
+
+				});
+	</script>
+
+	<%@include file="../include/footer.jsp"%>

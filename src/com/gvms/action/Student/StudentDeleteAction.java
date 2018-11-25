@@ -18,9 +18,9 @@ public class StudentDeleteAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("진입");
 		
-		String[] stuId = request.getParameterValues("stuId");
+		String[] stuCheck = request.getParameterValues("stuCheck");
 		
-		for (String string : stuId) {
+		for (String string : stuCheck) {
 			System.out.println("아아디 : " + string);
 		}
 		
@@ -28,11 +28,12 @@ public class StudentDeleteAction implements Action {
 
 		StudentDao stuDao = StudentDao.getInstance();
 		
-			for(int i=0; i<stuId.length; i++) {	
+		
+			for(int i=0; i<stuCheck.length; i++) {	
 			
 				
-			System.out.println("stuId : " + stuId[i]);
-			stuIdIndivi = stuId[i];
+			System.out.println("stuCheck : " + stuCheck[i]);
+			stuIdIndivi = stuCheck[i];
 			
 			
 			//객체 셋팅
@@ -42,6 +43,7 @@ public class StudentDeleteAction implements Action {
 			
 			stuDao.deleteStudent(stuIdIndivi);
 		}
+			
 			
 			new StudentListFormAction().execute(request, response);
 		

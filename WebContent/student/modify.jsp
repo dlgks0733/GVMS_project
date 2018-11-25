@@ -37,7 +37,7 @@
 							</label> 
 							<div class="col-sm-10">
 								<input type="text" name='stuId' class="form-control"
-									placeholder="학번을 입력해주세요" value="${stuId}">
+									placeholder="학번을 입력해주세요" value="${stuId}" readonly="readonly">
 								<span id="validatePwEmailMessage"></span>
 							</div>
 						</div>
@@ -52,7 +52,7 @@
 								<span class="must-mark">*</span>
 							</label> 
 							<div class="col-sm-10">
-								<input type="text" name='stuname' class="form-control"
+								<input type="text" name='stuName' class="form-control"
 									placeholder="이름을 입력해주세요" value="${stuName}">
 								<span id="validatePwEmailMessage"></span>
 							</div>
@@ -70,9 +70,15 @@
 							<div class="col-sm-10">
 								
 								<select id='stuStat' name='stuStat'>
-												<option value='' selected>--선택--</option>
-												<option value='재학'>재학</option>
+												<c:if test="${stuStat == '재학'}">
+												<option value='재학' selected="selected">재학</option>
 												<option value='휴학'>휴학</option>
+												</c:if>
+												
+												<c:if test="${stuStat == '휴학'}">
+												<option value='재학'>재학</option>
+												<option value='휴학 ' selected="selected">휴학</option>
+												</c:if>
 											</select><%-- name="compnum" class="form-control" onchange="compSelect(this.value)">
 									<c:forEach var="list" items="${list}">
 										<c:if test="${list.compnum eq studentVO.compnum }">
@@ -408,5 +414,7 @@ cellPhone.onfocusin = function(event){
 	var _val = this.value.trim();
 	this.value = autoHypenPhone(_val) ;
 }
+
+
 
 </script>

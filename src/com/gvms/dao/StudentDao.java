@@ -165,9 +165,9 @@ public class StudentDao extends CommonDao {
 
 				   st = conn.prepareStatement(sql);
 				   
-				   st.setString(1, stuVo.getStuId());
-				   st.setString(2, stuVo.getStuName());
-			       st.setString(3, stuVo.getStuStat());
+				   st.setString(1, stuVo.getStuName());
+				   st.setString(2, stuVo.getStuStat());
+			       st.setString(3, stuVo.getStuId());
 
 			       st.executeUpdate();
 			       

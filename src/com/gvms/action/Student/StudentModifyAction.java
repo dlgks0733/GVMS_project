@@ -18,6 +18,7 @@ public class StudentModifyAction implements Action {
 	
 		String url = "/student?command=studentListForm";
 		
+		
 		String stuId = request.getParameter("stuId");
 		request.setAttribute("stuId", stuId);
 		
@@ -28,8 +29,15 @@ public class StudentModifyAction implements Action {
 		request.setAttribute("stuStat", stuStat);
 		
 		
+		System.out.println("stuId :" + stuId );
+		System.out.println("stuName :" + stuName );
+		System.out.println("stuStat :" + stuStat );
+
+		
+		
 		StudentVO stuVo = new StudentVO();
 		stuVo.setStuId(stuId);
+		
 		stuVo.setStuName(stuName);
 		stuVo.setStuStat(stuStat);
 		
@@ -45,6 +53,5 @@ public class StudentModifyAction implements Action {
 	
 }
 }
-
 
 

@@ -16,7 +16,7 @@
 				</div>
 				<!-- /.box-header -->
 
-				<form role="form" method="post" class="form-horizontal" action="/student?command=stud_register">
+				<form role="form" method="post" class="form-horizontal" action="/student?command=stud_register" onsubmit="return validateEmptyVal()">
 					<input type="hidden" name="validation">
 					<div class="box-body box-form-custom">
 						<div class="form-group input-short">
@@ -53,8 +53,8 @@
 									class="must-mark">*</span></label>
 								<div class="col-sm-10">
 									<input type="text" name='stuID' class="form-control"
-										placeholder="학번을 입력해주세요"> <span
-										id="validatePwEmailMessage"></span>
+										placeholder="학번을 입력해주세요" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'> 
+										<span id="validatePwEmailMessage"></span>
 								</div>
 							</div>
 						
@@ -207,42 +207,22 @@
 	// submit 버튼을 누를 때 빈 값을 찾아서
 	// 사용자에게 입력을 유도하는 함수
 	function validateEmptyVal() {
-		if (document.getElementsByName("stuid")[0].value == "") {
-			alert("아이디를 입력해주세요");
-			document.getElementsByName("stuid")[0].focus();
+		if (document.getElementsByName("stuID")[0].value == "") {
+			alert("학번을 입력해주세요");
+			document.getElementsByName("stuID")[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("stupw")[0].value == "") {
-			alert("비밀번호를 입력해주세요");
-			document.getElementsByName("stupw")[0].focus();
-			return false;
-		}
-		if (document.getElementsByName("stupwConfirm")[0].value == "") {
-			alert("비밀번호를 한번 더 입력해주세요");
-			document.getElementsByName("stupwConfirm")[0].focus();
-			return false;
-		}
-		if (document.getElementsByName("stupw")[0].value != document
-				.getElementsByName("stupwConfirm")[0].value) {
-			alert("비밀번호가 일치하지 않습니다");
-			document.getElementsByName("stupwConfirm")[0].focus();
-			return false;
-		}
-		if (document.getElementsByName("stuname")[0].value == "") {
+		if (document.getElementsByName("stuName")[0].value == "") {
 			alert("이름을 입력해주세요");
-			document.getElementsByName("stuname")[0].focus();
+			document.getElementsByName("stuName")[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("stuphone")[0].value == "") {
-			alert("전화번호를 입력해주세요");
-			document.getElementsByName("stuphone")[0].focus();
+		if (document.getElementsByName("stuStat")[0].value == "") {
+			alert("재적상태를 입력해주세요");
+			document.getElementsByName("stuStat")[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("stuemail")[0].value == "") {
-			alert("이메일주소를 입력해주세요");
-			document.getElementsByName("stuemail")[0].focus();
-			return false;
-		}
+		
 
 		return true;
 	}
@@ -280,5 +260,23 @@
 		event = event || window.event;
 		var _val = this.value.trim();
 		this.value = autoHypenPhone(_val);
+	}
+	
+	function onlyNumber(event){
+	    event = event || window.event;
+	    var keyID = (event.which) ? event.which : event.keyCode;
+	    if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+	        return;
+	    else
+	        return false;
+	}
+	 
+	function removeChar(event) {
+	    event = event || window.event;
+	    var keyID = (event.which) ? event.which : event.keyCode;
+	    if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+	        return;
+	    else
+	        event.target.value = event.target.value.replace(/[^0-9]/g, "");
 	}
 </script>

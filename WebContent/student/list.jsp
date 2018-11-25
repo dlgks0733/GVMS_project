@@ -46,7 +46,9 @@
 								</div>
 							</form>
 						</div>
+						<form name = "frm" role = "form">
 						<table class="table table-striped">
+						
 							<tr>
 							<!-- input type checkbox? -->
 								<th></th>
@@ -55,11 +57,11 @@
 								<th>재적상태</th>
 							</tr>
 							<c:forEach items="${list}" var="StudentVO" >
-						<form name = "frm" method="post" action ="/student?command=stud_delete&stuId=${StudentVO.stuId}">
+						
 								<tr>
-								    <td style="text-align: center;"> <input type="checkbox" value="${StudentVO.stuId}"></td>
-									<td style="text-align: center;"><a href="/student?command=stud_modi_form&stuId='${StudentVO.stuId}'">${StudentVO.stuId}</a></td>
-									<td style="text-align: center;">${StudentVO.stuName}</td>
+								    <td style="text-align: center;"> <input type="checkbox" value="${StudentVO.stuId}" name="stuCheck"></td>
+									<td style="text-align: center;">${StudentVO.stuId}</td>
+									<td style="text-align: center;"><a href="/student?command=stud_modi_form&stuId=${StudentVO.stuId}&stuName=${StudentVO.stuName}&stuStat=${StudentVO.stuStat}">${StudentVO.stuName}</a></td>
 									<td style="text-align: center;">${StudentVO.stuStat}</td>
 									<%-- <td style="text-align: center;"><a
 										href='/admin/student/modify${pageMaker.makeAppSearch(pageMaker.cri.page) }
@@ -68,8 +70,10 @@
 									<td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
 							</c:forEach>
+						
 						</table>
-						  <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
+						
+						  <button type="button" class="btn btn-danger" id="submitbutton">삭제</button>
 						  <a type="button" href="/student?command=stud_reg_form"
 								class="btn btn-default">신규 등록</a> 
 						</form>
@@ -135,7 +139,9 @@
 <script>
 	$(document).ready(
 			function() {
-
+		
+		var formObj = $("form[role='form']");	
+			
 				$('#searchBtn').on(
 						"click",
 						function(event) {
@@ -153,8 +159,58 @@
 					self.location = "register";
 
 				});
+				
+				
+				$(".btn-danger").on("click", function(){
+					formObj.attr("action", "student?command=stud_delete");
+					formObj.attr("method", "post");	
+					
+					var isChk = false;
+					
+			        var arrStu = document.getElementsByName("stuCheck");
+			        
+			        for(var i=0;i<arrStu.length;i++){
+			            if(arrStu[i].checked == true) {
+			                isChk = true;
+			                break;
+			            }
+			        }
+			        
+			    
+			        if(!isChk){
+			            alert("경고");
+			        } else{
+						formObj.submit();
+					}
+				});
 
 			});
+	
+function validateDelete(){
+	var isChk = false;
+	
+	var arrStu = document.getElementsByName("stuCheck");
+	
+	for(var i =0; i<arrStu.length; i++){
+		if(arrStu[i].checked == true){
+			isChk = true;
+			break;
+		}
+	}
+	
+	if(!isChk){
+		alert("선택된 학생이 없습니다.");
+		return false;
+	} else{
+		document.frm.submit();
+	}
+	
+}
+
+
+
+	
+	
 </script>
 
 <%@include file="../include/footer.jsp"%>
