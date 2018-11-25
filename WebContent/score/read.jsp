@@ -137,7 +137,7 @@ $(document).ready(function(){
 		formObj.attr("method", "post");		
 		
 		if (document.getElementById("ess").value == "n" && document.getElementById("option").value == "n") {
-			alert("경고");
+			alert("수정 내용이 없습니다.");
 		} else {
 			formObj.submit();
 		}
@@ -167,7 +167,7 @@ $(document).ready(function(){
         }
     
         if(!isChk){
-            alert("경고");
+            alert("삭제 내용이 없습니다.");
         } else{
 			formObj.submit();
 		}
@@ -180,6 +180,29 @@ $(document).ready(function(){
 	});
 	
 });
+
+
+$("input[name=essAllCheck]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='essCheck']").prop("checked", true);
+	} else{
+		$("input[name='essCheck']").prop("checked", false);
+	}
+});
+
+
+$("input[name=optAllCheck]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='optCheck']").prop("checked", true);
+	} else{
+		$("input[name='optCheck']").prop("checked", false);
+	}
+});
+
 
 
 
@@ -258,17 +281,7 @@ function setEssSubInfo(index , subId, name){
 }
 
 
-function essCheckAll(){
-	for(i=0; i<frm.essCheck.length; i++){
-		frm.essCheck[i].checked = true;
-	}
-}
 
-function essUnCheckAll(){
-	for(i=0; i<frm.essCheck.length; i++){
-		frm.essCheck[i].checked = false;
-	}
-}
 
 
 

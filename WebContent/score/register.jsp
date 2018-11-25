@@ -20,14 +20,15 @@
 				<div class="box-wrap">
 					<div class="box-body">
 						<h4>학번 : ${stuId } 이름 : ${stuName }</h4>
-						<input type="button" onclick="deleteRow()" value="항목삭제" class="btn btn-default" style ="float : right ">
-						<input type="button" onclick="addRow()" value="항목추가" class="btn btn-default" style ="float : right ">
+						<input type="button" id = "add" onclick="deleteRow()" value="항목삭제" class="btn btn-default" style ="float : right ">
+						<input type="button" id = "delete" onclick="addRow()" value="항목추가" class="btn btn-default" style ="float : right ">
 						
 						
 						<form id="form" method ="post" action="score?command=scoreRegist" onsubmit="return validateEmptyVal()">
 							<input type="hidden" name="stuId" value="${stuId}">
 							<input type="hidden" name="subId">
 							
+						 <div id="registTable">	
 							<table class="table table-striped">
 							  <thead>	
 									<tr>
@@ -46,6 +47,7 @@
 									</tr>
 							  </tbody>
 							</table>
+						  </div>
 							<button type="submit" id="newBtn" class="btn btn-default" style ="float : right ">신규 등록</button>
 							</form>
 							
@@ -125,6 +127,13 @@
 
 }); */
 
+$(document).ready(function(){
+	$('#add').click(function(){
+		$
+	}
+}
+
+
 /*자바스크립트, 제이슨  */
 
 function openRegSearchSubject()
@@ -173,12 +182,14 @@ function addRow()
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 	
+	
 	cell1.innerHTML = "<td>" + "<input type=\"text\" name=\"subName\" readonly=\"readonly\">"
 						+ "<a href=\"#\" onclick=\"openRegSearchSubject()\">" + "<input type=\"button\" value=\"검색\" class=\"btn btn-default\"></a></td>";
 						
 	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score\" readonly=\"readonly\"></td>";
 	
 	cell3.innerHTML = "<td><input type=\"date\" name=\"scoreDate\"></td>";
+
 }
 
 function deleteRow(){
@@ -191,6 +202,10 @@ function deleteRow(){
 	
 	
 }
+
+
+
+
 
 /* function submitForm(){
 
