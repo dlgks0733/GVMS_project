@@ -90,8 +90,40 @@ public class SubjectDao extends CommonDao {
 
 	   }
 	
-	 public ArrayList<SubjectVO> selectAllList() {
-		   String sql = "select * from TBL_SUB order by subId";
+	 public ArrayList<SubjectVO> selectessList() {
+		   String sql = "select * from TBL_SUB where major = '필수'";
+		   ArrayList<SubjectVO> list = new ArrayList <SubjectVO>();
+		   Connection conn = getConnection();
+		   PreparedStatement st;
+		   ResultSet rs = null;
+		   
+		   try {
+			   st = conn.prepareStatement(sql);
+			   rs = st.executeQuery();
+			   
+			   while (rs.next()) {
+	 			   SubjectVO subVO = new SubjectVO();   // subjectVO subVO = null;
+				   
+	 			   
+	 			   subVO.setSubId(rs.getString("subId"));
+	 			   subVO.setMajor(rs.getString("major"));
+	 			   subVO.setMiddle(rs.getString("middle"));
+	 			   subVO.setSubName(rs.getString("subName"));
+	 			   subVO.setSubScore(rs.getString("subScore"));
+
+	 			   list.add(subVO);
+			   }
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   } finally {
+			   dbClose();
+		   }
+		   return list ;
+
+	   }
+	 
+	 public ArrayList<SubjectVO> selectoptList() {
+		   String sql = "select * from TBL_SUB where major = '선택'";
 		   ArrayList<SubjectVO> list = new ArrayList <SubjectVO>();
 		   Connection conn = getConnection();
 		   PreparedStatement st;

@@ -30,8 +30,6 @@ public class SubjectDeleteAction implements Action {
 			subVO.setSubId(subIds[idx]);
 
 			SubjectDao sdao = SubjectDao.getInstance();
-			ArrayList<SubjectVO> list = sdao.selectAllList();
-			request.setAttribute("list", list);
 			sdao.deletesubject(subVO);
 		}
 

@@ -19,8 +19,11 @@ public class SubjectListformAction implements Action{
 		
 		SubjectDao sdao = SubjectDao.getInstance();
 		
-		ArrayList<SubjectVO> list = sdao.selectAllList();
-		request.setAttribute("list", list);
+		ArrayList<SubjectVO> esslist = sdao.selectessList();
+		request.setAttribute("esslist", esslist);
+		
+		ArrayList<SubjectVO> optlist = sdao.selectoptList();
+		request.setAttribute("optlist", optlist);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
