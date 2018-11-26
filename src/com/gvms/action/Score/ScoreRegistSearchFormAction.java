@@ -15,6 +15,9 @@ public class ScoreRegistSearchFormAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String url = "/score/registSearch.jsp";
+		String index = request.getParameter("index");
+		request.setAttribute("p_index", index);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		

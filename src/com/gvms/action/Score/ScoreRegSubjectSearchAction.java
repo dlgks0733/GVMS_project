@@ -21,6 +21,10 @@ public class ScoreRegSubjectSearchAction implements Action{
 							 request.setAttribute("subName", subName);
 							 System.out.println(subName);
 							 
+		String p_index = request.getParameter("p_index");
+								request.setAttribute("p_index", p_index);
+							 
+								System.out.println("======> p_index:  "+ p_index);
 							 	
 			SubjectDao subDao = SubjectDao.getInstance();
 			ArrayList<SubjectVO> list = subDao.SearchSubject(subName.toUpperCase().replaceAll(" ", ""));

@@ -26,8 +26,8 @@
 						
 						<form id="form" method ="post" action="score?command=scoreRegist" onsubmit="return validateEmptyVal()">
 							<input type="hidden" name="stuId" value="${stuId}">
-							<input type="hidden" name="subId">
-							
+							<input type="hidden" name="subId_1"> <!--각 선택된 과목별 히든  -->
+							<input type="hidden" name="row_cnt">
 						 <div id="registTable">	
 							<table class="table table-striped">
 							  <thead>	
@@ -40,10 +40,10 @@
 							  </thead>
 							  <tbody id="subject_tbody" align="center">	
 									<tr>
-										<td><input type="text" name="subName" readonly="readonly"><a href="#" onclick="openRegSearchSubject()">
+										<td><input type="text" name="subName_1" readonly="readonly"><a href="#" onclick="openRegSearchSubject(1)">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
-										<td><input type="text" name="score" readonly="readonly" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
-										<td><input type="date" name="scoreDate"></td>
+										<td><input type="text" name="score_1" readonly="readonly" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
+										<td><input type="date" name="scoreDate_1"></td>
 									</tr>
 							  </tbody>
 							</table>
@@ -127,75 +127,82 @@
 
 }); */
 
-$(document).ready(function(){
-	$('#add').click(function(){
-		$
-	}
-}
+
 
 
 /*자바스크립트, 제이슨  */
 
-function openRegSearchSubject()
+function openRegSearchSubject(index)
 {
-	window.open("score?command=scoreRegistSearchForm",'_blank','width=500, height=400');
+	window.open("score?command=scoreRegistSearchForm&index="+index ,'_blank','width=500, height=400');
 	
 	return false;
 }
 
 function getChildData(subject)
 {
+	
+	
+	
 	if (subject == null)
 		return false;
 	if (subject.subID == 0 || subject.subID == null)
 		return false;
 	
-	var subID = document.getElementsByName("subId")[0];
+	
+	var subID = document.getElementsByName("subId_"+subject.parent_index)[0];
 	subID.value = subject.subID;
-	var score = document.getElementsByName("score")[0];
 	
-				
-	
+	var score = document.getElementsByName("score_"+subject.parent_index)[0];
 	score.value = subject.score;
 	
-	document.getElementsByName("subName")[0].value = subject.subName;
+	document.getElementsByName("subName_"+subject.parent_index)[0].value = subject.subName;
 	
 	
-	if (score.value <= 0)
-	{
+	if(score.value <= 0){
 		score.readOnly = false;
-		score.setAttribute("name", "acqScore");
+		score.setAttribute("name", "acqScore_"+subject.parent_index);
 		var parentElem = score.parentElement;
 		parentElem.innerHTML = parentElem.innerHTML
 			+ "<input type=\"hidden\" name=\"score\" value=\"0\">";
-		
-	}
+	} 
 
 	}
 
 
 function addRow()
 {
+	
+	
 	var subject_tbody = document.getElementById('subject_tbody');
 	var row = subject_tbody.insertRow(subject_tbody.rows.length);
+	var row_cnt=subject_tbody.rows.length;   //파라미터값 전달  
+	document.getElementsByName("row_cnt")[0]. value = row_cnt;
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 	
 	
-	cell1.innerHTML = "<td>" + "<input type=\"text\" name=\"subName\" readonly=\"readonly\">"
-						+ "<a href=\"#\" onclick=\"openRegSearchSubject()\">" + "<input type=\"button\" value=\"검색\" class=\"btn btn-default\"></a></td>";
+	cell1.innerHTML = "<input type=\"hidden\" name=\"subId_"  +row_cnt + "\" value=\"0\"> <td>" + "<input type=\"text\" name=\"subName_"  +row_cnt + "\" readonly=\"readonly\">"
+						+ "<a href=\"#\" onclick=\"openRegSearchSubject("  +row_cnt + ")\">" + "<input type=\"button\" value=\"검색\" class=\"btn btn-default\"></a></td>";
 						
-	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score\" readonly=\"readonly\"></td>";
+	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score_"  +row_cnt + "\" readonly=\"readonly\" onkeydown=\"return onlyNumber(event)\" onkeyup=\"removeChar(event)\" placeholder=\"숫자만 입력해주세요\"></td>";
 	
-	cell3.innerHTML = "<td><input type=\"date\" name=\"scoreDate\"></td>";
+	cell3.innerHTML = "<td><input type=\"date\" name=\"scoreDate_"  +row_cnt + "\"></td>";
+	
+	//<input type=\"hidden\" name=\"row_cnt\" value="  +row_cnt + ">
 
 }
 
 function deleteRow(){
 	var subject_tbody = document.getElementById('subject_tbody');
-	if(subject_tbody.rows.length > 1){
+	var row_cnt=subject_tbody.rows.length;
+	
+
+	
+	if(subject_tbody.rows.length > 1 && row_cnt > 0){
 		subject_tbody.deleteRow(subject_tbody.rows.length-1);
+		document.getElementsByName("row_cnt")[0]. value = row_cnt-1;
 	} else {
 		alert("항목삭제 할 수 없습니다.");
 	}
@@ -233,26 +240,37 @@ function removeChar(event) {
 
 function validateEmptyVal()
 {
-	if (document.getElementsByName("subName")[0].value == "")
-	{
-		alert("항목 명을 입력해주세요");
-		document.getElementsByName("subName")[0].focus();
-		return false;
-	}
-	if (document.getElementsByName("score")[0].value == "")
-	{
-		alert("점수를 입력해주세요");
-		document.getElementsByName("score")[0].focus();
-		return false;
-	}
-	if (document.getElementsByName("acqScore")[0].value == "")
-	{
-		alert("점수를 입력해주세요");
-		document.getElementsByName("acqScore")[0].focus();
-		return false;
-	}
+	var subject_tbody = document.getElementById('subject_tbody');
+	var row_cnt=subject_tbody.rows.length;
 	
-	return true;
+	alert(row_cnt);
+	
+	for(var i = 1; i <= row_cnt; i++){
+		/* if(document.getElementsByName("subId_" + i)[0].value == ""){
+			alert("경고");
+			return false;
+		} */
+		
+		if (document.getElementsByName("subName_" + i)[0].value == "")
+		{
+			alert("항목 명을 입력해주세요");
+			document.getElementsByName("subName_" + i)[0].focus();
+			return false;
+		}
+		if (document.getElementsByName("score_" + i)[0].value == "")
+		{
+			alert("점수를 입력해주세요");
+			document.getElementsByName("score_" + i)[0].focus();
+			return false;
+		}
+		if (document.getElementsByName("acqScore_" + i)[0].value == "")
+		{
+			alert("점수를 입력해주세요");
+			document.getElementsByName("acqScore_" + i)[0].focus();
+			return false;
+		}
+	}
+		 return true;
 }
 
 

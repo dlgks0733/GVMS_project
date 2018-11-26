@@ -66,6 +66,7 @@
 					<p>
 					<form method="post" action="score?command=scoreRegSubSearch">
 								<input type="text" name="subName">
+								<input type="hidden" name = "p_index" value="${p_index}" >
 								<input type="submit" class="btn btn-default" value="검색">
 								</form>
 								</p>
@@ -107,11 +108,12 @@
 								<th>항목 점수</th>
 							</tr>
 							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
+							<input type="hidden" name = "p_index" class="p_index"  value="${p_index}" >
 								<tr style="cursor : pointer;">
-									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}')">${SubjectVO.major}</td>
-									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}')">${SubjectVO.middle}</td>
-									<td class="subName" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}')">${SubjectVO.subName}</td>
-									<td class="score" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}')">${SubjectVO.subScore}</td>
+									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.major}</td>
+									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subScore}</td>
 								</tr>
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
@@ -211,22 +213,25 @@
 			self.close();
 		}
 		
-		function sendParentData(index, subId)
+		function sendParentData(index, subId , p_index)
 		{			
+			
+			
 			var subID = subId;
+			var parent_index = p_index;
 			var score = document.getElementsByClassName("score")[index].innerHTML;
 			var subName = document.getElementsByClassName("subName")[index].innerHTML;
-		
+			
 			var subject = {
 				"subID" : subID,
 				"score" : score,
-				"subName" : subName
+				"subName" : subName,
+				"parent_index" : p_index
 				
 			};
 						
 			window.opener.getChildData(subject);
 	
-					
 			this.window.close();
 		}
 		
