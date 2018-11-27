@@ -38,15 +38,15 @@
 								<div class="row">
 									<div class="col-md-2 col-xs-4">
 										<select class="form-control" name="searchType">
-											<option>--</option>
-											<option value="s"
+											<option>이름</option>
+											<!-- <option value="s" -->
 												<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
-												이름</option>
+												
 										</select>
 									</div>
 									<div class="col-md-4 col-xs-8">
 										<input type="text" class="form-control"
-											placeholder="이름을 입력하세요" id="keyword"
+											placeholder="이름을 입력하세요" id="keyword" onkeydown="return enter(event)"
 											value="${cri.keyword}">
 									</div>
 								</div>
@@ -240,6 +240,17 @@
 			$(temp).parent().show();
 		})
 	})
+	
+	function enter(e){
+	if(window.event){
+		key = window.event.keyCode;
+	}else if(e){
+		key = e.which;
+	}
+	if(key==13){
+		return false    
+	}
+}
 	
 </script>
 
