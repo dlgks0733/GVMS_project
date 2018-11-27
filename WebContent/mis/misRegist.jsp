@@ -19,8 +19,9 @@
 					<h3 class="box-title">MIS 출결 등록</h3>
 				</div>
 				<div class="box-body">
-				<form name="frm" method="post" action="mis?command=mis_regist">
+				<form name="frm" method="post" action="mis?command=mis_regist" onsubmit="return validateEmptyVal()">
 					*날짜 <input type="date" name="scoreDate" >
+					<div style="overflow-y: scroll; height:400px;">	
 					<table class="table table-bordered">
 						<tr>
 							<th>학번</th>
@@ -37,6 +38,7 @@
 							</tr>
 						</c:forEach>
 					</table>
+					</div>
 						 <button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
 					</form>
 
@@ -56,7 +58,16 @@
 <!-- /.content-wrapper -->
 
 <script>
-
+function validateEmptyVal()
+{
+	if (document.getElementsByName("scoreDate")[0].value == "")
+	{
+		alert("날짜를 입력하시오.");
+		document.getElementsByName("scoreDate")[0].focus();
+		return false;
+	}
+	return true;
+} 
 
 	var result = '${msg}';
 

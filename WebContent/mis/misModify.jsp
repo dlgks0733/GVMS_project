@@ -21,23 +21,26 @@
 				
 				<form name="frm" method="post" action="/mis?command=mis_modify">
 				<div class="box-body">
+				<div style="overflow-y: scroll; height:400px;">	
 					<table class="table table-bordered">
 						<tr>
 							<th>no</th>
 							<th>학번</th>
 							<th>이름</th>
 							<th>날짜</th>
+							<th>수정날짜</th>
 						</tr>
 					<c:forEach items="${misModifyList}" var="MisVO">
 						<tr>
-							<td> <input type="checkbox" name="scoreId" value="${MisVO.scoreId}" ></td>
+							<td><input type="checkbox" name="scoreId" value="${MisVO.scoreId}" ></td>
 							<td>${MisVO.stuId}</td>
 							<td>${MisVO.stuName}</td>
 							<td>${MisVO.scoreDate}</td>
-							<td> <input type="date" name="scoreDate_${MisVO.scoreId}" value="${MisVO.scoreDate}"></td>
+							<td><input type="date" name="scoreDate_${MisVO.scoreId}" value="${MisVO.scoreDate}"></td>
 						</tr>
 					</c:forEach>
 					</table>
+					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">수정</button>
 	</form>
