@@ -18,6 +18,18 @@ a { text-decoration:none; color:#000; }
 .tab li.on { background-color:#eee; color:#f00; }
 .tab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
 .tab_con div { display:none; height:500px; background:#fff; line-height:100px; text-align:center; }
+
+#user-table {border-collapse: collapse;}
+#user-table > thead > tr { background-color: #222; color:#fff; }
+#user-table > thead > tr > th { padding: 8px; width: 150px; }
+#user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+
+#user-table2 {border-collapse: collapse;}
+#user-table2 > thead > tr { background-color: #222; color:#fff; }
+#user-table2 > thead > tr > th { padding: 8px; width: 150px; }
+#user-table2 > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+
+
 </style>
 
 <section class="content">
@@ -29,21 +41,24 @@ a { text-decoration:none; color:#000; }
 				
 			
 <form role = "form">
-			<div class="box">
+			<div class="box" >
 				<div class="box-header with-border">
 					<h3 class="box-title">인중평가 목록</h3>
 				</div>
 				<div class="box-body">
+
 <ul class="tab" id="tab">
     <li>필수</li>
     <li>선택</li>
-
 </ul>
+이름  : <input type="text" id="keyword">
 
-<div class="tab_con" id="tab_con">
+<div class="tab_con" id="tab_con" style = "overflow:scroll;">
+<!-- 필수영역 -->
 <div>
- <table class="table table-bordered">
-	
+
+ <table class="table table-bordered" id="user-table">
+	<thead>
 	<tr>
 	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "allChecked" id = "allChecked" onclick = "allChecked()"></th>
 		<th style="width: 15px;text-align: center;"> NO </th>
@@ -52,10 +67,10 @@ a { text-decoration:none; color:#000; }
 		<th style="width: 100px;text-align: center;">항목명</th>
 		<th style="width: 50px;text-align: center;">점수</th>
 	</tr>
+	</thead>
 
-
-<c:forEach items="${esslist}" var="SubjectVO" varStatus = "status">
-
+<c:forEach items="${esslist}" var="SubjectVO">
+	<tbody >
 	<tr>
 		<td><input type ="checkbox" value="${SubjectVO.subId}" name="subId" ></td>
 		<td>${SubjectVO.subId}</td>
@@ -64,32 +79,34 @@ a { text-decoration:none; color:#000; }
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
 		<td>${SubjectVO.subScore}</td>		     
 	</tr>
+	</tbody>
 </c:forEach>
 </table> 
-</div>	
+</div>
+<!-- 선택영역 -->	
     <div>
-    <table class="table table-bordered">
-	
+    <table class="table table-bordered" id="user-table2">
+<thead>
 	<tr>
-	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "allChecked" id = "allChecked" onclick = "allChecked()"></th>
+	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "checkAll" id = "th_checkAll" onclick = "checkAll();"></th>
 		<th style="width: 15px;text-align: center;"> NO </th>
 		<th style="width: 100px; text-align: center;">대분류</th>
 		<th style="width: 100px;text-align: center;">중분류</th>
 		<th style="width: 100px;text-align: center;">항목명</th>
 		<th style="width: 50px;text-align: center;">점수</th>
 	</tr>
-
-
+</thead>
 <c:forEach items="${optlist}" var="SubjectVO">
-
+	<tbody >
 	<tr>
-		<td><input type ="checkbox" value="${SubjectVO.subId}" name="subId"></td>
+		<td><input type ="checkbox" name ="checkRow" value="${SubjectVO.subId}" ></td>
 		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
 		<td>${SubjectVO.middle}</td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
 		<td>${SubjectVO.subScore}</td>		     
 	</tr>
+	</tbody>
 </c:forEach>
 </table> 
     </div>
@@ -99,10 +116,12 @@ a { text-decoration:none; color:#000; }
 			</div>
 		<button type="button" class="btn btn-primary">신규등록</button>	
 		<button type = "button" class="btn btn-danger">삭제</button>
-			
+		
 			</div>
+				
+			
 			</form>
-	
+
 
 <%-- <form role = "form">
 			<div class="box">
@@ -157,7 +176,7 @@ a { text-decoration:none; color:#000; }
 <!-- /.content-wrapper -->
 
 <script>
-
+//버튼 
 $(document).ready(function() {
 
 	var formObj = $("form[role='form']");
@@ -172,25 +191,25 @@ $(document).ready(function() {
 		formObj.attr("action", "subject?command=subDelete");
 		formObj.attr("method", "post");
 		formObj.submit();
-		
+		alert("삭제가 완료되었습니다.");
+
 	});
 
 });
 
 
 
-	function allChecked(){
-		var checked = document.getElementByid("allChecked");
-		var checkBox = document.list.name;
-		
-		if(checked.value =="ok"){
-			for(var i =0; i < checkBox.length; i++){
-				checkBox[i].checked = false;
-				checked.value = "";
-				
-			}
-			}
+	function checkAll(){
+		if($("#th_checkAll").is(':checked')){
+		$("input[name=checkRow]").prop("checked",true);
+		}else{
+			$("input[name=checkRow]").prop("checked",false);
+		}
 	}
+				
+			
+			
+//탭 기능  자바스크립트
 	$(function () {	
 		tab('#tab',0);	
 	});
@@ -218,7 +237,26 @@ $(document).ready(function() {
 	        con.eq(i).show();
 	    });
 	}
-		
+//검색기능
+	$(document).ready(function() {
+		$("#keyword").keyup(function(){
+			var k = $(this).val();
+			$("#user-table > tbody > tr").hide();
+			var temp = $("#user-table > tbody > tr > td:nth-child(5n+5):contains('" + k + "')");
+			
+			$(temp).parent().show();
+		})
+	})
+	
+		$(document).ready(function() {
+		$("#keyword").keyup(function(){
+			var k = $(this).val();
+			$("#user-table2 > tbody > tr").hide();
+			var temp = $("#user-table2 > tbody > tr > td:nth-child(5n+5):contains('" + k + "')");
+			
+			$(temp).parent().show();
+		})
+	})
 	
     var result = '${msg}';
     

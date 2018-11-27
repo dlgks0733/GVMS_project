@@ -157,6 +157,7 @@
 			formObj.attr("action", "subject?command=subModify");
 			formObj.attr("method", "post");
 			formObj.submit();
+			alert("수정이 완료되었습니다.");
 
 		});
 
@@ -180,6 +181,13 @@
 				alert("영역을 선택해주세요.");
 				document.getElementsByName("middle")[0].focus();
 				return false;
+
+			}
+			if(document.getElementsByName("middle")[0].value == "외국어영역")
+			{	
+				document.getElementsByName("subScore")[0].focus();
+				return true;
+				
 			}
 			if (document.getElementsByName("subName")[0].value == "")
 			{
