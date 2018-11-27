@@ -51,7 +51,7 @@ a { text-decoration:none; color:#000; }
     <li>필수</li>
     <li>선택</li>
 </ul>
-이름  : <input type="text" id="keyword">
+항목명  : <input type="text" id="keyword">
 
 <div class="tab_con" id="tab_con" style = "overflow:scroll;">
 <!-- 필수영역 -->
@@ -237,7 +237,7 @@ $(document).ready(function() {
 	        con.eq(i).show();
 	    });
 	}
-//검색기능
+//첫번쨰 탭 검색기능 5n + 선택값 , contains() 문자열 포합값 출력 , $("#user-table > tbody > tr").hide(); 문자열을 받아오면 나머지는 숨기다.
 	$(document).ready(function() {
 		$("#keyword").keyup(function(){
 			var k = $(this).val();
@@ -247,7 +247,7 @@ $(document).ready(function() {
 			$(temp).parent().show();
 		})
 	})
-	
+//두번째 탭
 		$(document).ready(function() {
 		$("#keyword").keyup(function(){
 			var k = $(this).val();
