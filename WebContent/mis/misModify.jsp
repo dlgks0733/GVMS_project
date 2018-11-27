@@ -34,7 +34,7 @@
 							<td>${MisVO.stuId}</td>
 							<td>${MisVO.stuName}</td>
 							<td>${MisVO.scoreDate}</td>
-							<td> <input type="date" name="scoreDate"></td>
+							<td> <input type="date" name="scoreDate_${MisVO.scoreId}" value="${MisVO.scoreDate}"></td>
 						</tr>
 					</c:forEach>
 					</table>

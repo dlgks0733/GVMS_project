@@ -44,6 +44,7 @@ public class MisReadAction implements Action {
 		System.out.println("stuName : " + stuName);
 		System.out.println("scoreSum : " + scoreSum);
 		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

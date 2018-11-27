@@ -18,8 +18,8 @@ public class MisModifyAction implements Action {
 		
 		String[] scoreId = request.getParameterValues("scoreId");
 		request.setAttribute("scoreId", scoreId);
-		String[] scoreDate = request.getParameterValues("scoreDate");
-		request.setAttribute("scoreDate", scoreDate);
+/*		String[] scoreDate = request.getParameterValues("scoreDate");
+		request.setAttribute("scoreDate", scoreDate);*/
 		
 		String scoreIdIndivi ="";
 		String scoreDateIndivi ="";
@@ -33,19 +33,22 @@ public class MisModifyAction implements Action {
 			
 			mVo.setScoreId(scoreIdIndivi);
 			
+			scoreDateIndivi = request.getParameter("scoreDate_"+scoreIdIndivi);
+			mVo.setScoreDate(scoreDateIndivi);
+			
+			System.out.println("scoreId : " + mVo.getScoreId() + "       scoreDate : " + mVo.getScoreDate());
+			
+			mDao.modifyMis(mVo);
 		}
 		
-		for(int i=0; i<scoreDate.length; i++) {
+/*		for(int i=0; i<scoreDate.length; i++) {
 			
 			scoreDateIndivi = scoreDate[i];
 			
 			mVo.setScoreDate(scoreDateIndivi);
 			
-		}
+		}*/
 		
-		System.out.println("scoreId : " + scoreIdIndivi + "       scoreDate : " + scoreDateIndivi);
-		
-		mDao.modifyMis(mVo);
 		
 		new MisModifyFormAction().execute(request, response);
 		

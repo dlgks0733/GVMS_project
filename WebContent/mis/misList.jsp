@@ -35,7 +35,7 @@
 					<div id="input-form">
 						이름  : <input type="text" id="keyword">
 					</div>
-						
+					<div style="overflow-y: scroll; height:400px;">	
 					<table class="table table-bordered" id="user-table">
 						<thead>
 						<tr>
@@ -44,8 +44,7 @@
 							<th>총점</th>
 						</tr>
 						</thead>
-
-
+						
 						<c:forEach items="${misList}" var="MisVO">
 							<tbody>
 							<tr>
@@ -58,6 +57,7 @@
 						</c:forEach>
 							</tbody>
 					</table>
+					</div>
 					<a type="button" class="btn btn-danger" id="submitbutton" href="/mis?command=mis_modify_form">전체수정</a>
 
 					</div>

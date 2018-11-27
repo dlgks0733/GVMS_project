@@ -17,7 +17,6 @@ public class MisDeleteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		/*String url = "mis?command=mis_read_form";*/
 		
 		String[] scoreId = request.getParameterValues("scoreId");
 		
@@ -34,11 +33,11 @@ public class MisDeleteAction implements Action {
 			MisVO mVo = new MisVO();
 			mVo.setScoreId(scoreIdIndivi);
 			
-			
 			mDao.deleteMis(mVo);
 		}
 			
-			new MisListFormAction().execute(request, response);
+			new MisReadFormAction().execute(request, response);
 
 	}
+	
 }
