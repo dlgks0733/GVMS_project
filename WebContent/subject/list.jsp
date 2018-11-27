@@ -19,17 +19,6 @@ a { text-decoration:none; color:#000; }
 .tab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
 .tab_con div { display:none; height:500px; background:#fff; line-height:100px; text-align:center; }
 
-#user-table {border-collapse: collapse;}
-#user-table > thead > tr { background-color: #222; color:#fff; }
-#user-table > thead > tr > th { padding: 8px; width: 150px; }
-#user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
-
-#user-table2 {border-collapse: collapse;}
-#user-table2 > thead > tr { background-color: #222; color:#fff; }
-#user-table2 > thead > tr > th { padding: 8px; width: 150px; }
-#user-table2 > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
-
-
 </style>
 
 <section class="content">
@@ -51,7 +40,7 @@ a { text-decoration:none; color:#000; }
     <li>필수</li>
     <li>선택</li>
 </ul>
-항목명  : <input type="text" id="keyword">
+항목명  : <input type="text" id="keyword" onkeydown = "return enter(event)">
 
 <div class="tab_con" id="tab_con" style = "overflow:scroll;">
 <!-- 필수영역 -->
@@ -60,7 +49,7 @@ a { text-decoration:none; color:#000; }
  <table class="table table-bordered" id="user-table">
 	<thead>
 	<tr>
-	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "allChecked" id = "allChecked" onclick = "allChecked()"></th>
+	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "essAllCheck" ></th>
 		<th style="width: 15px;text-align: center;"> NO </th>
 		<th style="width: 100px; text-align: center;">대분류</th>
 		<th style="width: 100px;text-align: center;">중분류</th>
@@ -72,7 +61,7 @@ a { text-decoration:none; color:#000; }
 <c:forEach items="${esslist}" var="SubjectVO">
 	<tbody >
 	<tr>
-		<td><input type ="checkbox" value="${SubjectVO.subId}" name="subId" ></td>
+		<td><input type ="checkbox" value="${SubjectVO.subId}" name="essSubId" ></td>
 		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
 		<td>${SubjectVO.middle}</td>
@@ -88,7 +77,7 @@ a { text-decoration:none; color:#000; }
     <table class="table table-bordered" id="user-table2">
 <thead>
 	<tr>
-	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "checkAll" id = "th_checkAll" onclick = "checkAll();"></th>
+	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "optAllCheck" ></th>
 		<th style="width: 15px;text-align: center;"> NO </th>
 		<th style="width: 100px; text-align: center;">대분류</th>
 		<th style="width: 100px;text-align: center;">중분류</th>
@@ -99,7 +88,7 @@ a { text-decoration:none; color:#000; }
 <c:forEach items="${optlist}" var="SubjectVO">
 	<tbody >
 	<tr>
-		<td><input type ="checkbox" name ="checkRow" value="${SubjectVO.subId}" ></td>
+		<td><input type ="checkbox" name ="optSubId" value="${SubjectVO.subId}"></td>
 		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
 		<td>${SubjectVO.middle}</td>
@@ -196,17 +185,27 @@ $(document).ready(function() {
 	});
 
 });
-
-
-
-	function checkAll(){
-		if($("#th_checkAll").is(':checked')){
-		$("input[name=checkRow]").prop("checked",true);
-		}else{
-			$("input[name=checkRow]").prop("checked",false);
-		}
+//첫번째 탭 올체크
+$("input[name=essAllCheck]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='essSubId']").prop("checked", true);
+	} else{
+		$("input[name='essSubId']").prop("checked", false);
 	}
-				
+});
+			
+//두번째 탭
+$("input[name=optAllCheck]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='optSubId']").prop("checked", true);
+	} else{
+		$("input[name='optSubId']").prop("checked", false);
+	}
+});
 			
 			
 //탭 기능  자바스크립트
@@ -257,6 +256,17 @@ $(document).ready(function() {
 			$(temp).parent().show();
 		})
 	})
+	
+	function enter(e){
+	if(window.event){
+		key = window.event.keyCode;
+	}else if(e){
+		key = e.which;
+	}
+	if(key==13){
+		return false
+	}
+}
 	
     var result = '${msg}';
     
