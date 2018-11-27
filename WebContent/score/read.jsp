@@ -38,7 +38,7 @@
 	</div> --%>
 	
 			<form name="frm" method="post" role="form">		
-			<table class="table table-striped">
+			<table class="table table-bordered">
 			
 			<tr>
 				<th style="text-align: center;" colspan="5">필수영역</th>
@@ -81,7 +81,7 @@
 	 
 		
 			
-			<table class="table table-striped">
+			<table class="table table-bordered">
 				<tr>
 					<th style="text-align: center;" colspan="5">선택영역</th>
 				</tr>
