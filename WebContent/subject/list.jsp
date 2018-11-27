@@ -256,7 +256,7 @@ $("input[name=optAllCheck]").click(function(){
 			$(temp).parent().show();
 		})
 	})
-	
+//엔터막기
 	function enter(e){
 	if(window.event){
 		key = window.event.keyCode;
