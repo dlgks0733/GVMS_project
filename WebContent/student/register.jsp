@@ -87,7 +87,9 @@
 						<!-- /.box-body -->
 
 						<div class="box-footer btn-group-center">
-							<button type="button" class="btn btn-cancel">취소</button>
+							<!-- <button type="button" class="btn btn-cancel">취소</button> -->
+							 <a type="button" href="/student?command=studentListForm"
+								class="btn btn-default">취소</a> 
 							<button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
 							
 						</div>
