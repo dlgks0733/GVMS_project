@@ -7,6 +7,19 @@
 
 
 <!-- Main content -->
+
+<!-- <style>
+#container {width: 960px; margin: 0 auto;}
+#container #input-form {text-align: center;}
+#user-table {margin: 0 auto; text-align: center;}
+#input-form {margin-top: 10px; margin-bottom: 10px;}
+#user-table {border-collapse: collapse;}
+#user-table > thead > tr { background-color: #222; color:#fff; }
+#user-table > thead > tr > th { padding: 8px; width: 150px; }
+#user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+</style> -->
+
+
 <section class="content">
 	<div class="row">
 		<!-- left column -->
@@ -28,20 +41,20 @@
 											<option>--</option>
 											<option value="s"
 												<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
-												입학년도</option>
+												이름</option>
 										</select>
 									</div>
 									<div class="col-md-4 col-xs-8">
 										<input type="text" class="form-control"
-											placeholder="입학년도를 입력하세요" name="keyword"
+											placeholder="이름을 입력하세요" id="keyword"
 											value="${cri.keyword}">
 									</div>
 								</div>
 								<div class="row">
 									<div class="btn-group-custom">
-										<button type="submit" class="btn btn-default">
-											<i class="fa fa-search"></i> 검색
-										</button>
+									<!-- 	<button type="submit" class="btn btn-default">
+											<i class="fa fa-search" ></i> 검색
+										</button> -->
 									</div>
 								</div>
 							</form>
@@ -49,22 +62,23 @@
 						<form name="frm" role="form">
 							<div style="overflow-y: scroll; height: 400px;">
 								<table class="table table-bordered" id="user-table">
-
-
-									<!-- <div style="overflow-y: scroll; height:400px;">   
-               <table class="table table-bordered" id="user-table"> -->
+								<thead>
+								
+								
 
 									<tr>
 										<!-- input type checkbox? -->
-										<th></th>
-										<th>학번</th>
-										<th>이름</th>
-										<th>재적상태</th>
+										<th style="width : 10px"> </th>
+										<th style="text-align: center;">학번</th>
+										<th style="text-align: center;">이름</th>
+										<th style="text-align: center;">재적상태</th>
 									</tr>
+									</thead>
 									<c:forEach items="${list}" var="StudentVO">
+									<tbody>
 
 										<tr>
-											<td style="text-align: center;"><input type="checkbox"
+											<td style="width : 10; text-align: center;"><input type="checkbox"
 												value="${StudentVO.stuId}" name="stuCheck"></td>
 											<td style="text-align: center;">${StudentVO.stuId}</td>
 											<td style="text-align: center;"><a
@@ -76,6 +90,7 @@
 											${studentVO.stuname} </a></td>
 									<td style="text-align: center;">${studentVO.stuphone}</td> --%>
 										</tr>
+										</tbody>
 									</c:forEach>
 
 								</table>
@@ -214,6 +229,18 @@
 		}
 
 	}
+	
+	
+	$(document).ready(function() {
+		$("#keyword").keyup(function(){
+			var k = $(this).val();
+			$("#user-table > tbody > tr").hide();
+			var temp = $("#user-table > tbody > tr > td:nth-child(5n+3):contains('" + k + "')");
+			
+			$(temp).parent().show();
+		})
+	})
+	
 </script>
 
 <%@include file="../include/footer.jsp"%>
