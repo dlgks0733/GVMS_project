@@ -243,8 +243,8 @@ function removeChar(event) {
 
 function validateEmptyVal()
 {
-	var subject_tbody = document.getElementById('subject_tbody');
-	var row_cnt=subject_tbody.rows.length;
+	
+	var row_cnt= document.getElementsByName("row_cnt")[0].value;
 	
 	
 	for(var i = 1; i <= row_cnt; i++){
@@ -253,26 +253,27 @@ function validateEmptyVal()
 			return false;
 		} */
 		
-		if (document.getElementsByName("subName_" + i)[0].value == "")
+		if (document.getElementsByName("subName_" + i)[0].value == "" || document.getElementsByName("subName_" + i)[0].value == null)
 		{
 			alert("항목 명을 입력해주세요");
 			document.getElementsByName("subName_" + i)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("score_" + i)[0].value == "")
+		if (document.getElementsByName("score_" + i)[0].value == "" || document.getElementsByName("score_" + i)[0].value == null)
 		{
 			alert("점수를 입력해주세요");
 			document.getElementsByName("score_" + i)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("acqScore_" + i)[0].value == "")
+		if (document.getElementsByName("acqScore_" + i)[0].value == "" || document.getElementsByName("acqScore_" + i)[0].value == null)
 		{
 			alert("점수를 입력해주세요");
 			document.getElementsByName("acqScore_" + i)[0].focus();
 			return false;
 		}
-	}
 		 return true;
+	}
+	
 }
 
 

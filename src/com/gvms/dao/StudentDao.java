@@ -63,7 +63,7 @@ public class StudentDao extends CommonDao {
 		PreparedStatement st;
 		ResultSet rs = null;
 		String sql = "SELECT STU.STUID, STU.STUNAME, ST.TOTAL FROM SCORETOTAL ST, TBL_STU STU " + 
-					 "WHERE ST.STUID = STU.STUID";
+					 "WHERE ST.STUID = STU.STUID ORDER BY STU.STUID DESC";
 		
 		try {
 			st = conn.prepareStatement(sql);
