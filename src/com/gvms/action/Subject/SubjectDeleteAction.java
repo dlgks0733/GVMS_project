@@ -18,21 +18,37 @@ public class SubjectDeleteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/subject?command=subList";
 
-		String[] subIds = request.getParameterValues("subId");
+		String[] essSubId = request.getParameterValues("essSubId");
+		String[] optSubId = request.getParameterValues("optSubId");
 		
-		for (int idx = 0; subIds.length > idx; idx++) {
-			request.setAttribute("subId", subIds[idx]);
+		if(essSubId != null) {
+		for (int idx = 0; essSubId.length > idx; idx++) {
+			request.setAttribute("essSubId", essSubId[idx]);
 
-			System.out.println("subId : " + subIds[idx]);
+			System.out.println("subId : " + essSubId[idx]);
 
 			SubjectVO subVO = new SubjectVO();
 
-			subVO.setSubId(subIds[idx]);
+			subVO.setSubId(essSubId[idx]);
 
 			SubjectDao sdao = SubjectDao.getInstance();
 			sdao.deletesubject(subVO);
 		}
+		}
+		if(optSubId != null) {
+		for (int idx = 0; optSubId.length > idx; idx++) {
+			request.setAttribute("optSubId", optSubId[idx]);
 
+			System.out.println("optSubId : " + optSubId[idx]);
+
+			SubjectVO subVO = new SubjectVO();
+
+			subVO.setSubId(optSubId[idx]);
+
+			SubjectDao sdao = SubjectDao.getInstance();
+			sdao.deletesubject(subVO);
+		}
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 

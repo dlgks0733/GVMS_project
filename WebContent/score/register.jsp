@@ -27,7 +27,7 @@
 						<form id="form" method ="post" action="score?command=scoreRegist" onsubmit="return validateEmptyVal()">
 							<input type="hidden" name="stuId" value="${stuId}">
 							<input type="hidden" name="subId_1"> <!--각 선택된 과목별 히든  -->
-							<input type="hidden" name="row_cnt">
+							<input type="hidden" name="row_cnt" value= "1">
 						 <div id="registTable">	
 							<table class="table table-striped">
 							  <thead>	
@@ -48,7 +48,8 @@
 							  </tbody>
 							</table>
 						  </div>
-							<button type="submit" id="newBtn" class="btn btn-default" style ="float : right ">신규 등록</button>
+						  	<a href="score?command=scoreListRegForm"><button type="button" id="newBtn" class="btn btn-default" style ="float : right ">취소</button></a>
+							<button type="submit" id="newBtn" class="btn btn-primary" style ="float : right ">신규 등록</button>
 							</form>
 							
 					</div>
@@ -126,6 +127,8 @@
 
 
 }); */
+
+
 
 
 
@@ -243,7 +246,6 @@ function validateEmptyVal()
 	var subject_tbody = document.getElementById('subject_tbody');
 	var row_cnt=subject_tbody.rows.length;
 	
-	alert(row_cnt);
 	
 	for(var i = 1; i <= row_cnt; i++){
 		/* if(document.getElementsByName("subId_" + i)[0].value == ""){

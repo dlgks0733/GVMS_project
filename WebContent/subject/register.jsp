@@ -74,6 +74,7 @@ $(document).ready(function() {
 		formObj.attr("action", "/subject?command=subRegister");
 		formObj.attr("method", "post");
 		formObj.submit();
+		alert("등록되었습니다.");
 
 	});
 
@@ -99,6 +100,11 @@ function validateEmptyVal()
 		document.getElementsByName("middle")[0].focus();
 		return false;
 	}
+	if(document.getElementsByName("middle")[0].value == "외국어영역")
+	{		document.getElementsByName("subScore")[0].focus();
+			return true;
+		
+	}
 	if (document.getElementsByName("subName")[0].value == "")
 	{
 		alert("항목명을 입력해주세요.");
@@ -111,7 +117,7 @@ function validateEmptyVal()
 		document.getElementsByName("subScore")[0].focus();
 		return false;
 	}
-	
+
 	return true;
 } 
 </script>

@@ -152,7 +152,9 @@
 					<div class="box-footer btn-group-center">
 						<!-- <button type="button" class="btn btn-danger" onclick="remove()">삭제</button> -->
 						<button type="submit" class="btn btn-primary" id="submitbutton" onclick="return validateEmptyVal()">수정</button>
-						<button type="button" class="btn btn-cancel">취소</button>
+						 <a type="button" href="/student?command=studentListForm"
+								class="btn btn-default">취소</a> 
+						<!-- <button type="button" class="btn btn-cancel">취소</button> -->
 					</div>
 				</form>
 

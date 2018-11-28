@@ -25,15 +25,15 @@
 							<div class="row">
 								<div class="col-md-2 col-xs-4">
 									<select class="form-control" name="searchType">
-										<option>--</option>
-										<option value="s"
+										<option>이름</option>
+										<%-- <option value="s"
 											<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
 											이름
 										</option>
 										<option value="c"
 											<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
 											학번
-										</option>
+										</option> --%>
 										<%-- <option value="sc"
 											<c:out value="${cri.searchType eq 'sc'?'selected':''}"/>>
 											총점
@@ -41,43 +41,47 @@
 									</select>
 								</div>
 								<div  class="col-md-4 col-xs-8">
-									<input type="text" class="form-control" placeholder="키워드를 입력하세요"
-										name="keyword" value="${cri.keyword}">
+									<input type="text" class="form-control" placeholder="이름을 입력하세요"
+										id="keyword" onkeydown="return enter(event)">
 								</div>
 							</div>
-							<div class="row">
+							<!-- <div class="row">
 								<div  class="btn-group-custom">
 									<button type="submit" class="btn btn-default"><i class="fa fa-search"></i> 검색</button>
 								</div>
-							</div>
+							</div> -->
 							</form>
 						</div>
-						
-						<table class="table table-striped">
+						<table class="table table-bordered" id = "user-table">
+						  <thead>
 							<tr>
-								<th>학번</th>
-								<th>이름</th>
-								<th>총점</th>
+								<th style="text-align: center;">학번</th>
+								<th style="text-align: center;">이름</th>
+								<th style="text-align: center;">총점</th>
 								<!-- <th>전화번호</th> -->
 							</tr>
+						  </thead>
+						  
+						  
 							<c:forEach items="${list}" var="StudentVO" varStatus="listStat">
 									<%-- <input type="hidden" name="stu_id" value="${StudentVO.stu_id}">
 									<input type="hidden" name="stu_name" value="${StudentVO.stu_name}"> --%>
 								<!-- <form name ="frm" method ="post" action="score?command=readForm">
 								<input type="hidden" name="stuId">
 								<input type="hidden" name="stuName"> -->
-										
+							 <tbody>
 								<tr>
 									<td style="text-align: center;">${StudentVO.stuId}</td>
 									<td style="text-align: center;"><a href="score?command=scoreReadForm&stuId=${StudentVO.stuId}&stuName=${StudentVO.stuName}">${StudentVO.stuName}</a></td>
 									<td style="text-align: center;">${StudentVO.scoreTotal}</td>
 									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
 								</tr>
-								
 							    </form>
+							  </tbody> 
 							</c:forEach>
 						</table>
-					</div>
+					
+				</div>
 					<!-- /.box-body -->
 	
 	
@@ -160,8 +164,27 @@
 	document.getElementsByName("stuName")[0].value = stuName;
 	document.getElementById("frm").submit();
 } */
-	
 
+$(document).ready(function() {
+	$("#keyword").keyup(function(){
+		var k = $(this).val();
+		$("#user-table > tbody > tr").hide();
+		var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
+		
+		$(temp).parent().show();
+	})
+})
+
+	function enter(e){
+	if(window.event){
+		key = window.event.keyCode;
+	}else if(e){
+		key = e.which;
+	}
+	if(key==13){
+		return false    
+	}
+}
 	
 </script>
 
