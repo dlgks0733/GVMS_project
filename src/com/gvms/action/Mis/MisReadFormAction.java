@@ -43,9 +43,13 @@ public class MisReadFormAction implements Action {
 		mVo.setStuId(stuName);
 		mVo.setStuId(scoreSum);
 		
+		List<MisVO> misListReadScoreSum = mDao.selectMisScoreSum(stuName);
 		List<MisVO> misListRead = mDao.selectMisScoreDate(stuName);
+		
+		request.setAttribute("misListReadScoreSum", misListReadScoreSum);
 		request.setAttribute("misListRead", misListRead);
 		
+		System.out.println(misListReadScoreSum);
 		System.out.println(misListRead);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

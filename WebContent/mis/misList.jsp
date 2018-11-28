@@ -11,7 +11,7 @@
 <!-- Main content -->
 	<style>
 		 #container {width: 960px; margin: 0 auto;}
-        #container #input-form {text-align: center;}
+        #container #input-form {text-align: left;}
         #user-table {margin: 0 auto; text-align: center;}
         #input-form {margin-top: 10px; margin-bottom: 10px;}
 
@@ -22,7 +22,7 @@
 	</style>
 
 <section class="content">
-	<div class="row">
+	
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
@@ -33,15 +33,15 @@
 				<div class="box-body">
 					<div id="container">
 					<div id="input-form">
-						이름  : <input type="text" id="keyword">
+					<b>	학생 검색 &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b> <input type="text" id="keyword">
 					</div>
 					<div style="overflow-y: scroll; height:400px;">	
 					<table class="table table-bordered" id="user-table">
 						<thead>
 						<tr>
-							<th>학번</th>
-							<th>이름</th>
-							<th>총점</th>
+							<th style="text-align : center;">학번</th>
+							<th style="text-align : center;">이름</th>
+							<th style="text-align : center;">총점</th>
 						</tr>
 						</thead>
 						
@@ -58,14 +58,14 @@
 							</tbody>
 					</table>
 					</div>
-					<a type="button" class="btn btn-danger" id="submitbutton" href="/mis?command=mis_modify_form">전체수정</a>
+					<br>
+					
+					<a type="button" class="btn btn-primary btn-modify" id="submitbutton" href="/mis?command=mis_modify_form" style = "float : right">전체수정</a>
+					<a type="button" class="btn btn-default" id="newBtn" href="/mis?command=mis_regist_form" style = "float : right">신규 등록</a>
 
 					</div>
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer">Footer</div>
-				<!-- /.box-footer-->
-			</div>
 		</div>
 		<!--/.col (left) -->
 

@@ -212,6 +212,51 @@ public class MisDAO extends CommonDao {
 			
 			return list;
 		}
+		
+		// MisRead.jsp에서 학생 ScoreDate 조회하는 메소드
+				public List<MisVO> selectMisScoreSum(String stuName) {
+					// 상세조회 페이지로 선택한 학생의 학번과 이름 MIS-DAY 총점을 출력하고
+					// MIS-DAY 출석한 날짜를 최근순으로 출력한다
+					String sql = "SELECT stu.stuId"
+							+ "			,stu.stuName"
+							+ "			,ss.scoreSum"
+							+ "		FROM TBL_STU stu"
+							+ "			,SCORESUM ss"
+							+ "    WHERE stu.STUID = ss.STUID"
+							+ "		 AND stu.STUNAME ='" + stuName + "'";
+					
+					
+					List<MisVO> list = new ArrayList<MisVO>();
+					Connection conn = null;
+					Statement stmt = null;
+					ResultSet rs = null;
+					
+					try {
+						conn = getConnection();
+						stmt = conn.prepareStatement(sql);
+						rs = stmt.executeQuery(sql);
+						
+						while (rs.next()) {
+							MisVO mVo = new MisVO();
+							
+							mVo.setStuId(rs.getString("stuId"));
+							mVo.setStuName(rs.getString("stuName"));
+							mVo.setScoreSum(rs.getString("ScoreSum"));
+							list.add(mVo);
+						}
+						
+					} catch (SQLException e) {
+						
+						e.printStackTrace();
+						
+					} finally {
+						
+						dbClose();
+						
+					}
+					
+					return list;
+				}
 	
 	// MIS 등록하는 메소드
 	public void insertMis(MisVO misVo) {

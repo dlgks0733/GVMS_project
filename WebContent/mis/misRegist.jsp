@@ -10,6 +10,7 @@
 
 <!-- Main content -->
 <section class="content">
+
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
@@ -24,17 +25,16 @@
 					<div style="overflow-y: scroll; height:400px;">	
 					<table class="table table-bordered">
 						<tr>
+							<th><input type ="checkbox" name="stuIdAll" /></th>
 							<th>학번</th>
 							<th>이름</th>
-							<th>출석여부</th>
 						</tr>
-
 
 						<c:forEach items="${misListRegist}" var="MisVO">
 							<tr>
+								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"/></td>
 								<td>${MisVO.stuId}</td>
 								<td>${MisVO.stuName}</td>
-								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -58,6 +58,17 @@
 <!-- /.content-wrapper -->
 
 <script>
+
+$("input[name=stuIdAll]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='stuId']").prop("checked", true);
+	} else{
+		$("input[name='stuId']").prop("checked", false);
+	}
+});
+
 function validateEmptyVal()
 {
 	if (document.getElementsByName("scoreDate")[0].value == "")
