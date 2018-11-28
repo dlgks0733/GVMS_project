@@ -257,7 +257,8 @@ public class MisDAO extends CommonDao {
 					
 					return list;
 				}
-					
+						
+				
 				
 	// MIS 등록하는 메소드
 	public void insertMis(MisVO misVo) {
@@ -271,7 +272,7 @@ public class MisDAO extends CommonDao {
 				+ "   VALUES(score_seq.nextval, 1, ?, ?, null)";
 
 		Connection conn = null;
-		PreparedStatement st = null;
+		PreparedStatement st = null	;
 
 		try {
 			conn = getConnection();
