@@ -21,28 +21,21 @@ public class MisReadAction implements Action {
 		
 		
 		String stuId = request.getParameter("stuId");
-		String stuName = request.getParameter("stuName");
-		String scoreSum = request.getParameter("scoreSum");
 		
 		
 		MisVO mVo = new MisVO();
 		
 		
 		mVo.setStuId(stuId);
-		mVo.setStuId(stuName);
-		mVo.setStuId(scoreSum);
 		
 		MisDAO mDao = MisDAO.getInstance();
 		
 
 		mDao.selectMisScoreDate(stuId);
-		mDao.selectMisScoreDate(stuName);
-		mDao.selectMisScoreDate(scoreSum);
+		mDao.selectMisScoreSum(stuId);
 		
 		
 		System.out.println("stuId : " + stuId);
-		System.out.println("stuName : " + stuName);
-		System.out.println("scoreSum : " + scoreSum);
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

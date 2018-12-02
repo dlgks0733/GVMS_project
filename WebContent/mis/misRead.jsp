@@ -19,20 +19,20 @@
 					<h3 class="box-title">MIS 상세 조회</h3>
 				</div>
 				<div class="box-body">
-				<form name="frm" method="post" action="mis?command=mis_delete">
-					<input type="hidden" name ="scoreId" value="${scoreId}">
+				<form role="form" method="post">
 					<input type="hidden" name ="stuId" value="${stuId}">
-					<input type="hidden" name ="stuName" value="${stuName}">
-					<input type="hidden" name ="scoreSum" value="${scoreSum}">
 					<table class="table table-bordered">
-						<tr>
+						<c:forEach items="${misListReadScoreSum}" var="MisVO">
+							<tr>
 							<th>학번</th>
-							<th>${stuId}</th>
+							<th>${MisVO.stuId}</th>
 							<th>이름</th>
-							<th>${stuName}</th>
+							<th>${MisVO.stuName}</th>
 							<th>총점</th>
-							<th>${scoreSum}</th>
+							<th>${MisVO.scoreSum}</th>
 						</tr>
+						</c:forEach>
+						
 					</table>
 	
 					<p>
@@ -40,7 +40,7 @@
 					<table class="table table-bordered">
 					
 					<tr>
-					<td><%-- <input type ="checkbox" name="scoreId" value="${scoreId}"></td> --%>
+					<td><input type ="checkbox" name="scoreIdAll" /></td>
 					<td>일자</td>
 					<td>점수</td>
 					</tr>			
@@ -52,16 +52,14 @@
 							</tr>
 						</c:forEach>
 					</table>
-						 <button type="submit" class="btn btn-danger" id="submitbutton">삭제</button>
+						 <button type="button" class="btn btn-danger" id="submitbutton">삭제</button>
 						 
-						 <%-- <a type="button" class="btn btn-danger" href="mis?command=mis_delete&stuId=${stuId}&stuName=${stuName}">삭제</a> --%>
 					</form>
 							 
 				
 
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer">Footer</div>
 				<!-- /.box-footer-->
 			</div>
 		</div>
@@ -75,11 +73,52 @@
 <!-- /.content-wrapper -->
 
 <script>
-	var result = '${msg}';
 
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
+//전체 체크박스 클릭시 전체 checked
+$("input[name=scoreIdAll]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='scoreId']").prop("checked", true);
+	} else{
+		$("input[name='scoreId']").prop("checked", false);
 	}
+});
+
+//scoreId Null 값일 경우 알람창이 뜨는 스크립트
+$(document).ready(function(){
+	
+	var formObj = $("form[role='form']");
+	
+$(".btn-danger").on("click", function(){
+		formObj.attr("action", "mis?command=mis_delete");
+		formObj.attr("method", "post");	
+		
+		var isChk = false;
+		
+        var arrEss = document.getElementsByName("scoreId");
+        
+        for(var i=0;i<arrEss.length;i++){
+            if(arrEss[i].checked == true) {
+                isChk = true;
+                break;
+            }
+        }
+    
+        if(!isChk){
+            alert("삭제 내용이 없습니다.");
+        } else{
+        	if (confirm("정말 삭제하시겠습니까??") == true){   
+				formObj.submit();
+        	}else{  
+        	    return;
+        	}
+		}
+	})
+	
+});
+
+
 </script>
 
 <%@include file="../include/footer.jsp"%>

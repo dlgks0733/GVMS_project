@@ -10,7 +10,8 @@
 
 <!-- Main content -->
 	<style>
-		 #container {width: 960px; margin: 0 auto;}
+	
+		#container {width: 960px; margin: 0 auto;}
         #container #input-form {text-align: left;}
         #user-table {margin: 0 auto; text-align: center;}
         #input-form {margin-top: 10px; margin-bottom: 10px;}
@@ -28,7 +29,7 @@
 			<!-- general form elements -->
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">MIS 점수 조회 목록</h3>
+					<h3 class="box-title" align = "center">MIS 점수 조회 목록</h3>
 				</div>
 				<div class="box-body">
 					<div id="container">
@@ -49,8 +50,7 @@
 							<tbody>
 							<tr>
 								<td>${MisVO.stuId}</td>
-								<td><a href="mis?command=mis_read&stuId=${MisVO.stuId}
-								&stuName=${MisVO.stuName}&scoreSum=${MisVO.scoreSum}">${MisVO.stuName}</a></td>
+								<td><a href="mis?command=mis_read&stuId=${MisVO.stuId}">${MisVO.stuName}</a></td>
 								<td>${MisVO.scoreSum}</td>
 							</tr>
 

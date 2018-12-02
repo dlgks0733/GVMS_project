@@ -45,11 +45,7 @@
 				<button type="submit" class="btn btn-primary">수정</button>
 	</form>
 	
-	
-				<!-- /.box-body -->
-				<div class="box-footer">Footer</div>
-				<!-- /.box-footer-->
-			</div>
+	</div>
 		</div>
 		<!--/.col (left) -->
 

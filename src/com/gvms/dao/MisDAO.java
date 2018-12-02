@@ -163,7 +163,7 @@ public class MisDAO extends CommonDao {
 		}
 
 		// MisRead.jsp에서 학생 ScoreDate 조회하는 메소드
-		public List<MisVO> selectMisScoreDate(String stuName) {
+		public List<MisVO> selectMisScoreDate(String stuId) {
 			// 상세조회 페이지로 선택한 학생의 학번과 이름 MIS-DAY 총점을 출력하고
 			// MIS-DAY 출석한 날짜를 최근순으로 출력한다
 			String sql = "SELECT TO_CHAR(scoreDate,'YYYY-MM-DD') AS scoreDate"
@@ -175,7 +175,7 @@ public class MisDAO extends CommonDao {
 					+ "    WHERE sco.STUID = stu.STUID"
 					+ "		 AND sco.SUBID = sub.SUBID"
 					+ " 	 AND sub.SUBNAME = 'MIS-DAY'"
-					+ "	     AND stu.STUNAME ='" + stuName + "'"
+					+ "	     AND stu.STUID ='" + stuId + "'"
 					+ "    ORDER BY sco.scoreDate DESC";
 			
 			
@@ -192,8 +192,6 @@ public class MisDAO extends CommonDao {
 				while (rs.next()) {
 					MisVO mVo = new MisVO();
 					
-					/*mVo.setScoreDate(rs.getString("stuId"));
-					mVo.setScoreDate(rs.getString("stuName"));*/
 					mVo.setScoreId(rs.getString("scoreId"));
 					mVo.setScoreDate(rs.getString("scoreDate"));
 					mVo.setSubScore(rs.getString("subScore"));
@@ -213,17 +211,17 @@ public class MisDAO extends CommonDao {
 			return list;
 		}
 		
-		// MisRead.jsp에서 학생 ScoreDate 조회하는 메소드
-				public List<MisVO> selectMisScoreSum(String stuName) {
-					// 상세조회 페이지로 선택한 학생의 학번과 이름 MIS-DAY 총점을 출력하고
-					// MIS-DAY 출석한 날짜를 최근순으로 출력한다
-					String sql = "SELECT stu.stuId"
-							+ "			,stu.stuName"
-							+ "			,ss.scoreSum"
+		// MisRead.jsp에서 학생 ScoreSum 조회하는 메소드
+				public List<MisVO> selectMisScoreSum(String stuId) {
+					// 상세조회 페이지로 선택한 학생의 학번과 이름 MIS-DAY 총점을 출력
+					
+					String sql = "SELECT stu.stuId AS STUID"
+							+ "			,stu.stuName AS STUNAME"
+							+ "			,ss.scoreSum AS SCORESUM"
 							+ "		FROM TBL_STU stu"
 							+ "			,SCORESUM ss"
 							+ "    WHERE stu.STUID = ss.STUID"
-							+ "		 AND stu.STUNAME ='" + stuName + "'";
+							+ "		 AND stu.STUID ='" + stuId + "'";
 					
 					
 					List<MisVO> list = new ArrayList<MisVO>();
@@ -241,7 +239,7 @@ public class MisDAO extends CommonDao {
 							
 							mVo.setStuId(rs.getString("stuId"));
 							mVo.setStuName(rs.getString("stuName"));
-							mVo.setScoreSum(rs.getString("ScoreSum"));
+							mVo.setScoreSum(rs.getString("scoreSum"));
 							list.add(mVo);
 						}
 						

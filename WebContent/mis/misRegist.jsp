@@ -20,7 +20,7 @@
 					<h3 class="box-title">MIS 출결 등록</h3>
 				</div>
 				<div class="box-body">
-				<form name="frm" method="post" action="mis?command=mis_regist" onsubmit="return validateEmptyVal()">
+				<form role="form" method="post" onsubmit="return validateEmptyVal()">
 					*날짜 <input type="date" name="scoreDate" >
 					<div style="overflow-y: scroll; height:400px;">	
 					<table class="table table-bordered">
@@ -39,7 +39,7 @@
 						</c:forEach>
 					</table>
 					</div>
-						 <button type="submit" class="btn btn-primary" id="submitbutton">등록</button>
+						 <button type="button" class="btn btn-primary">등록</button>
 					</form>
 
 				</div>
@@ -58,7 +58,7 @@
 <!-- /.content-wrapper -->
 
 <script>
-
+//전체 체크박스 클릭시 전체 checked
 $("input[name=stuIdAll]").click(function(){
 	var chk = $(this).is(":checked");
 	
@@ -69,22 +69,59 @@ $("input[name=stuIdAll]").click(function(){
 	}
 });
 
+//알람창
+$(document).ready(function() {
+
+	var formMis = $("form[role='form']");
+
+	console.log(formMis);
+	
+	$(".btn-primary").on("click", function() {
+		formMis.attr("action", "/mis?command=mis_regist");
+		formMis.attr("method", "post");
+		
+		var isChk = false; //stuid 배열 check하는 변수 isChk 
+		
+        var scoreDateEss = document.getElementsByName("scoreDate");
+        var stuIdAssEss = document.getElementsByName("stuId");
+        
+        //학번 배열이 체크되었을 때 isChk true
+        for(var i=0;i<stuIdAssEss.length;i++){
+            if(stuIdAssEss[i].checked == true) {
+                isChk = true;
+                break;
+            }
+        }
+    
+        if(!isChk){
+            alert("학번을 선택하시오.");
+        }
+        else{
+        	if (confirm("정말 삭제하시겠습니까??") == true){   
+				formObj.submit();
+        	}else{  
+        	    return;
+        	}
+		}
+		
+		formMis.submit();
+
+	});
+	
+
+}); 
+
 function validateEmptyVal()
 {
 	if (document.getElementsByName("scoreDate")[0].value == "")
 	{
-		alert("날짜를 입력하시오.");
+		alert("날짜를 선택하시오.");
 		document.getElementsByName("scoreDate")[0].focus();
 		return false;
 	}
-	return true;
+		return true;
 } 
 
-	var result = '${msg}';
-
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
-	}
 </script>
 
 <%@include file="../include/footer.jsp"%>
