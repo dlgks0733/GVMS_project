@@ -30,8 +30,13 @@
 										<select class="form-control" name="searchType">
 											<option>이름</option>
 											<!-- <option value="s" -->
+<<<<<<< HEAD
 											<c:out value="${cri.searchType eq 's'?'selected':''}" />>
 
+=======
+												<c:out value="${cri.searchType eq 's'?'selected':''}"/>
+												
+>>>>>>> branch 'master' of https://github.com/dlgks0733/GVMS_project.git
 										</select>
 									</div>
 									<div class="col-md-4 col-xs-8">

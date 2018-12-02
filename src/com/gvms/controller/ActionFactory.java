@@ -7,6 +7,7 @@ import com.gvms.action.Mis.MisDeleteAction;
 import com.gvms.action.Mis.MisListFormAction;
 import com.gvms.action.Mis.MisModifyAction;
 import com.gvms.action.Mis.MisModifyFormAction;
+import com.gvms.action.Mis.MisModifySelectFormAction;
 import com.gvms.action.Mis.MisReadAction;
 import com.gvms.action.Mis.MisReadFormAction;
 import com.gvms.action.Mis.MisRegistAction;
@@ -158,6 +159,9 @@ public class ActionFactory {
 			}
 			else if(command.equals("mis_modify_form")) {
 				action = new MisModifyFormAction();
+			}
+			else if(command.equals("mis_modify_select_from")) {
+				action = new MisModifySelectFormAction();
 			}
 			else if(command.equals("mis_modify")) {
 				action = new MisModifyAction();
