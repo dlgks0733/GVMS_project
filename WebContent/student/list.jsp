@@ -68,7 +68,7 @@
 
 									<tr>
 										<!-- input type checkbox? -->
-										<th style="width : 10px"> </th>
+										<th style="width : 10px"> <input type = "checkbox" name = "AllCheck" ></th>
 										<th style="text-align: center;">학번</th>
 										<th style="text-align: center;">이름</th>
 										<th style="text-align: center;">재적상태</th>
@@ -94,12 +94,12 @@
 									</c:forEach>
 
 								</table>
-
-								<button type="button" class="btn btn-danger" id="submitbutton">삭제</button>
+                                </div>
+								<button type="button" class="btn btn-danger">삭제</button>
 								<a type="button" href="/student?command=stud_reg_form"
 									class="btn btn-default">신규 등록</a>
 						</form>
-					</div>
+					
 					<!-- /.box-body -->
 
 
@@ -154,6 +154,11 @@
 
 
 <script>
+
+
+
+
+
 	var result = '${msg}';
 
 	if (result == 'SUCCESS') {
@@ -162,6 +167,43 @@
 </script>
 
 <script>
+
+
+$(document).ready(function() {
+
+	var formObj = $("form[role='form']");
+
+	console.log(formObj);
+
+	$(".btn-primary").on("click", function() {
+		self.location = "/student/register.jsp";
+	});
+	
+	$(".btn-danger").on("click", function() {
+		formObj.attr("action", "student?command=stud_delete");
+		formObj.attr("method", "post");
+		formObj.submit();
+		alert("삭제가 완료되었습니다.");
+
+	});
+
+});
+
+		
+		
+		
+
+$("input[name=AllCheck]").click(function(){
+	var chk = $(this).is(":checked");
+	
+	if(chk){
+		$("input[name='stuCheck']").prop("checked", true);
+	} else{
+		$("input[name='stuCheck']").prop("checked", false);
+	}
+});
+
+
 	$(document).ready(
 			function() {
 

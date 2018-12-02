@@ -29,7 +29,7 @@ public class StudentDao extends CommonDao {
 		Connection conn = getConnection();
 		PreparedStatement st;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM TBL_STU ORDER BY STUID DESC";
+		String sql = "SELECT * FROM TBL_STU ORDER BY stuIndex DESC";
 		
 		try {
 			st = conn.prepareStatement(sql);
