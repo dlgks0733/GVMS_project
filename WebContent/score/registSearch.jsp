@@ -65,9 +65,9 @@
 					<h2 class="box-title">인증항목 검색</h2>
 					<p>
 					<form method="post" action="score?command=scoreRegSubSearch">
-								<input type="text" name="subName">
+								<h5>항목 명 : <input type="text" name="subName">
 								<input type="hidden" name = "p_index" value="${p_index}" >
-								<input type="submit" class="btn btn-default" value="검색">
+								<input type="submit" class="btn btn-default" value="검색"></h5>
 								</form>
 								</p>
 				</div>
@@ -101,13 +101,45 @@
 							<!-- </form> -->
 						</div>
 						<table class="table table-striped">
+						
+							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
+							
+							<tr>
+								<th colspan="4">검색된 항목 목록</th>
+							</tr>
+						
 							<tr>
 								<th>대분류</th>
 								<th>중분류</th>
 								<th>항목 명</th>
 								<th>항목 점수</th>
 							</tr>
-							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
+							<input type="hidden" name = "p_index" class="p_index"  value="${p_index}" >
+								<tr style="cursor : pointer;">
+									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.major}</td>
+									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subScore}</td>
+								</tr>
+							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
+               				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
+							</c:forEach>
+
+						</table>
+						
+						<table class="table table-striped">
+							
+							<tr>
+								<th colspan="4">전체 항목 목록</th>
+							</tr>
+							
+							<tr>
+								<th>대분류</th>
+								<th>중분류</th>
+								<th>항목 명</th>
+								<th>항목 점수</th>
+							</tr>
+							<c:forEach items="${allSubList}" var="SubjectVO" varStatus="listStat">
 							<input type="hidden" name = "p_index" class="p_index"  value="${p_index}" >
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.major}</td>

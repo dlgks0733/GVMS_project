@@ -100,30 +100,79 @@
 								</div> --%>
 							<!-- </form> -->
 						</div>
-						<form name=frm method=post>
+						<!-- <form name=frm method=post> -->
 						<table class="table table-striped">
+							<c:forEach items="${list}" var="ScoreVO" varStatus="listStat">
+								<c:if test="${listChk == 1}">
+									<tr>
+										<th colspan="4">선택 영역 검색된 항목</th>
+									</tr>
+									<tr>
+										<th>대분류</th>
+										<th>중분류</th>
+										<th>항목 명</th>
+										<th>항목 점수</th>
+									</tr>
+										
+										<tr style="cursor : pointer;">
+											<td style="text-align: center;">${ScoreVO.major}</td>
+											<td style="text-align: center;">${ScoreVO.middle}</td>
+											<td style="text-align: center;" onclick="sendOptSubInfo('${index}', '${ScoreVO.subId}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
+											<td style="text-align: center;">${ScoreVO.subScore}</td>
+										</tr>		
+												<%-- <input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
+												<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
+												<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}"> --%>
+									<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
+		               				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
+		               			</c:if>	
+							
+							<c:if test="${listChk == 0}">
+							<tr>
+								<th colspan="4">선택 영역 검색된 항목</th>
+							</tr>
 							<tr>
 								<th>대분류</th>
 								<th>중분류</th>
 								<th>항목 명</th>
 								<th>항목 점수</th>
 							</tr>
-							<c:forEach items="${list}" var="ScoreVO" varStatus="listStat">
+								
+								<tr style="cursor : pointer;">
+									<th colspan="4">검색된 항목이 없습니다.</th>
+								</tr>
+							</c:if>
+
+							</c:forEach>
+						</table>
+						
+						<table class="table table-striped">
+							<tr>
+								<th colspan="4">선택 영역 전체 항목 목록</th>
+							</tr>
+							
+							<tr>
+								<th>대분류</th>
+								<th>중분류</th>
+								<th>항목 명</th>
+								<th>항목 점수</th>
+							</tr>
+							<c:forEach items="${allOptList}" var="ScoreVO" varStatus="listStat">
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;">${ScoreVO.major}</td>
 									<td style="text-align: center;">${ScoreVO.middle}</td>
-									<td class="subName" style="text-align: center;" onclick="sendOptSubInfo(${index}, '${ScoreVO.subId}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
-									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
+									<td style="text-align: center;" onclick="sendOptSubInfo('${index}', '${ScoreVO.subId}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
+									<td style="text-align: center;">${ScoreVO.subScore}</td>
 								</tr>		
-										<input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
+							</c:forEach>
+										<%-- <input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
 										<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
-										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}">
+										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}"> --%>
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
-							</c:forEach>
 
 						</table>
-						</form>
+						<!-- </form> -->
 					</div>
 					<!-- /.box-body -->
 
@@ -166,15 +215,15 @@
 	<!-- /.content -->
 
 	<script>
-		var result = '${msg}';
+		/* var result = '${msg}';
 
 		if (result == 'SUCCESS') {
 			alert("처리가 완료되었습니다.");
-		}
+		} */
 	</script>
 	
 	<script>
-		$(document).ready(
+		/* $(document).ready(
 				function() {
 
 					$('#searchBtn').on(
@@ -196,7 +245,7 @@
 
 					});
 
-				});
+				}); */
 		
 /* 		function stuSelect(name) {
 		

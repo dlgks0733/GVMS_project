@@ -20,8 +20,8 @@
 				<div class="box-wrap">
 					<div class="box-body">
 						<h4>학번 : ${stuId } 이름 : ${stuName }</h4>
-						<input type="button" id = "add" onclick="deleteRow()" value="항목삭제" class="btn btn-default" style ="float : right ">
-						<input type="button" id = "delete" onclick="addRow()" value="항목추가" class="btn btn-default" style ="float : right ">
+						<input type="button" id = "delete" onclick="deleteRow()" value="항목삭제" class="btn btn-default" style ="float : right ">
+						<input type="button" id = "add" onclick="addRow()" value="항목추가" class="btn btn-default" style ="float : right ">
 						
 						
 						<form id="form" method ="post" action="score?command=scoreRegist" onsubmit="return validateEmptyVal()">
@@ -157,19 +157,29 @@ function getChildData(subject)
 	subID.value = subject.subID;
 	
 	var score = document.getElementsByName("score_"+subject.parent_index)[0];
-	score.value = subject.score;
-	
+	var acqScore = document.getElementsByName("acqScore_"+subject.parent_index)[0];
 	document.getElementsByName("subName_"+subject.parent_index)[0].value = subject.subName;
 	
 	
-	if(score.value <= 0){
-		score.readOnly = false;
+	if(subject.score <= 0){
 		score.setAttribute("name", "acqScore_"+subject.parent_index);
-		var parentElem = score.parentElement;
+		score.value = 0;
+		score.readOnly = false;
+		/* var parentElem = score.parentElement;
 		parentElem.innerHTML = parentElem.innerHTML
-			+ "<input type=\"hidden\" name=\"score\" value=\"0\">";
-	} 
-
+			+ "<input type=\"hidden\" name=\"score\" value=\"0\">"; */
+	}
+	if(subject.score > 0 && acqScore != null){
+		acqScore.setAttribute("name", "score_"+subject.parent_index);
+		acqScore.value = subject.score;
+		acqScore.setAttribute("readOnly", "readOnly");
+		
+	}
+	if(subject.score > 0 && acqScore == null){
+		score.value = subject.score;
+		
+	}
+	
 	}
 
 
@@ -247,32 +257,33 @@ function validateEmptyVal()
 	var row_cnt= document.getElementsByName("row_cnt")[0].value;
 	
 	
-	for(var i = 1; i <= row_cnt; i++){
-		/* if(document.getElementsByName("subId_" + i)[0].value == ""){
+	for(var i = 1; i<=row_cnt; i++){
+		/* if(document.getElementsByName("subId_" + row_cnt)[0].value == ""){
 			alert("경고");
 			return false;
-		} */
+		} */ 
 		
-		if (document.getElementsByName("subName_" + i)[0].value == "" || document.getElementsByName("subName_" + i)[0].value == null)
+		if (document.getElementsByName("subName_" + row_cnt)[0].value == "")
 		{
 			alert("항목 명을 입력해주세요");
-			document.getElementsByName("subName_" + i)[0].focus();
+			document.getElementsByName("subName_" + row_cnt)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("score_" + i)[0].value == "" || document.getElementsByName("score_" + i)[0].value == null)
+		if (document.getElementsByName("score_" + row_cnt)[0].value == "")
 		{
 			alert("점수를 입력해주세요");
-			document.getElementsByName("score_" + i)[0].focus();
+			document.getElementsByName("score_" + row_cnt)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("acqScore_" + i)[0].value == "" || document.getElementsByName("acqScore_" + i)[0].value == null)
+		if (document.getElementsByName("acqScore_" + row_cnt)[0].value == "")
 		{
 			alert("점수를 입력해주세요");
-			document.getElementsByName("acqScore_" + i)[0].focus();
+			document.getElementsByName("acqScore_" + row_cnt)[0].focus();
 			return false;
 		}
-		 return true;
 	}
+		 return true;
+		 alert("등록되었습니다.");
 	
 }
 

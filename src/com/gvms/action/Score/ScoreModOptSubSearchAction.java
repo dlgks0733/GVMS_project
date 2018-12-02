@@ -28,9 +28,22 @@ public class ScoreModOptSubSearchAction implements Action{
 			System.out.println("index : " + index);
 							
 			ScoreDao scoDao = ScoreDao.getInstance();
-			ArrayList<ScoreVO> list = scoDao.SearchOptSubject(subName);
+			ArrayList<ScoreVO> list = scoDao.SearchOptSubject(subName.toUpperCase().replaceAll(" ",	""));
 			request.setAttribute("list", list);
 			System.out.println(list);
+			ArrayList<ScoreVO> allOptList = scoDao.allOptSubject();
+			request.setAttribute("allOptList", allOptList);
+			
+			if(list.equals("")) {
+				String listChk = "0";
+				request.setAttribute("listChk", listChk);
+				System.out.println(listChk);
+			}else {
+				String listChk = "1";
+				request.setAttribute("listChk", listChk);
+				System.out.println(listChk);
+			}
+			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

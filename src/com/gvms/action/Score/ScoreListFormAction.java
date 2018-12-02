@@ -25,8 +25,19 @@ public class ScoreListFormAction implements Action{
 //		stuListAction.execute(request, response);
 
 		StudentDao stuDao = StudentDao.getInstance();
-		ArrayList<StudentVO> list = stuDao.StudentTotalList();
-		request.setAttribute("list", list);
+		ArrayList<StudentVO> totalList = stuDao.StudentTotalList();
+		request.setAttribute("totalList", totalList);
+		ArrayList<StudentVO> stuList = stuDao.StudentList();
+		request.setAttribute("stuList", stuList);
+		
+		ArrayList<StudentVO> ListFormStuList = new ArrayList<StudentVO>();
+		
+		for(int i = 0; i < stuList.size(); i++) {
+			
+			
+			
+			
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

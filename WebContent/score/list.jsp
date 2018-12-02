@@ -58,26 +58,31 @@
 								<th style="text-align: center;">학번</th>
 								<th style="text-align: center;">이름</th>
 								<th style="text-align: center;">총점</th>
+								<th style="text-align: center;">등록</th>
 								<!-- <th>전화번호</th> -->
 							</tr>
 						  </thead>
 						  
 						  
-							<c:forEach items="${list}" var="StudentVO" varStatus="listStat">
+							<c:forEach items="${totalList}" var="StudentVO" varStatus="totalListStat">
 									<%-- <input type="hidden" name="stu_id" value="${StudentVO.stu_id}">
 									<input type="hidden" name="stu_name" value="${StudentVO.stu_name}"> --%>
 								<!-- <form name ="frm" method ="post" action="score?command=readForm">
 								<input type="hidden" name="stuId">
 								<input type="hidden" name="stuName"> -->
+							 <form method="post" action="score?command=scoreRegisterForm">
 							 <tbody>
 								<tr>
 									<td style="text-align: center;">${StudentVO.stuId}</td>
 									<td style="text-align: center;"><a href="score?command=scoreReadForm&stuId=${StudentVO.stuId}&stuName=${StudentVO.stuName}">${StudentVO.stuName}</a></td>
 									<td style="text-align: center;">${StudentVO.scoreTotal}</td>
-									<%-- <td style="text-align: center;">${studentVO.stuphone}</td> --%>
+									<td style="text-align: center;"><input type="submit" value="등록" class="btn btn-default">
+									<input type="hidden" name="stuId" value="${StudentVO.stuId }">
+									<input type="hidden" name="stuName" value="${StudentVO.stuName }">
 								</tr>
-							    </form>
-							  </tbody> 
+							
+							  </tbody>
+							   </form>
 							</c:forEach>
 						</table>
 					

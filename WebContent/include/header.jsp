@@ -149,11 +149,11 @@
                <!--  <span class="label label-primary pull-right">4</span> -->
               </a>
               <ul class="treeview-menu">
-                <li><a href="score?command=scoreListForm"><i class="fa fa-magic"></i> 졸업인증점수 조회</a></li>
-                <li><a href="score?command=scoreListRegForm"><i class="fa fa-magic"></i> 졸업인증점수 등록</a></li>
+                <li><a href="score?command=scoreListForm"><i class="fa fa-magic"></i> 졸업인증점수 목록</a></li>
+                <li><a href="mis?command=mis_list_form"><i class="fa fa-magic"></i> MIS 출결 목록</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <%-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-table"></i>
                 <span>MIS 정보관리</span>
@@ -163,12 +163,12 @@
                 <li><a href="mis?command=mis_list_form"><i class="fa fa-magic"></i> MIS 출결 조회</a></li>
                 <li><a href="mis?command=mis_regist_form"><i class="fa fa-magic"></i> MIS 출결 등록</a></li>
                 
-               <%-- <li><a href="/admin/eventBoard/list"><i class="fa fa-magic"></i> 이벤트 목록</a></li>
+               <li><a href="/admin/eventBoard/list"><i class="fa fa-magic"></i> 이벤트 목록</a></li>
                 <li><a href="/admin/videoBoard/list"><i class="fa fa-magic"></i> 동영상 목록</a></li>
-                --%>
+               
                 
               </ul>
-            </li>
+            </li> --%>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-book"></i> <span>기초정보관리</span>

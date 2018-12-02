@@ -27,9 +27,11 @@ public class ScoreModEssSubSearchAction implements Action{
 			System.out.println("index : " + index);
 							
 			ScoreDao scoDao = ScoreDao.getInstance();
-			ArrayList<ScoreVO> list = scoDao.SearchEssSubject(subName);
+			ArrayList<ScoreVO> list = scoDao.SearchEssSubject(subName.toUpperCase().replaceAll(" ",""));
 			request.setAttribute("list", list);
 			System.out.println(list);
+			ArrayList<ScoreVO> allEssList = scoDao.allEssSubject();
+			request.setAttribute("allEssList", allEssList);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

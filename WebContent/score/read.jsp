@@ -64,7 +64,7 @@
 					<td style="text-align: center;"><input type="text" name="${essListStat.index}essAcqScore" value="${ScoreVO.acqScore}"onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)'></td>
 					<td style="text-align: center;"><input type="text" name="${essListStat.index}essScoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="${essListStat.index}essSubId" id="ess" value="n">
+					<input type="hidden" name="${essListStat.index}essSubId" id="ess" value="${ScoreVO.subId }">
 					<input type="hidden" name="${essListStat.index}essScoreId" value="${ScoreVO.scoreId}">
 					<input type="hidden" name="essIndex" value="${essListStat.index}">
 					</td>
@@ -110,8 +110,39 @@
 					<input type="hidden" name="${optListStat.index}optScoreId" value="${ScoreVO.scoreId}">
 					<input type="hidden" name="optIndex" value="${optListStat.index}">
 				</tr>
-				</c:forEach>	
+				</c:forEach>
+				
 			</table>
+			
+			
+			
+			<table class="table table-bordered">
+				<c:forEach items="${misSum}" var="MisVO" varStatus="misListStat">
+					<tr>
+						<th style="text-align: center;" colspan="5">MIS</th>
+					</tr>
+					
+					<tr>
+						<th style="width : 10px"><input type="checkbox" disabled="disabled"></th>
+						<th style="text-align: center;">영역</th>
+						<th style="text-align: center;">항목 명</th>
+						<th style="text-align: center;">총점</th>
+						<th style="text-align: center;">취득 일자</th>
+					</tr>
+					
+						
+					<tr>
+						<td style="width : 10px"><input type="checkbox" disabled="disabled"></td>
+						<td style="text-align: center;">학생활동영역</td>
+						<td style="text-align: center;">MIS</td>
+						<td style="text-align: center;">${MisVO.scoreSum}</td>
+						<td style="text-align: center;">-</td>
+					</tr>
+				
+				</c:forEach>
+			</table>
+			
+			
 						
 		</form>
 	
@@ -140,6 +171,7 @@ $(document).ready(function(){
 			alert("수정 내용이 없습니다.");
 		} else {
 			formObj.submit();
+			alert("수정되었습니다.");
 		}
 	});
 	
@@ -170,6 +202,7 @@ $(document).ready(function(){
             alert("삭제 내용이 없습니다.");
         } else{
 			formObj.submit();
+			alert("삭제되었습니다.");
 		}
 	});
 	

@@ -65,9 +65,9 @@
 					<h2 class="box-title">인증항목 검색</h2>
 					<p>
 					<form method="post" action="score?command=scoreModEssSubSearch">
-								<input type="text" name="subName">
+								<h5>항목 명 : <input type="text" name="subName">
 								<input type = "hidden" name = "index"  value = "${index}">
-								<input type="submit" class="btn btn-default" value="검색">
+								<input type="submit" class="btn btn-default" value="검색"></h5>
 								</form>
 								</p>
 				</div>
@@ -100,30 +100,64 @@
 								</div> --%>
 							<!-- </form> -->
 						</div>
-						<form name=frm method=post>
 						<table class="table table-striped">
+						
+							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
+							
+							<tr>
+								<th colspan="4">필수 영역 검색된 항목</th>
+							</tr>
+							
 							<tr>
 								<th>대분류</th>
 								<th>중분류</th>
 								<th>항목 명</th>
 								<th>항목 점수</th>
 							</tr>
-							<c:forEach items="${list}" var="ScoreVO" varStatus="listStat">
 								<tr style="cursor : pointer;">
-									<td style="text-align: center;">${ScoreVO.major}</td>
-									<td style="text-align: center;">${ScoreVO.middle}</td>
-									<td class="subName" style="text-align: center;" onclick="sendEssSubInfo(${index}, '${ScoreVO.subId}', '${ScoreVO.subName}')">${ScoreVO.subName}</td>
-									<td class="score" style="text-align: center;">${ScoreVO.subScore}</td>
+									<td style="text-align: center;">${SubjectVO.major}</td>
+									<td style="text-align: center;">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;" onclick="sendEssSubInfo(${index}, '${SubjectVO.subId}', '${SubjectVO.subName}')">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;">${SubjectVO.subScore}</td>
 								</tr>		
-										<input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
+										<%-- <input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
 										<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
-										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}">
+										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}"> --%>
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
 							</c:forEach>
 
 						</table>
-						</form>
+						
+						<table class="table table-striped">
+							
+							<tr>
+								<th colspan="4">필수영역 전체 항목 목록</th>
+							</tr>
+							
+							<tr>
+								<th>대분류</th>
+								<th>중분류</th>
+								<th>항목 명</th>
+								<th>항목 점수</th>
+							</tr>
+							<c:forEach items="${allEssList}" var="SubjectVO" varStatus="listStat">
+								<tr style="cursor : pointer;">
+									<td style="text-align: center;">${SubjectVO.major}</td>
+									<td style="text-align: center;">${SubjectVO.middle}</td>
+									<td class="subName" style="text-align: center;" onclick="sendEssSubInfo(${index}, '${SubjectVO.subId}', '${SubjectVO.subName}')">${SubjectVO.subName}</td>
+									<td class="score" style="text-align: center;">${SubjectVO.subScore}</td>
+								</tr>		
+								
+									
+							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
+               				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
+							</c:forEach>
+
+						</table>
+						
+						
+						
 					</div>
 					<!-- /.box-body -->
 

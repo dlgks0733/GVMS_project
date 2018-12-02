@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gvms.action.Action;
+import com.gvms.dao.ScoreDao;
 import com.gvms.dao.SubjectDao;
+import com.gvms.vo.ScoreVO;
 import com.gvms.vo.SubjectVO;
 
 public class ScoreRegSubjectSearchAction implements Action{
@@ -26,10 +28,14 @@ public class ScoreRegSubjectSearchAction implements Action{
 							 
 								System.out.println("======> p_index:  "+ p_index);
 							 	
-			SubjectDao subDao = SubjectDao.getInstance();
-			ArrayList<SubjectVO> list = subDao.SearchSubject(subName.toUpperCase().replaceAll(" ", ""));
+			
+			ScoreDao scoDao = ScoreDao.getInstance();
+			ArrayList<ScoreVO> list = scoDao.SearchSubject(subName.toUpperCase().replaceAll(" ", ""));
 			request.setAttribute("list", list);
 			System.out.println(list);
+			
+			ArrayList<ScoreVO> allSubList = scoDao.selectAllSubList();
+			request.setAttribute("allSubList", allSubList);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
