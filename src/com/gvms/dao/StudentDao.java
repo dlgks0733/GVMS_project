@@ -120,7 +120,7 @@ public class StudentDao extends CommonDao {
 	public ArrayList<StudentVO> getStudentList()
 	{
 		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
-		String sql = "select * from TBL_STU";
+		String sql = "select * from TBL_STU ORDER BY stuIndex DESC";
 		
 		Connection conn = null;
 		PreparedStatement st = null;

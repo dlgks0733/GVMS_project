@@ -55,6 +55,7 @@
       <header class="main-header">
         <!-- Logo -->
         <a href="/main?command=main" class="logo">
+        <!-- <a href="/index.jsp" class="logo"> -->
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>MIS</b></span>
           <!-- logo for regular state and mobile devices -->
@@ -217,7 +218,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-			<i class="fa fa-cogs"></i> 관리자 화면        
+			<!-- <i class="fa fa-cogs"></i> 관리자 화면       -->  
           </h1>
         </section>
         

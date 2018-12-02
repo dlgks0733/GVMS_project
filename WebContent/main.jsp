@@ -13,7 +13,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">관리자 페이지 메인</h3>
-					<!-- <img alt="" src="../resources/img/graduation.png"> -->
+					<img alt="" src="../resources/admin/dist/img/gvmsimage.png">
 					<br><br><br>
 						<script type="text/javascript">
    						 self.location = "/admin/apply/list";
