@@ -1,6 +1,7 @@
 package com.gvms.action.Subject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ public class SubjectRegisterAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String url = "/subject?command=subList"; // 등록후 목록 최신화 시켜주기위해 다시 메인으로 보냄
+		
 		
 		String subId = request.getParameter("subId");
 		String major = request.getParameter("major");
@@ -41,6 +43,7 @@ public class SubjectRegisterAction implements Action {
 		
 		SubjectDao sdao = SubjectDao.getInstance();
 		sdao.insertsubject(sVO);
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
