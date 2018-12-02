@@ -114,6 +114,8 @@
 				
 			</table>
 			
+			<br/>
+	 		<br/>
 			
 			
 			<table class="table table-bordered">
@@ -168,7 +170,7 @@ $(document).ready(function(){
 		formObj.attr("method", "post");		
 		
 		if (document.getElementById("ess").value == "n" && document.getElementById("option").value == "n") {
-			alert("수정 내용이 없습니다.");
+			alert("수정할 항목이 없습니다.");
 		} else {
 			formObj.submit();
 			alert("수정되었습니다.");
@@ -199,7 +201,7 @@ $(document).ready(function(){
         }
     
         if(!isChk){
-            alert("삭제 내용이 없습니다.");
+            alert("삭제할 항목이 없습니다.");
         } else{
 			formObj.submit();
 			alert("삭제되었습니다.");
