@@ -11,11 +11,11 @@
 <style>
 * { margin:0; padding:0; }
 ul,li { list-style:none; }
-a { text-decoration:none; color:#000; }
+a 
 .tab { border:1px solid #ddd; border-left:none; background:#fff; overflow:hidden; }
 .tab li { float:left; width:50%; border-left:1px solid #ddd; text-align:center; box-sizing:border-box; }
 .tab li { display:inline-block; padding:20px; cursor:pointer; }
-.tab li.on { background-color:#eee; color:#f00; }
+.tab li.on { background-color:#eee; color:#F00; }
 .tab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
 .tab_con div { display:none; height:500px; background:#fff; line-height:100px; text-align:center; }
 
@@ -98,13 +98,14 @@ a { text-decoration:none; color:#000; }
 	</tbody>
 </c:forEach>
 </table> 
-    </div>
 </div>
-				<div class="box-footer"></div>
-				<!-- /.box-footer-->
+			<button type="button" class="btn btn-primary">신규등록</button>	
+		    <button type = "button" class="btn btn-danger">삭제</button> 
+</div>
+<!-- 				<div class="box-footer"></div -->				<!-- /.box-footer-->
 			</div>
-		<button type="button" class="btn btn-primary">신규등록</button>	
-		<button type = "button" class="btn btn-danger">삭제</button>
+<!-- 		<button type="button" class="btn btn-primary">신규등록</button>	
+		    <button type = "button" class="btn btn-danger">삭제</button> -->
 		
 			</div>
 				
