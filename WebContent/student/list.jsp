@@ -40,7 +40,7 @@
 										<select class="form-control" name="searchType">
 											<option>이름</option>
 											<!-- <option value="s" -->
-												<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
+												<c:out value="${cri.searchType eq 's'?'selected':''}"/>
 												
 										</select>
 									</div>

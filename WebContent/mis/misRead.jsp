@@ -43,7 +43,9 @@
 					<td><input type ="checkbox" name="scoreIdAll" /></td>
 					<td>일자</td>
 					<td>점수</td>
-					</tr>			
+					</tr>	
+				<c:choose>
+					<c:when test="${not empty misListRead}">
 						<c:forEach items="${misListRead}" var="MisVO">
 							<tr>
 								<td><input type ="checkbox" name="scoreId" value="${MisVO.scoreId}"></td>
@@ -51,9 +53,17 @@
 								<td>${MisVO.subScore}</td>
 							</tr>
 						</c:forEach>
+					</c:when>	
+					<c:otherwise>
+					<tr>
+							<td colspan="7" class="txt_center" align="center"><b>삭제할 데이터가 없습니다.</b></td>
+						</tr>
+					</c:otherwise>
+				
+					</c:choose>
 					</table>
 						 <button type="button" class="btn btn-danger" id="submitbutton">삭제</button>
-						 
+						 <a href="/mis?command=mis_list_form" type="button" class="btn btn-default" >취소</a>
 					</form>
 							 
 				

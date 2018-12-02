@@ -88,11 +88,18 @@
 		})
 	})
 	
-	var result = '${msg}';
-
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
+//엔터막기	
+function enter(e){
+	if(window.event){
+		key = window.event.keyCode;
+	}else if(e){
+		key = e.which;
 	}
+	if(key==13){
+		return false    
+	}
+}
+	
 </script>
 
 <%@include file="../include/footer.jsp"%>
