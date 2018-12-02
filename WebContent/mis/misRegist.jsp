@@ -98,7 +98,6 @@ $(document).ready(function() {
         }
         else{
         	if (confirm("정말 삭제하시겠습니까??") == true){   
-				formObj.submit();
         	}else{  
         	    return;
         	}
