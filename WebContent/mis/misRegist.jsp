@@ -82,7 +82,6 @@ $(document).ready(function() {
 		
 		var isChk = false; //stuid 배열 check하는 변수 isChk 
 		
-        var scoreDateEss = document.getElementsByName("scoreDate");
         var stuIdAssEss = document.getElementsByName("stuId");
         
         //학번 배열이 체크되었을 때 isChk true
@@ -92,18 +91,27 @@ $(document).ready(function() {
                 break;
             }
         }
-    
+            
+        if (document.getElementsByName("scoreDate")[0].value == "")
+    	{
+    		alert("날짜를 선택하시오.");
+    		document.getElementsByName("scoreDate")[0].focus();
+    		return;
+    	}
+        
         if(!isChk){
             alert("학번을 선택하시오.");
+            return;
         }
+        
         else{
-        	if (confirm("정말 삭제하시겠습니까??") == true){   
+        	if (confirm("정말 등록하시겠습니까??") == true){   
+			formMis.submit();
         	}else{  
         	    return;
         	}
 		}
 		
-		formMis.submit();
 
 	});
 	
