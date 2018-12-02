@@ -31,18 +31,33 @@ a
 			
 <form role = "form">
 			<div class="box" >
+			
 				<div class="box-header with-border">
 					<h3 class="box-title">인중평가 목록</h3>
 				</div>
 				<div class="box-body">
 
 <ul class="tab" id="tab">
-    <li>필수</li>
-    <li>선택</li>
+    <li class = "essmajor">필수영역</li>
+    <li class = "optmajor">선택영역</li>
 </ul>
-항목명  : <input type="text" id="keyword" onkeydown = "return enter(event)">
+<div class="box-keyword">
+                     <div class="row">
+                        <div class="col-md-2 col-xs-4">
+                           <select class="form-control" name="searchType">
+                              <option>항목명</option>
+                           </select>
+                        </div>
+                        <div  class="col-md-4 col-xs-8">
+                           <input type="text" class="form-control" placeholder="항목명을 입력하세요."
+                              id="keyword" onkeydown="return enter(event)">
+                        </div>
+                     </div>
 
-<div class="tab_con" id="tab_con" style = "overflow:scroll;">
+                  </div>
+<!-- 항목명  : <input type="text" id="keyword" onkeydown = "return enter(event)" placeholder="ex)">
+ -->
+<div class="tab_con" id="tab_con" >
 <!-- 필수영역 -->
 <div>
 
@@ -64,7 +79,7 @@ a
 		<td><input type ="checkbox" value="${SubjectVO.subId}" name="essSubId" ></td>
 		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
-		<td>${SubjectVO.middle}</td>
+		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.middle}</a></td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
 		<td>${SubjectVO.subScore}</td>		     
 	</tr>
@@ -91,7 +106,7 @@ a
 		<td><input type ="checkbox" name ="optSubId" value="${SubjectVO.subId}"></td>
 		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
-		<td>${SubjectVO.middle}</td>
+		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.middle}</a></td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
 		<td>${SubjectVO.subScore}</td>		     
 	</tr>
@@ -99,60 +114,16 @@ a
 </c:forEach>
 </table> 
 </div>
-			<button type="button" class="btn btn-primary">신규등록</button>	
-		    <button type = "button" class="btn btn-danger">삭제</button> 
+		    <button type = "button" class="btn btn-danger" style = "float : right">삭제</button> 
+			<button type="button" class="btn btn-primary" style = "float : right">신규등록</button>	
 </div>
-<!-- 				<div class="box-footer"></div -->				<!-- /.box-footer-->
 			</div>
-<!-- 		<button type="button" class="btn btn-primary">신규등록</button>	
-		    <button type = "button" class="btn btn-danger">삭제</button> -->
+
 		
 			</div>
 				
 			
 			</form>
-
-
-<%-- <form role = "form">
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">LIST ALL PAGE</h3>
-				</div>
-				<div class="box-body">
- <table class="table table-bordered">
-	
-	<tr>
-	    <th> <input type = "checkbox" name = "allChecked" id = "allChecked" onclick = "allChecked()"></th>
-		<th style="width: 10px"> NO </th>
-		<th>대분류</th>
-		<th>중분류</th>
-		<th>항목명</th>
-		<th style="width: 50px">점수</th>
-	</tr>
-
-
-<c:forEach items="${list}" var="SubjectVO">
-
-	<tr>
-		<td><input type ="checkbox" value="${SubjectVO.subId}" name="subId"></td>
-		<td>${SubjectVO.subId}</td>
-		<td>${SubjectVO.major}</td>
-		<td>${SubjectVO.middle}</td>
-		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
-		<td>${SubjectVO.subScore}</td>		     
-	</tr>
-</c:forEach>
-</table> 
-
-				</div>
-				<!-- /.box-body -->
-
-				<div class="box-footer">Footer</div>
-				<!-- /.box-footer-->
-			</div>
-		<button type="button" class="btn btn-primary">신규등록</button>	
-		<button type = "button" class="btn btn-danger">삭제</button>
-			</form>--%>
 					
 			
 		</div> 
@@ -220,7 +191,7 @@ $("input[name=optAllCheck]").click(function(){
 	    var con = $(e+'_con').children();
 	    var select = $(menu).eq(num);
 	    var i = num;
-
+	    
 	    select.addClass('on');
 	    con.eq(num).show();
 
@@ -235,6 +206,8 @@ $("input[name=optAllCheck]").click(function(){
 
 	        select.addClass('on');
 	        con.eq(i).show();
+	        
+
 	    });
 	}
 //첫번쨰 탭 검색기능 5n + 선택값 , contains() 문자열 포합값 출력 , $("#user-table > tbody > tr").hide(); 문자열을 받아오면 나머지는 숨기다.

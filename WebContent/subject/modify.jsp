@@ -21,7 +21,7 @@
 				<div class="box-header">
 					<h3 class="box-title">수정</h3>
 							
-					
+					<!-- style="display:none" -->
 				</div>
 				<!-- /.box-header -->
 
@@ -32,15 +32,15 @@
 		<div class="form-group">
 			<c:if test = "${major_num == 1}">
 			<label >필수</label>
-			<input type= "radio" name = "major" value = "필수" checked >
+			<input type= "radio" name = "major" value = "필수"  checked >
 			<label >선택</label> 
-			<input type= "radio" name = "major" value = "선택" >
+			<input type= "radio" name = "major" value = "선택">
 			</c:if>
 			<c:if test = "${major_num == 0}">
 			<label >필수</label>
 			<input type= "radio" name = "major" value = "필수" >
 			<label >선택</label> 
-			<input type= "radio" name = "major" value = "선택" checked>
+			<input type= "radio" name = "major" value = "선택"  checked>
 			</c:if>
 			
 		</div>
@@ -68,7 +68,7 @@
 	       </select>
 	       </div>
 	       
-	       <div class="form-group" id = "optmiddle" style="display:none">
+	       <div class="form-group" id = "optmiddle" style="display:none" >
 	       <label >중분류</label>
 	       <select name = "middle">
 	       
@@ -134,7 +134,7 @@
 		 	
 		 	<div class="layer2">
 			<label >점수</label> 
-			<input type="text" name="subScore" class = "form-control" value = "${SubjectVO.subScore}" placeholder="ex) 600">
+			<input type="text" name="subScore"  value = "${SubjectVO.subScore}" placeholder="ex) 600">
 		</div> 
 	</c:forEach>
 	</div>
@@ -154,7 +154,7 @@
 
 
 
-<script languge = "javascript" >
+ <script type="text/javascript">
 		$(document).ready(function() {
 
 		var formObj = $("form[role='form']");
@@ -176,7 +176,7 @@
 
 	}); 
 		
-			function validateEmptyVal()
+		function validateEmptyVal()
 		{
 			if (document.getElementsByName("major")[0].value == "")
 			{
@@ -184,77 +184,82 @@
 				document.getElementsByName("major")[0].focus();
 				return false;
 			}
+			
 			if (document.getElementsByName("middle")[0].value == "")
 			{
 				alert("영역을 선택해주세요.");
 				document.getElementsByName("middle")[0].focus();
 				return false;
-
 			}
-			if(document.getElementsByName("middle")[0].value == "외국어영역")
-			{	
+			
+			if (document.getElementsByName("middle")[0].value == "외국어영역")
+			{
 				document.getElementsByName("subScore")[0].focus();
 				return true;
-				
 			}
+			
 			if (document.getElementsByName("subName")[0].value == "")
 			{
 				alert("항목명을 입력해주세요.");
 				document.getElementsByName("subName")[0].focus();
 				return false;
 			}
+			
 			if (document.getElementsByName("subScore")[0].value == "")
 			{
 				alert("점수를 입력해주세요.");
 				document.getElementsByName("subScore")[0].focus();
 				return false;
 			}
-			
+
 			return true;
 		} 
 		//항목 숨기고 보여주기	
-			jQuery('#essmiddle').change(function() {
-				var state = jQuery('#essmiddle option:selected').val();
-				if(state == '외국어영역') {
-					jQuery('.layer').show();
-					jQuery('.layer2').hide();
-				}else{
-					jQuery('.layer').hide();
-					jQuery('.layer2').show();
-				}
-				
-				
-			});
-		
-			jQuery('#optmiddle').change(function() {
-				var state = jQuery('#optmiddle option:selected').val();
-				if(state == '선택영역선택') {
-					jQuery('.layer').hide();
-					jQuery('.layer2').show();
-				}else{
-					jQuery('.layer').hide();
-					jQuery('.layer2').show();
-				}
-			});
-		
-			$(document).ready(function() {
-				if("major" == "필수"){
-				$('input:radio[name="major"][value="필수"]').prop('checked', true);
-				}
-				$("input[name='major']:radio").change(function () {
-			        //라디오 버튼 값을 가져온다.
-			        var major = this.value;
-				
-			    if(major == "필수"){//필수인 경우
-			        $( "#essmiddle" ).show();
-			    	$( "#optmiddle") .hide();
-			    }else if(major == "선택"){//선택인 경우	
-			        $( "#optmiddle" ).show();
-			        $( "#essmiddle" ).hide();
-			    }
-				});  
-			});
+jQuery('#essmiddle').change(function() {
+	var state = jQuery('#essmiddle option:selected').val();
+	if(state == '외국어영역') {
+		jQuery('.layer').show();
+		jQuery('.layer2').hide();
+	}else{
+		jQuery('.layer').hide();
+		jQuery('.layer2').show();
+	}
+	
+});
+
+
+jQuery('#optmiddle').change(function() {
+	var state = jQuery('#optmiddle option:selected').val();
+	if(state == '선택영역선택') {
+		jQuery('.layer').hide();
+		jQuery('.layer2').show();
+	}else{
+		jQuery('.layer').hide();
+		jQuery('.layer2').show();
+	}
+});
 			
+$(document).ready(function() {
+	if("major" == "필수"){
+	$('input:radio[name="major"][value="필수"]').prop('checked', true);
+	}
+	$("input[name='major']:radio").change(function () {
+        //라디오 버튼 값을 가져온다.
+        var major = this.value;
+	
+    if(major == "필수"){//필수인 경우
+        $( "#optmiddle" ).hide();
+        $( "#essmiddle" ).show();
+
+    }else if(major == "선택"){//선택인 경우	
+        $( "#optmiddle" ).show();
+        $( "#essmiddle" ).hide();
+    }
+    
+});
+});
+
+	
 		
 </script>
 

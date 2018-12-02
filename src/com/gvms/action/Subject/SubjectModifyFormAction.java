@@ -50,7 +50,6 @@ public class SubjectModifyFormAction implements Action{
 				essmiddle_num = 2;
 			}
 		}
-		
 		request.setAttribute("essmiddle_num", essmiddle_num);
 		
 		for(SubjectVO subject : sublist) {

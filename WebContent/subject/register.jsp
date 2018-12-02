@@ -63,7 +63,7 @@
 
 			<label >점수</label> 
 			<input type="text"
-				name="subScore" class="form-control" placeholder="ex) 외국어영역은 점수 입력이 불가합니다." disabled>
+				name="subScore1" class="form-control" placeholder="ex) 외국어영역은 점수 입력이 불가합니다." disabled>
 		</div> 	
 		
 		 	<div class="layer2">
@@ -134,7 +134,6 @@ function validateEmptyVal()
 		document.getElementsByName("subName")[0].focus();
 		return false;
 	}
-	
 	if (document.getElementsByName("subScore")[0].value == "")
 	{
 		alert("점수를 입력해주세요.");
@@ -183,6 +182,7 @@ $(document).ready(function() {
     if(major == "필수"){//필수인 경우
         $( "#optmiddle" ).hide();
         $( "#essmiddle" ).show();
+
     }else if(major == "선택"){//선택인 경우	
         $( "#optmiddle" ).show();
         $( "#essmiddle" ).hide();
