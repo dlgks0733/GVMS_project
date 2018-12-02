@@ -28,6 +28,7 @@ public class MisDAO extends CommonDao {
 	}
 
 	
+	
 	public List<MisVO> selectMis() {
 		
 		String sql = "SELECT stu.stuId   as stuId"
