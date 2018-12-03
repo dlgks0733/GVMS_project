@@ -47,7 +47,7 @@
 		
 		<div class="form-group" id = "essmiddle" >
 		   <label >중분류</label>
-		   <select name = "middle" >
+		   <select name = "essmiddle" >
 		   <c:if test = "${essmiddle_num == 0}">
 	       <option selected>영역선택</option>
 	       <option >외국어영역</option>
@@ -68,9 +68,9 @@
 	       </select>
 	       </div>
 	       
-	       <div class="form-group" id = "optmiddle" style="display:none" >
+	       <div class="form-group" id = "optmiddle"  style = "display:none">
 	       <label >중분류</label>
-	       <select name = "middle">
+	       <select name = "optmiddle">
 	       
 	       <c:if test = "${optmiddle_num == 0}">
 	       <option selected>영역선택</option>
@@ -215,7 +215,7 @@
 			return true;
 		} 
 		//항목 숨기고 보여주기	
-jQuery('#essmiddle').change(function() {
+jQuery('#essmiddle').ready(function() {
 	var state = jQuery('#essmiddle option:selected').val();
 	if(state == '외국어영역') {
 		jQuery('.layer').show();
@@ -228,7 +228,7 @@ jQuery('#essmiddle').change(function() {
 });
 
 
-jQuery('#optmiddle').change(function() {
+jQuery('#optmiddle').ready(function() {
 	var state = jQuery('#optmiddle option:selected').val();
 	if(state == '선택영역선택') {
 		jQuery('.layer').hide();
@@ -241,17 +241,19 @@ jQuery('#optmiddle').change(function() {
 			
 $(document).ready(function() {
 	
-	if("major" == "필수"){
-	$('input:radio[name="major"][value="필수"]').prop('checked', true);
+	/* alert($('input[name="major"]:checked').val()); */
+	
+	if($('input[name="major"]:checked').val() == "필수"){
+		
     $( "#optmiddle" ).hide();
     $( "#essmiddle" ).show();
 	
-	}else if("major" == "선택"){
-	$('input:radio[name="major"][value="선택"]').prop('checked', true);
+	}else if($('input[name="major"]:checked').val() == "선택"){
+		
     $( "#optmiddle" ).show();
     $( "#essmiddle" ).hide();
 	}
-	
+
 	$("input[name='major']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
         var major = this.value;
@@ -264,8 +266,8 @@ $(document).ready(function() {
         $( "#optmiddle" ).show();
         $( "#essmiddle" ).hide();
     }
-    
-});
+	});
+  
 });
 
 	
