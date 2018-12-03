@@ -27,7 +27,7 @@
    </div>
    <div class="popup_body">
 
-      <form name="frm" method="post" action="cent.do?command=cent_write_check_form&popup=yes">학번 &nbsp; 
+      <form name="frm" method="post" action="student?command=stuIdCheck&popup=yes">학번 &nbsp; 
       <input type="text" name="stuId" value="${stuId}">
          <button type="submit">조회</button>
          <input type="hidden" name="stuIdOk" value="1">

@@ -26,7 +26,7 @@ public class CommonDao {
 	
 	private void init() {
 		url = "jdbc:oracle:thin:@localhost:1521:xe";
-		user = "GVMS";
+		user = "gvms";
 		pass = "1234";
 		
 		try {

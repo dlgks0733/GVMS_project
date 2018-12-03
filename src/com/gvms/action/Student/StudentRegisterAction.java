@@ -20,12 +20,12 @@ public class StudentRegisterAction implements Action{
 		
 		
 		// 요청 된 jsp 에서 Parameter 가져오기
-		String stuID = request.getParameter("stuID");
+		String stuId = request.getParameter("stuId");
 		String stuName = request.getParameter("stuName");
 		String stuStat = request.getParameter("stuStat");
 		
 		// Parameter 출력
-		System.out.println("stuID : " + stuID);
+		System.out.println("stuId : " + stuId);
 		System.out.println("stuName : " + stuName);
 		System.out.println("stuStat : " + stuStat);
 		
@@ -34,7 +34,7 @@ public class StudentRegisterAction implements Action{
 		
 		
 		// 객체 세팅
-		sVo.setStuId(stuID);
+		sVo.setStuId(stuId);
 		sVo.setStuName(stuName);
 		sVo.setStuStat(stuStat);
 		

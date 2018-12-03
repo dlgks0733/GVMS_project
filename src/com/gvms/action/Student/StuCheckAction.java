@@ -32,12 +32,12 @@ public class StuCheckAction implements Action {
       System.out.println("레그넘 = " + stuId);
       StudentDao sDao = StudentDao.getInstance();
 
-/*      int result = sDao.confirmStuId(stuId);
+      int result = sDao.confirmStuId(stuId);
 
       System.out.println(result);
       request.setAttribute("stuId", stuId);
       request.setAttribute("result", result);
-      */
+      
 
        
 

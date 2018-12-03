@@ -1,13 +1,13 @@
 package com.gvms.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.gvms.vo.StudentVO;
-import com.gvms.vo.SubjectVO;
 
 public class StudentDao extends CommonDao {
 
@@ -189,10 +189,12 @@ public class StudentDao extends CommonDao {
 
 	}
 
-	public int confirmCentName(String cent_name) {
+	public int confirmStuId(String stuId) {
 
 		int result = -1;
-		String sql = "select stuid from student where stuid = ?";
+		String sql = "SELECT stuid "
+				   + "	FROM TBL_STU "
+				   + " WHERE stuid = ?";
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -201,11 +203,11 @@ public class StudentDao extends CommonDao {
 
 			st = conn.prepareStatement(sql);
 
-			st.setString(1, cent_name);
+			st.setString(1, stuId);
 
 			rs = st.executeQuery();
 
-			if (cent_name.equals("")) {
+			if (stuId.equals("")) {
 				// 데이터 NULL
 				result = 0;
 
