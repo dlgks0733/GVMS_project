@@ -8,98 +8,158 @@
 
 <%@include file="/include/header.jsp"%>
 
-<!-- Main content -->
-	<style>
-	
-		#container {width: 960px; margin: 0 auto;}
-        #container #input-form {text-align: left;}
-        #user-table {margin: 0 auto; text-align: center;}
-        #input-form {margin-top: 10px; margin-bottom: 10px;}
-
-        #user-table {border-collapse: collapse;}
-        #user-table > thead > tr { background-color: #333; color:#fff; }
-        #user-table > thead > tr > th { padding: 8px; width: 150px; }
-        #user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
-	</style>
 
 <section class="content">
-	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h2 class="box-title">MIS 출결 목록</h2>
+				</div>	
+				<div class="box-wrap">
+					<div class="box-body">
+						<div class="box-keyword">
+							<form method="get">
+							<div class="row">
+								<div class="col-md-2 col-xs-4">
+									<select class="form-control" name="searchType">
+										<option>이름</option>
+									</select>
+								</div>
+								<div  class="col-md-4 col-xs-8">
+									<input type="text" class="form-control" placeholder="이름을 입력하세요"
+										id="keyword" onkeydown="return enter(event)">
+								</div>
+							</div>
+							</form>
+							<br>
+						</div>
+						
+						<table class="table table-bordered" id="user-table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">학번</th>
+								<th style="text-align: center;">이름</th>
+								<th style="text-align: center;">총점</th>
+							</tr>
+						</thead>
+
+						<c:forEach items="${misList}" var="MisVO">
+							<tbody>
+								<tr>
+									<td style="text-align: center;">${MisVO.stuId}</td>
+									<td style="text-align: center;"><a
+										href="mis?command=mis_read&stuId=${MisVO.stuId}">${MisVO.stuName}</a></td>
+									<td style="text-align: center;">${MisVO.scoreSum}</td>
+								</tr>
+						</tbody>
+						</c:forEach>
+					</table>
+					
+					<div class="box-footer btn-group-right">				
+					<a type="button" class="btn btn-default" id="submitbutton"
+						href="/mis?command=mis_modify_form" style="float: right">전체수정</a>
+					<a type="button" class="btn btn-primary" id="newBtn"
+						href="/mis?command=mis_regist_form" style="float: right">신규 등록</a>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<%-- <section class="content">
+	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
 			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title" align = "center">MIS 점수 조회 목록</h3>
-				</div>
-				<div class="box-body">
-					<div id="container">
-					<div id="input-form">
-					<b>	학생 검색 &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b> <input type="text" id="keyword">
+				<form method="get" role="form">
+					<div class="box-header with-border">
+						<h3 class="box-title" align="center">MIS 출결 목록</h3>
 					</div>
-					<div style="overflow-y: scroll; height:400px;">	
+
+					<div class="box-body">
+						<div class="col-md-2 col-xs-4">
+							<select class="form-control" name="searchType">
+								<option>이름</option>
+							</select>
+						</div>
+						<div class="col-md-4 col-xs-8">
+							<input type="text" class="form-control" placeholder="이름을 입력하세요"
+								id="keyword" onkeydown="return enter(event)">
+						</div>
+
+					</div>
+
 					<table class="table table-bordered" id="user-table">
 						<thead>
-						<tr>
-							<th style="text-align : center;">학번</th>
-							<th style="text-align : center;">이름</th>
-							<th style="text-align : center;">총점</th>
-						</tr>
+							<tr>
+								<th style="text-align: center;">학번</th>
+								<th style="text-align: center;">이름</th>
+								<th style="text-align: center;">총점</th>
+							</tr>
 						</thead>
-						
+
 						<c:forEach items="${misList}" var="MisVO">
 							<tbody>
-							<tr>
-								<td>${MisVO.stuId}</td>
-								<td><a href="mis?command=mis_read&stuId=${MisVO.stuId}">${MisVO.stuName}</a></td>
-								<td>${MisVO.scoreSum}</td>
-							</tr>
-
+								<tr>
+									<td style="text-align: center;">${MisVO.stuId}</td>
+									<td style="text-align: center;"><a
+										href="mis?command=mis_read&stuId=${MisVO.stuId}">${MisVO.stuName}</a></td>
+									<td style="text-align: center;">${MisVO.scoreSum}</td>
+								</tr>
+						</tbody>
 						</c:forEach>
-							</tbody>
 					</table>
-					</div>
-					<br>
-					
-					<a type="button" class="btn btn-primary btn-modify" id="submitbutton" href="/mis?command=mis_modify_form" style = "float : right">전체수정</a>
-					<a type="button" class="btn btn-default" id="newBtn" href="/mis?command=mis_regist_form" style = "float : right">신규 등록</a>
 
-					</div>
-				</div>
-				<!-- /.box-body -->
+
+					<a type="button" class="btn btn-default" id="submitbutton"
+						href="/mis?command=mis_modify_form" style="float: right">전체수정</a>
+					<a type="button" class="btn btn-primary" id="newBtn"
+						href="/mis?command=mis_regist_form" style="float: right">신규 등록</a>
+				</form>
+			</div>
+			<!-- <div class="box"> -->
 		</div>
-		<!--/.col (left) -->
-
+		<!-- <div class="col-md-12"> -->
 	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
+	<!-- <div class="row"> -->
+</section> --%>
 
-<!-- /.content-wrapper -->
 
 <script>
+	//검색기능
+	$(document)
+			.ready(
+					function() {
+						$("#keyword")
+								.keyup(
+										function() {
+											var k = $(this).val();
+											$("#user-table > tbody > tr")
+													.hide();
+											var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('"
+													+ k + "')");
 
-	$(document).ready(function() {
-		$("#keyword").keyup(function(){
-			var k = $(this).val();
-			$("#user-table > tbody > tr").hide();
-			var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
-			
-			$(temp).parent().show();
-		})
-	})
-	
-//엔터막기	
-function enter(e){
-	if(window.event){
-		key = window.event.keyCode;
-	}else if(e){
-		key = e.which;
+											$(temp).parent().show();
+										})
+					})
+
+	//엔터막기	
+	function enter(e) {
+		if (window.event) {
+			key = window.event.keyCode;
+		} else if (e) {
+			key = e.which;
+		}
+		if (key == 13) {
+			return false
+		}
 	}
-	if(key==13){
-		return false    
-	}
-}
-	
 </script>
 
 <%@include file="../include/footer.jsp"%>

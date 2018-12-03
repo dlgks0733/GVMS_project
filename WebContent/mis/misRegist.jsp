@@ -8,9 +8,46 @@
 
 <%@include file="/include/header.jsp"%>
 
-<!-- Main content -->
 <section class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h2 class="box-title">MIS 출결 등록</h2>
+				</div>	
+				<div class="box-wrap">
+					<div class="box-body">
+						<form role="form" method="post">
+					<h3 class="box-title"><span class="must-mark">*</span>
+					날짜 <input type="date" name="scoreDate" ></h3>					
+					<table class="table table-bordered">
+						<tr>
+							<th style="text-align: center;"><input type ="checkbox" name="stuIdAll" /></th>
+							<th style="text-align: center;">학번</th>
+							<th style="text-align: center;">이름</th>
+						</tr>
 
+						<c:forEach items="${misListRegist}" var="MisVO">
+							<tr>
+								<td style="text-align: center;"><input type ="checkbox" name="stuId" value="${MisVO.stuId}"/></td>
+								<td style="text-align: center;">${MisVO.stuId}</td>
+								<td style="text-align: center;">${MisVO.stuName}</td>
+							</tr>
+						</c:forEach>
+					</table>	
+					<div class="box-footer btn-group-center">				
+						 <button type="button" class="btn btn-primary">등록</button>
+						 <a href="/mis?command=mis_list_form" type="button" class="btn btn-default" >취소</a>
+					</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%-- <section class="content">
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
@@ -20,43 +57,41 @@
 					<h3 class="box-title">MIS 출결 등록</h3>
 				</div>
 				<div class="box-body">
-				<form role="form" method="post" onsubmit="return validateEmptyVal()">
-					*날짜 <input type="date" name="scoreDate" >
-					<div style="overflow-y: scroll; height:400px;">	
+				<form role="form" method="post">
+					<b><span class="must-mark">*</span>
+					날짜 </b><input type="date" name="scoreDate" >					
 					<table class="table table-bordered">
 						<tr>
-							<th><input type ="checkbox" name="stuIdAll" /></th>
-							<th>학번</th>
-							<th>이름</th>
+							<th style="text-align: center;"><input type ="checkbox" name="stuIdAll" /></th>
+							<th style="text-align: center;">학번</th>
+							<th style="text-align: center;">이름</th>
 						</tr>
 
 						<c:forEach items="${misListRegist}" var="MisVO">
 							<tr>
-								<td><input type ="checkbox" name="stuId" value="${MisVO.stuId}"/></td>
-								<td>${MisVO.stuId}</td>
-								<td>${MisVO.stuName}</td>
+								<td style="text-align: center;"><input type ="checkbox" name="stuId" value="${MisVO.stuId}"/></td>
+								<td style="text-align: center;">${MisVO.stuId}</td>
+								<td style="text-align: center;">${MisVO.stuName}</td>
 							</tr>
 						</c:forEach>
-					</table>
-					</div>
+					</table>	
+					<div class="box-footer btn-group-center">				
 						 <button type="button" class="btn btn-primary">등록</button>
 						 <a href="/mis?command=mis_list_form" type="button" class="btn btn-default" >취소</a>
+					</div>
 					</form>
 
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer">Footer</div>
-				<!-- /.box-footer-->
-			</div>
+				
 		</div>
 		<!--/.col (left) -->
 
 	</div>
+	</div>
 	<!-- /.row -->
-</section>
-<!-- /.content -->
+</section> --%>
 
-<!-- /.content-wrapper -->
 
 <script>
 //전체 체크박스 클릭시 전체 checked
@@ -83,11 +118,11 @@ $(document).ready(function() {
 		
 		var isChk = false; //stuid 배열 check하는 변수 isChk 
 		
-        var stuIdAssEss = document.getElementsByName("stuId");
+        var stuIdArrEss = document.getElementsByName("stuId");
         
         //학번 배열이 체크되었을 때 isChk true
-        for(var i=0;i<stuIdAssEss.length;i++){
-            if(stuIdAssEss[i].checked == true) {
+        for(var i=0;i<stuIdArrEss.length;i++){
+            if(stuIdArrEss[i].checked == true) {
                 isChk = true;
                 break;
             }
@@ -116,19 +151,11 @@ $(document).ready(function() {
 
 	});
 	
+	//jquery 달력
+	 $(".scoreDate").datepicker();
 
 }); 
 
-function validateEmptyVal()
-{
-	if (document.getElementsByName("scoreDate")[0].value == "")
-	{
-		alert("날짜를 선택하시오.");
-		document.getElementsByName("scoreDate")[0].focus();
-		return false;
-	}
-		return true;
-} 
 
 </script>
 
