@@ -28,7 +28,7 @@
                         class="col-sm-2 control-label pull-left">학번<span
                         class="must-mark">*</span></label>
                      <div class="col-md-3 col-xs-4 left-input">
-                        <input name="stuId" class="form-control" type="text"> <input
+                        <input name="stuId" class="form-control" type="text"  readonly="readonly"> <input
                            name="stuIdOk" class="form-control" type="hidden">
                      </div>
                      <div class="col-md-7 col-xs-5 right-button">
