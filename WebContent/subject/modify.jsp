@@ -240,9 +240,18 @@ jQuery('#optmiddle').change(function() {
 });
 			
 $(document).ready(function() {
+	
 	if("major" == "필수"){
 	$('input:radio[name="major"][value="필수"]').prop('checked', true);
+    $( "#optmiddle" ).hide();
+    $( "#essmiddle" ).show();
+	
+	}else if("major" == "선택"){
+	$('input:radio[name="major"][value="선택"]').prop('checked', true);
+    $( "#optmiddle" ).show();
+    $( "#essmiddle" ).hide();
 	}
+	
 	$("input[name='major']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
         var major = this.value;
