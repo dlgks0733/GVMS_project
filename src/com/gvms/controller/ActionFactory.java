@@ -26,6 +26,7 @@ import com.gvms.action.Score.ScoreRegSubjectSearchAction;
 import com.gvms.action.Score.ScoreRegistAction;
 import com.gvms.action.Score.ScoreRegistSearchFormAction;
 import com.gvms.action.Score.ScoreRegisterFormAction;
+import com.gvms.action.Student.StuCheckAction;
 import com.gvms.action.Student.StudentDeleteAction;
 import com.gvms.action.Student.StudentListFormAction;
 import com.gvms.action.Student.StudentModifyAction;
@@ -181,7 +182,10 @@ public class ActionFactory {
 
 				action = new StudentRegisterAction();		
 			}	
-			
+			else if (command.equals("stuIdCheck")) {
+
+				action = new StuCheckAction();		
+			}	
 			else if (command.equals("stud_modi_form")) {
 
 				action = new StudentModifyFormAction();
