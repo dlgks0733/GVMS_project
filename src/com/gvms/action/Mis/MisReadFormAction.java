@@ -21,18 +21,14 @@ public class MisReadFormAction implements Action {
 		
 		MisDAO mDao = MisDAO.getInstance();
 		
-		
 		String stuId = request.getParameter("stuId");
 		
-		
 		request.setAttribute("stuId", stuId);
-		
 		
 		System.out.println("stuId : " + stuId);
 		System.out.println("출력");
 		
 		MisVO mVo = new MisVO();
-		
 		
 		mVo.setStuId(stuId);
 		
@@ -45,12 +41,6 @@ public class MisReadFormAction implements Action {
 		System.out.println(misListReadScoreSum);
 		System.out.println(misListRead);
 		
-		/*if(misListReadScoreSum==null) {
-			new MisListFormAction().execute(request, response);
-		}else {
-			new MisReadFormAction().execute(request, response);
-			}
-	}*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	} 

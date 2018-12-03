@@ -22,8 +22,7 @@ public class MisListFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "/mis/misList.jsp";
-		
+		String url = "/mis/misList.jsp";	
 		
 		MisDAO mDao = MisDAO.getInstance();
 		
@@ -32,9 +31,6 @@ public class MisListFormAction implements Action {
 		request.setAttribute("misList", misList);
 		
 		System.out.println(misList);
-		
-		
-		
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

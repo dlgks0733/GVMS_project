@@ -136,8 +136,6 @@ public class MisDAO extends CommonDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-
-		
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement(sql);

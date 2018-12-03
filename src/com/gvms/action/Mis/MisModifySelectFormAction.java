@@ -22,11 +22,16 @@ public class MisModifySelectFormAction implements Action {
 		String fromDate = request.getParameter("fromDate");
 		String toDate = request.getParameter("toDate");
 		
+		request.setAttribute("fromDate", fromDate);
+		request.setAttribute("toDate", toDate);
+		
+		System.out.println("fromDate : "+fromDate);
+		System.out.println("toDate : "+toDate);
+		
 		MisVO mVo = new MisVO();
 		
 		mVo.setFromDate(fromDate);
 		mVo.setToDate(toDate);
-		
 
 		MisDAO mDao = MisDAO.getInstance();
 		
@@ -35,10 +40,6 @@ public class MisModifySelectFormAction implements Action {
 		request.setAttribute("misModifyList", misModifyList);
 		
 		System.out.println(misModifyList);
-		
-		
-		
-		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -21,6 +21,13 @@
 				<div class="box-wrap">
 					<div class="box-body">
 						<div class="box-keyword">
+							<form method="post" action="/mis?command=mis_modify_select_from">
+										<input type="hidden" >
+										<input type="date" name="fromDate" value="${fromDate}"> &nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;
+										<input type="date" name="toDate" value="${toDate}">
+										<input type="submit" class="btn btn-default" value="검색">
+										<!-- <a href="mis?command=mis_modify_select_from" type="button" class="btn btn-default" >검색</a> -->
+							 </form>						
 							<form name="frm" method="post" action="/mis?command=mis_modify">
 								<div class="row">
 									<div class="col-md-2 col-xs-4">
@@ -33,9 +40,12 @@
 										<input type="text" class="form-control" placeholder="입력하시오" id="keyword" onkeydown="return enter(event)">
 									</div>
 									<div class="row">
-										<input type="date" name="startDate"> &nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;
-										<input type="date" name="endDate">
+<!-- 									<form method="get" action="/mis?mis_modify_select_from">
+										<input type="date" name="fromDate"> &nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;
+										<input type="date" name="toDate">
+										<input type="submit" class="btn btn-default" value="검색">
 										<a href="mis?command=mis_modify_select_from" type="button" class="btn btn-default" >검색</a>
+									</form> -->
 										<table class="table table-bordered" id="user-table">
 											<thead>
 											<tr>
