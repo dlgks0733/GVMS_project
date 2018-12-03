@@ -25,60 +25,63 @@ public class ScoreModifyAction implements Action {
 		String[] optIndex = request.getParameterValues("optIndex");
 		request.setAttribute("optIndex", optIndex);
 		String optIndexIndivi = "";
+		
+		if(essIndex != null) {
+			for (int i = 0; i < essIndex.length; i++) {
+				essIndexIndivi = essIndex[i];
+				String essSubId = request.getParameter(essIndexIndivi + "essSubId");
+				request.setAttribute("essSubId", essSubId);
+				String essScoreDate = request.getParameter(essIndexIndivi + "essScoreDate");
+				request.setAttribute("essScoreDate", essScoreDate);
+				String essAcqScore = request.getParameter(essIndexIndivi + "essAcqScore");
+				request.setAttribute("essAcqScore", essAcqScore);
+				String essScoreId = request.getParameter(essIndexIndivi + "essScoreId");
+				request.setAttribute("essScoreId", essScoreId);
+	
+				System.out.println("essScoreId : " + essScoreId + " essSubId : " + essSubId + " essScoreDate : "
+						+ essScoreDate + " essAcqScore : " + essAcqScore);
+	
+				ScoreVO scoVo = new ScoreVO();
+				scoVo.setScoreId(essScoreId);
+				scoVo.setSubId(essSubId);
+				scoVo.setAcqScore(essAcqScore);
+				scoVo.setScoreDate(essScoreDate);
+	
+				ScoreDao scoDao = ScoreDao.getInstance();
+				if (!essSubId.isEmpty()) {
+					scoDao.updateScore(scoVo);
+				}
 
-		for (int i = 0; i < essIndex.length; i++) {
-			essIndexIndivi = essIndex[i];
-			String essSubId = request.getParameter(essIndexIndivi + "essSubId");
-			request.setAttribute("essSubId", essSubId);
-			String essScoreDate = request.getParameter(essIndexIndivi + "essScoreDate");
-			request.setAttribute("essScoreDate", essScoreDate);
-			String essAcqScore = request.getParameter(essIndexIndivi + "essAcqScore");
-			request.setAttribute("essAcqScore", essAcqScore);
-			String essScoreId = request.getParameter(essIndexIndivi + "essScoreId");
-			request.setAttribute("essScoreId", essScoreId);
-
-			System.out.println("essScoreId : " + essScoreId + " essSubId : " + essSubId + " essScoreDate : "
-					+ essScoreDate + " essAcqScore : " + essAcqScore);
-
-			ScoreVO scoVo = new ScoreVO();
-			scoVo.setScoreId(essScoreId);
-			scoVo.setSubId(essSubId);
-			scoVo.setAcqScore(essAcqScore);
-			scoVo.setScoreDate(essScoreDate);
-
-			ScoreDao scoDao = ScoreDao.getInstance();
-			if (essSubId != "n") {
-				scoDao.updateScore(scoVo);
 			}
-
 		}
-
-		for (int i = 0; i < optIndex.length; i++) {
-			optIndexIndivi = optIndex[i];
-			String optSubId = request.getParameter(optIndexIndivi + "optSubId");
-			request.setAttribute("optSubId", optSubId);
-			String optScoreDate = request.getParameter(optIndexIndivi + "optScoreDate");
-			request.setAttribute("optScoreDate", optScoreDate);
-			String essAcqScore = null;
-
-			String optScoreId = request.getParameter(optIndexIndivi + "optScoreId");
-			request.setAttribute("optScoreId", optScoreId);
-
-			System.out.println("optScoreId : " + optScoreId + " optSubId : " + optSubId + " optScoreDate : "
-					+ optScoreDate + " essAcqScore : " + essAcqScore);
-
-			ScoreVO scoVo = new ScoreVO();
-			scoVo.setScoreId(optScoreId);
-			scoVo.setSubId(optSubId);
-			scoVo.setAcqScore(essAcqScore);
-			scoVo.setScoreDate(optScoreDate);
-
-			ScoreDao scoDao = ScoreDao.getInstance();
-			
-			if (optSubId != "n") {
-				scoDao.updateScore(scoVo);
+		if (optIndex != null) {
+			for (int i = 0; i < optIndex.length; i++) {
+				optIndexIndivi = optIndex[i];
+				String optSubId = request.getParameter(optIndexIndivi + "optSubId");
+				request.setAttribute("optSubId", optSubId);
+				String optScoreDate = request.getParameter(optIndexIndivi + "optScoreDate");
+				request.setAttribute("optScoreDate", optScoreDate);
+				String essAcqScore = null;
+	
+				String optScoreId = request.getParameter(optIndexIndivi + "optScoreId");
+				request.setAttribute("optScoreId", optScoreId);
+	
+				System.out.println("optScoreId : " + optScoreId + " optSubId : " + optSubId + " optScoreDate : "
+						+ optScoreDate + " essAcqScore : " + essAcqScore);
+	
+				ScoreVO scoVo = new ScoreVO();
+				scoVo.setScoreId(optScoreId);
+				scoVo.setSubId(optSubId);
+				scoVo.setAcqScore(essAcqScore);
+				scoVo.setScoreDate(optScoreDate);
+	
+				ScoreDao scoDao = ScoreDao.getInstance();
+				
+				if (!optSubId.isEmpty()) {
+					scoDao.updateScore(scoVo);
+				}
+	
 			}
-
 		}
 
 		/*

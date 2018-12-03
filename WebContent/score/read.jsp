@@ -102,11 +102,11 @@
 					<td style="text-align: center;">${ScoreVO.middle}</td>
 					<td style="text-align: center;">
 					<input type="text" name="${optListStat.index}optSubName" readonly="readonly" value="${ScoreVO.subName}"><a href="#" onclick="openModOptSearchSubject(${optListStat.index})">
-											<input type="button" value="검색" class="btn btn-default"></a></td>
+											<input type="button" value="검색" class="btn btn-default" id="optSearch"></a></td>
 					<td style="text-align: center;"><input type="text" name="${optListStat.index}optSubScore" onkeydown='return onlyNumber(event)' 
 												onkeyup='removeChar(event)' value="${ScoreVO.subScore}" readonly="readonly"></td>
 					<td style="text-align: center;"><input type="text" name="${optListStat.index}optScoreDate" readonly="readonly" value="${ScoreVO.scoreDate}">
-					<input type="hidden" name="${optListStat.index}optSubId" id="option" value="n">
+					<input type="hidden" name="${optListStat.index}optSubId" id="option">
 					<input type="hidden" name="${optListStat.index}optScoreId" value="${ScoreVO.scoreId}">
 					<input type="hidden" name="optIndex" value="${optListStat.index}">
 				</tr>
@@ -158,8 +158,12 @@
 </div> 
 
 <script>
-				
+
+
+
 $(document).ready(function(){
+	
+	
 	
 	var formObj = $("form[role='form']");
 	
@@ -169,9 +173,9 @@ $(document).ready(function(){
 		formObj.attr("action", "score?command=scoreModify");
 		formObj.attr("method", "post");		
 		
-		if (document.getElementById("ess").value == "n" && document.getElementById("option").value == "n") {
-			alert("수정할 항목이 없습니다.");
-		} else {
+		if (isChange == false && buttonChk == false) {
+			alert("수정한 항목이 없습니다.");
+		}  else {
 			formObj.submit();
 			alert("수정되었습니다.");
 		}
@@ -214,6 +218,20 @@ $(document).ready(function(){
 		formObj.submit();
 	});
 	
+	
+	
+// Form 데이터 변경여부 확인	
+	var isChange = false;
+	
+	$("input").change(function(){
+		isChange = true;
+	});
+	
+	
+	buttonChk = false;
+	
+	
+	
 });
 
 
@@ -242,17 +260,23 @@ $("input[name=optAllCheck]").click(function(){
 
 
 
+
+
+
 function openModEssSearchSubject(index)
-{				
+{	
+	buttonChk = true;
+	alert(buttonChk);
 	var url = "score?command=scoreModEssSearchForm&index=" + encodeURIComponent(index);		
-	
 	window.open(url,'_blank','width=500, height=400');
 	
 	return false;
 }
 
 function openModOptSearchSubject(index)
-{				
+{	
+	buttonChk = true;
+	alert(buttonChk);
 	var url = "score?command=scoreModOptSearchForm&index=" + encodeURIComponent(index);		
 	
 	window.open(url,'_blank','width=500, height=400');

@@ -16,7 +16,9 @@ public class ScoreModEssSubSearchAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    String url = "/score/modifyEssSubSearch.jsp";
+		    int listEmp = 0;
+			
+			String url = "/score/modifyEssSubSearch.jsp";
 			String subName = request.getParameter("subName");
 							 request.setAttribute("subName", subName);
 							 System.out.println(subName);
@@ -29,6 +31,14 @@ public class ScoreModEssSubSearchAction implements Action{
 			ScoreDao scoDao = ScoreDao.getInstance();
 			ArrayList<ScoreVO> list = scoDao.SearchEssSubject(subName.toUpperCase().replaceAll(" ",""));
 			request.setAttribute("list", list);
+			
+			if(list.isEmpty() == true) {
+				listEmp = 1;
+			}
+			request.setAttribute("listEmp", listEmp);
+			
+			
+			
 			System.out.println(list);
 			ArrayList<ScoreVO> allEssList = scoDao.allEssSubject();
 			request.setAttribute("allEssList", allEssList);

@@ -16,7 +16,7 @@ public class ScoreModOptSubSearchAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		 int listEmp = 0;
 		 String url = "/score/modifyOptSubSearch.jsp";
 			String subName = request.getParameter("subName");
 							 request.setAttribute("subName", subName);
@@ -34,15 +34,10 @@ public class ScoreModOptSubSearchAction implements Action{
 			ArrayList<ScoreVO> allOptList = scoDao.allOptSubject();
 			request.setAttribute("allOptList", allOptList);
 			
-			if(list.equals("")) {
-				String listChk = "0";
-				request.setAttribute("listChk", listChk);
-				System.out.println(listChk);
-			}else {
-				String listChk = "1";
-				request.setAttribute("listChk", listChk);
-				System.out.println(listChk);
+			if(list.isEmpty() == true) {
+				listEmp = 1;
 			}
+			request.setAttribute("listEmp", listEmp);
 			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);

@@ -114,18 +114,38 @@
 								<th>항목 명</th>
 								<th>항목 점수</th>
 							</tr>
+							
+							 <c:if test="${listEmp == 0 }">
 								<tr style="cursor : pointer;">
 									<td style="text-align: center;">${SubjectVO.major}</td>
 									<td style="text-align: center;">${SubjectVO.middle}</td>
 									<td class="subName" style="text-align: center;" onclick="sendEssSubInfo(${index}, '${SubjectVO.subId}', '${SubjectVO.subName}')">${SubjectVO.subName}</td>
 									<td class="score" style="text-align: center;">${SubjectVO.subScore}</td>
-								</tr>		
+								</tr>
+							 </c:if>		
 										<%-- <input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
 										<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
 										<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}"> --%>
 							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
                				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
 							</c:forEach>
+							
+							<c:if test="${listEmp == 1 }">
+								<tr>
+								<th colspan="4">필수 영역 검색된 항목</th>
+								</tr>
+							
+								<tr>
+								<th>대분류</th>
+								<th>중분류</th>
+								<th>항목 명</th>
+								<th>항목 점수</th>
+								</tr>
+							
+								<tr style="cursor : pointer;">
+									<td style="text-align: center;" colspan="4">검색된 결과가 없습니다.</td>
+								</tr>
+							</c:if>
 
 						</table>
 						

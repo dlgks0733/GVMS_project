@@ -26,6 +26,8 @@ public class ScoreRegistSearchFormAction implements Action{
 		request.setAttribute("allSubList", allSubList);
 		
 		
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		

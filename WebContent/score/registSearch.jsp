@@ -102,30 +102,47 @@
 						</div>
 						<table class="table table-striped">
 						
-							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
 							
-							<tr>
-								<th colspan="4">검색된 항목 목록</th>
-							</tr>
-						
-							<tr>
-								<th>대분류</th>
-								<th>중분류</th>
-								<th>항목 명</th>
-								<th>항목 점수</th>
-							</tr>
-							<input type="hidden" name = "p_index" class="p_index"  value="${p_index}" >
-								<tr style="cursor : pointer;">
-									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.major}</td>
-									<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.middle}</td>
-									<td class="subName" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subName}</td>
-									<td class="score" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subScore}</td>
-								</tr>
-							<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
-               				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
+							<c:forEach items="${list}" var="SubjectVO" varStatus="listStat">
+									<tr>
+										<th colspan="4">검색된 항목 목록</th>
+									</tr>
+								
+									<tr>
+										<th>대분류</th>
+										<th>중분류</th>
+										<th>항목 명</th>
+										<th>항목 점수</th>
+									</tr>
+									
+									
+										<c:if test="${listEmp == 0}">
+											<input type="hidden" name = "p_index" class="p_index"  value="${p_index}" >
+										<tr style="cursor : pointer;">
+											<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.major}</td>
+											<td style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.middle}</td>
+											<td class="subName" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subName}</td>
+											<td class="score" style="text-align: center;"onclick="sendParentData('${listStat.index}', '${SubjectVO.subId}','${p_index}')">${SubjectVO.subScore}</td>
+										</tr>
+										</c:if>
 							</c:forEach>
-
-						</table>
+									<c:if test="${listEmp == 1}">
+											<tr>
+												<th colspan="4">검색된 항목 목록</th>
+											</tr>
+								
+											<tr>
+												<th>대분류</th>
+												<th>중분류</th>
+												<th>항목 명</th>
+												<th>항목 점수</th>
+											</tr>
+									
+											<tr style="cursor : pointer;">
+												<td style="text-align: center;" colspan="4">검색된 결과가 없습니다.</td>
+											</tr>
+										</c:if>
+					</table>
 						
 						<table class="table table-striped">
 							

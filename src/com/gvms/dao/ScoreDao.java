@@ -106,8 +106,8 @@ public class ScoreDao extends CommonDao {
 
 //	학생점수데이터 등록
 	public void insertScore(ScoreVO scoVo) {
-		String sql = "INSERT INTO TBL_SCORE(" + "SCOREID, SUBID, STUID, SCOREDATE, ACQSCORE)"
-				+ "VALUES (SCORE_SEQ.NEXTVAL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO TBL_SCORE(SCOREID, SUBID, STUID, SCOREDATE, ACQSCORE)"
+				+ "VALUES (SCORE_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'MM/DD/YYYY'), ?)";
 
 		Connection conn = getConnection();
 		PreparedStatement st;

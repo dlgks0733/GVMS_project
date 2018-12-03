@@ -103,10 +103,10 @@
 						<!-- <form name=frm method=post> -->
 						<table class="table table-striped">
 							<c:forEach items="${list}" var="ScoreVO" varStatus="listStat">
-								<c:if test="${listChk == 1}">
 									<tr>
 										<th colspan="4">선택 영역 검색된 항목</th>
 									</tr>
+									
 									<tr>
 										<th>대분류</th>
 										<th>중분류</th>
@@ -114,20 +114,17 @@
 										<th>항목 점수</th>
 									</tr>
 										
+								<c:if test="${listEmp == 0}">
 										<tr style="cursor : pointer;">
 											<td style="text-align: center;">${ScoreVO.major}</td>
 											<td style="text-align: center;">${ScoreVO.middle}</td>
 											<td style="text-align: center;" onclick="sendOptSubInfo('${index}', '${ScoreVO.subId}','${ScoreVO.subName}','${ScoreVO.subScore}')">${ScoreVO.subName}</td>
 											<td style="text-align: center;">${ScoreVO.subScore}</td>
-										</tr>		
-												<%-- <input type = "hidden" name = "subId"  value = "${ScoreVO.subId}">
-												<input type = "hidden" name = "subName" value = "${ScoreVO.subName}">
-												<input type = "hidden" name = "subScore" value = "${ScoreVO.subScore}"> --%>
-									<%-- <input type = "hidden" name = "${studentVO.stuid}stuid" value  = "${studentVO.stuid}">
-		               				<input type = "hidden" name = "${studentVO.stuid}stuname" value  = "${studentVO.stuname}"> --%>
+										</tr>					
 		               			</c:if>	
+							</c:forEach>
 							
-							<c:if test="${listChk == 0}">
+							<c:if test="${listEmp == 1}">
 							<tr>
 								<th colspan="4">선택 영역 검색된 항목</th>
 							</tr>
@@ -139,11 +136,10 @@
 							</tr>
 								
 								<tr style="cursor : pointer;">
-									<th colspan="4">검색된 항목이 없습니다.</th>
+									<td style="text-align: center;" colspan="4">검색된 항목이 없습니다.</td>
 								</tr>
 							</c:if>
 
-							</c:forEach>
 						</table>
 						
 						<table class="table table-striped">

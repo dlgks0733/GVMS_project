@@ -18,7 +18,9 @@ public class ScoreRegSubjectSearchAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    String url = "/score/registSearch.jsp";
+		int listEmp = 0;
+		
+			String url = "/score/registSearch.jsp";
 			String subName = request.getParameter("subName");
 							 request.setAttribute("subName", subName);
 							 System.out.println(subName);
@@ -32,7 +34,14 @@ public class ScoreRegSubjectSearchAction implements Action{
 			ScoreDao scoDao = ScoreDao.getInstance();
 			ArrayList<ScoreVO> list = scoDao.SearchSubject(subName.toUpperCase().replaceAll(" ", ""));
 			request.setAttribute("list", list);
-			System.out.println(list);
+			
+			if(list.isEmpty() == true) {
+				listEmp = 1;
+			}
+			
+			request.setAttribute("listEmp", listEmp);
+			System.out.println("listEmp : " + listEmp);
+			
 			
 			ArrayList<ScoreVO> allSubList = scoDao.selectAllSubList();
 			request.setAttribute("allSubList", allSubList);

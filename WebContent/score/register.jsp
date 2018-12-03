@@ -5,8 +5,18 @@
 
 <%@include file="../include/header.jsp"%>
 
+<script>
+
+	
+
+	$(document).ready(function(){
+		
+	    $(".scoreDate").datepicker();
+	});
+	
 
 
+</script>
 
 <!-- Main content -->
 <section class="content">
@@ -46,12 +56,12 @@
 										<td><input type="text" name="subName_1" readonly="readonly" value=""><a href="#" onclick="openRegSearchSubject(1)">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
 										<td><input type="text" name="score_1" value="" readonly="readonly" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
-										<td><input type="date" name="scoreDate_1"></td>
+										<td><input type="text" class="scoreDate" name="scoreDate_1"></td>
 									</tr>
 							  </tbody>
 							</table>
 						  </div>
-						  	<a href="score?command=scoreListRegForm"><button type="button" id="newBtn" class="btn btn-default" style ="float : right ">취소</button></a>
+						  	<a href="score?command=scoreListForm"><button type="button" id="newBtn" class="btn btn-default" style ="float : right ">취소</button></a>
 							<button type="submit" id="newBtn" class="btn btn-primary" style ="float : right ">신규 등록</button>
 							</form>
 							
@@ -163,19 +173,28 @@ function getChildData(subject)
 	var acqScore = document.getElementsByName("acqScore_"+subject.parent_index)[0];
 	document.getElementsByName("subName_"+subject.parent_index)[0].value = subject.subName;
 	
+	alert(subject.parent_index +" : " + subject.subName+" : "+ subject.score);
+	
 	
 	if(subject.score <= 0){
+		/* 취득점수 인정 */
 		score.setAttribute("name", "acqScore_"+subject.parent_index);
 		score.value = "";
 		score.readOnly = false;
-		/* var parentElem = score.parentElement;
+		
+		
+		var parentElem = score.parentElement;
 		parentElem.innerHTML = parentElem.innerHTML
-			+ "<input type=\"hidden\" name=\"score\" value=\"0\">"; */
+			+ "<input type=\"hidden\" name=\"score_"+subject.parent_index+"\" value=\"0\">"; 
 	}
 	if(subject.score > 0 && acqScore != null){
+		
 		acqScore.setAttribute("name", "score_"+subject.parent_index);
 		acqScore.value = subject.score;
 		acqScore.setAttribute("readOnly", "readOnly");
+		
+		
+		
 		
 	}
 	if(subject.score > 0 && acqScore == null){
@@ -204,10 +223,10 @@ function addRow()
 						
 	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score_"  +row_cnt + "\" readonly=\"readonly\" onkeydown=\"return onlyNumber(event)\" onkeyup=\"removeChar(event)\" placeholder=\"숫자만 입력해주세요\"></td>";
 	
-	cell3.innerHTML = "<td><input type=\"date\" name=\"scoreDate_"  +row_cnt + "\"></td>";
-	
-	//<input type=\"hidden\" name=\"row_cnt\" value="  +row_cnt + ">
-
+	cell3.innerHTML = 	"<td><input type=\"text\" class=\"scoreDate\" name=\"scoreDate_2\"></td>";
+						/* "<td><input type=\"text\" class=\"scoreDate\" name = \"scoreDate_" + row_cnt + "></td>"; */
+						//
+						$(".scoreDate").removeClass("hasDatepicker").datepicker();
 }
 
 function deleteRow(){
@@ -259,10 +278,13 @@ function validateEmptyVal()
 	
 	var row_cnt= document.getElementsByName("row_cnt")[0].value;
 	
-	alert(row_cnt);
+	alert(row_cnt); 
 	
 
-	for(var i = 1; i<row_cnt+1; i++){
+	for(var i = 1; i <= row_cnt; i++){
+		
+		
+		alert(i); 
 		
 		/* if (document.getElementsByName("subId_" + i)[0].value == ""){
 			alert("항목 명을 입력해주세요.");
@@ -275,12 +297,31 @@ function validateEmptyVal()
 			document.getElementsByName("subName_" + i)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("acqScore_" + i)[0].value == "")
+		
+		
+ 		if (document.getElementsByName("score_" + i)[0].value == "0")
+		{
+			
+ 	 		if (document.getElementsByName("acqScore_" + i)[0].value == "")
+ 			{
+ 				alert("취득점수를 입력해주세요");
+ 				document.getElementsByName("acqScore_" + i)[0].focus();
+ 				return false;
+ 			} 
+ 			
+ 			
+ 			
+		} 
+		
+		
+/*  		if (document.getElementsByName("acqScore_" + i)[0].value == "")
 		{
 			alert("취득점수를 입력해주세요");
 			document.getElementsByName("acqScore_" + i)[0].focus();
 			return false;
-		}
+		}  */
+		
+		
 	
 	}
 		 alert("등록되었습니다.");
