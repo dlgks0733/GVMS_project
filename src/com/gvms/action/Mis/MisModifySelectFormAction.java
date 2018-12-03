@@ -12,36 +12,37 @@ import com.gvms.action.Action;
 import com.gvms.dao.MisDAO;
 import com.gvms.vo.MisVO;
 
-public class MisReadFormAction implements Action {
+public class MisModifySelectFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "/mis/misRead.jsp";
+		String url = "/mis/misModify.jsp";
 		
-		MisDAO mDao = MisDAO.getInstance();
+		String fromDate = request.getParameter("fromDate");
+		String toDate = request.getParameter("toDate");
 		
-		String stuId = request.getParameter("stuId");
+		request.setAttribute("fromDate", fromDate);
+		request.setAttribute("toDate", toDate);
 		
-		request.setAttribute("stuId", stuId);
-		
-		System.out.println("stuId : " + stuId);
-		System.out.println("출력");
+		System.out.println("fromDate : "+fromDate);
+		System.out.println("toDate : "+toDate);
 		
 		MisVO mVo = new MisVO();
 		
-		mVo.setStuId(stuId);
+		mVo.setFromDate(fromDate);
+		mVo.setToDate(toDate);
+
+		MisDAO mDao = MisDAO.getInstance();
 		
-		List<MisVO> misListReadScoreSum = mDao.selectMisScoreSum(stuId);
-		List<MisVO> misListRead = mDao.selectMisScoreDate(stuId);
+		List<MisVO> misModifyList = mDao.selectMisModifyGetScoreDate(fromDate, toDate);
 		
-		request.setAttribute("misListReadScoreSum", misListReadScoreSum);
-		request.setAttribute("misListRead", misListRead);
+		request.setAttribute("misModifyList", misModifyList);
 		
-		System.out.println(misListReadScoreSum);
-		System.out.println(misListRead);
+		System.out.println(misModifyList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-	} 
 	}
+
+}

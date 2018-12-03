@@ -65,9 +65,9 @@
 					<h2 class="box-title">인증항목 검색</h2>
 					<p>
 					<form method="post" action="score?command=scoreModOptSubSearch">
-								<input type="text" name="subName">
+								<h5>항목 명 : <input type="text" name="subName">
 								<input type = "hidden" name = "index"  value = "${index}">
-								<input type="submit" class="btn btn-default" value="검색">
+								<input type="submit" class="btn btn-default" value="검색"></h5>
 								</form>
 								</p>
 				</div>

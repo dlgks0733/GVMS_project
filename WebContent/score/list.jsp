@@ -51,7 +51,9 @@
 								</div>
 							</div> -->
 							</form>
+							</br>
 						</div>
+						
 						<table class="table table-bordered" id = "user-table">
 						  <thead>
 							<tr>

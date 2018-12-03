@@ -43,8 +43,8 @@ public class MisRegistAction implements Action {
 			MisVO mVo = new MisVO();
 			mVo.setStuId(stuIdIndivi);
 			mVo.setScoreDate(scoreDate);
-			mDao.insertMis(mVo);
 			
+			mDao.insertMis(mVo);
 			
 		}
 		

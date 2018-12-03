@@ -27,17 +27,17 @@ public class MisDAO extends CommonDao {
 		return instance;
 	}
 
-	// MisList.jsp에서 학생별 MIS 총합 점수를 조회하는 메소드
+	
+	
 	public List<MisVO> selectMis() {
-		//MIS 점수 조회화면에는 학번과 이름, MIS총점을 출력해야 한다.
-		//학생은 재학상태인 학생만 출력한다.
+		
 		String sql = "SELECT stu.stuId   as stuId"
 				+ "		   , stu.stuName as stuName"
 				+ "        , count(sub.subId) * sub.subScore as scoreSum "
 				+ "     FROM TBL_SCORE s, TBL_SUB sub, TBL_STU stu "
 				+ "    WHERE s.STUID = stu.STUID "
 				+ "      AND s.SUBID = sub.SUBID "
-				+ "      AND sub.SUBNAME = 'MIS-DAY' "
+				+ "      AND sub.SUBID = '1' "
 				+ "      AND stu.STUSTAT = '재학' "
 				+ " GROUP BY stu.STUID, stu.STUNAME, sub.SUBID, sub.SUBSCORE"
 				+ " ORDER BY STUID";
@@ -76,8 +76,7 @@ public class MisDAO extends CommonDao {
 	}
 	
 	public List<MisVO> selectMisModify() {
-		//MIS 점수 조회화면에는 학번과 이름, MIS총점을 출력해야 한다.
-		//학생은 재학상태인 학생만 출력한다.
+		
 		String sql = "SELECT s.scoreId 	 as scoreId"
 				+ "		   , stu.stuId   as stuId"
 				+ "		   , stu.stuName as stuName"
@@ -91,6 +90,52 @@ public class MisDAO extends CommonDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 
+		try {
+			conn = getConnection();
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				MisVO mVo = new MisVO();
+				
+				mVo.setScoreId(rs.getString("scoreId"));
+				mVo.setStuId(rs.getString("stuId"));
+				mVo.setStuName(rs.getString("stuName"));
+				mVo.setScoreDate(rs.getString("scoreDate"));
+
+				list.add(mVo);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			dbClose();
+			
+		}
+		
+		return list;
+	}
+	
+	public List<MisVO> selectMisModifyGetScoreDate(String fromDate, String toDate) {
+		
+		String sql = "SELECT s.scoreId 	 as scoreId"
+				+ "		   , stu.stuId   as stuId"
+				+ "		   , stu.stuName as stuName"
+				+ "        , TO_CHAR(s.scoreDate, 'YYYY-MM-DD') as scoreDate "
+				+ "     FROM TBL_SCORE s, TBL_STU stu "
+				+ "    WHERE s.STUID = stu.STUID "
+				+ "      AND s.SCOREDATE BETWEEN TO_DATE('" + fromDate + "', 'yyyy-mm-dd')"
+				+ "      AND TO_DATE('" + toDate + "', 'yyyy-mm-dd')"
+				+ " ORDER BY s.scoreDate DESC";
+
+		List<MisVO> list = new ArrayList<MisVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -174,7 +219,7 @@ public class MisDAO extends CommonDao {
 					+ "			,TBL_SUB sub"
 					+ "    WHERE sco.STUID = stu.STUID"
 					+ "		 AND sco.SUBID = sub.SUBID"
-					+ " 	 AND sub.SUBNAME = 'MIS-DAY'"
+					+ " 	 AND sub.SUBID = '1'"
 					+ "	     AND stu.STUID ='" + stuId + "'"
 					+ "    ORDER BY sco.scoreDate DESC";
 			

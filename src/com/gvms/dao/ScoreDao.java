@@ -76,6 +76,7 @@ public class ScoreDao extends CommonDao {
 		String sql = "SELECT SCO.SCOREID , SUB.SUBID, SUB.MIDDLE, SUB.SUBNAME, "
 				+ "SCO.ACQSCORE, TO_CHAR(SCO.SCOREDATE, 'YYYY-MM-DD') " + "FROM TBL_SUB SUB, TBL_SCORE SCO "
 				+ "WHERE SCO.SUBID = SUB.SUBID " + "AND STUID = " + stu_id + " " + "AND SUB.MAJOR = '필수' "
+				+ "  AND SUB.SUBNAME NOT LIKE '%MIS%' "
 				+ "ORDER BY SCO.SCOREID DESC";
 
 		try {
@@ -175,7 +176,8 @@ public class ScoreDao extends CommonDao {
 
 		ArrayList<ScoreVO> list = new ArrayList<ScoreVO>();
 
-		String sql = "SELECT * FROM TBL_SUB WHERE SUBNAME LIKE  '%" + subName + "%' AND MAJOR = '필수'";
+		String sql = "SELECT * FROM TBL_SUB WHERE SUBNAME LIKE  '%" + subName + "%' AND MAJOR = '필수'"
+				+ "		 AND SUBNAME NOT LIKE '%MIS%'";
 
 		Connection conn = getConnection();
 		PreparedStatement st;
@@ -209,7 +211,8 @@ public class ScoreDao extends CommonDao {
 
 		ArrayList<ScoreVO> allEssList = new ArrayList<ScoreVO>();
 
-		String sql = "SELECT * FROM TBL_SUB WHERE MAJOR = '필수'";
+		String sql = "SELECT * FROM TBL_SUB WHERE MAJOR = '필수'"
+				+ "		 AND SUBNAME NOT LIKE '%MIS%'";
 
 		Connection conn = getConnection();
 		PreparedStatement st;

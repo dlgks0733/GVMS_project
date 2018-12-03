@@ -5,6 +5,9 @@
 
 <%@include file="../include/header.jsp"%>
 
+
+
+
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -40,9 +43,9 @@
 							  </thead>
 							  <tbody id="subject_tbody" align="center">	
 									<tr>
-										<td><input type="text" name="subName_1" readonly="readonly"><a href="#" onclick="openRegSearchSubject(1)">
+										<td><input type="text" name="subName_1" readonly="readonly" value=""><a href="#" onclick="openRegSearchSubject(1)">
 										<input type="button" value="검색" class="btn btn-default"></a></td>
-										<td><input type="text" name="score_1" readonly="readonly" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
+										<td><input type="text" name="score_1" value="" readonly="readonly" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' placeholder="숫자만 입력해주세요"></td>
 										<td><input type="date" name="scoreDate_1"></td>
 									</tr>
 							  </tbody>
@@ -163,7 +166,7 @@ function getChildData(subject)
 	
 	if(subject.score <= 0){
 		score.setAttribute("name", "acqScore_"+subject.parent_index);
-		score.value = 0;
+		score.value = "";
 		score.readOnly = false;
 		/* var parentElem = score.parentElement;
 		parentElem.innerHTML = parentElem.innerHTML
@@ -196,7 +199,7 @@ function addRow()
 	var cell3 = row.insertCell(2);
 	
 	
-	cell1.innerHTML = "<input type=\"hidden\" name=\"subId_"  +row_cnt + "\" value=\"0\"> <td>" + "<input type=\"text\" name=\"subName_"  +row_cnt + "\" readonly=\"readonly\">"
+	cell1.innerHTML = "<input type=\"hidden\" name=\"subId_"  +row_cnt + "\"> <td>" + "<input type=\"text\" name=\"subName_"  +row_cnt + "\" readonly=\"readonly\">"
 						+ "<a href=\"#\" onclick=\"openRegSearchSubject("  +row_cnt + ")\">" + "<input type=\"button\" value=\"검색\" class=\"btn btn-default\"></a></td>";
 						
 	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score_"  +row_cnt + "\" readonly=\"readonly\" onkeydown=\"return onlyNumber(event)\" onkeyup=\"removeChar(event)\" placeholder=\"숫자만 입력해주세요\"></td>";
@@ -256,38 +259,39 @@ function validateEmptyVal()
 	
 	var row_cnt= document.getElementsByName("row_cnt")[0].value;
 	
+	alert(row_cnt);
 	
-	for(var i = 1; i<=row_cnt; i++){
-		/* if(document.getElementsByName("subId_" + row_cnt)[0].value == ""){
-			alert("경고");
-			return false;
-		} */ 
+
+	for(var i = 1; i<row_cnt+1; i++){
 		
-		if (document.getElementsByName("subName_" + row_cnt)[0].value == "")
+		/* if (document.getElementsByName("subId_" + i)[0].value == ""){
+			alert("항목 명을 입력해주세요.");
+			return false;
+		} */
+		
+		if (document.getElementsByName("subName_" + i)[0].value == "")
 		{
 			alert("항목 명을 입력해주세요");
-			document.getElementsByName("subName_" + row_cnt)[0].focus();
+			document.getElementsByName("subName_" + i)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("score_" + row_cnt)[0].value == "")
+		if (document.getElementsByName("acqScore_" + i)[0].value == "")
 		{
-			alert("점수를 입력해주세요");
-			document.getElementsByName("score_" + row_cnt)[0].focus();
+			alert("취득점수를 입력해주세요");
+			document.getElementsByName("acqScore_" + i)[0].focus();
 			return false;
 		}
-		if (document.getElementsByName("acqScore_" + row_cnt)[0].value == "")
-		{
-			alert("점수를 입력해주세요");
-			document.getElementsByName("acqScore_" + row_cnt)[0].focus();
-			return false;
-		}
+	
 	}
-		 return true;
 		 alert("등록되었습니다.");
 	
 }
 
 
+
+
 </script>
+
+
 
 <%@include file="../include/footer.jsp"%>

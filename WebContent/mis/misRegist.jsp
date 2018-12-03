@@ -40,6 +40,7 @@
 					</table>
 					</div>
 						 <button type="button" class="btn btn-primary">등록</button>
+						 <a href="/mis?command=mis_list_form" type="button" class="btn btn-default" >취소</a>
 					</form>
 
 				</div>

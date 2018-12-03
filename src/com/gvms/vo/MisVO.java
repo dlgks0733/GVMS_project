@@ -14,6 +14,8 @@ public class MisVO {
 	private String scoreDate;
 	private String scoreSum;
 	private String subScore;
+	private String fromDate;
+	private String toDate;
 
 	public String getScoreId() {
 		return scoreId;
@@ -56,6 +58,20 @@ public class MisVO {
 	}
 	public String getSubScore() {
 		return subScore;
+	}
+
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	public String getFromDate() {
+		return fromDate;
+	}
+
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+	public String getToDate() {
+		return toDate;
 	}
 
 	public void setScoreSum(String scoreSum) {
