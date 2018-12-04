@@ -70,7 +70,6 @@
 								<input type="submit" class="btn btn-default" value="검색"></h5>
 								</form>
 								</p>
-				</div>
 				<!-- <div class="box-wrap">
 					<div class="box-body">
 						<div class="box-keyword">
@@ -199,6 +198,7 @@
 						</div>
 						<!-- .text-center END -->
 					</div>
+					  </div>
 					<!-- .box-footer END -->
 				</div>
 				<!-- .box-wrap END -->

@@ -82,11 +82,11 @@
                            </c:forEach>
 
                         </table>
+                  </form>
                      </div>
                      <button type="button" class="btn btn-danger" style = "float : right">삭제</button>
                      <a type="button" href="/student?command=stud_reg_form"
                         class="btn btn-primary" style = "float : right">신규 등록</a>
-                  </form>
 
                   <div class="box-footer">
 
@@ -134,7 +134,7 @@
 
 
 
-$(document).ready(function() {
+/* $(document).ready(function() {
 
    var formObj = $("form[role='form']");
 
@@ -152,7 +152,7 @@ $(document).ready(function() {
 
    });
 
-});
+}); */
 
 
 
@@ -233,13 +233,14 @@ $(document).ready(function() {
                if (!isChk) {
                   alert("선택된 학생이 없습니다.");
                } else {
+            	   alert("삭제되었습니다.")
                   formObj.submit();
                }
             });
 
          });
     //학생 선택되었는지 유효성검사
-   function validateDelete() {
+   /* function validateDelete() {
       var isChk = false;
 
       var arrStu = document.getElementsByName("stuCheck");
@@ -258,7 +259,7 @@ $(document).ready(function() {
          document.frm.submit();
       }
 
-   }
+   } */
     
     //학생 이름 검색기능
    $(document)
