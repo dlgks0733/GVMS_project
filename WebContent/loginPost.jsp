@@ -9,7 +9,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    self.location = "/admin/main";
+    self.location = "main?command=main";
   </script>
 </body>
 </html>

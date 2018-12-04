@@ -1,6 +1,5 @@
 package com.gvms.controller;
 
-
 //package 모든 액션 받음
 import com.gvms.action.*;
 import com.gvms.action.Mis.MisDeleteAction;
@@ -39,8 +38,6 @@ import com.gvms.action.Subject.SubjectModifyAction;
 import com.gvms.action.Subject.SubjectModifyFormAction;
 import com.gvms.action.Subject.SubjectRegisterAction;
 
-
-	
 /**
  * request로 받아온 매개변수의 command의 값으로 각 기능을 수행할 액션을 분기하는 클래스 <br>
  * action추가 시 최대한 기능별로 정렬될 수 있도록 한다. 수정이 잦은 class이므로 주의하여 편집!!
@@ -66,153 +63,130 @@ public class ActionFactory {
 		System.out.println("ActionFactory : " + command);
 
 		if (command.equals("main")) {
-			
+
 			action = new MainAction();
+
+		} else if (command.equals("login")) {
 		
-			}	
-			else if(command.equals("scoreListForm")) {
+			action = new LoginAction();
+		
+		} else if (command.equals("logout")) {
 			
+			action = new LogoutAction();
+		
+		} else if (command.equals("scoreListForm")) {
+
 			action = new ScoreListFormAction();
-			
-			} 
-			else if(command.equals("scoreListRegForm")) {
-				
+
+		} else if (command.equals("scoreListRegForm")) {
+
 			action = new ScoreListRegFormAction();
-			
-			}
-			else if(command.equals("scoreRegisterForm")) {
-				
+
+		} else if (command.equals("scoreRegisterForm")) {
+
 			action = new ScoreRegisterFormAction();
-			
-			} 
-			else if(command.equals("scoreRegistSearchForm")) {
-				
+
+		} else if (command.equals("scoreRegistSearchForm")) {
+
 			action = new ScoreRegistSearchFormAction();
-				
-			}
-			else if(command.equals("scoreRegSubSearch")) {
-				
+
+		} else if (command.equals("scoreRegSubSearch")) {
+
 			action = new ScoreRegSubjectSearchAction();
-				
-			}
-			else if(command.equals("scoreRegist")) {
-				
+
+		} else if (command.equals("scoreRegist")) {
+
 			action = new ScoreRegistAction();
-				
-			}
-			else if(command.equals("scoreReadForm")) {
-				
+
+		} else if (command.equals("scoreReadForm")) {
+
 			action = new ScoreReadFormAction();
-				
-			}
-			else if(command.equals("scoreModifyForm")) {
-				
+
+		} else if (command.equals("scoreModifyForm")) {
+
 			action = new ScoreModifyFormAction();
-				
-			}
-			else if(command.equals("scoreModEssSearchForm")) {
-				
+
+		} else if (command.equals("scoreModEssSearchForm")) {
+
 			action = new ScoreModEssSearchFormAction();
-				
-			}
-			else if(command.equals("scoreModOptSearchForm")) {
-				
+
+		} else if (command.equals("scoreModOptSearchForm")) {
+
 			action = new ScoreModOptSearchFormAction();
-				
-			}
-			else if(command.equals("scoreModEssSubSearch")) {
-				
+
+		} else if (command.equals("scoreModEssSubSearch")) {
+
 			action = new ScoreModEssSubSearchAction();
-				
-			}
-			else if(command.equals("scoreModOptSubSearch")) {
-				
+
+		} else if (command.equals("scoreModOptSubSearch")) {
+
 			action = new ScoreModOptSubSearchAction();
-				
-			}
-			else if(command.equals("scoreModify")) {
-				
+
+		} else if (command.equals("scoreModify")) {
+
 			action = new ScoreModifyAction();
-			}
-			else if(command.equals("scoreDelete")) {
-				
+		} else if (command.equals("scoreDelete")) {
+
 			action = new ScoreDeleteAction();
-				
-			}
-			// author osj
-			else if(command.equals("mis_list_form")) {
-				action = new MisListFormAction();
-			}
-			else if(command.equals("mis_regist_form")) {
-				action = new MisRegistFormAction();
-			}
-			else if(command.equals("mis_regist")) {
-				action = new MisRegistAction();
-			}
-			else if(command.equals("mis_read_form")) {
-				action = new MisReadFormAction();
-			}
-			else if(command.equals("mis_read")) {
-				action = new MisReadAction();
-			}
-			else if(command.equals("mis_delete")) {
-				action = new MisDeleteAction();
-			}
-			else if(command.equals("mis_modify_form")) {
-				action = new MisModifyFormAction();
-			}
-			else if(command.equals("mis_modify_select_from")) {
-				action = new MisModifySelectFormAction();
-			}
-			else if(command.equals("mis_modify")) {
-				action = new MisModifyAction();
-			}
-			
-		
-			// author pjh
-			else if (command.equals("studentListForm")) {
 
-				action = new StudentListFormAction();
-			} 
-			else if (command.equals("stud_reg_form")) {
+		}
+		// author osj
+		else if (command.equals("mis_list_form")) {
+			action = new MisListFormAction();
+		} else if (command.equals("mis_regist_form")) {
+			action = new MisRegistFormAction();
+		} else if (command.equals("mis_regist")) {
+			action = new MisRegistAction();
+		} else if (command.equals("mis_read_form")) {
+			action = new MisReadFormAction();
+		} else if (command.equals("mis_read")) {
+			action = new MisReadAction();
+		} else if (command.equals("mis_delete")) {
+			action = new MisDeleteAction();
+		} else if (command.equals("mis_modify_form")) {
+			action = new MisModifyFormAction();
+		} else if (command.equals("mis_modify_select_from")) {
+			action = new MisModifySelectFormAction();
+		} else if (command.equals("mis_modify")) {
+			action = new MisModifyAction();
+		}
 
-				action = new StudentRegisterFormAction();
-			} 
-			else if (command.equals("stud_register")) {
+		// author pjh
+		else if (command.equals("studentListForm")) {
 
-				action = new StudentRegisterAction();		
-			}	
-			else if (command.equals("stuIdCheck")) {
+			action = new StudentListFormAction();
+		} else if (command.equals("stud_reg_form")) {
 
-				action = new StuCheckAction();		
-			}	
-			else if (command.equals("stud_modi_form")) {
+			action = new StudentRegisterFormAction();
+		} else if (command.equals("stud_register")) {
 
-				action = new StudentModifyFormAction();
-			} 
-			else if (command.equals("stud_delete")) {
-				
-				action = new StudentDeleteAction();
-			}
-			else if (command.equals("stud_modify")) {
-				action = new StudentModifyAction();
-			}
-		    
-			else if (command.equals("subList")) {
-				action = new SubjectListformAction();
-			}
-			else if (command.equals("subRegister")) {
-				action = new SubjectRegisterAction();
-			}
-			else if (command.equals("subModify")) {
-				action = new SubjectModifyAction();
-			}
-			else if (command.equals("subModifyForm")) {
-				action = new SubjectModifyFormAction();
-			}
-			else if (command.equals("subDelete")) {
-				action = new SubjectDeleteAction();
-			}
+			action = new StudentRegisterAction();
+		}else if (command.equals("stuIdCheck")) {
+
+			action = new StuCheckAction();
+		}
+
+		else if (command.equals("stud_modi_form")) {
+
+			action = new StudentModifyFormAction();
+		} else if (command.equals("stud_delete")) {
+
+			action = new StudentDeleteAction();
+		} else if (command.equals("stud_modify")) {
+			action = new StudentModifyAction();
+		}
+
+		else if (command.equals("subList")) {
+			action = new SubjectListformAction();
+		} else if (command.equals("subRegister")) {
+			action = new SubjectRegisterAction();
+		} else if (command.equals("subModify")) {
+			action = new SubjectModifyAction();
+		} else if (command.equals("subModifyForm")) {
+			action = new SubjectModifyFormAction();
+		} else if (command.equals("subDelete")) {
+			action = new SubjectDeleteAction();
+		}
 
 		return action;
 	}

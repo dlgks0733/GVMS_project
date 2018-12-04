@@ -15,7 +15,7 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../resources/admin/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 	
          folder instead of downloading all of them to reduce the load. -->
     <link href="../resources/admin/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <!-- CUSTOM STYLE | Created  by. KAYH -->
@@ -82,15 +82,13 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../resources/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">${login.adminName}님 반갑습니다.</span>
+                  <span class="hidden-xs">관리자님님 반갑습니다.</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="../resources/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      ${login.adminName}
-                      <small>${login.adminEmail}</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -134,8 +132,8 @@
               <img src="../resources/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>${login.adminName}</p>
-              <a class="btn-logout" href="#"><i class="fa fa-power-off"></i> 로그아웃</a>
+              <p>관리자</p>
+              <a class="btn-logout" href="main?command=logout"><i class="fa fa-power-off"></i> 로그아웃</a>
             </div>
           </div>
           <!-- search form -->
