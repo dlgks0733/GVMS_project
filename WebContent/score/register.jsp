@@ -173,7 +173,6 @@ function getChildData(subject)
 	var acqScore = document.getElementsByName("acqScore_"+subject.parent_index)[0];
 	document.getElementsByName("subName_"+subject.parent_index)[0].value = subject.subName;
 	
-	alert(subject.parent_index +" : " + subject.subName+" : "+ subject.score);
 	
 	
 	if(subject.score <= 0){
@@ -223,7 +222,7 @@ function addRow()
 						
 	cell2.innerHTML = "<td>" + "<input type=\"text\" name=\"score_"  +row_cnt + "\" readonly=\"readonly\" onkeydown=\"return onlyNumber(event)\" onkeyup=\"removeChar(event)\" placeholder=\"숫자만 입력해주세요\"></td>";
 	
-	cell3.innerHTML = 	"<td><input type=\"text\" class=\"scoreDate\" name=\"scoreDate_2\"></td>";
+	cell3.innerHTML = 	"<td><input type=\"text\" class=\"scoreDate\" name = \"scoreDate_"+ row_cnt + "\"></td>";
 						/* "<td><input type=\"text\" class=\"scoreDate\" name = \"scoreDate_" + row_cnt + "></td>"; */
 						//
 						$(".scoreDate").removeClass("hasDatepicker").datepicker();
@@ -278,13 +277,11 @@ function validateEmptyVal()
 	
 	var row_cnt= document.getElementsByName("row_cnt")[0].value;
 	
-	alert(row_cnt); 
 	
 
 	for(var i = 1; i <= row_cnt; i++){
 		
 		
-		alert(i); 
 		
 		/* if (document.getElementsByName("subId_" + i)[0].value == ""){
 			alert("항목 명을 입력해주세요.");
