@@ -114,7 +114,7 @@
          return false;
       } else {
          var name = document.frm.stuName.value;
-         var isCorrect = confirm(name + " 학번을 등록하시겠습니까?");
+         var isCorrect = confirm(name + " 학생을 등록하시겠습니까?");
          if (isCorrect == true) {
             return true;
          } else {

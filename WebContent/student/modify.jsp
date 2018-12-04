@@ -21,11 +21,72 @@
 					class="form-horizontal" onsubmit="return validateEmptyVal()">
 					<input type="hidden" name="validation">
 					<div class="box-body box-form-custom">
-						<div class="form-group input-short"></div>
+						
+						<div class="form-group input-with-button">
+                     <label for="exampleInputEmail1"
+                        class="col-sm-2 control-label pull-left">학번<span
+                        class="must-mark">*</span></label>
+                     <div class="col-md-3 col-xs-4 left-input">
+                        <input name="stuId" class="form-control" type="text"  readonly="readonly" value="${stuId}"> <input
+                           name="stuIdOk" class="form-control" type="hidden">
+                     </div>
+                     
+                  </div>
+
+                  <div class="form-group input-short">
+                     <label for="exampleInputEmail1" class="col-sm-2 control-label">이름<span
+                        class="must-mark">*</span></label>
+                     <div class="col-sm-10">
+                        <input type="text" name='stuName' class="form-control"
+                           placeholder="이름을 입력해주세요" value="${stuName}"> <span
+                           id="validatePwEmailMessage"></span>
+                     </div>
+                  </div>
+
+                  <div class="form-group input-short">
+                     <label for="exampleInputEmail1" class="col-sm-2 control-label">재학
+                        상태<span class="must-mark">*</span>
+                     </label>
+                     <div class="col-sm-10">
+                        <select id='stuStat' name='stuStat'>
+                        	<c:if test="${stuStat == '재학'}">
+                           <option value='' selected>--선택--</option>
+                           <option value='재학' selected="selected">재학</option>
+                           <option value='휴학'>휴학</option>
+                           </c:if>
+                           
+                           <c:if test="${stuStat == '휴학'}">
+                           <option value='' selected>--선택--</option>
+                           <option value='재학'>재학</option>
+                           <option value='휴학' selected="selected">휴학</option>
+                           </c:if>
+                           
+                        </select>
+                     </div>
+                  </div>
+
+               </div>
+					<div class="box-footer btn-group-center">
+						<!-- <button type="button" class="btn btn-danger" onclick="remove()">삭제</button> -->
+						<button type="submit" class="btn btn-primary">수정</button>
+						<a type="button" href="/student?command=studentListForm"
+							class="btn btn-default">취소</a>
+						<!-- <button type="button" class="btn btn-cancel">취소</button> -->
+						
+					</div>
+						
+						
+					
+					</form>
+					
 					</div>
 
+
+					
+
+
 					<!-- 필수항목 학번 입력 -->
-					<div class="form-group input-short">
+				<%-- 	<div class="form-group input-short">
 						<label for="exampleInputEmail1" class="col-sm-2 control-label">
 							학번 <span class="must-mark">*</span>
 						</label>
@@ -49,11 +110,11 @@
 								placeholder="이름을 입력해주세요" value="${stuName}"> <span
 								id="validatePwEmailMessage"></span>
 						</div>
-					</div>
+					</div> --%>
 
 
 					<!-- 필수항목 재적상태 입력 -->
-					<div class="form-group input-short">
+					<%-- <div class="form-group input-short">
 						<label for="exampleInputEmail1" class="col-sm-2 control-label">
 							재학상태 <span class="must-mark">*</span>
 
@@ -73,18 +134,8 @@
 								</c:if>
 							</select> </select> <span id="validateCompanyMessage"></span>
 						</div>
-					</div>
-
-
-					<div class="box-footer btn-group-center">
-						<!-- <button type="button" class="btn btn-danger" onclick="remove()">삭제</button> -->
-						<button type="submit" class="btn btn-primary">수정</button>
-						<a type="button" href="/student?command=studentListForm"
-							class="btn btn-default">취소</a>
-						<!-- <button type="button" class="btn btn-cancel">취소</button> -->
-					</div>
-				</form>
-
+					</div> --%>
+						
 			</div>
 			<!-- /.box -->
 		</div>
