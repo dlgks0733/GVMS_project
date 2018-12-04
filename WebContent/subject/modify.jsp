@@ -5,13 +5,6 @@
 <%@include file="../include/header.jsp"%>
 
 <!-- Main content -->
-
-<style>
-.layer { display: none; }
-.layer2 { display: none; }
-
-</style>
-
 <section class="content">
 	<div class="row">
 		<!-- left column -->
@@ -21,7 +14,7 @@
 				<div class="box-header">
 					<h3 class="box-title">수정</h3>
 							
-					<!-- style="display:none" -->
+					
 				</div>
 				<!-- /.box-header -->
 
@@ -32,80 +25,86 @@
 		<div class="form-group">
 			<c:if test = "${major_num == 1}">
 			<label >필수</label>
-			<input type= "radio" name = "major" value = "필수"  checked >
+			<input type= "radio" name = "major" value = "필수" checked >
 			<label >선택</label> 
-			<input type= "radio" name = "major" value = "선택">
+			<input type= "radio" name = "major" value = "선택" >
 			</c:if>
 			<c:if test = "${major_num == 0}">
 			<label >필수</label>
 			<input type= "radio" name = "major" value = "필수" >
 			<label >선택</label> 
-			<input type= "radio" name = "major" value = "선택"  checked>
+			<input type= "radio" name = "major" value = "선택" checked>
 			</c:if>
 			
 		</div>
 		
-		<div class="form-group" id = "essmiddle" >
+		<div class="form-group">
 		   <label >중분류</label>
-		   <select name = "essmiddle" >
-		   <c:if test = "${essmiddle_num == 0}">
+		   <select name = "middle">
+		   <c:if test = "${middle_num == 0}">
 	       <option selected>영역선택</option>
 	       <option >외국어영역</option>
 	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
 	       </c:if>
-	       	   
-		   <c:if test = "${essmiddle_num == 1}">
+		   
+		   <c:if test = "${middle_num == 1}">
 	       <option >영역선택</option>
 	       <option selected>외국어영역</option>
 	       <option >학생활동영역</option>
+	       <option >정보화영역</option>
+	       <option >금융/회계영역</option>
+	       <option >공모전영역</option>
+	       <option >기타</option>
 	       </c:if>
 	              
-		   <c:if test = "${essmiddle_num == 2}">
+		   <c:if test = "${middle_num == 2}">
 	       <option >영역선택</option>
 	       <option >외국어영역</option>
 	       <option selected>학생활동영역</option>
-	       </c:if>
-	       </select>
-	       </div>
-	       
-	       <div class="form-group" id = "optmiddle"  style = "display:none">
-	       <label >중분류</label>
-	       <select name = "optmiddle">
-	       
-	       <c:if test = "${optmiddle_num == 0}">
-	       <option selected>영역선택</option>
 	       <option >정보화영역</option>
 	       <option >금융/회계영역</option>
 	       <option >공모전영역</option>
 	       <option >기타</option>
 	       </c:if>
 	       
-		   <c:if test = "${optmiddle_num == 3}">
+		   <c:if test = "${middle_num == 3}">
 	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
 	       <option selected>정보화영역</option>
 	       <option >금융/회계영역</option>
 	       <option >공모전영역</option>
 	       <option >기타</option>
 	       </c:if>
 	       
-		   <c:if test = "${optmiddle_num == 4}">
+		   <c:if test = "${middle_num == 4}">
 	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
 	       <option >정보화영역</option>
 	       <option selected>금융/회계영역</option>
 	       <option >공모전영역</option>
 	       <option >기타</option>
 	       </c:if>
 	       
-		   <c:if test = "${optmiddle_num == 5}">
+		   <c:if test = "${middle_num == 5}">
 	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
 	       <option >정보화영역</option>
 	       <option >금융/회계영역</option>
 	       <option selected>공모전영역</option>
 	       <option >기타</option>
 	       </c:if>
 	       
-		   <c:if test = "${optmiddle_num == 6}">
+		   <c:if test = "${middle_num == 6}">
 	       <option >영역선택</option>
+	       <option >외국어영역</option>
+	       <option >학생활동영역</option>
 	       <option >정보화영역</option>
 	       <option >금융/회계영역</option>
 	       <option >공모전영역</option>
@@ -125,16 +124,9 @@
 			<label >항목명</label> 
 			<input type="text" name="subName" value = "${SubjectVO.subName}" placeholder="ex) 정보화영역">
 		</div> 
-		 
-		 <div class="layer">
+		 		<div class="form-group">
 			<label >점수</label> 
-			<input type="text"
-				name="subScore1" class="form-control"  placeholder="ex) 외국어영역은 점수 입력이 불가합니다." disabled>
-		</div> 
-		 	
-		 	<div class="layer2">
-			<label >점수</label> 
-			<input type="text" name="subScore"  value = "${SubjectVO.subScore}" placeholder="ex) 600">
+			<input type="text" name="subScore" value = "${SubjectVO.subScore}" placeholder="ex) 600">
 		</div> 
 	</c:forEach>
 	</div>
@@ -154,29 +146,23 @@
 
 
 
- <script type="text/javascript">
+<script>
 		$(document).ready(function() {
-
 		var formObj = $("form[role='form']");
-
 		console.log(formObj);
-
 		$(".btn-warning").on("click", function() {
 			formObj.attr("action", "subject?command=subModify");
 			formObj.attr("method", "post");
 			formObj.submit();
 			alert("수정이 완료되었습니다.");
-
 		});
-
 		$(".btn-danger").on("click", function() {
 			formObj.attr("action", "subject?command=subList");
 			formObj.attr("method", "post");
 		});
-
 	}); 
 		
-		function validateEmptyVal()
+			function validateEmptyVal()
 		{
 			if (document.getElementsByName("major")[0].value == "")
 			{
@@ -184,94 +170,33 @@
 				document.getElementsByName("major")[0].focus();
 				return false;
 			}
-			
 			if (document.getElementsByName("middle")[0].value == "")
 			{
 				alert("영역을 선택해주세요.");
 				document.getElementsByName("middle")[0].focus();
 				return false;
 			}
-			
-			if (document.getElementsByName("middle")[0].value == "외국어영역")
-			{
+			if(document.getElementsByName("middle")[0].value == "외국어영역")
+			{	
 				document.getElementsByName("subScore")[0].focus();
 				return true;
+				
 			}
-			
 			if (document.getElementsByName("subName")[0].value == "")
 			{
 				alert("항목명을 입력해주세요.");
 				document.getElementsByName("subName")[0].focus();
 				return false;
 			}
-			
 			if (document.getElementsByName("subScore")[0].value == "")
 			{
 				alert("점수를 입력해주세요.");
 				document.getElementsByName("subScore")[0].focus();
 				return false;
 			}
-
+			
 			return true;
 		} 
-		//항목 숨기고 보여주기	
-jQuery('#essmiddle').ready(function() {
-	var state = jQuery('#essmiddle option:selected').val();
-	if(state == '외국어영역') {
-		jQuery('.layer').show();
-		jQuery('.layer2').hide();
-	}else{
-		jQuery('.layer').hide();
-		jQuery('.layer2').show();
-	}
-	
-});
-
-
-jQuery('#optmiddle').ready(function() {
-	var state = jQuery('#optmiddle option:selected').val();
-	if(state == '선택영역선택') {
-		jQuery('.layer').hide();
-		jQuery('.layer2').show();
-	}else{
-		jQuery('.layer').hide();
-		jQuery('.layer2').show();
-	}
-});
-			
-$(document).ready(function() {
-	
-	/* alert($('input[name="major"]:checked').val()); */
-	
-	if($('input[name="major"]:checked').val() == "필수"){
-		
-    $( "#optmiddle" ).hide();
-    $( "#essmiddle" ).show();
-	
-	}else if($('input[name="major"]:checked').val() == "선택"){
-		
-    $( "#optmiddle" ).show();
-    $( "#essmiddle" ).hide();
-	}
-
-	$("input[name='major']:radio").change(function () {
-        //라디오 버튼 값을 가져온다.
-        var major = this.value;
-	
-    if(major == "필수"){//필수인 경우
-        $( "#optmiddle" ).hide();
-        $( "#essmiddle" ).show();
-
-    }else if(major == "선택"){//선택인 경우	
-        $( "#optmiddle" ).show();
-        $( "#essmiddle" ).hide();
-    }
-	});
-  
-});
-
-	
-		
 </script>
 
 

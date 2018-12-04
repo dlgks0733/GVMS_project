@@ -65,7 +65,6 @@ a
 	<thead>
 	<tr>
 	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "essAllCheck" ></th>
-		<th style="width: 15px;text-align: center;"> NO </th>
 		<th style="width: 100px; text-align: center;">대분류</th>
 		<th style="width: 100px;text-align: center;">중분류</th>
 		<th style="width: 100px;text-align: center;">항목명</th>
@@ -77,7 +76,6 @@ a
 	<tbody >
 	<tr>
 		<td><input type ="checkbox" value="${SubjectVO.subId}" name="essSubId" ></td>
-		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.middle}</a></td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
@@ -93,7 +91,6 @@ a
 <thead>
 	<tr>
 	    <th style="width: 15px;text-align: center;"> <input type = "checkbox" name = "optAllCheck" ></th>
-		<th style="width: 15px;text-align: center;"> NO </th>
 		<th style="width: 100px; text-align: center;">대분류</th>
 		<th style="width: 100px;text-align: center;">중분류</th>
 		<th style="width: 100px;text-align: center;">항목명</th>
@@ -104,7 +101,6 @@ a
 	<tbody >
 	<tr>
 		<td><input type ="checkbox" name ="optSubId" value="${SubjectVO.subId}"></td>
-		<td>${SubjectVO.subId}</td>
 		<td>${SubjectVO.major}</td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.middle}</a></td>
 		<td><a href ="/subject?command=subModifyForm&subId=${SubjectVO.subId}">${SubjectVO.subName}</a></td>
@@ -215,7 +211,7 @@ $("input[name=optAllCheck]").click(function(){
 		$("#keyword").keyup(function(){
 			var k = $(this).val();
 			$("#user-table > tbody > tr").hide();
-			var temp = $("#user-table > tbody > tr > td:nth-child(5n+5):contains('" + k + "')");
+			var temp = $("#user-table > tbody > tr > td:nth-child(5n+4):contains('" + k + "')");
 			
 			$(temp).parent().show();
 		})
@@ -225,7 +221,7 @@ $("input[name=optAllCheck]").click(function(){
 		$("#keyword").keyup(function(){
 			var k = $(this).val();
 			$("#user-table2 > tbody > tr").hide();
-			var temp = $("#user-table2 > tbody > tr > td:nth-child(5n+5):contains('" + k + "')");
+			var temp = $("#user-table2 > tbody > tr > td:nth-child(5n+4):contains('" + k + "')");
 			
 			$(temp).parent().show();
 		})

@@ -155,7 +155,7 @@ public class SubjectDao extends CommonDao {
 	   }
 	   public void insertsubject(SubjectVO subVO) {
 		     
-	      String sql = "insert into TBL_SUB(" + "subId, major, middle, subName, subScore)" 
+	      String sql = "insert into TBL_SUB(subId, major, middle, subName, subScore)" 
 	    		  	+ "values(SUB_SEQ.nextval, ?, ?, ?, ?)";
 	      Connection conn = getConnection();
 	      PreparedStatement st;
