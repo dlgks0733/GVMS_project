@@ -13,7 +13,7 @@ import com.gvms.dao.SubjectDao;
 import com.gvms.vo.SubjectVO;
 
 public class SubjectModifyFormAction implements Action{
-
+    
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/subject/modify.jsp";
 		// 값 설정
