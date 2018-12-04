@@ -52,7 +52,7 @@
                 	<p>
 	                	<a href = "#" data-toggle = "tooltip" data-placement = "bottom" title = "초기 비밀번호 - 0000">비밀번호를 잊어버리셨나요?</a>
 	                	<br>
-	                	<span>문의 : 042)000-0000 (관리자)</span>
+	                	<span>문의 : 042)969-3333 (관리자)</span>
 	                	<script>
 		                	$(document).ready(function(){
 		                	    $('[data-toggle="tooltip"]').tooltip(); 
