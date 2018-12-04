@@ -18,7 +18,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" onsubmit="return validateEmptyVal()">
+<form role="form" method = "post" action = "/subject?command=subModify" onsubmit="return validateEmptyVal()">
 	<input type="hidden" name="subId" value="${subId}">
 	<div class="box-body">
 <c:forEach items="${sublist}" var="SubjectVO">
@@ -138,8 +138,8 @@
 
 	</div>
 <div class="box-footer">
-	<button type="button" class="btn btn-warning">수정</button>
-	<button type="reset" class="btn btn-danger" Onclick = "javascript:history.back(-1)">취소</button>
+	<button type="submit" class="btn btn-primary">수정</button>
+	<a type="button" href ="/subject?command=subList" class="btn btn-danger" >취소</a>
 </div>
 </form>
 
@@ -147,7 +147,7 @@
 
 
 <script>
-		$(document).ready(function() {
+/* 		$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		console.log(formObj);
 		$(".btn-warning").on("click", function() {
@@ -160,42 +160,53 @@
 			formObj.attr("action", "subject?command=subList");
 			formObj.attr("method", "post");
 		});
-	}); 
+	});  */
 		
-			function validateEmptyVal()
-		{
-			if (document.getElementsByName("major")[0].value == "")
-			{
-				alert("필수/선택 중 하나를 선택해주세요.");
-				document.getElementsByName("major")[0].focus();
-				return false;
-			}
-			if (document.getElementsByName("middle")[0].value == "")
-			{
-				alert("영역을 선택해주세요.");
-				document.getElementsByName("middle")[0].focus();
-				return false;
-			}
-			if(document.getElementsByName("middle")[0].value == "외국어영역")
+ 	function validateEmptyVal()
+	{ 
+		var major = false
+		var majorArrEss = document.getElementsByName("major");
+        
+		for(var i=0;i<majorArrEss.length;i++){
+        	if(majorArrEss[i].checked == true) {
+                major = true;
+                break;
+                
+        	}
+            
+        }
+        if(!major){
+            alert("필수/선택중 하나를 선택해주세요.");
+            return false;
+       
+        }
+        
+        if($("[name=middle] > option:selected").val() == '영역선택'){
+        	alert("영역을 선택해주세요.")
+        	 return false;
+        }
+
+         if(document.getElementsByName("middle")[0].value == "외국어영역")
 			{	
 				document.getElementsByName("subScore")[0].focus();
 				return true;
 				
 			}
-			if (document.getElementsByName("subName")[0].value == "")
+         if (document.getElementsByName("subName")[0].value == "")
 			{
 				alert("항목명을 입력해주세요.");
 				document.getElementsByName("subName")[0].focus();
 				return false;
 			}
-			if (document.getElementsByName("subScore")[0].value == "")
+         if (document.getElementsByName("subScore")[0].value == "")
 			{
 				alert("점수를 입력해주세요.");
 				document.getElementsByName("subScore")[0].focus();
 				return false;
 			}
-			
-			return true;
+        	alert("수정되었습니다.");
+        	return true;
+        	
 		} 
 </script>
 

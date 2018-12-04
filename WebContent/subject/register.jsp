@@ -17,16 +17,16 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form"  method="post" onsubmit="return validateEmptyVal()">
+<form role="form"  method="post" action = "/subject?command=subRegister" onsubmit="return validateEmptyVal()">
 	
 	<div class="box-body">
 		<div class="form-group">
 			<label>필수</label>
-			<input type= "radio" name = 'major' value = "필수">
+			<input type= "radio" name = 'major' id = "1" value = "필수">
 			<label>선택</label>
-			<input type= "radio" name = 'major' value = "선택">
+			<input type= "radio" name = 'major' id = "2" value = "선택">
 		</div>
-		<div class="form-group">
+		<div class="form-group" name = "middle">
 			<label >중분류</label>
 			<select name = "middle" >
 	       <option >영역선택</option>
@@ -57,60 +57,78 @@
 	<!-- /.box-body -->
 
 	<div class="box-footer">
-		<button type="button" class="btn btn-warning"  >등록</button>	
-		<button type="reset" class="btn btn-danger" Onclick = "javascript:history.back(-1)">취소</button>
+		<button type="submit" class="btn btn-primary"  >등록</button>	
+		<a type = "button" href ="/subject?command=subList" class="btn btn-danger" >취소</a>
 	</div>
 </form>
 
-<script languge = "javascript">
-$(document).ready(function() {
+<script>
+/*  $(document).ready(function() {
 	var formObj = $("form[role='form']");
 	console.log(formObj);
 	
-	$(".btn-warning").on("click", function() {
+ 	$(".btn-primary").on("click", function() {
 		formObj.attr("action", "/subject?command=subRegister");
-		formObj.attr("method", "post");
-		formObj.submit();
+		formObj.attr("method", "post")
+        formObj.submit();
 		alert("등록되었습니다.");
-	});
-	$(".btn-danger").on("click", function() {
+	});       
+}); 
+ 	$(".btn-danger").on("click", function() {
 		formObj.attr("action", "/subject?command=subList");
 		formObj.attr("method", "post");
-	});
-}); 
-function validateEmptyVal()
-{
-	if (document.getElementsByName("major")[0].value == "")
-	{
-		alert("필수/선택 중 하나를 선택해주세요.");
-		document.getElementsByName("major")[0].focus();
-		return false;
-	}
-	if (document.getElementsByName("middle")[0].value == "")
-	{
-		alert("영역을 선택해주세요.");
-		document.getElementsByName("middle")[0].focus();
-		return false;
-	}
-	if(document.getElementsByName("middle")[0].value == "외국어영역")
-	{		document.getElementsByName("subScore")[0].focus();
-			return true;
+	});   */
+
+	
+ 	function validateEmptyVal()
+	{ 
 		
-	}
-	if (document.getElementsByName("subName")[0].value == "")
-	{
-		alert("항목명을 입력해주세요.");
-		document.getElementsByName("subName")[0].focus();
-		return false;
-	}
-	if (document.getElementsByName("subScore")[0].value == "")
-	{
-		alert("점수를 입력해주세요.");
-		document.getElementsByName("subScore")[0].focus();
-		return false;
-	}
-	return true;
-} 
+		var major = false	
+		var majorArrEss = document.getElementsByName("major");
+        
+		for(var i=0;i<majorArrEss.length;i++){
+        	if(majorArrEss[i].checked == true) {
+                major = true;
+                break;
+                
+        	}
+            
+        }
+            
+        if(!major){
+            alert("필수/선택중 하나를 선택해주세요.");
+            return false;
+       
+        } 
+        
+        if($("[name=middle] > option:selected").val() == '영역선택'){
+        	alert("영역을 선택해주세요.")
+        	 return false;
+        }
+
+         if(document.getElementsByName("middle")[0].value == "외국어영역")
+			{	
+				document.getElementsByName("subScore")[0].focus();
+				return true;
+				
+			}
+         if (document.getElementsByName("subName")[0].value == "")
+			{
+				alert("항목명을 입력해주세요.");
+				document.getElementsByName("subName")[0].focus();
+				return false;
+			}
+         if (document.getElementsByName("subScore")[0].value == "")
+			{
+				alert("점수를 입력해주세요.");
+				document.getElementsByName("subScore")[0].focus();
+				return false;
+			}
+        	alert("등록되었습니다.");
+        	return true;
+        	
+		} 
+
 </script>
 
 
