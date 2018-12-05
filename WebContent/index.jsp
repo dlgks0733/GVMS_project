@@ -12,7 +12,7 @@
 <link href="/resources/css/all.css" rel="stylesheet">
 <script type = "text/javascript" src="/resources/js/jquery-2.2.4.min.js"></script>
 <script type = "text/javascript" src="/resources/js/bootstrap.min.js"></script>
-<title>로그인 :: 법인차량관리시스템</title>
+<title>로그인 :: 졸업인증관리시스템</title>
 </head>
 <body>	
 <div class ="login_form">
