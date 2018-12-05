@@ -16,7 +16,8 @@
 				<div class="box-header with-border">
 					<div class="box-title">
 						<h3>HOME PAGE</h3>
-						<img alt="" src="../resources/admin/dist/img/gvmsimage.PNG">
+						<img src = "/resources/images/gvmsimage.PNG">
+					<!-- 	<img alt="" src="/resources/admin/dist/img/gvmsimage.PNG"> -->
 					</div>
 				</div>
 			</div>
