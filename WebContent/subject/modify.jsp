@@ -126,7 +126,7 @@
 		</div> 
 		 		<div class="form-group">
 			<label >점수</label> 
-			<input type="text" name="subScore" id = "subScore" class = "form-control" value = "${SubjectVO.subScore}" placeholder="ex) 600">
+			<input type="text" name="subScore" id = "subScore"  value = "${SubjectVO.subScore}" placeholder="ex) 600">
 		</div> 
 	</c:forEach>
 	</div>

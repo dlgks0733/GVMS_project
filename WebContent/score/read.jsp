@@ -3,7 +3,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+
 <%@include file="../include/header.jsp"%>
+
+
+
+
+
+<!-- <script>
+
+	
+
+	$(document).ready(function(){
+		
+	    $(".scoreDate").datepicker();
+	});
+	
+
+	
+
+</script> -->
 
 <!-- Main content -->
 <section class="content">
@@ -11,7 +31,7 @@
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
-			<div class="box box-primary">
+			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">점수내역</h3>
 					<h4>학번:${stuId} 이름:${stuName}</h4>
@@ -357,7 +377,7 @@ function setEssSubInfo(index , subId, name){
 	<!-- /.row -->
 </section>
 <!-- /.content -->
-</div>
+
 <!-- /.content-wrapper -->
 
 <%@include file="../include/footer.jsp"%>
