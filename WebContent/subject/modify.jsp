@@ -26,13 +26,13 @@
 			<c:if test = "${major_num == 1}">
 			<label >필수</label>
 			<input type= "radio" name = "major" value = "필수" checked >
-			<label >선택</label> 
+			<label >　선택</label> 
 			<input type= "radio" name = "major" value = "선택" >
 			</c:if>
 			<c:if test = "${major_num == 0}">
 			<label >필수</label>
 			<input type= "radio" name = "major" value = "필수" >
-			<label >선택</label> 
+			<label >　선택</label> 
 			<input type= "radio" name = "major" value = "선택" checked>
 			</c:if>
 			
@@ -122,11 +122,11 @@
  		<div class="form-group">
  		
 			<label >항목명</label> 
-			<input type="text" name="subName" value = "${SubjectVO.subName}" placeholder="ex) 정보화영역">
+			<input type="text" name="subName" style = "width:200px" value = "${SubjectVO.subName}" placeholder="ex) 정보화영역">
 		</div> 
 		 		<div class="form-group">
-			<label >점수</label> 
-			<input type="text" name="subScore" id = "subScore"  value = "${SubjectVO.subScore}" placeholder="ex) 600">
+			<label >　점수</label> 
+			<input type="text" name="subScore" style = "width:200px" id = "subScore"  value = "${SubjectVO.subScore}" placeholder="ex) 600">
 		</div> 
 	</c:forEach>
 	</div>
@@ -186,13 +186,13 @@
         	alert("영역을 선택해주세요.")
         	 return false;
         }
-
-         if(document.getElementsByName("middle")[0].value == "외국어영역")
+   
+        if(document.getElementsByName("middle")[0].value == "외국어영역")
 			{	
 				document.getElementsByName("subScore")[0].focus();
 				return true;
-				
 			}
+
          if (document.getElementsByName("subName")[0].value == "")
 			{
 				alert("항목명을 입력해주세요.");
@@ -211,9 +211,9 @@
 		} 
 	
 	$('#middle').ready(function(){
-	
+	   
 		if($("#middle option:selected").val() == '외국어영역'){
-			$("#subScore").val('외국어영역은 점수입력이 불가능합니다.');
+			$("#subScore").val('점수입력이 불가능합니다.');
 			$("#subScore").attr("disabled",true);
 		}
 		
@@ -221,7 +221,7 @@
 		$("#middle option:selected").each(function(){
 			
 			if($(this).val() == '외국어영역'){
-				$("#subScore").val('외국어영역은 점수입력이 불가능합니다.');
+				$("#subScore").val('점수입력이 불가능합니다.');
 				$("#subScore").attr("disabled",true);
 			}else if($(this).val() != '외국어영역'){
 				$("#subScore").val(''); // 텍스트박스 초기화

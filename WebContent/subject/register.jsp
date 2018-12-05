@@ -23,7 +23,7 @@
 		<div class="form-group">
 			<label>필수</label>
 			<input type= "radio" name = 'major' id = "major" value = "필수">
-			<label>선택</label>
+			<label>　선택</label>
 			<input type= "radio" name = 'major' id = "major" value = "선택">
 		</div>
 		<div class="form-group" >
@@ -46,12 +46,12 @@
  		<div class="form-group">
 			<label >항목명</label> 
 			<input type="text"
-				name="subName" class="form-control" placeholder="ex) 정보화영역">
+				name="subName" style = "width:200px" placeholder="ex) 정보화영역">
 		</div> 
 		 		<div class="form-group">
-			<label >점수</label> 
+			<label >점수　</label> 
 			<input type="text"
-				name="subScore" id = "subScore" class="form-control" placeholder="ex) 600">
+				style = "width:200px"name="subScore" id = "subScore" placeholder="ex) 600">
 		</div> 
 	</div>
 	<!-- /.box-body -->
@@ -106,7 +106,8 @@
         	alert("영역을 선택해주세요.")
         	 return false;
         }
-
+		 
+  
          if(document.getElementsByName("middle")[0].value == "외국어영역")
 			{	
 				document.getElementsByName("subScore")[0].focus();
@@ -136,7 +137,7 @@
 		$("#middle option:selected").each(function(){
 			
 			if($(this).val() == '외국어영역'){
-				$("#subScore").val('외국어영역은 점수입력이 불가능합니다.');
+				$("#subScore").val('점수입력이 불가능합니다.');
 				$("#subScore").attr("disabled",true);
 			}else if($(this).val() != '외국어영역'){
 				$("#subScore").val('');
@@ -153,7 +154,7 @@
 
 
 			</div>
-			<!-- /.box -->
+			<!-- /.	ox -->
 		</div>
 		<!--/.col (left) -->
 
