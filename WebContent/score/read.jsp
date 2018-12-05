@@ -174,7 +174,7 @@ $(document).ready(function(){
 		formObj.attr("method", "post");		
 		
 		if (isChange == false && buttonChk == false) {
-			alert("수정한 항목이 없습니다.");
+			alert("수정 항목이 없습니다.");
 		}  else {
 			formObj.submit();
 			alert("수정되었습니다.");
@@ -205,7 +205,7 @@ $(document).ready(function(){
         }
     
         if(!isChk){
-            alert("삭제할 항목이 없습니다.");
+            alert("삭제 항목이 없습니다.");
         } else{
 			formObj.submit();
 			alert("삭제되었습니다.");
@@ -266,7 +266,6 @@ $("input[name=optAllCheck]").click(function(){
 function openModEssSearchSubject(index)
 {	
 	buttonChk = true;
-	alert(buttonChk);
 	var url = "score?command=scoreModEssSearchForm&index=" + encodeURIComponent(index);		
 	window.open(url,'_blank','width=500, height=400');
 	
@@ -276,7 +275,6 @@ function openModEssSearchSubject(index)
 function openModOptSearchSubject(index)
 {	
 	buttonChk = true;
-	alert(buttonChk);
 	var url = "score?command=scoreModOptSearchForm&index=" + encodeURIComponent(index);		
 	
 	window.open(url,'_blank','width=500, height=400');

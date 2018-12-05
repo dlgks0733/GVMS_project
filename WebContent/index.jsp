@@ -12,13 +12,13 @@
 <link href="/resources/css/all.css" rel="stylesheet">
 <script type = "text/javascript" src="/resources/js/jquery-2.2.4.min.js"></script>
 <script type = "text/javascript" src="/resources/js/bootstrap.min.js"></script>
-<title>로그인 :: 법인차량관리시스템</title>
+<title>로그인 :: 졸업인증관리시스템</title>
 </head>
 <body>	
 <div class ="login_form">
 	<div class = "starter-template">
 		<div class = "logo" style="text-align: center;">
-		<img src = "img/logo.png">
+		<img src = "/resources/images/login1.PNG">
 		<h3>졸업인증관리시스템</h3>
 		</div>
 			<c:if test = "${message ne null}">

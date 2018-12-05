@@ -82,7 +82,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../resources/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">관리자님님 반갑습니다.</span>
+                  <span class="hidden-xs">관리자님 반갑습니다.</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
