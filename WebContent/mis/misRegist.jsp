@@ -8,6 +8,15 @@
 
 <%@include file="/include/header.jsp"%>
 
+<script>
+
+	$(document).ready(function(){
+		
+	    $(".scoreDate").datepicker();
+	});
+
+</script>
+
 <section class="content">
 	<div class="row">
 		<div class="col-md-12">
@@ -17,9 +26,10 @@
 				</div>	
 				<div class="box-wrap">
 					<div class="box-body">
-						<form role="form" method="post">
+						<form role="form" method="post" name="form">
 					<h3 class="box-title"><span class="must-mark">*</span>
-					날짜 <input type="date" name="scoreDate" ></h3>					
+					날짜 <input type="text" class="scoreDate" name="scoreDate" ></h3>	
+					<div class="row">				
 					<table class="table table-bordered">
 						<tr>
 							<th style="text-align: center;"><input type ="checkbox" name="stuIdAll" /></th>
@@ -47,50 +57,6 @@
 	</div>
 </section>
 
-<%-- <section class="content">
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">MIS 출결 등록</h3>
-				</div>
-				<div class="box-body">
-				<form role="form" method="post">
-					<b><span class="must-mark">*</span>
-					날짜 </b><input type="date" name="scoreDate" >					
-					<table class="table table-bordered">
-						<tr>
-							<th style="text-align: center;"><input type ="checkbox" name="stuIdAll" /></th>
-							<th style="text-align: center;">학번</th>
-							<th style="text-align: center;">이름</th>
-						</tr>
-
-						<c:forEach items="${misListRegist}" var="MisVO">
-							<tr>
-								<td style="text-align: center;"><input type ="checkbox" name="stuId" value="${MisVO.stuId}"/></td>
-								<td style="text-align: center;">${MisVO.stuId}</td>
-								<td style="text-align: center;">${MisVO.stuName}</td>
-							</tr>
-						</c:forEach>
-					</table>	
-					<div class="box-footer btn-group-center">				
-						 <button type="button" class="btn btn-primary">등록</button>
-						 <a href="/mis?command=mis_list_form" type="button" class="btn btn-default" >취소</a>
-					</div>
-					</form>
-
-				</div>
-				<!-- /.box-body -->
-				
-		</div>
-		<!--/.col (left) -->
-
-	</div>
-	</div>
-	<!-- /.row -->
-</section> --%>
 
 
 <script>
@@ -141,18 +107,19 @@ $(document).ready(function() {
         }
         
         else{
-        	if (confirm("정말 등록하시겠습니까??") == true){   
-			formMis.submit();
+        	var date = document.form.scoreDate.value;
+        	var isCorrect = confirm(date + " 날짜로 등록하시겠습니까?");
+        	if (isCorrect == true){   
+				formMis.submit();
+				return true;
         	}else{  
-        	    return;
+        		return false;
         	}
 		}
 		
 
 	});
-	
-	//jquery 달력
-	 $(".scoreDate").datepicker();
+
 
 }); 
 

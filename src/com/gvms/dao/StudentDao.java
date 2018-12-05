@@ -89,7 +89,7 @@ public class StudentDao extends CommonDao {
 	public void insertStudent(StudentVO stuVo) {
 		String sql = "insert into TBL_STU(stuID" + "						, stuName"
 				+ "						, stuStat" + "						, stuIndex)"
-				+ "	  values(?, ?, ?, STU_SEQ.nextval)";
+				+ "	  values(?, ?, ?, TO_CHAR(stu_seq.nextval, '0000'))";
 
 		Connection conn = null;
 		PreparedStatement st = null;

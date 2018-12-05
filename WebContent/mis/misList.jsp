@@ -19,7 +19,7 @@
 				<div class="box-wrap">
 					<div class="box-body">
 						<div class="box-keyword">
-							<form method="get">
+							<form role="form" method="get">
 							<div class="row">
 								<div class="col-md-2 col-xs-4">
 									<select class="form-control" name="searchType">
@@ -32,9 +32,9 @@
 								</div>
 							</div>
 							</form>
-							<br>
 						</div>
-						
+							<form method="get">
+							<div class="row">
 						<table class="table table-bordered" id="user-table">
 						<thead>
 							<tr>
@@ -55,13 +55,14 @@
 						</tbody>
 						</c:forEach>
 					</table>
-					
 					<div class="box-footer btn-group-right">				
 					<a type="button" class="btn btn-default" id="submitbutton"
 						href="/mis?command=mis_modify_form" style="float: right">전체수정</a>
 					<a type="button" class="btn btn-primary" id="newBtn"
 						href="/mis?command=mis_regist_form" style="float: right">신규 등록</a>
 					</div>
+					</div>
+					</form>
 				</div>
 				</div>
 			</div>

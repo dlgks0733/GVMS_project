@@ -66,7 +66,6 @@
 						<button type="button" class="btn btn-danger">삭제</button>	
 						<a href="/mis?command=mis_list_form" type="button" class="btn btn-default" >취소</a>
 						</div>
-				
 					</form>
 					</div>
 				</div>

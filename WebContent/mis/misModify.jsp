@@ -8,6 +8,15 @@
 
 <%@include file="/include/header.jsp"%>
 
+<script>
+
+	$(document).ready(function(){
+		
+	    $(".scoreDate").datepicker();
+	});
+
+</script>
+
 <section class="content">
 	<div class="row">
 		<div class="col-md-12">
@@ -19,8 +28,8 @@
 					<div class="box-body">
 						<form method="post" action="/mis?command=mis_modify_select_from">
 										<h5 class="box-title">날짜
-										<input type="date" name="fromDate" value="${fromDate}"> &nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;
-										<input type="date" name="toDate" value="${toDate}">
+										<input type="text" class="scoreDate" name="fromDate" value="${fromDate}"> &nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;
+										<input type="text" class="scoreDate" name="toDate" value="${toDate}">
 										<input type="submit" class="btn btn-default" value="조회">
 										</h5>
 							 </form>	
@@ -46,7 +55,8 @@
 												<th style="text-align: center;">수정날짜</th>
 											</tr>
 											</thead>
-											
+										<c:choose>
+											<c:when test="${not empty misModifyList}">
 											<c:forEach items="${misModifyList}" var="MisVO">
 												<tbody>
 												<tr>
@@ -61,10 +71,17 @@
 												</tr>
 												</tbody>
 											</c:forEach>
+											</c:when>
+												<c:otherwise>
+												<tr>
+													<td colspan="7" class="txt_center" align="center"><b>수정할
+													데이터가 없습니다.</b></td>
+												</tr>
+												</c:otherwise>
+									</c:choose>
 										</table>
 								<div class="box-footer btn-group-center">
-									<button type="button" class="btn btn-primary">수정</button>
-									<!-- <button type="button" class="btn btn-danger">삭제</button> -->
+									<button type="button" class="btn btn-primary">수정</button>-
 									<a href="/mis?command=mis_list_form" type="button" class="btn btn-default">취소</a>
 								</div>
 									</div>
@@ -152,16 +169,6 @@
 
 
 <script>
-/* //학번 검색기능
-$(document).ready(function() {
-	$("#keyword").keyup(function(){
-		var k = $(this).val();
-		$("#user-table > tbody > tr").hide();
-		var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
-		
-		$(temp).parent().show();
-	})
-}) */
 
 //전체 체크박스 클릭시 전체 checked
 $("input[name=scoreIdAll]").click(function(){
@@ -172,6 +179,9 @@ $("input[name=scoreIdAll]").click(function(){
 	} else{
 		$("input[name='scoreId']").prop("checked", false);
 	}
+	
+	//jquery 달력
+	 $(".scoreDate").datepicker();
 });
 
 //이름 검색기능
@@ -235,33 +245,7 @@ $(document).ready(function() {
 		
 
 	}); 
-	
-	/* $(".btn-danger").on("click", function() {
-		formMis.attr("action", "mis?command=mis_delete");
-		formMis.attr("method", "post");
 
-		var isChk = false;
-
-		var arrEss = document.getElementsByName("scoreId");
-
-		for (var i = 0; i < arrEss.length; i++) {
-			if (arrEss[i].checked == true) {
-				isChk = true;
-				break;
-			}
-		}
-
-		if (!isChk) {
-			alert("삭제 내용이 없습니다.");
-		} else {
-			if (confirm("정말 삭제하시겠습니까??") == true) {
-				formMis.submit();
-			} else {
-				return;
-			}
-		}
-	}); */
-	
 
 }); 
 

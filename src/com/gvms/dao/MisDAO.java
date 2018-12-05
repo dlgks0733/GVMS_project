@@ -127,8 +127,8 @@ public class MisDAO extends CommonDao {
 				+ "        , TO_CHAR(s.scoreDate, 'YYYY-MM-DD') as scoreDate "
 				+ "     FROM TBL_SCORE s, TBL_STU stu "
 				+ "    WHERE s.STUID = stu.STUID "
-				+ "      AND s.SCOREDATE BETWEEN TO_DATE('" + fromDate + "', 'yyyy-mm-dd')"
-				+ "      AND TO_DATE('" + toDate + "', 'yyyy-mm-dd')"
+				+ "      AND s.SCOREDATE BETWEEN TO_DATE('" + fromDate + "', 'MM/DD/YYYY')"
+				+ "      AND TO_DATE('" + toDate + "', 'MM/DD/YYYY')"
 				+ " ORDER BY s.scoreDate DESC";
 
 		List<MisVO> list = new ArrayList<MisVO>();
@@ -312,7 +312,7 @@ public class MisDAO extends CommonDao {
 				+ "                   , stuid"
 				+ "                   , scoredate"
 				+ "                   , acqscore)"
-				+ "   VALUES(score_seq.nextval, 1, ?, ?, null)";
+				+ "   VALUES(TO_CHAR(score_seq.nextval, '0000'), 1, ?, TO_DATE(?, 'MM/DD/YYYY'), null)";
 
 		Connection conn = null;
 		PreparedStatement st = null	;
