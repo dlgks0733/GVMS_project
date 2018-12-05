@@ -18,7 +18,7 @@
 <div class ="login_form">
 	<div class = "starter-template">
 		<div class = "logo" style="text-align: center;">
-		<img src = "img/logo.png">
+		<img src = "/resources/images/login1.PNG">
 		<h3>졸업인증관리시스템</h3>
 		</div>
 			<c:if test = "${message ne null}">
