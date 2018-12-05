@@ -22,13 +22,13 @@
 	<div class="box-body">
 		<div class="form-group">
 			<label>필수</label>
-			<input type= "radio" name = 'major' id = "1" value = "필수">
+			<input type= "radio" name = 'major' id = "major" value = "필수">
 			<label>선택</label>
-			<input type= "radio" name = 'major' id = "2" value = "선택">
+			<input type= "radio" name = 'major' id = "major" value = "선택">
 		</div>
-		<div class="form-group" name = "middle">
+		<div class="form-group" >
 			<label >중분류</label>
-			<select name = "middle" >
+			<select name = "middle" id = "middle" onChange ="setMiddle(this.value);">
 	       <option >영역선택</option>
 	       <option >외국어영역</option>
 	       <option >학생활동영역</option>
@@ -37,7 +37,7 @@
 	       <option >공모전영역</option>
 	       <option >기타</option>
 	       </select>
-		</div>
+		</div> 
 <%-- 		<div class="form-group">
 			<label for="exampleInputEmail1">Writer</label> 
 			<input type="text" name="writer" 
@@ -51,14 +51,15 @@
 		 		<div class="form-group">
 			<label >점수</label> 
 			<input type="text"
-				name="subScore" class="form-control" placeholder="ex) 600">
+				name="subScore" id = "subScore" class="form-control" placeholder="ex) 600">
 		</div> 
 	</div>
 	<!-- /.box-body -->
 
 	<div class="box-footer">
-		<button type="submit" class="btn btn-primary"  >등록</button>	
-		<a type = "button" href ="/subject?command=subList" class="btn btn-danger" >취소</a>
+		<a type = "button" href ="/subject?command=subList" class="btn btn-danger" style = "float : right">취소</a>
+		<button type="submit" class="btn btn-primary"  style = "float : right">등록</button>	
+		
 	</div>
 </form>
 
@@ -101,7 +102,7 @@
        
         } 
         
-        if($("[name=middle] > option:selected").val() == '영역선택'){
+         if($("[name=middle] > option:selected").val() == '영역선택'){
         	alert("영역을 선택해주세요.")
         	 return false;
         }
@@ -128,6 +129,25 @@
         	return true;
         	
 		} 
+	
+ 	$(document).ready(function(){
+		
+		$('#middle').change(function(){
+		$("#middle option:selected").each(function(){
+			
+			if($(this).val() == '외국어영역'){
+				$("#subScore").val('외국어영역은 점수입력이 불가능합니다.');
+				$("#subScore").attr("disabled",true);
+			}else if($(this).val() != '외국어영역'){
+				$("#subScore").val('');
+				$("#subScore").attr("disabled",false);
+			}
+			
+		});
+			});
+	}); 
+ 	
+ 	
 
 </script>
 

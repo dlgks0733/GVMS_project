@@ -10,7 +10,7 @@
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
-			<div class="box box-primary">
+			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">수정</h3>
 							
@@ -40,7 +40,7 @@
 		
 		<div class="form-group">
 		   <label >중분류</label>
-		   <select name = "middle">
+		   <select name = "middle" id = "middle">
 		   <c:if test = "${middle_num == 0}">
 	       <option selected>영역선택</option>
 	       <option >외국어영역</option>
@@ -126,7 +126,7 @@
 		</div> 
 		 		<div class="form-group">
 			<label >점수</label> 
-			<input type="text" name="subScore" value = "${SubjectVO.subScore}" placeholder="ex) 600">
+			<input type="text" name="subScore" id = "subScore" class = "form-control" value = "${SubjectVO.subScore}" placeholder="ex) 600">
 		</div> 
 	</c:forEach>
 	</div>
@@ -138,8 +138,9 @@
 
 	</div>
 <div class="box-footer">
-	<button type="submit" class="btn btn-primary">수정</button>
-	<a type="button" href ="/subject?command=subList" class="btn btn-danger" >취소</a>
+	<a type="button" href ="/subject?command=subList" class="btn btn-danger" style = "float : right">취소</a>
+	<button type="submit" class="btn btn-primary" style = "float : right">수정</button>
+	
 </div>
 </form>
 
@@ -208,6 +209,28 @@
         	return true;
         	
 		} 
+	
+	$('#middle').ready(function(){
+	
+		if($("#middle option:selected").val() == '외국어영역'){
+			$("#subScore").val('외국어영역은 점수입력이 불가능합니다.');
+			$("#subScore").attr("disabled",true);
+		}
+		
+		$('#middle').change(function(){
+		$("#middle option:selected").each(function(){
+			
+			if($(this).val() == '외국어영역'){
+				$("#subScore").val('외국어영역은 점수입력이 불가능합니다.');
+				$("#subScore").attr("disabled",true);
+			}else if($(this).val() != '외국어영역'){
+				$("#subScore").val(''); // 텍스트박스 초기화
+				$("#subScore").attr("disabled",false);
+			}
+			
+		});
+			});
+	});
 </script>
 
 
