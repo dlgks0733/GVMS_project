@@ -122,7 +122,7 @@
  		<div class="form-group">
  		
 			<label >항목명</label> 
-			<input type="text" name="subName" style = "width:200px" value = "${SubjectVO.subName}" placeholder="ex) 정보화영역">
+			<input type="text" name="subName" style = "width:200px" value = "${SubjectVO.subName}" placeholder="ex) 정보처리기사">
 		</div> 
 		 		<div class="form-group">
 			<label >　점수</label> 

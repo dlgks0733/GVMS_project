@@ -10,7 +10,7 @@
       <!-- left column -->
       <div class="col-md-12">
          <!-- general form elements -->
-         <div class="box box-primary">
+         <div class="box">
             <div class="box-header">
                <h3 class="box-title">학생 등록</h3>
             </div>
